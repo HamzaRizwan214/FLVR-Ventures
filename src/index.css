@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-primary: var(--brand-primary);
+  --color-brand-accent: var(--brand-accent);
+  --color-brand-reward: var(--brand-reward);
+  
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-brand-tint: var(--bg-brand-tint);
+  --color-bg-coral-tint: var(--bg-coral-tint);
+  --color-bg-gold-tint: var(--bg-gold-tint);
+  
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-link: var(--text-link);
+  --color-text-muted: var(--text-muted);
+  
+  --color-border-default: var(--border-default);
+  --color-border-strong: var(--border-strong);
+
+  --font-sans: "Metropolis", sans-serif;
+  --font-arabic: "Etlalah", sans-serif;
+}
+
+@font-face {
+  font-family: 'Metropolis';
+  src: url('/metropolis/Metropolis-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Metropolis';
+  src: url('/metropolis/Metropolis-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Metropolis';
+  src: url('/metropolis/Metropolis-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Metropolis';
+  src: url('/metropolis/Metropolis-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Etlalah';
+  src: url('/etlalah-arabic-typeface/etlalah-regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Etlalah';
+  src: url('/etlalah-arabic-typeface/etlalah-bold.otf') format('opentype');
+  font-weight: 1000;
+  font-style: normal;
+}
+
+:root {
+  /* Permanent Light Theme Palette */
+  --bg-primary: #f8f9fa;
+  --bg-secondary: #ffffff;
+  --bg-brand-tint: rgba(11, 114, 133, 0.05);
+  --bg-coral-tint: rgba(255, 107, 107, 0.05);
+  --bg-gold-tint: rgba(255, 212, 59, 0.05);
+
+  --text-primary: #000000;
+  --text-secondary: #495057;
+  --text-link: #0b7285;
+  --text-muted: #868e96;
+
+  --brand-primary: #0b7285;
+  --brand-accent: #ff6b6b;
+  --brand-reward: #ffd43b;
+
+  --border-default: rgba(0, 0, 0, 0.08);
+  --border-strong: rgba(11, 114, 133, 0.3);
+}
+
+html, body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+/* Handle RTL (Arabic) Font Override */
+[dir="rtl"], [dir="rtl"] body {
+  font-family: var(--font-arabic) !important;
+}
+
+/* Ensure font-weight mappings for Etlalah */
+[dir="rtl"] strong, [dir="rtl"] b {
+  font-weight: 1000;
+}
+
+/* Base resets */
+* {
+  box-sizing: border-box;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* Custom Utilities */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-default);
+}
