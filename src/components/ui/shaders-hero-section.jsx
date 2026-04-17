@@ -161,8 +161,8 @@ export function ShaderBackground({ children }) {
 
 export function HeroContent() {
   return (
-    <main className="absolute inset-0 z-20 flex items-end px-6 lg:px-12 pb-12 lg:pb-24">
-      <div className="max-w-4xl text-left">
+    <main className="absolute inset-0 z-20 flex items-end justify-start px-6 lg:px-12 pb-12 lg:pb-24">
+      <div className="max-w-4xl text-left rtl:text-right">
         <div
           className="inline-flex items-center px-4 py-2 rounded-full bg-black/5 mb-6 relative border border-black/5"
           style={{
@@ -204,12 +204,14 @@ export function HeroContent() {
         </h1>
 
         {/* Description */}
-        <p className="text-lg md:text-xl font-normal text-[#FFFFFF] mb-10 max-w-2xl leading-relaxed">
-          <BilingualText
-            en="Institutional Capital. Creative Edge. Relentless Execution. We identify, create, package, operate, and scale high-potential restaurant and café concepts."
-            ar="رأس مال مؤسسي. حافة إبداعية. تنفيذ لا هوادة فيه. نقوم بتحديد، إنشاء، تشغيل، وتوسيع مفاهيم المطاعم والمقاهي ذات الإمكانات العالية."
-          />
-        </p>
+        <div className="flex">
+          <p className="text-lg md:text-xl font-normal text-[#FFFFFF] mb-10 max-w-2xl leading-relaxed">
+            <BilingualText
+              en="Institutional Capital. Creative Edge. Relentless Execution. We identify, create, package, operate, and scale high-potential restaurant and café concepts."
+              ar="رأس مال مؤسسي. حافة إبداعية. تنفيذ لا هوادة فيه. نقوم بتحديد، إنشاء، تشغيل، وتوسيع مفاهيم المطاعم والمقاهي ذات الإمكانات العالية."
+            />
+          </p>
+        </div>
 
         {/* Buttons */}
         <div className="flex items-center gap-4 flex-wrap">

@@ -51,13 +51,13 @@
 @font-face {
   font-family: 'Etlalah';
   src: url('/etlalah-arabic-typeface/etlalah-regular.otf') format('opentype');
-  font-weight: 400;
+  font-weight: 100 400;
   font-style: normal;
 }
 @font-face {
   font-family: 'Etlalah';
   src: url('/etlalah-arabic-typeface/etlalah-bold.otf') format('opentype');
-  font-weight: 1000;
+  font-weight: 500 1000;
   font-style: normal;
 }
 
@@ -95,11 +95,33 @@ html, body {
 /* Handle RTL (Arabic) Font Override */
 [dir="rtl"], [dir="rtl"] body {
   font-family: var(--font-arabic) !important;
+  /* Set base weight to 500, which now uses the Bold font file */
+  font-weight: 500; 
 }
 
-/* Ensure font-weight mappings for Etlalah */
-[dir="rtl"] strong, [dir="rtl"] b {
-  font-weight: 1000;
+/* Force all text elements in Arabic to be at least Medium weight */
+[dir="rtl"] p, 
+[dir="rtl"] span, 
+[dir="rtl"] div, 
+[dir="rtl"] a, 
+[dir="rtl"] li {
+  font-weight: 500;
+}
+
+/* Ensure common font-weight classes respond correctly in RTL */
+[dir="rtl"] .font-normal {
+  font-weight: 500 !important;
+}
+
+[dir="rtl"] .font-medium {
+  font-weight: 600 !important;
+}
+
+[dir="rtl"] .font-semibold, 
+[dir="rtl"] .font-bold, 
+[dir="rtl"] strong, 
+[dir="rtl"] b {
+  font-weight: 1000 !important;
 }
 
 /* Base resets */

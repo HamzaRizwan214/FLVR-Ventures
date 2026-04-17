@@ -15,8 +15,9 @@ import { Button } from "@/components/ui/button";
 export default function FloatingNav() {
   const { language, toggleLanguage } = useLanguage();
   const { pathname } = useLocation();
-  const [scrolled, setScrolled] = React.useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   const { scrollYProgress } = useScroll();
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
@@ -30,6 +31,24 @@ export default function FloatingNav() {
     { name: "How it Works", ar: "كيف نعمل", href: "/how-it-works" },
     { name: "Get in touch", ar: "تواصل معنا", href: "/contact" },
   ];
+
+  // Variants for the navigation bar animation
+  const navVariants = {
+    expanded: {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      filter: "blur(0px)",
+      transition: { type: "spring", stiffness: 400, damping: 30 }
+    },
+    collapsed: {
+      opacity: 0.4,
+      scale: 0.9,
+      y: 0,
+      filter: "blur(2px)",
+      transition: { type: "spring", stiffness: 400, damping: 30 }
+    }
+  };
 
   return (
     <header
@@ -48,26 +67,33 @@ export default function FloatingNav() {
           alt="FLVR Logo"
           className="h-8 shadow-2xl scale-500"
         />
-        {/* <span className="font-normal text-xl tracking-tight text-[var(--text-primary)] hidden sm:block">
-          <span className="text-[#0b7285]">FLVR Ventures</span>
-        </span> */}
       </Link>
 
       {/* Navigation */}
-      <nav className="hidden md:flex items-center space-x-2 bg-[var(--brand-primary)]/80 backdrop-blur-md rounded-full px-4 py-2 border border-black/5 rtl:space-x-reverse">
+      <motion.nav
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        initial="expanded"
+        animate={scrolled && !isHovered ? "collapsed" : "expanded"}
+        variants={navVariants}
+        className={cn(
+          "hidden md:flex items-center space-x-2 bg-[var(--brand-primary)]/80 backdrop-blur-md rounded-full px-4 py-2 border border-black/5 rtl:space-x-reverse cursor-pointer transition-colors duration-300",
+          scrolled && !isHovered ? "bg-[var(--brand-primary)]/40" : "bg-[var(--brand-primary)]/80"
+        )}
+      >
         {menuItems.map((item) => (
           <Link
             key={item.name}
             to={item.href}
             className={cn(
-              "text-[#FFFFFF]/70 hover:text-[#FFFFFF] text-sm font-normal px-4 py-2 rounded-full hover:bg-black/5 transition-all duration-200",
-              pathname === item.href && "text-[#FFFFFF] bg-[#ffe37dff]/60",
+              "text-[#FFFFFF]/70 hover:text-[#000000] text-sm font-normal px-4 py-2 rounded-full hover:bg-white/10 transition-all duration-200 whitespace-nowrap",
+              pathname === item.href && "text-[#000000] bg-[#ffffffff]/90",
             )}
           >
             <BilingualText en={item.name} ar={item.ar} />
           </Link>
         ))}
-      </nav>
+      </motion.nav>
 
       <div className="flex items-center z-50 gap-4">
         <div className="hidden sm:flex bg-black/5 backdrop-blur-md rounded-full p-1 border border-black/5">
