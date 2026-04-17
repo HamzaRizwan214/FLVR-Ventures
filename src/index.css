@@ -141,3 +141,10 @@ button {
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border-default);
 }
+
+/* global.css or equivalent */
+@keyframes fluidGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
