@@ -1,38 +1,39 @@
-import React, { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import React, { useRef, useEffect } from "react";
+import { motion, useInView, useSpring, useTransform, useMotionValue } from "framer-motion";
 import BilingualText from "./BilingualText";
 
-// Animated counter component using simple count-up logic for lightweight performance
+// Animated counter component using framer-motion's useSpring for a premium physics-based feel
 function AnimatedCounter({ value, suffix = "", prefix = "" }) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [count, setCount] = React.useState(0);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  
+  const numericValue = parseFloat(value.toString().replace(/[^0-9.]/g, ""));
+  const count = useMotionValue(0);
+  
+  // High-end spring config for that "Apple" smoothness
+  const springValue = useSpring(count, {
+    damping: 40,
+    stiffness: 80,
+    restDelta: 0.001
+  });
 
-  React.useEffect(() => {
-    if (isInView) {
-      let start = 0;
-      const end = parseFloat(value.toString().replace(/[^0-9.]/g, ""));
-      if (start === end) return;
-
-      let totalDuration = 2000;
-      let increment = end / (totalDuration / 16);
-      
-      let timer = setInterval(() => {
-        start += increment;
-        if (start >= end) {
-          setCount(end);
-          clearInterval(timer);
-        } else {
-          setCount(start);
-        }
-      }, 16);
+  const displayValue = useTransform(springValue, (latest) => {
+    if (Number.isInteger(numericValue)) {
+      return Math.floor(latest);
     }
-  }, [isInView, value]);
+    return latest.toFixed(1);
+  });
+
+  useEffect(() => {
+    if (isInView) {
+      count.set(numericValue);
+    }
+  }, [isInView, numericValue, count]);
 
   return (
-    <span ref={ref}>
+    <span ref={ref} className="inline-flex">
       {prefix}
-      {Number.isInteger(count) ? count : count.toFixed(1)}
+      <motion.span>{displayValue}</motion.span>
       {suffix}
     </span>
   );
@@ -41,8 +42,8 @@ function AnimatedCounter({ value, suffix = "", prefix = "" }) {
 export default function StatsSection() {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { 
-    margin: "-20%", // Trigger slightly before center for smoother transition
-    amount: 0.3 
+    margin: "-10%", // More reliable trigger for mobile
+    amount: 0.2 
   });
 
   const stats = [
@@ -59,10 +60,10 @@ export default function StatsSection() {
         backgroundColor: isInView ? "var(--brand-primary)" : "var(--bg-primary)",
         color: isInView ? "#ffffff" : "var(--text-primary)",
       }}
-      transition={{ duration: 0.8, ease: "easeInOut" }}
-      className="relative min-h-[120vh] flex items-center py-24 overflow-hidden"
+      transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }} // Smoother, longer transition
+      className="relative min-h-[100vh] lg:min-h-[120vh] flex items-center py-24 overflow-hidden"
     >
-      <div className="mx-auto max-w-[1600px] px-6 lg:px-12 w-full grid lg:grid-cols-2 gap-20 lg:gap-32 items-start">
+      <div className="mx-auto max-w-[1600px] px-6 lg:px-12 w-full grid lg:grid-cols-2 gap-16 lg:gap-32 items-start">
         
         {/* Left Side: Content & Report */}
         <div className="space-y-12">
@@ -73,10 +74,10 @@ export default function StatsSection() {
             >
               <BilingualText en="By the numbers" ar="بالأرقام" />
             </motion.p>
-            <h2 className="text-5xl md:text-7xl font-normal tracking-tighter leading-[1.1]">
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-normal tracking-tighter leading-[1.1]">
               <BilingualText en="Fueling innovation" ar="تغذية الابتكار" />
             </h2>
-            <p className="text-xl md:text-2xl font-normal leading-relaxed max-w-xl opacity-80">
+            <p className="text-lg md:text-xl lg:text-2xl font-normal leading-relaxed max-w-xl opacity-80">
               <BilingualText 
                 en="With more than half of all top-tier VC deals run through our platform, FLVR is at the heart of venture investing. This exposure gives us the insight to identify gaps and build the solutions that bridge them." 
                 ar="مع وجود أكثر من نصف صفقات رأس المال الجريء رفيعة المستوى عبر منصتنا، فإن فليفر في قلب الاستثمار الجريء."
@@ -109,23 +110,23 @@ export default function StatsSection() {
         {/* Right Side: Giant Stats Grid */}
         <div className="flex flex-col justify-center h-full pt-12 lg:pt-0">
           {/* Main Large Stat */}
-          <div className="mb-24">
-            <h3 className="text-[8rem] md:text-[12rem] lg:text-[15rem] leading-none font-normal tracking-tighter mix-blend-difference">
+          <div className="mb-16 lg:mb-24">
+            <h3 className="text-[5rem] md:text-[10rem] lg:text-[15rem] leading-none font-normal tracking-tighter mix-blend-difference">
               <AnimatedCounter value="171" prefix="$" suffix="B" />
             </h3>
-            <p className="text-xl md:text-2xl mt-4 opacity-70">
+            <p className="text-lg md:text-2xl mt-4 opacity-70">
               <BilingualText en="Assets on platform" ar="الأصول على المنصة" />
             </p>
           </div>
 
           {/* Grid of 4 Stats */}
-          <div className="grid grid-cols-2 gap-x-12 gap-y-16 border-t border-white/20 pt-16">
+          <div className="grid grid-cols-2 gap-x-8 lg:gap-x-12 gap-y-12 lg:gap-y-16 border-t border-white/20 pt-16">
             {stats.map((stat) => (
               <div key={stat.id} className="space-y-4">
-                <div className="text-5xl md:text-7xl font-normal tracking-tighter">
+                <div className="text-4xl md:text-6xl lg:text-7xl font-normal tracking-tighter">
                   <AnimatedCounter value={stat.value} prefix={stat.prefix} suffix={stat.suffix} />
                 </div>
-                <p className="text-base md:text-lg opacity-70 leading-tight">
+                <p className="text-sm md:text-base lg:text-lg opacity-70 leading-tight">
                   <BilingualText en={stat.label.en} ar={stat.label.ar} />
                 </p>
               </div>

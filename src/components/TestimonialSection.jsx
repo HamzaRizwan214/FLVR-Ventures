@@ -65,76 +65,78 @@ const testimonials = [
 const TestimonialCard = ({ data }) => {
   return (
     <div
-      className="flex-shrink-0 w-[95vw] max-w-[1300px] h-[650px] rounded-[24px] p-12 flex items-stretch gap-12"
+      className="flex-shrink-0 w-[85vw] md:w-[95vw] max-w-[1300px] min-h-[500px] lg:h-[650px] rounded-[24px] p-8 md:p-12 flex flex-col lg:flex-row items-stretch gap-8 lg:gap-12"
       style={{ backgroundColor: data.bgColor, color: data.textColor }}
     >
       {/* Left Column */}
-      <div className="flex-1 flex flex-col justify-between h-full">
+      <div className="flex-1 flex flex-col justify-between">
         <div>
-          <span className="inline-block px-4 py-1.5 rounded-full bg-white/20 text-[10px] uppercase tracking-widest font-bold mb-10">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-white/20 text-[10px] uppercase tracking-widest font-bold mb-6 lg:mb-10">
             <BilingualText en={data.tag.en} ar={data.tag.ar} />
           </span>
-          <h3 className="text-5xl font-light tracking-tighter mb-8 leading-none">
+          <h3 className="text-3xl md:text-5xl font-light tracking-tighter mb-6 lg:mb-8 leading-none">
             {data.company}
           </h3>
-          <p className="text-xl md:text-2xl font-light leading-snug opacity-90 max-w-[580px]">
+          <p className="text-lg md:text-2xl font-light leading-snug opacity-90 max-w-[580px]">
             “<BilingualText en={data.quote.en} ar={data.quote.ar} />”
           </p>
         </div>
 
-        <div>
+        <div className="mt-8 lg:mt-0">
           <div className="mb-6">
             <p className="text-base font-medium">{data.author}</p>
             <button className="text-sm underline underline-offset-4 opacity-70 hover:opacity-100 transition-opacity mt-2">
               <BilingualText en={data.caseStudy.en} ar={data.caseStudy.ar} />
             </button>
           </div>
-          <div className="text-2xl font-light tracking-tight opacity-40">
+          <div className="hidden lg:block text-2xl font-light tracking-tight opacity-40">
             {data.company}
           </div>
         </div>
       </div>
 
-      {/* Right Column */}
-      <div className="w-[300px] flex flex-col pt-4">
-        {/* Arch Image */}
-        <div className="w-[200px] aspect-[2/3] rounded-t-full rounded-b-full overflow-hidden mb-8 border border-white/10">
-          <img
-            src={data.image}
-            alt={data.author}
-            className="w-full h-full object-cover"
-          />
-        </div>
-
-        {/* Info Grid */}
-        <div className="flex flex-col gap-6">
-          <div className="border-t border-white/20 pt-4">
-            <p className="text-[10px] uppercase tracking-[0.2em] font-bold opacity-50 mb-1">
-              <span className="rtl:hidden">PARTNER</span>
-              <span className="ltr:hidden">شريك</span>
-            </p>
-            <p className="text-sm font-medium">{data.author}</p>
+      {/* Right Column / Info Panel */}
+      <div className="w-full lg:w-[300px] flex flex-col border-t lg:border-t-0 border-white/20 pt-8 lg:pt-4">
+        <div className="flex flex-row lg:flex-col items-start gap-8 lg:gap-0">
+          {/* Arch Image - Scaled down for mobile */}
+          <div className="w-[100px] md:w-[150px] lg:w-[200px] aspect-[2/3] rounded-t-full rounded-b-full overflow-hidden mb-0 lg:mb-8 border border-white/10 shrink-0">
+            <img
+              src={data.image}
+              alt={data.author}
+              className="w-full h-full object-cover"
+            />
           </div>
 
-          <div className="border-t border-white/20 pt-4">
-            <p className="text-[10px] uppercase tracking-[0.2em] font-bold opacity-50 mb-1">
-              <BilingualText en="LATEST FUND" ar="أحدث صندوق" />
-            </p>
-            <p className="text-sm font-medium">
-              <BilingualText en={data.latestFund.en} ar={data.latestFund.ar} />
-            </p>
-          </div>
+          {/* Info Grid */}
+          <div className="flex flex-col gap-4 lg:gap-6 flex-1">
+            <div className="lg:border-t border-white/20 lg:pt-4">
+              <p className="text-[10px] uppercase tracking-[0.2em] font-bold opacity-50 mb-1">
+                <span className="rtl:hidden">PARTNER</span>
+                <span className="ltr:hidden">شريك</span>
+              </p>
+              <p className="text-xs md:text-sm font-medium">{data.author}</p>
+            </div>
 
-          <div className="border-t border-white/20 pt-4">
-            <p className="text-[10px] uppercase tracking-[0.2em] font-bold opacity-50 mb-1">
-              <BilingualText
-                en="INSTITUTIONAL LPS"
-                ar="شركاء محدودون مؤسسيون"
-              />
-            </p>
-            <p className="text-sm font-medium leading-relaxed">
-              <BilingualText en={data.lps.en} ar={data.lps.ar} />
-            </p>
+            <div className="lg:border-t border-white/20 lg:pt-4">
+              <p className="text-[10px] uppercase tracking-[0.2em] font-bold opacity-50 mb-1">
+                <BilingualText en="LATEST FUND" ar="أحدث صندوق" />
+              </p>
+              <p className="text-xs md:text-sm font-medium">
+                <BilingualText en={data.latestFund.en} ar={data.latestFund.ar} />
+              </p>
+            </div>
+
+            <div className="hidden md:block lg:border-t border-white/20 lg:pt-4">
+              <p className="text-[10px] uppercase tracking-[0.2em] font-bold opacity-50 mb-1">
+                <BilingualText
+                  en="INSTITUTIONAL LPS"
+                  ar="شركاء محدودون مؤسسيون"
+                />
+              </p>
+              <p className="text-xs md:text-sm font-medium leading-relaxed">
+                <BilingualText en={data.lps.en} ar={data.lps.ar} />
+              </p>
+            </div>
           </div>
         </div>
       </div>
