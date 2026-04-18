@@ -1,15 +1,27 @@
 import React from "react";
 import { TextRotate } from "./ui/text-rotate";
 import BilingualText from "./BilingualText";
+import { useLanguage } from "../contexts/LanguageContext";
 
-const verticals = [
-  "FLVR Fund 1",
-  "Venture Studio",
-  "Off-Shelf Concepts",
-  "FLVR Services",
-];
+const verticals = {
+  en: [
+    "FLVR Fund 1",
+    "Venture Studio",
+    "Off-Shelf Concepts",
+    "FLVR Services",
+  ],
+  ar: [
+    "صندوق فليفر ١",
+    "استوديو المشاريع",
+    "مفاهيم جاهزة",
+    "خدمات فليفر",
+  ],
+};
 
 export default function RotatingTextSection() {
+  const { language } = useLanguage();
+  const currentVerticals = verticals[language] || verticals.en;
+
   return (
     <section className="relative min-h-screen bg-[var(--bg-primary)] flex items-center justify-center py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center">
@@ -30,7 +42,7 @@ export default function RotatingTextSection() {
           {/* Rotating Text */}
           <div className="min-h-[120px] flex items-center justify-center">
             <TextRotate
-              texts={verticals}
+              texts={currentVerticals}
               mainClassName="text-5xl md:text-7xl lg:text-8xl font-medium text-[var(--brand-primary)] justify-center"
               splitLevelClassName="overflow-hidden pb-2"
               staggerFrom="first"
@@ -39,6 +51,7 @@ export default function RotatingTextSection() {
               auto={true}
               rotationInterval={2500}
               staggerDuration={0.02}
+              splitBy={language === "ar" ? "words" : "characters"}
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -50 }}

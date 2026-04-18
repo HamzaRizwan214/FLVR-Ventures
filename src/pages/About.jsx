@@ -12,7 +12,7 @@ import BilingualText from "../components/BilingualText";
 // ─── Images ───────────────────────────────────────────────────────────────────
 const IMG = {
   hero: "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?q=80&w=2670&auto=format&fit=crop",
-  origin: "gap.jpg",
+  origin: "/gap.jpg",
   studio:
     "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1400&auto=format&fit=crop",
   capital:
