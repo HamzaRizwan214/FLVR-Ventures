@@ -39,15 +39,15 @@ export default function FloatingNav() {
       scale: 1,
       y: 0,
       filter: "blur(0px)",
-      transition: { type: "spring", stiffness: 400, damping: 30 }
+      transition: { type: "spring", stiffness: 400, damping: 30 },
     },
     collapsed: {
       opacity: 0.4,
       scale: 0.9,
       y: 0,
       filter: "blur(2px)",
-      transition: { type: "spring", stiffness: 400, damping: 30 }
-    }
+      transition: { type: "spring", stiffness: 400, damping: 30 },
+    },
   };
 
   return (
@@ -78,7 +78,9 @@ export default function FloatingNav() {
         variants={navVariants}
         className={cn(
           "hidden md:flex items-center space-x-2 bg-[var(--brand-primary)]/80 backdrop-blur-md rounded-full px-4 py-2 border border-black/5 rtl:space-x-reverse cursor-pointer transition-colors duration-300",
-          scrolled && !isHovered ? "bg-[var(--brand-primary)]/40" : "bg-[var(--brand-primary)]/80"
+          scrolled && !isHovered
+            ? "bg-[var(--brand-primary)]/40"
+            : "bg-[var(--brand-primary)]/80",
         )}
       >
         {menuItems.map((item) => (

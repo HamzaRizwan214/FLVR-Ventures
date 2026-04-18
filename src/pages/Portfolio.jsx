@@ -14,7 +14,7 @@ import { cn } from "@/lib/utils";
 
 // ─── Images ──────────────────────────────────────────────────────────────────
 const images = {
-  hero: "https://images.unsplash.com/photo-1514326640560-7d063ef2aed5?q=80&w=2680&auto=format&fit=crop",
+  hero: "/money.png",
   brand1:
     "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1200&auto=format&fit=crop",
   brand2:

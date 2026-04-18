@@ -53,7 +53,7 @@ export default function Footer() {
               <img
                 src="/flvr-logo.png"
                 alt="FLVR Logo"
-                className="h-10 transition-opacity hover:opacity-80"
+                className="h-10 transition-opacity hover:opacity-80 scale-250"
               />
             </Link>
             <p className="text-lg text-[var(--text-secondary)] font-normal leading-relaxed max-w-xs">

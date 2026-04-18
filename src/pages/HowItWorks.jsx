@@ -1,128 +1,213 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import PageWrapper from "../components/PageWrapper";
 import BilingualText from "../components/BilingualText";
+import { cn } from "@/lib/utils";
 
 const methodology = [
   {
     step: "01",
     title: { en: "Filter", ar: "تصفية" },
     desc: {
-      en: "Identify concepts with real relevance, repeat demand, and room to lead.",
-      ar: "تحديد المفاهيم ذات الأهمية الحقيقية والطلب المتكرر ومساحة القيادة.",
+      en: "Identify concepts with real relevance, repeat demand, and room to lead the market.",
+      ar: "تحديد المفاهيم ذات الأهمية الحقيقية والطلب المتكرر ومساحة لقيادة السوق.",
     },
+    accent: "bg-blue-500",
   },
   {
     step: "02",
     title: { en: "Lift", ar: "رفع" },
     desc: {
-      en: "Strengthen the brand, business model, and operating foundation for scale.",
-      ar: "تعزيز العلامة التجارية ونموذج العمل والأساس التشغيلي للتوسع.",
+      en: "Strengthen the brand, business model, and operating foundation for aggressive scale.",
+      ar: "تعزيز العلامة التجارية ونموذج العمل والأساس التشغيلي للتوسع الجريء.",
     },
+    accent: "bg-emerald-500",
   },
   {
     step: "03",
     title: { en: "Validate", ar: "التحقق" },
     desc: {
-      en: "Prove the concept through traction, economics, and execution.",
-      ar: "إثبات المفهوم من خلال الجاذبية والاقتصاد المالي والتنفيذ.",
+      en: "Prove the concept through unit economics, market traction, and flawless execution.",
+      ar: "إثبات المفهوم من خلال اقتصاديات الوحدة، والجاذبية في السوق، والتنفيذ الخالي من العيوب.",
     },
+    accent: "bg-amber-500",
   },
   {
     step: "04",
     title: { en: "Run", ar: "تنفيذ" },
     desc: {
-      en: "Accelerate growth through disciplined execution, expansion, and brand momentum.",
-      ar: "تسريع النمو من خلال التنفيذ المنضبط والتوسع وزخم العلامة التجارية.",
+      en: "Accelerate growth through disciplined expansion and sustainable brand momentum.",
+      ar: "تسريع النمو من خلال التوسع المنضبط وزخم العلامة التجارية المستدام.",
     },
+    accent: "bg-[var(--brand-primary)]",
   },
 ];
 
 export default function HowItWorks() {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start center", "end center"],
+  });
+
+  const scaleY = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
+
   return (
     <PageWrapper>
-      <div className="w-full flex flex-col pt-12 pb-32">
-        {/* Intro */}
-        <section className="container mx-auto px-6 lg:px-12 mb-32 max-w-5xl">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
+      <div className="w-full flex flex-col pt-24 pb-48 bg-[#FAFAFA]">
+        {/* Section 1: Hero Intro (Apple Editorial Style) */}
+        <section className="container mx-auto px-6 lg:px-12 mb-40 max-w-6xl">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-6xl font-bold mb-8 text-[var(--text-primary)] leading-tight"
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
-            <BilingualText
-              en="At FLVR, scaling is never accidental."
-              ar="في فليفر، التوسع ليس صدفة أبداً."
-            />
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-xl md:text-3xl text-[var(--text-secondary)] font-normal leading-relaxed"
-          >
-            <BilingualText
-              en="We combine strategic judgment, operating discipline, and growth execution to help promising concepts earn the right to scale—and the ability to sustain it."
-              ar="نحن نجمع بين الحكم الاستراتيجي والانضباط التشغيلي والتنفيذ المستدام لمساعدة الأفكار الواعدة على كسب الحق في التوسع."
-            />
-          </motion.p>
+            <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-[var(--brand-primary)] mb-6">
+              <BilingualText en="The FLVR Protocol" ar="بروتوكول فليفر" />
+            </p>
+            <h1 className="text-5xl md:text-8xl font-light tracking-tighter text-black leading-[0.9] mb-12">
+              <BilingualText
+                en="Scaling is never accidental."
+                ar="التوسع ليس صدفة أبداً."
+              />
+            </h1>
+            <p className="text-xl md:text-3xl text-black/50 font-light leading-relaxed max-w-3xl">
+              <BilingualText
+                en="We combine strategic judgment and operating discipline to help promising concepts earn the right to scale."
+                ar="نحن نجمع بين الحكم الاستراتيجي والانضباط التشغيلي لمساعدة الأفكار الواعدة على كسب الحق في التوسع."
+              />
+            </p>
+          </motion.div>
         </section>
 
-        {/* The Animated Pipeline visual (instead of cards, a giant timeline/list) */}
-        <section className="container mx-auto px-6 lg:px-12 mb-32 relative">
-          <div className="absolute left-[39px] md:left-[59px] rtl:left-auto rtl:right-[39px] rtl:md:right-[59px] top-0 bottom-0 w-px bg-[var(--border-strong)] z-0"></div>
+        {/* Section 2: The Flow (Timeline) */}
+        <section
+          ref={containerRef}
+          className="container mx-auto px-6 lg:px-12 relative mb-48"
+        >
+          {/* PROGRESS LINE: 
+            Mobile: Fixed at left-6 (matching px-6)
+            Desktop: Fixed at 1/2 (center)
+          */}
+          <div className="absolute left-9 md:left-1/2 top-0 bottom-0 w-[2px] bg-black/[0.03] -translate-x-1/2 z-0" />
+          <motion.div
+            style={{ scaleY, originY: 0 }}
+            className="absolute left-9 md:left-1/2 top-0 bottom-0 w-[2px] bg-[var(--brand-primary)] -translate-x-1/2 origin-top z-10"
+          />
 
-          <div className="flex flex-col space-y-24">
-            {methodology.map((item, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-                className="relative z-10 flex items-start"
-              >
-                <div className="flex-shrink-0 w-20 h-20 md:w-32 md:h-32 rounded-full border-4 border-[var(--bg-primary)] bg-[var(--brand-primary)] text-white flex items-center justify-center text-2xl md:text-4xl font-medium rtl:ml-8 ltr:mr-8">
-                  {item.step}
+          <div className="flex flex-col space-y-24 md:space-y-64">
+            {methodology.map((item, idx) => {
+              const isEven = idx % 2 === 1;
+              return (
+                <div
+                  key={idx}
+                  className={cn(
+                    "relative flex flex-col md:flex-row items-start md:items-center justify-between gap-8 md:gap-12",
+                    isEven ? "md:flex-row-reverse" : "",
+                  )}
+                >
+                  {/* STEP BUBBLE: 
+                    Mobile: Anchored to the left line
+                    Desktop: Anchored to the center line
+                  */}
+                  <div className="absolute left-3 md:left-1/2 top-0 md:top-1/2 -translate-x-1/2 md:-translate-y-1/2 z-20">
+                    <motion.div
+                      whileInView={{ scale: [0, 1.2, 1], opacity: 1 }}
+                      viewport={{ once: true }}
+                      className="w-12 h-12 md:w-24 md:h-24 rounded-full bg-white border border-black/5 shadow-xl flex items-center justify-center text-lg md:text-2xl font-mono text-[var(--brand-primary)]"
+                    >
+                      {item.step}
+                    </motion.div>
+                  </div>
+
+                  {/* CONTENT BLOCK: 
+                    Mobile: Pushed left to make room for bubble (pl-12)
+                    Desktop: Clean layout (pt-0)
+                  */}
+                  <div
+                    className={cn(
+                      "w-full md:w-[42%] pl-12 md:pl-0 pt-2 md:pt-0",
+                      isEven ? "md:text-left" : "md:text-right",
+                    )}
+                  >
+                    <motion.div
+                      initial={{ opacity: 0, x: isEven ? 50 : -50 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.8, ease: "easeOut" }}
+                      viewport={{ once: true }}
+                    >
+                      <h2 className="text-3xl md:text-7xl font-light tracking-tighter text-black mb-4 md:mb-6">
+                        <BilingualText en={item.title.en} ar={item.title.ar} />
+                      </h2>
+                      <p className="text-base md:text-xl text-black/50 leading-relaxed font-light max-w-lg md:ml-auto">
+                        <BilingualText en={item.desc.en} ar={item.desc.ar} />
+                      </p>
+                    </motion.div>
+                  </div>
+
+                  {/* VISUAL PLACEHOLDER: 
+                    Hidden on mobile to keep the timeline clean
+                  */}
+                  <div className="hidden md:block w-[42%]">
+                    <div
+                      className={cn(
+                        "aspect-square rounded-[3rem] opacity-10 blur-3xl",
+                        item.accent,
+                      )}
+                    />
+                  </div>
                 </div>
-                <div className="pt-4 md:pt-8 md:ml-12 rtl:md:mr-12">
-                  <h2 className="text-4xl md:text-6xl font-medium tracking-tighter mb-4 text-[var(--text-primary)]">
-                    <BilingualText en={item.title.en} ar={item.title.ar} />
-                  </h2>
-                  <p className="text-xl md:text-2xl text-[var(--text-secondary)]">
-                    <BilingualText en={item.desc.en} ar={item.desc.ar} />
-                  </p>
-                </div>
-              </motion.div>
-            ))}
+              );
+            })}
           </div>
         </section>
 
-        {/* Foundational Info block */}
+        {/* Section 3: The Fund (Glassmorphism Card) */}
         <section className="container mx-auto px-6 lg:px-12">
-          <div className="bg-[var(--bg-brand-tint)] p-8 md:p-16 rounded-3xl border border-[var(--border-strong)] relative overflow-hidden">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="relative z-10 max-w-4xl"
-            >
-              <h3 className="text-3xl md:text-5xl font-medium tracking-tighter text-[var(--brand-primary)] mb-8">
-                <BilingualText en="FLVR Fund" ar="صندوق فليفر" />
-              </h3>
-              <p className="text-lg md:text-2xl text-[var(--text-primary)] leading-relaxed mb-6 font-normal">
-                <BilingualText
-                  en="FLVR Fund backs founder-led Saudi F&B concepts with the potential to become category leaders. We invest in brands with real consumer pull, repeat demand, and room to scale."
-                  ar="يدعم صندوق فليفر مفاهيم الطعام السعودية التي يقودها المؤسسون."
-                />
-              </p>
-              <p className="text-lg md:text-xl text-[var(--text-secondary)] leading-relaxed">
-                <BilingualText
-                  en="Our thesis is simple: many of the most exciting F&B concepts have the product, energy, and market relevance to break out—but turning early traction into enduring scale takes more than momentum alone. It takes the right capital, sharper structure, stronger execution, and a clear growth playbook."
-                  ar="نطريتنا بسيطة: العديد من المفاهيم المثيرة تمتلك المنتج والطاقة والأهمية في السوق للنجاح - ولكن تحويل الزخم إلى توسع مستدام يتطلب أكثر من ذلك."
-                />
-              </p>
-            </motion.div>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="bg-white rounded-[3rem] p-8 md:p-24 border border-black/5 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.05)] relative overflow-hidden"
+          >
+            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              <div>
+                <h3 className="text-4xl md:text-6xl font-light tracking-tighter text-[var(--brand-primary)] mb-8">
+                  <BilingualText en="FLVR Fund 1" ar="صندوق فليفر ١" />
+                </h3>
+                <div className="flex gap-4 mb-8">
+                  <div className="px-4 py-1 rounded-full border border-[var(--brand-primary)]/20 text-[var(--brand-primary)] text-[10px] font-bold uppercase tracking-widest">
+                    Growth Equity
+                  </div>
+                  <div className="px-4 py-1 rounded-full border border-black/10 text-black/40 text-[10px] font-bold uppercase tracking-widest">
+                    Saudi Focus
+                  </div>
+                </div>
+              </div>
+              <div className="space-y-6">
+                <p className="text-xl md:text-2xl text-black leading-snug font-light">
+                  <BilingualText
+                    en="We back founder-led concepts with the potential to become category leaders."
+                    ar="ندعم المفاهيم التي يقودها المؤسسون والمهيأة لتصبح رائدة في فئتها."
+                  />
+                </p>
+                <p className="text-lg text-black/50 leading-relaxed font-light">
+                  <BilingualText
+                    en="Turning early traction into enduring scale takes more than momentum. It takes the right capital, sharper structure, and a clear growth playbook."
+                    ar="تحويل النجاح الأولي إلى توسع مستدام يتطلب أكثر من مجرد زخم. يتطلب رأس المال المناسب، وهيكل تنظيمي أقوى، وخطة نمو واضحة."
+                  />
+                </p>
+              </div>
+            </div>
+            {/* Background Branding */}
+            <div className="absolute top-0 right-0 p-12 text-[12rem] font-bold text-black/[0.02] pointer-events-none select-none">
+              FLVR
+            </div>
+          </motion.div>
         </section>
       </div>
     </PageWrapper>
