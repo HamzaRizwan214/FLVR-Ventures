@@ -6,19 +6,51 @@ import BilingualText from "../components/BilingualText";
 
 const BookingModal = ({ isOpen, onClose }) => {
   const [step, setStep] = useState(1);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     brandName: "",
     revenue: "",
     outlets: "",
-    stage: "",
+    message: "",
     phone: "",
     email: "",
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setStep(2);
+    setIsSubmitting(true);
+
+    // Prepare data for Web3Forms
+    const object = {
+      ...formData,
+      access_key: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY,
+      subject: `New Discovery Call Request: ${formData.brandName}`,
+      from_name: "FLVR Portfolio",
+    };
+    const json = JSON.stringify(object);
+
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: json,
+      }).then((res) => res.json());
+
+      if (res.success) {
+        setStep(2);
+      } else {
+        alert("Submission failed. Please try again.");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Error connecting to server.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -64,7 +96,10 @@ const BookingModal = ({ isOpen, onClose }) => {
               <div className="relative z-10 pt-16">
                 <div className="space-y-6">
                   {[
-                    { en: "Saudi Market Focus", ar: "التركيز على السوق السعودي" },
+                    {
+                      en: "Saudi Market Focus",
+                      ar: "التركيز على السوق السعودي",
+                    },
                     { en: "Equity Partnership", ar: "شراكة الملكية" },
                     { en: "Full Ops Engine", ar: "محرك تشغيلي كامل" },
                     { en: "Growth Playbook", ar: "دليل نمو استراتيجي" },
@@ -103,6 +138,7 @@ const BookingModal = ({ isOpen, onClose }) => {
                         required
                         className="w-full bg-black/5 border-none px-4 py-4 text-sm focus:ring-1 focus:ring-[var(--brand-primary)] outline-none font-medium font-[Metropolis]"
                         placeholder="Ahmed Mansour"
+                        value={formData.name}
                         onChange={(e) =>
                           setFormData({ ...formData, name: e.target.value })
                         }
@@ -116,8 +152,12 @@ const BookingModal = ({ isOpen, onClose }) => {
                         required
                         className="w-full bg-black/5 border-none px-4 py-4 text-sm focus:ring-1 focus:ring-[var(--brand-primary)] outline-none font-medium font-[Metropolis]"
                         placeholder="FLVR Coffee"
+                        value={formData.brandName}
                         onChange={(e) =>
-                          setFormData({ ...formData, brandName: e.target.value })
+                          setFormData({
+                            ...formData,
+                            brandName: e.target.value,
+                          })
                         }
                       />
                     </div>
@@ -132,15 +172,17 @@ const BookingModal = ({ isOpen, onClose }) => {
                         />
                       </label>
                       <select
+                        required
                         className="w-full bg-black/5 border-none px-4 py-4 text-sm focus:ring-1 focus:ring-[var(--brand-primary)] outline-none font-medium font-[Metropolis] appearance-none"
+                        value={formData.revenue}
                         onChange={(e) =>
                           setFormData({ ...formData, revenue: e.target.value })
                         }
                       >
                         <option value="">Select Range</option>
-                        <option value="<100k">Below SAR 100K</option>
-                        <option value="100k-500k">SAR 100K - 500K</option>
-                        <option value="500k+">SAR 500K+</option>
+                        <option value="Below SAR 100K">Below SAR 100K</option>
+                        <option value="SAR 100K - 500K">SAR 100K - 500K</option>
+                        <option value="SAR 500K+">SAR 500K+</option>
                       </select>
                     </div>
                     <div className="space-y-2">
@@ -149,8 +191,10 @@ const BookingModal = ({ isOpen, onClose }) => {
                       </label>
                       <input
                         type="number"
+                        required
                         className="w-full bg-black/5 border-none px-4 py-4 text-sm focus:ring-1 focus:ring-[var(--brand-primary)] outline-none font-medium font-[Metropolis]"
                         placeholder="1"
+                        value={formData.outlets}
                         onChange={(e) =>
                           setFormData({ ...formData, outlets: e.target.value })
                         }
@@ -166,8 +210,13 @@ const BookingModal = ({ isOpen, onClose }) => {
                       />
                     </label>
                     <textarea
+                      required
                       className="w-full bg-black/5 border-none px-4 py-4 text-sm focus:ring-1 focus:ring-[var(--brand-primary)] outline-none font-medium font-[Metropolis] min-h-[120px] resize-none"
-                      placeholder="e.g. Seeking capital for national expansion or looking to optimize our supply chain..."
+                      placeholder="e.g. Seeking capital for national expansion..."
+                      value={formData.message}
+                      onChange={(e) =>
+                        setFormData({ ...formData, message: e.target.value })
+                      }
                     ></textarea>
                   </div>
 
@@ -181,18 +230,33 @@ const BookingModal = ({ isOpen, onClose }) => {
                         required
                         className="w-full bg-black/5 border-none px-4 py-4 text-sm focus:ring-1 focus:ring-[var(--brand-primary)] outline-none font-medium font-[Metropolis]"
                         placeholder="+966 ..."
+                        value={formData.phone}
+                        onChange={(e) =>
+                          setFormData({ ...formData, phone: e.target.value })
+                        }
                       />
                       <input
                         type="email"
                         required
                         className="w-full bg-black/5 border-none px-4 py-4 text-sm focus:ring-1 focus:ring-[var(--brand-primary)] outline-none font-medium font-[Metropolis]"
                         placeholder="email@brand.com"
+                        value={formData.email}
+                        onChange={(e) =>
+                          setFormData({ ...formData, email: e.target.value })
+                        }
                       />
                     </div>
                   </div>
 
-                  <button type="submit" className="btn-primary w-full py-6 mt-4">
-                    <BilingualText en="Submit Application" ar="تقديم الطلب" />
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="btn-primary w-full py-6 mt-4 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    <BilingualText
+                      en={isSubmitting ? "Sending..." : "Submit Application"}
+                      ar={isSubmitting ? "جاري الإرسال..." : "تقديم الطلب"}
+                    />
                   </button>
                 </form>
               ) : (
