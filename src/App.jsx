@@ -11,6 +11,7 @@ import Portfolio from './pages/Portfolio';
 import HowItWorks from './pages/HowItWorks';
 import Contact from './pages/Contact';
 import CaseStudies from './pages/CaseStudies';
+import NextWave from './pages/NextWave';
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -26,6 +27,7 @@ function AnimatedRoutes() {
           <Route path="contact" element={<Contact />} />
           <Route path="case-studies" element={<CaseStudies />} />
           <Route path="case-studies/:id" element={<CaseStudies />} />
+          <Route path="next-wave/:id" element={<NextWave />} />
         </Route>
       </Routes>
     </AnimatePresence>

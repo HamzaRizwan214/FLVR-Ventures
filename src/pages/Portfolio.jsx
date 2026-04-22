@@ -240,6 +240,7 @@ const metrics = [
 
 const pipeline = [
   {
+    id: "prj-07",
     code: "PRJ-07",
     hint: { en: "Dessert & Café Fusion", ar: "اندماج الحلويات والمقهى" },
     quarter: "Q2 2026",
@@ -247,6 +248,7 @@ const pipeline = [
     revealed: true,
   },
   {
+    id: "prj-08",
     code: "PRJ-08",
     hint: { en: "Confidential Project", ar: "مشروع سري" },
     quarter: "Q3 2026",
@@ -254,6 +256,7 @@ const pipeline = [
     revealed: false,
   },
   {
+    id: "prj-09",
     code: "PRJ-09",
     hint: { en: "Confidential Project", ar: "مشروع سري" },
     quarter: "Q4 2026",
@@ -950,7 +953,8 @@ const PipelineCard = ({ p, index }) => {
 
   return (
     <FadeUp delay={index * 0.1}>
-      <div
+      <Link
+        to={`/next-wave/${p.id}`}
         ref={cardRef}
         onMouseMove={handleMouseMove}
         style={gradientStyle}
@@ -958,8 +962,7 @@ const PipelineCard = ({ p, index }) => {
           "group relative rounded-[3rem] p-10 lg:p-12 flex flex-col justify-between min-h-[400px] overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]",
           "bg-white border border-black/5",
           "shadow-[0_40px_80px_-20px_rgba(0,0,0,0.08)]",
-          // Enhanced interaction: slightly larger scale and deep shadow
-          "hover:shadow-[0_80px_100px_-20px_rgba(0,0,0,0.15)] hover:scale-[1.03]",
+          "hover:shadow-[0_80px_100px_-20px_rgba(0,0,0,0.15)] hover:scale-[1.03] cursor-pointer",
         )}
       >
         {/* Apple-style Multi-Layer Volumetric 3D Gradient (Fluid and Dynamic) */}
@@ -1057,7 +1060,7 @@ const PipelineCard = ({ p, index }) => {
         <div className="absolute bottom-6 right-10 text-[3rem] font-bold text-black/[0.005] pointer-events-none select-none">
           FLVR
         </div>
-      </div>
+      </Link>
     </FadeUp>
   );
 };
