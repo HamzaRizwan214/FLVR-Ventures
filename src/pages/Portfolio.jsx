@@ -8,6 +8,7 @@ import {
   useInView,
   AnimatePresence,
 } from "framer-motion";
+import { Link } from "react-router-dom";
 import PageWrapper from "../components/PageWrapper";
 import BilingualText from "../components/BilingualText";
 import { cn } from "@/lib/utils";
@@ -58,6 +59,7 @@ const principles = [
 const portfolio = [
   {
     id: "01",
+    slug: "lune-cafe",
     name: "LUNE CAFÉ",
     nameAr: "لون كافيه",
     category: { en: "Specialty Coffee", ar: "قهوة مختصة" },
@@ -91,6 +93,7 @@ const portfolio = [
   },
   {
     id: "02",
+    slug: "beyond-burger",
     name: "BEYOND BURGER",
     nameAr: "بيوند برغر",
     category: { en: "Fast Casual", ar: "وجبات سريعة راقية" },
@@ -127,6 +130,7 @@ const portfolio = [
   },
   {
     id: "03",
+    slug: "cloud-kitchen-x",
     name: "CLOUD KITCHEN X",
     nameAr: "كلاود كيتشن إكس",
     category: { en: "Ghost Kitchen", ar: "مطبخ سحابي" },
@@ -166,6 +170,7 @@ const portfolio = [
   },
   {
     id: "04",
+    slug: "new-street",
     name: "THE NEW STREET",
     nameAr: "الشارع الجديد",
     category: { en: "Saudi Casual Dining", ar: "المطاعم غير الرسمية" },
@@ -576,21 +581,23 @@ const PortfolioRow = ({ brand, index, isHovered, onHover }) => {
 
         {/* 7. Action Arrow */}
         <div className="hidden lg:flex col-span-1 justify-end">
-          <motion.div
-            animate={{ x: isHovered ? 0 : -10, opacity: isHovered ? 1 : 0 }}
-            className="w-10 h-10 rounded-full border border-[var(--brand-primary)] flex items-center justify-center text-[var(--brand-primary)]"
-          >
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
+          <Link to={`/case-studies/${brand.slug}`}>
+            <motion.div
+              animate={{ x: isHovered ? 0 : -10, opacity: isHovered ? 1 : 0 }}
+              className="w-10 h-10 rounded-full border border-[var(--brand-primary)] flex items-center justify-center text-[var(--brand-primary)] cursor-pointer"
             >
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
-          </motion.div>
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </motion.div>
+          </Link>
         </div>
       </div>
     </div>
@@ -615,7 +622,7 @@ const AnimatedNumber = ({ value }) => {
   );
 
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const inView = useInView(ref, { once: true, margin: "-20px" });
 
   useEffect(() => {
     if (inView) {
@@ -652,7 +659,7 @@ const MetricsSection = () => (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "-20px" }}
               transition={{
                 duration: 0.8,
                 delay: i * 0.1,
@@ -856,9 +863,12 @@ const BrandAccordion = ({ brand, index }) => {
                         </span>
                       </div>
 
-                      <button className="text-[11px] font-bold uppercase tracking-widest text-[var(--brand-primary)] hover:underline decoration-2 underline-offset-8 font-[Metropolis]">
+                      <Link
+                        to={`/case-studies/${brand.slug}`}
+                        className="text-[11px] font-bold uppercase tracking-widest text-[var(--brand-primary)] hover:underline decoration-2 underline-offset-8 font-[Metropolis]"
+                      >
                         View Case Study →
-                      </button>
+                      </Link>
                     </motion.div>
                   </div>
                 </div>
