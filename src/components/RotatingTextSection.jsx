@@ -4,18 +4,8 @@ import BilingualText from "./BilingualText";
 import { useLanguage } from "../contexts/LanguageContext";
 
 const verticals = {
-  en: [
-    "FLVR Fund 1",
-    "Venture Studio",
-    "Off-Shelf Concepts",
-    "FLVR Services",
-  ],
-  ar: [
-    "صندوق فليفر ١",
-    "استوديو المشاريع",
-    "مفاهيم جاهزة",
-    "خدمات فليفر",
-  ],
+  en: ["FLVR Fund 1", "Venture Studio", "Off-Shelf Concepts", "FLVR Services"],
+  ar: ["صندوق فليفر ١", "استوديو المشاريع", "مفاهيم جاهزة", "خدمات فليفر"],
 };
 
 export default function RotatingTextSection() {
@@ -43,7 +33,7 @@ export default function RotatingTextSection() {
           <div className="min-h-[120px] flex items-center justify-center">
             <TextRotate
               texts={currentVerticals}
-              mainClassName="text-5xl md:text-7xl lg:text-8xl font-medium text-[var(--brand-primary)] justify-center"
+              mainClassName="text-5xl md:text-7xl lg:text-8xl font-[Metropolis] text-[var(--brand-primary)] justify-center"
               splitLevelClassName="overflow-hidden pb-2"
               staggerFrom="first"
               animatePresenceMode="wait"
@@ -61,7 +51,7 @@ export default function RotatingTextSection() {
         </div>
 
         {/* Subtext */}
-        <p className="mt-12 text-lg md:text-xl text-[var(--text-secondary)] max-w-3xl mx-auto leading-relaxed">
+        <p className="mt-12 text-lg md:text-xl font-[Metropolis] text-[var(--text-secondary)] max-w-3xl mx-auto leading-relaxed">
           <BilingualText
             en="Four complementary platforms designed to capture value at every stage of the F&B lifecycle"
             ar="أربع منصات متكاملة مصممة لالتقاط القيمة في كل مرحلة من دورة حياة الأغذية والمشروبات"

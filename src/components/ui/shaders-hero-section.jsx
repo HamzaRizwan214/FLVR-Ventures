@@ -185,7 +185,7 @@ export function HeroContent() {
             en={
               <>
                 Building the{" "}
-                <span className="font-light italic text-[var(--brand-reward)]">
+                <span className="font-light text-[var(--brand-reward)]">
                   Next Generation
                 </span>
                 <br /> of Saudi F&B Brands
@@ -205,7 +205,7 @@ export function HeroContent() {
 
         {/* Description */}
         <div className="flex">
-          <p className="text-lg md:text-xl font-normal text-[#FFFFFF] mb-10 max-w-2xl leading-relaxed">
+          <p className="text-lg md:text-xl font-[metropolis] text-[#FFFFFF] mb-10 max-w-2xl leading-relaxed">
             <BilingualText
               en="Institutional Capital. Creative Edge. Relentless Execution. We identify, create, package, operate, and scale high-potential restaurant and café concepts."
               ar="رأس مال مؤسسي. حافة إبداعية. تنفيذ لا هوادة فيه. نقوم بتحديد، إنشاء، تشغيل، وتوسيع مفاهيم المطاعم والمقاهي ذات الإمكانات العالية."

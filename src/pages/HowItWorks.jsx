@@ -186,14 +186,14 @@ const FilterCard = ({ item }) => (
     {/* Header */}
     <div className="flex items-start justify-between">
       <div>
-        <p className="text-[9px] uppercase tracking-[0.3em] text-white/40 mb-1">
+        <p className="text-[9px] uppercase tracking-[0.3em] text-white/40 mb-1 font-bold font-[Metropolis]">
           <BilingualText en="Screening criteria" ar="معايير الفرز" />
         </p>
-        <p className="text-white text-lg font-light tracking-tight">
+        <p className="text-white text-lg font-bold tracking-tight font-[Metropolis]">
           <BilingualText en="Concept scorecard" ar="بطاقة تقييم المفهوم" />
         </p>
       </div>
-      <span className="text-[9px] border border-white/20 text-white/40 rounded-full px-3 py-1 uppercase tracking-wider">
+      <span className="text-[9px] border border-white/20 text-white/40 rounded-full px-3 py-1 uppercase tracking-wider font-bold font-[Metropolis]">
         {item.step}
       </span>
     </div>
@@ -211,7 +211,7 @@ const FilterCard = ({ item }) => (
         >
           <span
             className={cn(
-              "w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold flex-shrink-0",
+              "w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold flex-shrink-0 font-[Metropolis]",
               c.pass
                 ? "bg-emerald-400/20 text-emerald-300"
                 : "bg-red-400/20 text-red-300",
@@ -219,12 +219,12 @@ const FilterCard = ({ item }) => (
           >
             {c.pass ? "✓" : "○"}
           </span>
-          <span className="text-white/70 text-xs leading-tight">
+          <span className="text-white/70 text-xs leading-tight font-bold font-[Metropolis]">
             <BilingualText en={c.label.en} ar={c.label.ar} />
           </span>
           <span
             className={cn(
-              "ml-auto text-[9px] uppercase tracking-wider",
+              "ml-auto text-[9px] uppercase tracking-wider font-bold font-[Metropolis]",
               c.pass ? "text-emerald-400" : "text-white/25",
             )}
           >
@@ -238,10 +238,10 @@ const FilterCard = ({ item }) => (
     <div className="grid grid-cols-2 gap-3 border-t border-white/10 pt-5">
       {item.stats.map((s, i) => (
         <div key={i}>
-          <p className="text-2xl font-light text-white tracking-tighter">
+          <p className="text-2xl font-bold text-white tracking-tighter font-[Metropolis]">
             {s.val}
           </p>
-          <p className="text-[9px] uppercase tracking-wider text-white/35 mt-0.5">
+          <p className="text-[9px] uppercase tracking-wider text-white/35 mt-0.5 font-bold font-[Metropolis]">
             <BilingualText en={s.label.en} ar={s.label.ar} />
           </p>
         </div>
@@ -268,17 +268,17 @@ const LiftCard = ({ item }) => (
   >
     <div className="flex items-start justify-between">
       <div>
-        <p className="text-[9px] uppercase tracking-[0.3em] text-white/40 mb-1">
+        <p className="text-[9px] uppercase tracking-[0.3em] text-white/40 mb-1 font-bold font-[Metropolis]">
           <BilingualText en="Before → After" ar="قبل ← بعد" />
         </p>
-        <p className="text-white text-lg font-light tracking-tight">
+        <p className="text-white text-lg font-bold tracking-tight font-[Metropolis]">
           <BilingualText
             en="Brand elevation metrics"
             ar="مقاييس ارتقاء العلامة"
           />
         </p>
       </div>
-      <span className="text-[9px] border border-white/20 text-white/40 rounded-full px-3 py-1 uppercase tracking-wider">
+      <span className="text-[9px] border border-white/20 text-white/40 rounded-full px-3 py-1 uppercase tracking-wider font-bold font-[Metropolis]">
         {item.step}
       </span>
     </div>
@@ -288,16 +288,16 @@ const LiftCard = ({ item }) => (
       {item.metrics.map((m, i) => (
         <div key={i}>
           <div className="flex items-center justify-between mb-2">
-            <span className="text-xs text-white/60">
+            <span className="text-xs text-white/60 font-bold font-[Metropolis]">
               <BilingualText en={m.label.en} ar={m.label.ar} />
             </span>
-            <div className="flex items-center gap-2 text-[10px]">
+            <div className="flex items-center gap-2 text-[10px] font-bold font-[Metropolis]">
               <span className="text-white/30">
                 {m.from}
                 {m.unit}
               </span>
               <span className="text-white/20">→</span>
-              <span className="text-emerald-400 font-medium">
+              <span className="text-emerald-400 font-bold">
                 {m.to}
                 {m.unit}
               </span>
@@ -331,7 +331,7 @@ const LiftCard = ({ item }) => (
       {item.pillars.map((p, i) => (
         <span
           key={i}
-          className="text-[9px] uppercase tracking-[0.15em] border border-white/15 text-white/45 rounded-full px-3 py-1"
+          className="text-[9px] uppercase tracking-[0.15em] border border-white/15 text-white/45 rounded-full px-3 py-1 font-bold font-[Metropolis]"
         >
           <BilingualText en={p.en} ar={p.ar} />
         </span>
@@ -359,14 +359,14 @@ const ValidateCard = ({ item }) => (
   >
     <div className="flex items-start justify-between">
       <div>
-        <p className="text-[9px] uppercase tracking-[0.3em] text-white/40 mb-1">
+        <p className="text-[9px] uppercase tracking-[0.3em] text-white/40 mb-1 font-bold font-[Metropolis]">
           <BilingualText en="Live KPIs" ar="المؤشرات الحية" />
         </p>
-        <p className="text-white text-lg font-light tracking-tight">
+        <p className="text-white text-lg font-bold tracking-tight font-[Metropolis]">
           <BilingualText en="Validation dashboard" ar="لوحة التحقق" />
         </p>
       </div>
-      <span className="text-[9px] border border-white/20 text-white/40 rounded-full px-3 py-1 uppercase tracking-wider">
+      <span className="text-[9px] border border-white/20 text-white/40 rounded-full px-3 py-1 uppercase tracking-wider font-bold font-[Metropolis]">
         {item.step}
       </span>
     </div>
@@ -386,10 +386,10 @@ const ValidateCard = ({ item }) => (
             <span className="text-white/30 text-base">{k.icon}</span>
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-1" />
           </div>
-          <p className="text-xl font-light text-white tracking-tighter mb-1">
+          <p className="text-xl font-bold text-white tracking-tighter mb-1 font-[Metropolis]">
             {k.val}
           </p>
-          <p className="text-[9px] uppercase tracking-[0.12em] text-white/45 leading-tight">
+          <p className="text-[9px] uppercase tracking-[0.12em] text-white/45 leading-tight font-bold font-[Metropolis]">
             <BilingualText en={k.label.en} ar={k.label.ar} />
           </p>
         </motion.div>
@@ -399,7 +399,7 @@ const ValidateCard = ({ item }) => (
     {/* Status bar */}
     <div className="flex items-center gap-3 border-t border-white/15 pt-5">
       <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-      <span className="text-[10px] uppercase tracking-[0.25em] text-white/40">
+      <span className="text-[10px] uppercase tracking-[0.25em] text-white/40 font-bold font-[Metropolis]">
         <BilingualText
           en="Concept validated — proceed to scale"
           ar="المفهوم محقق — المضي في التوسع"
@@ -427,14 +427,14 @@ const RunCard = ({ item }) => (
   >
     <div className="flex items-start justify-between">
       <div>
-        <p className="text-[9px] uppercase tracking-[0.3em] text-white/40 mb-1">
+        <p className="text-[9px] uppercase tracking-[0.3em] text-white/40 mb-1 font-bold font-[Metropolis]">
           <BilingualText en="Expansion map" ar="خريطة التوسع" />
         </p>
-        <p className="text-white text-lg font-light tracking-tight">
+        <p className="text-white text-lg font-bold tracking-tight font-[Metropolis]">
           <BilingualText en="Growth rollout" ar="خطة انطلاق النمو" />
         </p>
       </div>
-      <span className="text-[9px] border border-white/20 text-white/40 rounded-full px-3 py-1 uppercase tracking-wider">
+      <span className="text-[9px] border border-white/20 text-white/40 rounded-full px-3 py-1 uppercase tracking-wider font-bold font-[Metropolis]">
         {item.step}
       </span>
     </div>
@@ -462,17 +462,17 @@ const RunCard = ({ item }) => (
             />
             <span
               className={cn(
-                "text-sm",
+                "text-sm font-bold font-[Metropolis]",
                 loc.active ? "text-white" : "text-white/35",
               )}
             >
               <BilingualText en={loc.city.en} ar={loc.city.ar} />
             </span>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 font-bold font-[Metropolis]">
             <span
               className={cn(
-                "text-sm font-light tabular-nums",
+                "text-sm tabular-nums",
                 loc.active ? "text-white" : "text-white/25",
               )}
             >
@@ -489,7 +489,7 @@ const RunCard = ({ item }) => (
     {/* Growth stat */}
     <div className="border-t border-white/10 pt-5 flex items-end justify-between">
       <div>
-        <p className="text-[9px] uppercase tracking-[0.2em] text-white/35 mb-1">
+        <p className="text-[9px] uppercase tracking-[0.2em] text-white/35 mb-1 font-bold font-[Metropolis]">
           <BilingualText en={item.growth.label.en} ar={item.growth.label.ar} />
         </p>
         <motion.p
@@ -497,7 +497,7 @@ const RunCard = ({ item }) => (
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-4xl font-light text-white tracking-tighter"
+          className="text-4xl font-bold text-white tracking-tighter font-[Metropolis]"
         >
           {item.growth.val}
         </motion.p>
@@ -562,7 +562,7 @@ export default function HowItWorks() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
-            <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-[var(--brand-primary)] mb-6">
+            <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-[var(--brand-primary)] mb-6 font-[Metropolis]">
               <BilingualText en="The FLVR Protocol" ar="بروتوكول فليفر" />
             </p>
             <h1 className="text-5xl md:text-8xl font-light tracking-tighter text-black leading-[0.9] mb-12">
@@ -571,7 +571,7 @@ export default function HowItWorks() {
                 ar="التوسع ليس صدفة أبداً."
               />
             </h1>
-            <p className="text-xl md:text-3xl text-black/50 font-light leading-relaxed max-w-3xl">
+            <p className="text-xl md:text-3xl text-black/50 font-medium leading-relaxed max-w-3xl font-[Metropolis]">
               <BilingualText
                 en="We combine strategic judgment and operating discipline to help promising concepts earn the right to scale."
                 ar="نجمع بين الحكم الاستراتيجي والانضباط التشغيلي لمساعدة الأفكار الواعدة على كسب الحق في التوسع."
@@ -628,7 +628,7 @@ export default function HowItWorks() {
                         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                         className="w-16 h-16 rounded-full bg-white border border-black/8 shadow-xl flex items-center justify-center"
                       >
-                        <span className="text-xs font-mono text-[var(--brand-primary)] font-bold">
+                        <span className="text-xs font-bold text-[var(--brand-primary)] font-[Metropolis]">
                           {item.step}
                         </span>
                       </motion.div>
@@ -651,7 +651,7 @@ export default function HowItWorks() {
                     {/* Mobile: step indicator */}
                     <div className="lg:hidden flex items-center gap-4 order-first mb-8">
                       <div className="w-10 h-10 rounded-full bg-white border border-black/8 shadow flex items-center justify-center flex-shrink-0">
-                        <span className="text-[10px] font-mono text-[var(--brand-primary)] font-bold">
+                        <span className="text-[10px] font-bold text-[var(--brand-primary)] font-[Metropolis]">
                           {item.step}
                         </span>
                       </div>
@@ -675,13 +675,13 @@ export default function HowItWorks() {
           >
             <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div>
-                <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-[var(--brand-primary)] mb-6">
+                <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-[var(--brand-primary)] mb-6 font-[Metropolis]">
                   <BilingualText en="The Capital Arm" ar="ذراع رأس المال" />
                 </p>
                 <h3 className="text-4xl md:text-6xl font-light tracking-tighter text-[var(--brand-primary)] mb-8">
                   <BilingualText en="FLVR Fund I" ar="صندوق فليفر ١" />
                 </h3>
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-wrap gap-3 font-[Metropolis]">
                   <span className="px-4 py-1.5 rounded-full border border-[var(--brand-primary)]/20 text-[var(--brand-primary)] text-[10px] font-bold uppercase tracking-widest">
                     Growth Equity
                   </span>
@@ -694,13 +694,13 @@ export default function HowItWorks() {
                 </div>
               </div>
               <div className="space-y-6">
-                <p className="text-xl md:text-2xl text-black leading-snug font-light">
+                <p className="text-xl md:text-2xl text-black leading-snug font-medium font-[Metropolis]">
                   <BilingualText
                     en="We back founder-led concepts with the potential to become category leaders."
                     ar="ندعم المفاهيم التي يقودها المؤسسون والمهيأة لتصبح رائدة في فئتها."
                   />
                 </p>
-                <p className="text-base text-black/45 leading-relaxed font-light">
+                <p className="text-base text-black/45 leading-relaxed font-medium font-[Metropolis]">
                   <BilingualText
                     en="Turning early traction into enduring scale takes more than momentum. It takes the right capital, sharper structure, and a clear growth playbook."
                     ar="تحويل النجاح الأولي إلى توسع مستدام يتطلب أكثر من مجرد زخم. يتطلب رأس المال المناسب وهيكل أقوى وخطة نمو واضحة."
@@ -725,10 +725,10 @@ export default function HowItWorks() {
                     },
                   ].map((s, i) => (
                     <div key={i}>
-                      <p className="text-2xl font-light text-[var(--brand-primary)] tracking-tight">
+                      <p className="text-2xl font-bold text-[var(--brand-primary)] tracking-tight font-[Metropolis]">
                         {s.val}
                       </p>
-                      <p className="text-[9px] uppercase tracking-[0.18em] text-black/35 mt-1 leading-snug">
+                      <p className="text-[9px] uppercase tracking-[0.18em] text-black/35 mt-1 leading-snug font-bold font-[Metropolis]">
                         <BilingualText en={s.label.en} ar={s.label.ar} />
                       </p>
                     </div>
@@ -763,7 +763,7 @@ function StepText({ item, align }) {
           align === "right" ? "lg:justify-end" : "",
         )}
       >
-        <p className="text-[9px] uppercase tracking-[0.3em] text-[var(--brand-primary)]/60 font-semibold">
+        <p className="text-[9px] uppercase tracking-[0.3em] text-[var(--brand-primary)]/60 font-bold font-[Metropolis]">
           <BilingualText en={item.sub.en} ar={item.sub.ar} />
         </p>
       </div>
@@ -777,7 +777,7 @@ function StepText({ item, align }) {
         )}
       />
       <p
-        className="text-base md:text-lg text-black/45 leading-relaxed font-light max-w-md"
+        className="text-base md:text-lg text-black/45 leading-relaxed font-medium max-w-md font-[Metropolis]"
         style={{ marginLeft: align === "right" ? "auto" : undefined }}
       >
         <BilingualText en={item.desc.en} ar={item.desc.ar} />

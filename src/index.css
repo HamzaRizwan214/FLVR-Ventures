@@ -19,7 +19,7 @@
   --color-border-default: var(--border-default);
   --color-border-strong: var(--border-strong);
 
-  --font-sans: "Metropolis", sans-serif;
+  --font-sans: "retro-floral", sans-serif;
   --font-arabic: "Etlalah", sans-serif;
 }
 
@@ -60,6 +60,24 @@
   font-weight: 500 1000;
   font-style: normal;
 }
+
+@font-face {
+  font-family: "gondens-demo";
+  src: url("/gondens-demo/Gondens DEMO.otf") format("opentype");
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "retro-floral";
+  src: url("/retro-floral/Retro Floral.otf") format("opentype");
+  font-weight: 400 900;
+  font-style: normal;
+}
+
+
+
 
 :root {
   /* Permanent Light Theme Palette */

@@ -124,10 +124,10 @@ export default function ExecutivePillars() {
 
               {/* Content */}
               <div className="relative z-10 transition-transform duration-500 group-hover:translate-y-[-5px]">
-                <h3 className="text-2xl md:text-3xl font-medium tracking-tight text-[var(--text-primary)] mb-4">
+                <h3 className="text-2xl md:text-3xl font-[Metropolis] tracking-tight text-[var(--text-primary)] mb-4">
                   <BilingualText en={pillar.title.en} ar={pillar.title.ar} />
                 </h3>
-                <p className="text-base text-[var(--text-secondary)] leading-relaxed font-normal opacity-80">
+                <p className="text-base text-[var(--text-secondary)] leading-relaxed font-[Metropolis] opacity-80">
                   <BilingualText en={pillar.desc.en} ar={pillar.desc.ar} />
                 </p>
               </div>

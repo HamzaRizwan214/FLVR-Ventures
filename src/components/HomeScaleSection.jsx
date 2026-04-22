@@ -99,8 +99,8 @@ export default function HomeScaleSection() {
 
               {/* Description Footer */}
               <div className="mt-8 pr-4 rtl:pr-0 rtl:pl-4">
-                <p className="text-base text-[var(--text-secondary)] leading-relaxed font-normal">
-                  <span className="font-medium text-[var(--text-primary)]">
+                <p className="text-base text-[var(--text-secondary)] leading-relaxed font-[Metropolis]">
+                  <span className="font-[Metropolis] text-[var(--text-primary)]">
                     <BilingualText
                       en={item.boldText.en}
                       ar={item.boldText.ar}

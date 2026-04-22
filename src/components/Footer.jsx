@@ -56,7 +56,7 @@ export default function Footer() {
                 className="h-10 transition-opacity hover:opacity-80 scale-250"
               />
             </Link>
-            <p className="text-lg text-[var(--text-secondary)] font-normal leading-relaxed max-w-xs">
+            <p className="text-lg text-[var(--text-secondary)] font-[Metropolis] leading-relaxed max-w-xs">
               <BilingualText
                 en="Building the next generation of iconic Saudi F&B brands through strategic capital and operational discipline."
                 ar="بناء الجيل القادم من العلامات التجارية السعودية الأيقونية من خلال رأس المال الاستراتيجي والانضباط التشغيلي."
@@ -90,7 +90,7 @@ export default function Footer() {
                 <li key={i}>
                   <Link
                     to={link.href}
-                    className="text-base text-[var(--text-secondary)] hover:text-[var(--brand-primary)] transition-colors"
+                    className="text-base font-[Metropolis] text-[var(--text-secondary)] hover:text-[var(--brand-primary)] transition-colors"
                   >
                     <BilingualText en={link.name.en} ar={link.name.ar} />
                   </Link>
@@ -109,7 +109,7 @@ export default function Footer() {
                 <li key={i}>
                   <Link
                     to={link.href}
-                    className="text-base text-[var(--text-secondary)] hover:text-[var(--brand-primary)] transition-colors"
+                    className="text-base font-[Metropolis] text-[var(--text-secondary)] hover:text-[var(--brand-primary)] transition-colors"
                   >
                     <BilingualText en={link.name.en} ar={link.name.ar} />
                   </Link>
@@ -123,7 +123,7 @@ export default function Footer() {
             <h4 className="text-xs uppercase tracking-[0.3em] font-medium text-[var(--text-primary)] mb-8">
               <BilingualText en="Subscribe" ar="اشترك" />
             </h4>
-            <p className="text-sm text-[var(--text-muted)] leading-relaxed">
+            <p className="text-sm font-[Metropolis] text-[var(--text-muted)] leading-relaxed">
               <BilingualText
                 en="Join our community of visionaries and receive quarterly updates on the Saudi F&B ecosystem."
                 ar="انضم إلى مجتمعنا من الرؤيويين واحصل على تحديثات ربع سنوية حول قطاع الأغذية والمشروبات السعودي."
@@ -135,7 +135,7 @@ export default function Footer() {
                 placeholder={
                   language === "en" ? "Email address" : "البريد الإلكتروني"
                 }
-                className="w-full bg-white border border-[var(--border-default)] rounded-xl py-4 px-6 text-sm focus:outline-none focus:ring-1 focus:ring-[var(--brand-primary)] transition-all"
+                className="w-full font-[Metropolis] bg-white border border-[var(--border-default)] rounded-xl py-4 px-6 text-sm focus:outline-none focus:ring-1 focus:ring-[var(--brand-primary)] transition-all"
               />
               <button className="absolute right-2 top-2 bottom-2 bg-[var(--brand-primary)] text-white px-4 rounded-lg flex items-center justify-center hover:opacity-90 transition-opacity rtl:left-2 rtl:right-auto rtl:rotate-180">
                 <ArrowRight size={18} />

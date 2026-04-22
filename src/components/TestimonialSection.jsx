@@ -71,21 +71,21 @@ const TestimonialCard = ({ data }) => {
       {/* Left Column */}
       <div className="flex-1 flex flex-col justify-between">
         <div>
-          <span className="inline-block px-4 py-1.5 rounded-full bg-white/20 text-[10px] uppercase tracking-widest font-bold mb-6 lg:mb-10">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-white/20 text-[10px] uppercase tracking-widest font-[Metropolis] mb-6 lg:mb-10">
             <BilingualText en={data.tag.en} ar={data.tag.ar} />
           </span>
           <h3 className="text-3xl md:text-5xl font-light tracking-tighter mb-6 lg:mb-8 leading-none">
             {data.company}
           </h3>
-          <p className="text-lg md:text-2xl font-light leading-snug opacity-90 max-w-[580px]">
+          <p className="text-lg md:text-2xl font-[Metropolis] leading-snug opacity-90 max-w-[580px]">
             “<BilingualText en={data.quote.en} ar={data.quote.ar} />”
           </p>
         </div>
 
         <div className="mt-8 lg:mt-0">
           <div className="mb-6">
-            <p className="text-base font-medium">{data.author}</p>
-            <button className="text-sm underline underline-offset-4 opacity-70 hover:opacity-100 transition-opacity mt-2">
+            {/* <p className="text-base font-medium">{data.author}</p> */}
+            <button className="font-[Metropolis] text-sm underline underline-offset-4 opacity-70 hover:opacity-100 transition-opacity mt-2">
               <BilingualText en={data.caseStudy.en} ar={data.caseStudy.ar} />
             </button>
           </div>
@@ -122,7 +122,10 @@ const TestimonialCard = ({ data }) => {
                 <BilingualText en="LATEST FUND" ar="أحدث صندوق" />
               </p>
               <p className="text-xs md:text-sm font-medium">
-                <BilingualText en={data.latestFund.en} ar={data.latestFund.ar} />
+                <BilingualText
+                  en={data.latestFund.en}
+                  ar={data.latestFund.ar}
+                />
               </p>
             </div>
 

@@ -60,7 +60,7 @@ const BarChartVisual = () => {
             key={i}
             className="flex flex-col items-center gap-2 flex-1 group/bar"
           >
-            <span className="text-xs text-[var(--text-secondary)] font-semibold">
+            <span className="text-xs text-[var(--text-secondary)] font-medium">
               {b.pct}%
             </span>
             <motion.div
@@ -122,7 +122,7 @@ const ConceptReadinessVisual = () => {
             className="flex flex-col gap-2 bg-white/60 backdrop-blur-sm rounded-xl px-4 py-3 border border-black/5 shadow-sm"
           >
             <div className="flex items-center justify-between">
-              <span className="text-[13px] text-[var(--text-primary)] font-medium leading-none">
+              <span className="text-[13px] text-[var(--text-primary)] font-[Metropolis] leading-none">
                 <BilingualText en={c.name.en} ar={c.name.ar} />
               </span>
               <span className="text-[9px] uppercase tracking-widest text-[var(--text-muted)] font-bold">
@@ -168,10 +168,10 @@ const StatPillsVisual = () => {
             viewport={{ once: true }}
             className="bg-white/60 backdrop-blur-md rounded-2xl p-4 border border-black/5 shadow-sm"
           >
-            <div className="text-3xl font-light text-[var(--text-primary)] leading-none tracking-tighter">
+            <div className="text-3xl font-[Metropolis] text-[var(--text-primary)] leading-none tracking-tighter">
               {s.num}
             </div>
-            <div className="text-[11px] text-[var(--text-secondary)] mt-2 uppercase tracking-widest font-medium">
+            <div className="text-[11px] text-[var(--text-secondary)] mt-2 uppercase tracking-widest font-[Metropolis]">
               <BilingualText en={s.desc.en} ar={s.desc.ar} />
             </div>
           </motion.div>
@@ -285,7 +285,7 @@ export default function BentoValueSection() {
       <div className="container mx-auto px-6 lg:px-12">
         {/* Section Header */}
         <div className="max-w-4xl mb-16">
-          <p className="text-[var(--brand-primary)] text-sm font-medium tracking-[0.2em] uppercase mb-4">
+          <p className="text-[var(--brand-primary)] text-sm font-[Metropolis] tracking-[0.2em] uppercase mb-4">
             <BilingualText en="Platform Ecosystem" ar="نظام المنصة" />
           </p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tighter text-[var(--text-primary)] leading-[1.1]">
@@ -319,7 +319,7 @@ export default function BentoValueSection() {
                   <h3 className="text-2xl md:text-3xl font-light text-[var(--text-primary)] tracking-tighter mb-3">
                     <BilingualText en={item.title.en} ar={item.title.ar} />
                   </h3>
-                  <p className="text-[var(--text-secondary)] text-sm md:text-base font-normal leading-relaxed max-w-sm">
+                  <p className="text-[var(--text-secondary)] text-sm md:text-base font-[Metropolis] leading-relaxed max-w-sm">
                     <BilingualText en={item.desc.en} ar={item.desc.ar} />
                   </p>
                 </div>
@@ -348,9 +348,12 @@ export default function BentoValueSection() {
                         className="bg-[rgba(11,114,133,0.06)] backdrop-blur-md rounded-[1.5rem] p-6 border border-[var(--brand-primary)]/10 flex flex-col gap-3 min-h-[140px] transition-colors hover:bg-[rgba(11,114,133,0.1)]"
                       >
                         <span className="text-xs font-bold uppercase tracking-widest text-[var(--brand-primary)]">
-                          <BilingualText en={info.title.en} ar={info.title.ar} />
+                          <BilingualText
+                            en={info.title.en}
+                            ar={info.title.ar}
+                          />
                         </span>
-                        <p className="text-[11px] md:text-xs leading-relaxed text-[var(--text-secondary)] font-normal">
+                        <p className="text-[11px] md:text-xs leading-relaxed text-[var(--text-secondary)] font-[Metropolis]">
                           <BilingualText en={info.desc.en} ar={info.desc.ar} />
                         </p>
                       </div>

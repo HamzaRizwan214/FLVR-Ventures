@@ -276,7 +276,7 @@ const FadeUp = ({ children, delay = 0, className = "" }) => {
 };
 
 const SectionLabel = ({ en, ar }) => (
-  <p className="text-[10px] uppercase tracking-[0.35em] font-semibold text-[var(--brand-primary)] mb-6">
+  <p className="text-[10px] uppercase tracking-[0.35em] font-bold text-[var(--brand-primary)] mb-6 font-[Metropolis]">
     <BilingualText en={en} ar={ar} />
   </p>
 );
@@ -293,7 +293,7 @@ const StageChip = ({ stage }) => {
   return (
     <span
       className={cn(
-        "text-[9px] uppercase tracking-[0.2em] border px-2 py-0.5 rounded-full font-medium",
+        "text-[9px] uppercase tracking-[0.2em] border px-2 py-0.5 rounded-full font-bold font-[Metropolis]",
         color,
       )}
     >
@@ -332,7 +332,7 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
         >
-          <p className="text-[10px] uppercase tracking-[0.4em] text-white/50 mb-8 font-medium">
+          <p className="text-[10px] uppercase tracking-[0.4em] text-white/50 mb-8 font-bold font-[Metropolis]">
             <BilingualText
               en="FLVR Ventures — Portfolio"
               ar="فليفر فنتشرز — المحفظة"
@@ -366,7 +366,7 @@ const HeroSection = () => {
           </h1>
           <div className="flex items-center gap-6">
             <div className="h-px w-16 bg-white/30" />
-            <p className="text-white/60 text-sm tracking-widest uppercase font-light">
+            <p className="text-white/60 text-sm tracking-widest uppercase font-medium font-[Metropolis]">
               <BilingualText en="Scale" ar="التوسع" />
             </p>
           </div>
@@ -407,12 +407,12 @@ const ThesisSection = () => (
                     </span>
                   </div>
                   <div className="col-span-4">
-                    <h3 className="text-[var(--text-primary)] text-sm font-medium tracking-wide">
+                    <h3 className="text-[var(--text-primary)] text-sm font-semibold tracking-wide font-[Metropolis]">
                       <BilingualText en={p.en} ar={p.ar} />
                     </h3>
                   </div>
                   <div className="col-span-7">
-                    <p className="text-[var(--text-secondary)] text-sm leading-relaxed">
+                    <p className="text-[var(--text-secondary)] text-sm leading-relaxed font-[Metropolis]">
                       <BilingualText en={p.bodyEn} ar={p.bodyAr} />
                     </p>
                   </div>
@@ -449,7 +449,7 @@ const PortfolioGridSection = () => {
               <span className="text-[4rem] lg:text-[6rem] font-light leading-none text-black/[0.03] absolute right-16 -top-10 select-none">
                 {portfolio.length.toString().padStart(2, "0")}
               </span>
-              <p className="relative z-10 text-[10px] font-bold uppercase tracking-[0.3em] text-[var(--text-muted)]">
+              <p className="relative z-10 text-[10px] font-bold uppercase tracking-[0.3em] text-[var(--text-muted)] font-[Metropolis]">
                 <BilingualText en="Institutional Grade" ar="معايير مؤسسية" />
               </p>
             </div>
@@ -490,7 +490,7 @@ const HeaderItem = ({ label, span }) => (
   <div
     className={cn(
       span,
-      "text-[10px] uppercase tracking-[0.2em] text-[var(--text-muted)] font-bold",
+      "text-[10px] uppercase tracking-[0.2em] text-[var(--text-muted)] font-bold font-[Metropolis]",
     )}
   >
     {label}
@@ -512,7 +512,7 @@ const PortfolioRow = ({ brand, index, isHovered, onHover }) => {
         )}
       >
         {/* 1. ID / Index */}
-        <div className="hidden lg:block col-span-1 font-mono text-[10px] text-[var(--text-muted)]">
+        <div className="hidden lg:block col-span-1 font-[Metropolis] text-[10px] font-bold text-[var(--text-muted)]">
           {(index + 1).toString().padStart(2, "0")}
         </div>
 
@@ -529,7 +529,7 @@ const PortfolioRow = ({ brand, index, isHovered, onHover }) => {
             <h4 className="text-lg lg:text-xl font-medium tracking-tight text-[var(--text-primary)] group-hover:text-[var(--brand-primary)] transition-colors truncate">
               {brand.name}
             </h4>
-            <p className="text-[10px] lg:text-xs text-[var(--text-muted)] mt-0.5">
+            <p className="text-[10px] lg:text-xs text-[var(--text-muted)] mt-0.5 font-[Metropolis]">
               <BilingualText en={brand.nameAr} ar={brand.name} />
             </p>
           </div>
@@ -541,7 +541,7 @@ const PortfolioRow = ({ brand, index, isHovered, onHover }) => {
 
         {/* 3. Category - Hidden on small mobile */}
         <div className="hidden md:block col-span-2">
-          <span className="text-[10px] lg:text-xs font-medium text-[var(--text-secondary)] py-1.5 px-3 rounded-full bg-black/[0.03] border border-black/5">
+          <span className="text-[10px] lg:text-xs font-bold text-[var(--text-secondary)] py-1.5 px-3 rounded-full bg-black/[0.03] border border-black/5 font-[Metropolis]">
             <BilingualText en={brand.category.en} ar={brand.category.ar} />
           </span>
         </div>
@@ -553,7 +553,7 @@ const PortfolioRow = ({ brand, index, isHovered, onHover }) => {
 
         {/* 5. Units/Locations */}
         <div className="col-span-1 hidden lg:block">
-          <span className="text-sm font-light">{brand.locations}</span>
+          <span className="text-sm font-bold font-[Metropolis]">{brand.locations}</span>
         </div>
 
         {/* 6. Growth Metrics */}
@@ -562,10 +562,10 @@ const PortfolioRow = ({ brand, index, isHovered, onHover }) => {
             Performance
           </span>
           <div>
-            <p className="text-base lg:text-lg font-light text-[var(--brand-primary)] leading-none">
+            <p className="text-base lg:text-lg font-bold text-[var(--brand-primary)] leading-none font-[Metropolis]">
               {brand.growth}
             </p>
-            <p className="text-[8px] lg:text-[9px] uppercase tracking-[0.2em] text-[var(--text-muted)] font-bold mt-1">
+            <p className="text-[8px] lg:text-[9px] uppercase tracking-[0.2em] text-[var(--text-muted)] font-bold mt-1 font-[Metropolis]">
               <BilingualText
                 en={brand.growthLabel.en}
                 ar={brand.growthLabel.ar}
@@ -624,7 +624,7 @@ const AnimatedNumber = ({ value }) => {
   }, [inView, numericValue, motionValue]);
 
   return (
-    <span ref={ref} className="tabular-nums">
+    <span ref={ref} className="tabular-nums font-[Metropolis]">
       <motion.span>{displayValue}</motion.span>
       {suffix}
     </span>
@@ -664,11 +664,11 @@ const MetricsSection = () => (
               </h3>
 
               <div className="space-y-2">
-                <p className="text-[var(--text-primary)] text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] flex items-center gap-3">
+                <p className="text-[var(--text-primary)] text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] flex items-center gap-3 font-[Metropolis]">
                   <BilingualText en={m.labelEn} ar={m.labelAr} />
                   <span className="h-px w-8 bg-[var(--brand-primary)]/30 inline-block" />
                 </p>
-                <p className="text-[var(--text-muted)] text-[11px] leading-relaxed max-w-[200px]">
+                <p className="text-[var(--text-muted)] text-[11px] leading-relaxed max-w-[200px] font-[Metropolis]">
                   <BilingualText en={m.subEn} ar={m.subAr} />
                 </p>
               </div>
@@ -758,10 +758,10 @@ const BrandAccordion = ({ brand, index }) => {
           {/* Growth Stat - Hidden on mobile, elegant on desktop */}
           <div className="hidden lg:flex items-center gap-12 mr-12">
             <div className="text-right">
-              <p className="text-3xl font-light text-[var(--brand-primary)] leading-none mb-1">
+              <p className="text-3xl font-bold text-[var(--brand-primary)] leading-none mb-1 font-[Metropolis]">
                 {brand.growth}
               </p>
-              <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-black/30">
+              <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-black/30 font-[Metropolis]">
                 <BilingualText
                   en={brand.growthLabel.en}
                   ar={brand.growthLabel.ar}
@@ -823,10 +823,10 @@ const BrandAccordion = ({ brand, index }) => {
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.2 + i * 0.05 }}
                         >
-                          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/30 mb-3">
+                          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/30 mb-3 font-[Metropolis]">
                             <BilingualText en={d.label.en} ar={d.label.ar} />
                           </p>
-                          <p className="text-lg font-light text-black/80 leading-snug">
+                          <p className="text-lg font-bold text-black/80 leading-snug font-[Metropolis]">
                             {typeof d.value === "string" ? (
                               d.value
                             ) : (
@@ -848,7 +848,7 @@ const BrandAccordion = ({ brand, index }) => {
                           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                           <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                         </span>
-                        <span className="text-[10px] font-bold uppercase tracking-widest text-black/40">
+                        <span className="text-[10px] font-bold uppercase tracking-widest text-black/40 font-[Metropolis]">
                           <BilingualText
                             en="Strategic Partnership"
                             ar="شراكة استراتيجية"
@@ -856,7 +856,7 @@ const BrandAccordion = ({ brand, index }) => {
                         </span>
                       </div>
 
-                      <button className="text-[11px] font-bold uppercase tracking-widest text-[var(--brand-primary)] hover:underline decoration-2 underline-offset-8">
+                      <button className="text-[11px] font-bold uppercase tracking-widest text-[var(--brand-primary)] hover:underline decoration-2 underline-offset-8 font-[Metropolis]">
                         View Case Study →
                       </button>
                     </motion.div>
@@ -890,7 +890,7 @@ const PipelineSection = () => (
             <h2 className="text-6xl lg:text-8xl font-light tracking-tighter text-black leading-[0.85]">
               <BilingualText en="The Next Wave." ar="الموجة القادمة." />
             </h2>
-            <p className="text-xl text-black/60 mt-8 max-w-xl font-light leading-relaxed">
+            <p className="text-xl text-black/60 mt-8 max-w-xl font-medium leading-relaxed font-[Metropolis]">
               <BilingualText
                 en="Our active deal flow is focused on identifying the next generation of culture-defining F&B brands."
                 ar="نركز حاليًا على تحديد الجيل القادم من العلامات التجارية الرائدة في قطاع الأغذية والمشروبات."
@@ -899,7 +899,7 @@ const PipelineSection = () => (
           </div>
 
           <div className="flex flex-col items-start md:items-end gap-3 flex-shrink-0">
-            <p className="text-[12px] font-bold uppercase tracking-[0.4em] text-black/30">
+            <p className="text-[12px] font-bold uppercase tracking-[0.4em] text-black/30 font-[Metropolis]">
               <BilingualText en="Institutional Grade" ar="معايير مؤسسية" />
             </p>
             <div className="h-[2px] w-48 bg-black/5" />
@@ -981,13 +981,13 @@ const PipelineCard = ({ p, index }) => {
           {/* Top: Metadata Bar (Enhanced) */}
           <div className="flex items-center justify-between mb-12">
             <div className="px-4 py-1.5 rounded-full border border-black/5 bg-white/60 backdrop-blur-md shadow-inner">
-              <span className="text-[11px] font-mono tracking-widest text-black/50 uppercase group-hover:text-black transition-colors">
+              <span className="text-[11px] font-bold tracking-widest text-black/50 uppercase group-hover:text-black transition-colors font-[Metropolis]">
                 {p.code}
               </span>
             </div>
 
             {/* Status Chip (Enhanced) */}
-            <div className="flex items-center gap-2 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest bg-[var(--brand-primary)]/5 text-[var(--brand-primary)] border border-[var(--brand-primary)]/10">
+            <div className="flex items-center gap-2 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest bg-[var(--brand-primary)]/5 text-[var(--brand-primary)] border border-[var(--brand-primary)]/10 font-[Metropolis]">
               <div className="w-1.5 h-1.5 rounded-full bg-[var(--brand-primary)] animate-pulse" />
               <BilingualText en={p.status.en} ar={p.status.ar} />
             </div>
@@ -1006,10 +1006,10 @@ const PipelineCard = ({ p, index }) => {
               </h4>
               <div className="flex flex-wrap gap-2 pt-2">
                 {/* Visual tags (Simplified for cleaner aesthetic) */}
-                <span className="text-[10px] font-semibold text-black/50 uppercase tracking-tight bg-black/[0.04] px-2.5 py-1 rounded">
+                <span className="text-[10px] font-bold text-black/50 uppercase tracking-tight bg-black/[0.04] px-2.5 py-1 rounded font-[Metropolis]">
                   Riyadh
                 </span>
-                <span className="text-[10px] font-semibold text-black/50 uppercase tracking-tight bg-black/[0.04] px-2.5 py-1 rounded">
+                <span className="text-[10px] font-bold text-black/50 uppercase tracking-tight bg-black/[0.04] px-2.5 py-1 rounded font-[Metropolis]">
                   Fast-Casual
                 </span>
               </div>
@@ -1019,10 +1019,10 @@ const PipelineCard = ({ p, index }) => {
           {/* Bottom: Quarter + Enhanced Action Arrow */}
           <div className="mt-12 flex items-center justify-between border-t border-black/[0.05] pt-8 group-hover:border-[var(--brand-primary)]/20 transition-colors duration-500">
             <div>
-              <p className="text-[10px] font-bold text-black/30 uppercase tracking-[0.3em] mb-1">
+              <p className="text-[10px] font-bold text-black/30 uppercase tracking-[0.3em] mb-1 font-[Metropolis]">
                 Target Launch
               </p>
-              <p className="text-base font-medium text-black">{p.quarter}</p>
+              <p className="text-base font-bold text-black font-[Metropolis]">{p.quarter}</p>
             </div>
 
             {/* The Arrow Button is now always present but only reveals details on hover */}
@@ -1076,7 +1076,7 @@ const PartnerCTASection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           {/* Left */}
           <FadeUp>
-            <p className="text-[10px] uppercase tracking-[0.35em] text-white/50 mb-6">
+            <p className="text-[10px] uppercase tracking-[0.35em] text-white/50 mb-6 font-[Metropolis]">
               <BilingualText en="Partner with FLVR" ar="الشراكة مع فليفر" />
             </p>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-white tracking-tighter leading-[1.1] mb-8">
@@ -1101,7 +1101,7 @@ const PartnerCTASection = () => {
                 }
               />
             </h2>
-            <p className="text-white/60 text-base leading-relaxed max-w-md">
+            <p className="text-white/60 text-base leading-relaxed max-w-md font-[Metropolis]">
               <BilingualText
                 en="Open allocations available for Q4 2026. Minimum ticket SAR 500K. Strategic partners with F&B operating experience preferred."
                 ar="تخصيصات مفتوحة متاحة للربع الرابع من ٢٠٢٦. الحد الأدنى للاستثمار ٥٠٠ ألف ريال. يُفضل الشركاء الاستراتيجيون ذوو الخبرة التشغيلية."
@@ -1120,7 +1120,7 @@ const PartnerCTASection = () => {
                       ar="طلب ملف الشراكة"
                     />
                   </h3>
-                  <p className="text-white/50 text-sm mb-8">
+                  <p className="text-white/50 text-sm mb-8 font-[Metropolis]">
                     <BilingualText
                       en="Receive our full investor package within 24 hours."
                       ar="استلم حزمة المستثمر الكاملة خلال ٢٤ ساعة."
@@ -1130,30 +1130,30 @@ const PartnerCTASection = () => {
                     <input
                       type="text"
                       placeholder="Full name"
-                      className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3.5 text-white placeholder-white/30 text-sm outline-none focus:border-white/40 transition-colors"
+                      className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3.5 text-white placeholder-white/30 text-sm outline-none focus:border-white/40 transition-colors font-[Metropolis]"
                     />
                     <input
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="Business email"
-                      className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3.5 text-white placeholder-white/30 text-sm outline-none focus:border-white/40 transition-colors"
+                      className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3.5 text-white placeholder-white/30 text-sm outline-none focus:border-white/40 transition-colors font-[Metropolis]"
                       required
                     />
                     <input
                       type="text"
                       placeholder="Organization / Fund name"
-                      className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3.5 text-white placeholder-white/30 text-sm outline-none focus:border-white/40 transition-colors"
+                      className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3.5 text-white placeholder-white/30 text-sm outline-none focus:border-white/40 transition-colors font-[Metropolis]"
                     />
                     <motion.button
                       whileTap={{ scale: 0.98 }}
                       type="submit"
-                      className="w-full bg-white text-[var(--brand-primary)] font-medium text-sm py-4 rounded-xl tracking-wide hover:bg-white/90 transition-colors"
+                      className="w-full bg-white text-[var(--brand-primary)] font-bold text-sm py-4 rounded-xl tracking-wide hover:bg-white/90 transition-colors font-[Metropolis]"
                     >
                       <BilingualText en="Send Request →" ar="إرسال الطلب ←" />
                     </motion.button>
                   </form>
-                  <p className="text-white/25 text-[10px] text-center mt-4 tracking-wide">
+                  <p className="text-white/25 text-[10px] text-center mt-4 tracking-wide font-[Metropolis]">
                     <BilingualText
                       en="Your information is kept strictly confidential."
                       ar="معلوماتك تُحفظ بسرية تامة."
@@ -1187,7 +1187,7 @@ const PartnerCTASection = () => {
                       ar="تم استلام طلبك."
                     />
                   </h3>
-                  <p className="text-white/50 text-sm">
+                  <p className="text-white/50 text-sm font-[Metropolis]">
                     <BilingualText
                       en="Our team will reach out within 24 hours."
                       ar="سيتواصل معك فريقنا خلال ٢٤ ساعة."
