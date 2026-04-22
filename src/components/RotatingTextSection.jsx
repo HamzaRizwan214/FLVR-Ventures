@@ -1,4 +1,4 @@
-import React from "react";
+import { Link } from "react-router-dom";
 import { TextRotate } from "./ui/text-rotate";
 import BilingualText from "./BilingualText";
 import { useLanguage } from "../contexts/LanguageContext";
@@ -60,9 +60,12 @@ export default function RotatingTextSection() {
 
         {/* Optional CTA */}
         <div className="mt-16">
-          <button className="px-8 py-4 bg-[var(--brand-primary)] text-white font-medium hover:opacity-90 transition-opacity">
+          <Link
+            to="/how-it-works"
+            className="btn-primary"
+          >
             <BilingualText en="Explore Our Platform" ar="استكشف منصتنا" />
-          </button>
+          </Link>
         </div>
       </div>
     </section>
