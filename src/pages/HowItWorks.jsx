@@ -207,11 +207,11 @@ const FilterCard = ({ item }) => (
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.1 + i * 0.08, duration: 0.5 }}
           viewport={{ once: true }}
-          className="flex items-center gap-3 bg-white/8 rounded-xl px-4 py-3"
+          className="flex items-center gap-3 bg-white/8 rounded-none px-4 py-3"
         >
           <span
             className={cn(
-              "w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold flex-shrink-0 font-[Metropolis]",
+              "w-5 h-5 rounded-none flex items-center justify-center text-[10px] font-bold flex-shrink-0 font-[Metropolis]",
               c.pass
                 ? "bg-emerald-400/20 text-emerald-300"
                 : "bg-red-400/20 text-red-300",
@@ -331,7 +331,7 @@ const LiftCard = ({ item }) => (
       {item.pillars.map((p, i) => (
         <span
           key={i}
-          className="text-[9px] uppercase tracking-[0.15em] border border-white/15 text-white/45 rounded-full px-3 py-1 font-bold font-[Metropolis]"
+          className="text-[9px] uppercase tracking-[0.15em] border border-white/15 text-white/45 rounded-none px-3 py-1 font-bold font-[Metropolis]"
         >
           <BilingualText en={p.en} ar={p.ar} />
         </span>
@@ -380,7 +380,7 @@ const ValidateCard = ({ item }) => (
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.08 * i, duration: 0.5 }}
           viewport={{ once: true }}
-          className="bg-white/10 rounded-2xl p-4"
+          className="bg-white/10 rounded-none p-4"
         >
           <div className="flex items-start justify-between mb-3">
             <span className="text-white/30 text-base">{k.icon}</span>
@@ -398,7 +398,7 @@ const ValidateCard = ({ item }) => (
 
     {/* Status bar */}
     <div className="flex items-center gap-3 border-t border-white/15 pt-5">
-      <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+      <div className="w-2 h-2 rounded-none bg-emerald-400 animate-pulse" />
       <span className="text-[10px] uppercase tracking-[0.25em] text-white/40 font-bold font-[Metropolis]">
         <BilingualText
           en="Concept validated — proceed to scale"
@@ -449,14 +449,14 @@ const RunCard = ({ item }) => (
           transition={{ delay: 0.08 * i, duration: 0.5 }}
           viewport={{ once: true }}
           className={cn(
-            "flex items-center justify-between rounded-xl px-4 py-3",
+            "flex items-center justify-between rounded-none px-4 py-3",
             loc.active ? "bg-white/12" : "bg-white/5",
           )}
         >
           <div className="flex items-center gap-3">
             <span
               className={cn(
-                "w-1.5 h-1.5 rounded-full flex-shrink-0",
+                "w-1.5 h-1.5 rounded-none flex-shrink-0",
                 loc.active ? "bg-emerald-400" : "bg-white/20",
               )}
             />
@@ -502,7 +502,7 @@ const RunCard = ({ item }) => (
           {item.growth.val}
         </motion.p>
       </div>
-      <div className="w-12 h-12 rounded-full border border-white/15 flex items-center justify-center">
+      <div className="w-12 h-12 rounded-none border border-white/15 flex items-center justify-center">
         <svg
           className="w-5 h-5 text-white/50"
           fill="none"
@@ -626,7 +626,7 @@ export default function HowItWorks() {
                         whileInView={{ scale: [0, 1.15, 1], opacity: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                        className="w-16 h-16 rounded-full bg-white border border-black/8 shadow-xl flex items-center justify-center"
+                        className="w-16 h-16 rounded-none bg-white border border-black/8 shadow-xl flex items-center justify-center"
                       >
                         <span className="text-xs font-bold text-[var(--brand-primary)] font-[Metropolis]">
                           {item.step}
@@ -650,7 +650,7 @@ export default function HowItWorks() {
 
                     {/* Mobile: step indicator */}
                     <div className="lg:hidden flex items-center gap-4 order-first mb-8">
-                      <div className="w-10 h-10 rounded-full bg-white border border-black/8 shadow flex items-center justify-center flex-shrink-0">
+                      <div className="w-10 h-10 rounded-none bg-white border border-black/8 shadow flex items-center justify-center flex-shrink-0">
                         <span className="text-[10px] font-bold text-[var(--brand-primary)] font-[Metropolis]">
                           {item.step}
                         </span>
@@ -671,7 +671,7 @@ export default function HowItWorks() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            className="bg-white rounded-[3rem] p-10 md:p-20 border border-black/5 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.06)] relative overflow-hidden"
+            className="bg-white rounded-none p-10 md:p-20 border border-black/5 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.06)] relative overflow-hidden"
           >
             <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div>
@@ -682,13 +682,7 @@ export default function HowItWorks() {
                   <BilingualText en="FLVR Fund I" ar="صندوق فليفر ١" />
                 </h3>
                 <div className="flex flex-wrap gap-3 font-[Metropolis]">
-                  <span className="px-4 py-1.5 rounded-full border border-[var(--brand-primary)]/20 text-[var(--brand-primary)] text-[10px] font-bold uppercase tracking-widest">
-                    Growth Equity
-                  </span>
-                  <span className="px-4 py-1.5 rounded-full border border-black/10 text-black/40 text-[10px] font-bold uppercase tracking-widest">
-                    Saudi Focus
-                  </span>
-                  <span className="px-4 py-1.5 rounded-full border border-black/10 text-black/40 text-[10px] font-bold uppercase tracking-widest">
+                  <span className="px-4 py-1.5 rounded-none border border-black/10 text-black/40 text-[10px] font-bold uppercase tracking-widest">
                     SAR 20M
                   </span>
                 </div>

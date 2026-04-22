@@ -1025,10 +1025,9 @@ const PipelineCard = ({ p, index }) => {
               <p className="text-base font-bold text-black font-[Metropolis]">{p.quarter}</p>
             </div>
 
-            {/* The Arrow Button is now always present but only reveals details on hover */}
-            <div className="relative w-12 h-12 rounded-full border border-black/10 group-hover:border-[var(--brand-primary)]/20 flex items-center justify-center transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] overflow-hidden">
-              {/* This inner part slides and scales on hover */}
-              <div className="absolute inset-0 bg-black scale-0 group-hover:scale-100 rounded-full transition-transform duration-500 shadow-xl" />
+            {/* The Arrow Button is now square and professional */}
+            <div className="relative w-12 h-12 rounded-none border border-black/10 group-hover:border-[var(--brand-primary)]/20 flex items-center justify-center transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] overflow-hidden">
+              <div className="absolute inset-0 bg-black scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 shadow-xl" />
               <svg
                 width="18"
                 height="18"
@@ -1130,25 +1129,25 @@ const PartnerCTASection = () => {
                     <input
                       type="text"
                       placeholder="Full name"
-                      className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3.5 text-white placeholder-white/30 text-sm outline-none focus:border-white/40 transition-colors font-[Metropolis]"
+                      className="w-full bg-white/10 border border-white/20 rounded-none px-4 py-3.5 text-white placeholder-white/30 text-sm outline-none focus:border-white/40 transition-colors font-[Metropolis]"
                     />
                     <input
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="Business email"
-                      className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3.5 text-white placeholder-white/30 text-sm outline-none focus:border-white/40 transition-colors font-[Metropolis]"
+                      className="w-full bg-white/10 border border-white/20 rounded-none px-4 py-3.5 text-white placeholder-white/30 text-sm outline-none focus:border-white/40 transition-colors font-[Metropolis]"
                       required
                     />
                     <input
                       type="text"
                       placeholder="Organization / Fund name"
-                      className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3.5 text-white placeholder-white/30 text-sm outline-none focus:border-white/40 transition-colors font-[Metropolis]"
+                      className="w-full bg-white/10 border border-white/20 rounded-none px-4 py-3.5 text-white placeholder-white/30 text-sm outline-none focus:border-white/40 transition-colors font-[Metropolis]"
                     />
                     <motion.button
                       whileTap={{ scale: 0.98 }}
                       type="submit"
-                      className="w-full bg-white text-[var(--brand-primary)] font-bold text-sm py-4 rounded-xl tracking-wide hover:bg-white/90 transition-colors font-[Metropolis]"
+                      className="btn-white w-full py-5"
                     >
                       <BilingualText en="Send Request →" ar="إرسال الطلب ←" />
                     </motion.button>

@@ -56,7 +56,7 @@ const FadeIn = ({ children, delay = 0, className = "" }) => {
 
 const Eyebrow = ({ en, ar, light = false }) => (
   <p
-    className={`text-[10px] uppercase tracking-[0.4em] font-semibold mb-6 ${light ? "text-white/40" : "text-[var(--brand-primary)]"}`}
+    className={`text-[10px] uppercase tracking-[0.4em] font-bold mb-6 font-[Metropolis] ${light ? "text-white/40" : "text-[var(--brand-primary)]"}`}
   >
     <BilingualText en={en} ar={ar} />
   </p>
@@ -164,7 +164,7 @@ const HeroSection = () => {
 
           <div className="flex flex-col md:flex-row items-start md:items-end gap-8 md:gap-16">
             <div className="h-px w-20 bg-white/30 mt-3 flex-shrink-0" />
-            <p className="text-white/60 text-base md:text-xl font-light leading-relaxed max-w-xl">
+            <p className="text-white/60 text-base md:text-xl font-medium leading-relaxed max-w-xl font-[Metropolis]">
               <BilingualText
                 en="FLVR is more than capital. We are an operating partner designed for the high-velocity Saudi F&B market."
                 ar="فليفر هي أكثر من مجرد رأس مال. نحن شريك تشغيلي مصمم لسوق الأغذية والمشروبات السعودي."
@@ -216,14 +216,14 @@ const OriginSection = () => {
                 <div className="absolute bottom-6 left-6 right-6">
                   <div className="bg-white/80 backdrop-blur-xl rounded-2xl px-7 py-6 border border-white/50 shadow-xl">
                     <div className="flex items-baseline gap-2 mb-1">
-                      <span className="text-4xl font-light text-[var(--brand-primary)] tracking-tighter">
+                      <span className="text-4xl font-bold text-[var(--brand-primary)] tracking-tighter font-[Metropolis]">
                         2026
                       </span>
-                      <span className="text-xs uppercase tracking-[0.2em] text-black/40 font-medium">
+                      <span className="text-xs uppercase tracking-[0.2em] text-black/40 font-bold font-[Metropolis]">
                         Benchmark
                       </span>
                     </div>
-                    <p className="text-[11px] text-black/50 leading-snug">
+                    <p className="text-[11px] text-black/50 leading-snug font-bold font-[Metropolis]">
                       <BilingualText
                         en="Setting the standard for Saudi F&B growth equity."
                         ar="وضع معيار رأس مال النمو للمطاعم السعودية."
@@ -259,7 +259,7 @@ const OriginSection = () => {
               </h2>
             </FadeUp>
             <FadeUp delay={0.1}>
-              <p className="text-xl text-black/55 font-light leading-[1.7] mb-10">
+              <p className="text-xl text-black/55 font-medium leading-[1.7] mb-10 font-[Metropolis]">
                 <BilingualText
                   en="FLVR Ventures was built to close the gap between early traction and enduring scale. We fuse institutional capital with brand thinking and operational excellence to turn high-potential concepts into iconic Saudi brands."
                   ar="تم إنشاء فليفر لسد الفجوة بين الجاذبية المبكرة والتوسع المستدام. نجمع رأس المال المؤسسي بفكر العلامة التجارية والتميز التشغيلي."
@@ -267,7 +267,7 @@ const OriginSection = () => {
               </p>
             </FadeUp>
             <FadeUp delay={0.18}>
-              <p className="text-base text-black/40 font-light leading-relaxed border-l-2 border-[var(--brand-primary)]/30 pl-6">
+              <p className="text-base text-black/40 font-medium leading-relaxed border-l-2 border-[var(--brand-primary)]/30 pl-6 font-[Metropolis]">
                 <BilingualText
                   en="Saudi Arabia has strong consumer appetite, high F&B spending, young lifestyle-driven demand, and many passionate founders — but most concepts lack the structure to scale. FLVR fills that gap."
                   ar="المملكة العربية السعودية لديها شهية استهلاكية قوية وإنفاق مرتفع على المطاعم — لكن معظم الأفكار تفتقر للهيكل الذي يمكّنها من التوسع. فليفر تملأ هذه الفجوة."
@@ -356,7 +356,7 @@ const WhatWeDoSection = () => {
             </h2>
           </FadeUp>
           <FadeUp delay={0.1}>
-            <p className="text-white/35 text-base max-w-xs leading-relaxed md:text-right">
+            <p className="text-white/35 text-base max-w-xs leading-relaxed md:text-right font-medium font-[Metropolis]">
               <BilingualText
                 en="Complementary by design. Compounding by nature."
                 ar="متكاملة بالتصميم. متراكمة بالطبيعة."
@@ -380,23 +380,23 @@ const WhatWeDoSection = () => {
                 </motion.div>
 
                 <div className="relative z-10 flex items-start justify-between">
-                  <span className="text-[10px] font-mono text-white/20 tracking-[0.2em]">
+                  <span className="text-[10px] font-bold text-white/20 tracking-[0.2em] font-[Metropolis]">
                     {v.num}
                   </span>
-                  <span className="text-[9px] uppercase tracking-[0.25em] border border-white/10 text-white/30 px-3 py-1 rounded-full">
+                  <span className="text-[9px] uppercase tracking-[0.25em] border border-white/10 text-white/30 px-3 py-1 rounded-full font-bold font-[Metropolis]">
                     <BilingualText en={v.tag.en} ar={v.tag.ar} />
                   </span>
                 </div>
 
                 <div className="relative z-10 flex-1 flex flex-col justify-end gap-4">
                   <div>
-                    <p className="text-[10px] uppercase tracking-[0.25em] text-[var(--brand-primary)]/70 mb-2">
+                    <p className="text-[10px] uppercase tracking-[0.25em] text-[var(--brand-primary)]/70 mb-2 font-bold font-[Metropolis]">
                       <BilingualText en={v.sub.en} ar={v.sub.ar} />
                     </p>
                     <h3 className="text-2xl md:text-3xl font-light text-white tracking-tighter mb-4 group-hover:text-white transition-colors">
                       <BilingualText en={v.title.en} ar={v.title.ar} />
                     </h3>
-                    <p className="text-white/40 text-sm leading-relaxed group-hover:text-white/60 transition-colors duration-500">
+                    <p className="text-white/40 text-sm leading-relaxed group-hover:text-white/60 transition-colors duration-500 font-medium font-[Metropolis]">
                       <BilingualText en={v.body.en} ar={v.body.ar} />
                     </p>
                   </div>
@@ -448,7 +448,7 @@ const VisionMissionSection = () => (
               }
             />
           </h2>
-          <p className="text-sm text-[var(--brand-primary)] mt-6 tracking-[0.2em] uppercase">
+          <p className="text-sm text-[var(--brand-primary)] mt-6 tracking-[0.2em] uppercase font-bold font-[Metropolis]">
             <BilingualText
               en="— FLVR founding principle"
               ar="— المبدأ التأسيسي لفليفر"
@@ -503,13 +503,13 @@ const VisionMissionSection = () => (
               </div>
 
               <div className="relative z-10 space-y-5 mt-auto">
-                <p className="text-[9px] uppercase tracking-[0.35em] text-white/40">
+                <p className="text-[9px] uppercase tracking-[0.35em] text-white/40 font-bold font-[Metropolis]">
                   <BilingualText en={card.label.en} ar={card.label.ar} />
                 </p>
                 <h3 className="text-2xl md:text-3xl font-light text-white tracking-tight leading-[1.2]">
                   <BilingualText en={card.heading.en} ar={card.heading.ar} />
                 </h3>
-                <p className="text-white/55 text-sm leading-relaxed group-hover:text-white/75 transition-colors duration-500">
+                <p className="text-white/55 text-sm leading-relaxed group-hover:text-white/75 transition-colors duration-500 font-medium font-[Metropolis]">
                   <BilingualText en={card.body.en} ar={card.body.ar} />
                 </p>
               </div>
@@ -584,7 +584,7 @@ const DNASection = () => {
             </h2>
           </FadeUp>
           <FadeUp delay={0.1}>
-            <p className="text-black/35 text-sm max-w-xs md:text-right leading-relaxed">
+            <p className="text-black/35 text-sm max-w-xs md:text-right leading-relaxed font-medium font-[Metropolis]">
               <BilingualText
                 en="The principles that govern every investment and every concept we build."
                 ar="المبادئ التي تحكم كل استثمار وكل مفهوم نبنيه."
@@ -601,7 +601,7 @@ const DNASection = () => {
                 className="border-r border-b border-black/6 p-8 lg:p-10 group cursor-default transition-colors duration-300 min-h-[300px] flex flex-col justify-between"
               >
                 <div className="flex items-center justify-between mb-8">
-                  <span className="text-[10px] font-mono text-[var(--brand-primary)] tracking-[0.2em]">
+                  <span className="text-[10px] font-bold text-[var(--brand-primary)] tracking-[0.2em] font-[Metropolis]">
                     {v.step}
                   </span>
                   <motion.div
@@ -613,10 +613,10 @@ const DNASection = () => {
                   />
                 </div>
                 <div>
-                  <h4 className="text-lg font-medium tracking-tight text-black mb-4 group-hover:text-[var(--brand-primary)] transition-colors duration-300">
+                  <h4 className="text-lg font-bold tracking-tight text-black mb-4 group-hover:text-[var(--brand-primary)] transition-colors duration-300 font-[Metropolis]">
                     <BilingualText en={v.title.en} ar={v.title.ar} />
                   </h4>
-                  <p className="text-sm text-black/45 leading-relaxed">
+                  <p className="text-sm text-black/45 leading-relaxed font-medium font-[Metropolis]">
                     <BilingualText en={v.desc.en} ar={v.desc.ar} />
                   </p>
                 </div>
@@ -654,10 +654,10 @@ const DNASection = () => {
           ].map((s, i) => (
             <FadeIn key={i} delay={i * 0.06}>
               <div className="border-r border-t border-black/6 p-8 lg:p-10">
-                <p className="text-[clamp(2rem,4vw,3.5rem)] font-light text-[var(--brand-primary)] tracking-tighter leading-none mb-3">
+                <p className="text-[clamp(2rem,4vw,3.5rem)] font-bold text-[var(--brand-primary)] tracking-tighter leading-none mb-3 font-[Metropolis]">
                   <CountUp to={s.num} suffix={s.suffix} />
                 </p>
-                <p className="text-[10px] uppercase tracking-[0.2em] text-black/40 font-medium leading-snug">
+                <p className="text-[10px] uppercase tracking-[0.2em] text-black/40 font-bold leading-snug font-[Metropolis]">
                   <BilingualText en={s.label.en} ar={s.label.ar} />
                 </p>
               </div>
@@ -723,7 +723,7 @@ const CTASection = () => {
                 }
               />
             </h2>
-            <p className="text-white/55 text-lg font-light leading-relaxed max-w-md mb-10">
+            <p className="text-white/55 text-lg font-medium leading-relaxed max-w-md mb-10 font-[Metropolis]">
               <BilingualText
                 en="Whether you're a founder with a concept, an investor seeking Saudi F&B exposure, or a brand ready to grow — FLVR has a vertical for you."
                 ar="سواء كنت مؤسساً بفكرة، أو مستثمراً يبحث عن تعرض لقطاع المطاعم السعودية، أو علامة تجارية جاهزة للنمو — فليفر لديها الحل."
@@ -731,16 +731,16 @@ const CTASection = () => {
             </p>
             <div className="flex flex-wrap gap-4">
               <motion.button
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-                className="px-8 py-4 bg-white text-black text-xs font-semibold uppercase tracking-[0.18em] rounded-full hover:bg-[var(--brand-primary)] hover:text-white transition-colors duration-300"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="btn-white"
               >
                 <BilingualText en="Contact Venture Team" ar="تواصل مع فريقنا" />
               </motion.button>
               <motion.button
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-                className="px-8 py-4 bg-white/10 text-white text-xs font-semibold uppercase tracking-[0.18em] rounded-full border border-white/20 hover:bg-white/20 transition-colors duration-300 backdrop-blur-sm"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="btn-ghost"
               >
                 <BilingualText en="View Portfolio" ar="استعرض المحفظة" />
               </motion.button>
@@ -775,10 +775,10 @@ const CTASection = () => {
                   whileHover={{ x: 6 }}
                   className="bg-white/8 hover:bg-white/14 border border-white/10 hover:border-white/20 rounded-2xl px-7 py-5 cursor-pointer transition-all duration-300 flex items-center justify-between group"
                 >
-                  <span className="text-white/70 text-sm font-light group-hover:text-white transition-colors">
+                  <span className="text-white/70 text-sm font-bold group-hover:text-white transition-colors font-[Metropolis]">
                     <BilingualText en={item.label.en} ar={item.label.ar} />
                   </span>
-                  <span className="text-[var(--brand-primary)] text-xs uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity">
+                  <span className="text-white/90 text-xs uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity font-bold font-[Metropolis]">
                     <BilingualText en={item.hint.en} ar={item.hint.ar} />
                   </span>
                 </motion.div>

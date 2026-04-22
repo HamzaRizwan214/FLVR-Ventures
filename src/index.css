@@ -160,6 +160,35 @@ button {
   border: 1px solid var(--border-default);
 }
 
+/* ─── Button System (Professional & Fun) ─── */
+.btn-primary {
+  @apply relative inline-flex items-center justify-center px-8 py-4 
+         bg-[var(--brand-primary)] text-white text-xs font-bold uppercase tracking-[0.2em] 
+         rounded-none transition-all duration-300 overflow-hidden font-[Metropolis]
+         shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px];
+}
+
+.btn-secondary {
+  @apply relative inline-flex items-center justify-center px-8 py-4 
+         bg-transparent text-[var(--text-primary)] text-xs font-bold uppercase tracking-[0.2em] 
+         rounded-none border-2 border-black transition-all duration-300 font-[Metropolis]
+         hover:bg-black hover:text-white;
+}
+
+.btn-white {
+  @apply relative inline-flex items-center justify-center px-8 py-4 
+         bg-white text-black text-xs font-bold uppercase tracking-[0.2em] 
+         rounded-none transition-all duration-300 font-[Metropolis]
+         shadow-[4px_4px_0px_0px_rgba(11,114,133,1)] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px];
+}
+
+.btn-ghost {
+  @apply relative inline-flex items-center justify-center px-8 py-4 
+         bg-transparent text-white text-xs font-bold uppercase tracking-[0.2em] 
+         rounded-none border border-white/20 transition-all duration-300 font-[Metropolis]
+         hover:bg-white hover:text-black;
+}
+
 /* global.css or equivalent */
 @keyframes fluidGradient {
   0% { background-position: 0% 50%; }

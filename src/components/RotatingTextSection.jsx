@@ -60,7 +60,7 @@ export default function RotatingTextSection() {
 
         {/* Optional CTA */}
         <div className="mt-16">
-          <button className="px-8 py-4 bg-[var(--brand-primary)] text-white rounded-full font-medium hover:opacity-90 transition-opacity">
+          <button className="px-8 py-4 bg-[var(--brand-primary)] text-white font-medium hover:opacity-90 transition-opacity">
             <BilingualText en="Explore Our Platform" ar="استكشف منصتنا" />
           </button>
         </div>

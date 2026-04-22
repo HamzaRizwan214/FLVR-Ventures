@@ -56,7 +56,7 @@ export default function PartnersSection() {
           <motion.div whileHover={{ y: -4 }} className="group relative">
             <Link
               to="/contact"
-              className="inline-flex items-center gap-4 py-4 px-10 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-all duration-300"
+              className="inline-flex items-center gap-4 py-4 px-10 rounded-none bg-black/5 hover:bg-black/10 border border-black/10 transition-all duration-300"
             >
               <p className="text-sm md:text-base text-zinc-400 group-hover:text-white transition-colors">
                 <BilingualText

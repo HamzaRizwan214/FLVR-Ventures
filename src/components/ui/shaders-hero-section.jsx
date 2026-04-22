@@ -214,10 +214,10 @@ export function HeroContent() {
         </div>
 
         {/* Buttons */}
-        <div className="flex items-center gap-4 flex-wrap">
+        <div className="flex items-center gap-6 flex-wrap">
           <Link
             to="/portfolio"
-            className="px-8 py-3 rounded-full bg-black/5 border border-black/10 text-[var(--text-primary)] font-normal text-xs transition-all duration-300 hover:bg-black/10 hover:scale-105 cursor-pointer"
+            className="btn-ghost"
           >
             <BilingualText en="View Portfolio" ar="عرض المحفظة" />
           </Link>
@@ -228,7 +228,7 @@ export function HeroContent() {
           >
             <Link
               to="/contact"
-              className="absolute right-0 rtl:right-auto rtl:left-0 px-2.5 py-1.5 rounded-full bg-[var(--brand-primary)] text-white font-normal text-xs transition-all duration-300 hover:bg-[var(--brand-primary)]/90 cursor-pointer h-10 flex items-center justify-center -translate-x-12 rtl:translate-x-12 group-hover:-translate-x-24 rtl:group-hover:translate-x-24 z-0"
+              className="absolute right-0 rtl:right-auto rtl:left-0 px-2.5 py-1.5 rounded-none bg-[var(--brand-primary)] text-white font-normal text-xs transition-all duration-300 hover:bg-[var(--brand-primary)]/90 cursor-pointer h-12 flex items-center justify-center -translate-x-12 rtl:translate-x-12 group-hover:-translate-x-24 rtl:group-hover:translate-x-24 z-0"
             >
               <svg
                 className="w-4 h-4 rtl:rotate-180"
@@ -246,7 +246,7 @@ export function HeroContent() {
             </Link>
             <Link
               to="/contact"
-              className="px-8 py-2.5 rounded-full bg-[var(--brand-primary)] text-white font-normal text-xs transition-all duration-300 hover:bg-[var(--brand-primary)]/90 cursor-pointer h-10 flex items-center z-10"
+              className="btn-primary h-12 flex items-center z-10"
             >
               <BilingualText en="Start Building" ar="ابدأ البناء" />
             </Link>

@@ -105,7 +105,7 @@ export default function Contact() {
               />
             </p>
 
-            <button className="w-full py-4 bg-[var(--brand-primary)] hover:bg-[var(--text-link)] text-white text-lg font-bold rounded-2xl transition-all shadow-[0_10px_20px_rgba(11,114,133,0.2)] hover:shadow-[0_15px_25px_rgba(11,114,133,0.4)] hover:-translate-y-1 font-[Metropolis]">
+            <button className="btn-primary w-full py-5">
               <BilingualText en="Book Now" ar="احجز الآن" />
             </button>
           </motion.div>

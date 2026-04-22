@@ -135,9 +135,9 @@ export default function Footer() {
                 placeholder={
                   language === "en" ? "Email address" : "البريد الإلكتروني"
                 }
-                className="w-full font-[Metropolis] bg-white border border-[var(--border-default)] rounded-xl py-4 px-6 text-sm focus:outline-none focus:ring-1 focus:ring-[var(--brand-primary)] transition-all"
+                className="w-full font-[Metropolis] bg-white border border-[var(--border-default)] rounded-none py-4 px-6 text-sm focus:outline-none focus:ring-1 focus:ring-[var(--brand-primary)] transition-all"
               />
-              <button className="absolute right-2 top-2 bottom-2 bg-[var(--brand-primary)] text-white px-4 rounded-lg flex items-center justify-center hover:opacity-90 transition-opacity rtl:left-2 rtl:right-auto rtl:rotate-180">
+              <button className="absolute right-2 top-2 bottom-2 bg-[var(--brand-primary)] text-white px-4 rounded-none flex items-center justify-center hover:opacity-90 transition-opacity rtl:left-2 rtl:right-auto rtl:rotate-180">
                 <ArrowRight size={18} />
               </button>
             </div>
