@@ -561,7 +561,9 @@ const PortfolioRow = ({ brand, index, isHovered, onHover }) => {
 
         {/* 5. Units/Locations */}
         <div className="col-span-1 hidden lg:block">
-          <span className="text-sm font-bold font-[Metropolis]">{brand.locations}</span>
+          <span className="text-sm font-bold font-[Metropolis]">
+            {brand.locations}
+          </span>
         </div>
 
         {/* 6. Growth Metrics */}
@@ -1035,7 +1037,9 @@ const PipelineCard = ({ p, index }) => {
               <p className="text-[10px] font-bold text-black/30 uppercase tracking-[0.3em] mb-1 font-[Metropolis]">
                 Target Launch
               </p>
-              <p className="text-base font-bold text-black font-[Metropolis]">{p.quarter}</p>
+              <p className="text-base font-bold text-black font-[Metropolis]">
+                {p.quarter}
+              </p>
             </div>
 
             {/* The Arrow Button is now square and professional */}
@@ -1067,13 +1071,47 @@ const PipelineCard = ({ p, index }) => {
 
 // ─── Section 7: Partner CTA ───────────────────────────────────────────────────
 const PartnerCTASection = () => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [organization, setOrganization] = useState("");
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (email) {
-      setSent(true);
+    if (email && name) {
+      setLoading(true);
+      try {
+        const response = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            access_key: import.meta.env.VITE_WEB3FORMS_DECK_KEY,
+            subject: "New Partnership Deck Request 📁",
+            from_name: "FLVR Ventures Portal",
+            "Full Name": name,
+            "Business Email": email,
+            Organization: organization || "Not Provided",
+            "Action Required": `Please send the full investor package to ${name} at ${email}.`,
+          }),
+        });
+
+        const result = await response.json();
+        if (result.success) {
+          setSent(true);
+        } else {
+          console.error("Error submitting form:", result);
+          alert("Something went wrong. Please try again later.");
+        }
+      } catch (error) {
+        console.error("Submission failed:", error);
+        alert("Network error. Please try again later.");
+      } finally {
+        setLoading(false);
+      }
     }
   };
 
@@ -1141,28 +1179,40 @@ const PartnerCTASection = () => {
                   <form onSubmit={handleSubmit} className="space-y-4">
                     <input
                       type="text"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
                       placeholder="Full name"
-                      className="w-full bg-white/10 border border-white/20 rounded-none px-4 py-3.5 text-white placeholder-white/30 text-sm outline-none focus:border-white/40 transition-colors font-[Metropolis]"
+                      required
+                      disabled={loading}
+                      className="w-full bg-white/10 border border-white/20 rounded-none px-4 py-3.5 text-white placeholder-white/30 text-sm outline-none focus:border-white/40 transition-colors font-[Metropolis] disabled:opacity-50"
                     />
                     <input
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="Business email"
-                      className="w-full bg-white/10 border border-white/20 rounded-none px-4 py-3.5 text-white placeholder-white/30 text-sm outline-none focus:border-white/40 transition-colors font-[Metropolis]"
                       required
+                      disabled={loading}
+                      className="w-full bg-white/10 border border-white/20 rounded-none px-4 py-3.5 text-white placeholder-white/30 text-sm outline-none focus:border-white/40 transition-colors font-[Metropolis] disabled:opacity-50"
                     />
                     <input
                       type="text"
+                      value={organization}
+                      onChange={(e) => setOrganization(e.target.value)}
                       placeholder="Organization / Fund name"
-                      className="w-full bg-white/10 border border-white/20 rounded-none px-4 py-3.5 text-white placeholder-white/30 text-sm outline-none focus:border-white/40 transition-colors font-[Metropolis]"
+                      disabled={loading}
+                      className="w-full bg-white/10 border border-white/20 rounded-none px-4 py-3.5 text-white placeholder-white/30 text-sm outline-none focus:border-white/40 transition-colors font-[Metropolis] disabled:opacity-50"
                     />
                     <motion.button
-                      whileTap={{ scale: 0.98 }}
+                      whileTap={{ scale: loading ? 1 : 0.98 }}
                       type="submit"
-                      className="btn-white w-full py-5"
+                      disabled={loading}
+                      className="btn-white w-full py-5 disabled:opacity-70"
                     >
-                      <BilingualText en="Send Request →" ar="إرسال الطلب ←" />
+                      <BilingualText
+                        en={loading ? "Sending..." : "Send Request →"}
+                        ar={loading ? "جاري الإرسال..." : "إرسال الطلب ←"}
+                      />
                     </motion.button>
                   </form>
                   <p className="text-white/25 text-[10px] text-center mt-4 tracking-wide font-[Metropolis]">
@@ -1194,10 +1244,7 @@ const PartnerCTASection = () => {
                     </svg>
                   </div>
                   <h3 className="text-white text-xl font-light mb-3">
-                    <BilingualText
-                      en="Request received."
-                      ar="تم استلام طلبك."
-                    />
+                    <BilingualText en="Request Sent." ar="تم إرسال طلبك." />
                   </h3>
                   <p className="text-white/50 text-sm font-[Metropolis]">
                     <BilingualText
