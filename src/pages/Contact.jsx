@@ -298,7 +298,7 @@ export default function Contact() {
 
   return (
     <PageWrapper>
-      <div className="flex flex-col lg:flex-row w-full min-h-[90vh]">
+      <div className="flex flex-col lg:flex-row w-full min-h-[105vh]">
         {/* Left/Text Column */}
         <section className="w-full lg:w-1/2 flex flex-col justify-center px-6 lg:px-24 py-12 lg:py-0 border-b lg:border-b-0 lg:border-r border-[var(--border-default)]">
           <motion.h1
@@ -335,7 +335,7 @@ export default function Contact() {
                 />
               </h3>
               <a
-                href="mailto:founders@flvrventures.com"
+                href={`mailto:${import.meta.env.VITE_EMAIL_ADDRESS}`}
                 className="group inline-flex items-center text-2xl text-[var(--text-primary)] hover:text-[var(--brand-accent)] transition-colors font-medium font-[Metropolis]"
               >
                 <BilingualText en="Let’s talk." ar="دعنا نتحدث." />
@@ -351,10 +351,28 @@ export default function Contact() {
                 />
               </h3>
               <a
-                href="mailto:investors@flvrventures.com"
+                href={`mailto:${import.meta.env.VITE_EMAIL_ADDRESS}`}
                 className="group inline-flex items-center text-2xl text-[var(--text-primary)] hover:text-[var(--brand-accent)] transition-colors font-medium font-[Metropolis]"
               >
                 <BilingualText en="Get in touch." ar="تواصل معنا." />
+                <ArrowRight className="ml-2 rtl:mr-2 rtl:ml-0 rtl:rotate-180 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+              </a>
+            </div>
+            <div className="pb-6 border-b border-[var(--border-default)]">
+              <h3 className="text-xl font-semibold text-[var(--brand-primary)] mb-2 font-[Metropolis]">
+                <BilingualText
+                  en="Directly Contact us for any opportunities or details"
+                  ar="تواصل معنا مباشرة لأي فرص أو تفاصيل"
+                />
+              </h3>
+              <a
+                href={`tel:+966-${import.meta.env.VITE_CONTACT}`}
+                className="group inline-flex items-center text-2xl text-[var(--text-primary)] hover:text-[var(--brand-accent)] transition-colors font-medium font-[Metropolis]"
+              >
+                <BilingualText
+                  en={`+966-${import.meta.env.VITE_CONTACT}`}
+                  ar={`+966-${import.meta.env.VITE_CONTACT}`}
+                />
                 <ArrowRight className="ml-2 rtl:mr-2 rtl:ml-0 rtl:rotate-180 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
               </a>
             </div>
