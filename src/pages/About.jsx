@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   motion,
   useScroll,
@@ -672,6 +673,7 @@ const DNASection = () => {
 // ─── Section 6 — CTA ──────────────────────────────────────────────────────────
 const CTASection = () => {
   const ref = useRef(null);
+  const navigate = useNavigate();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
@@ -734,6 +736,7 @@ const CTASection = () => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="btn-white"
+                onClick={() => navigate("/contact")}
               >
                 <BilingualText en="Contact Venture Team" ar="تواصل مع فريقنا" />
               </motion.button>
@@ -741,6 +744,7 @@ const CTASection = () => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="btn-ghost"
+                onClick={() => navigate("/portfolio")}
               >
                 <BilingualText en="View Portfolio" ar="استعرض المحفظة" />
               </motion.button>
@@ -773,6 +777,7 @@ const CTASection = () => {
                 <motion.div
                   key={i}
                   whileHover={{ x: 6 }}
+                  onClick={() => navigate("/contact")}
                   className="bg-white/8 hover:bg-white/14 border border-white/10 hover:border-white/20 rounded-2xl px-7 py-5 cursor-pointer transition-all duration-300 flex items-center justify-between group"
                 >
                   <span className="text-white/70 text-sm font-bold group-hover:text-white transition-colors font-[Metropolis]">
