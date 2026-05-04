@@ -63,9 +63,9 @@ export default function FloatingNav() {
         className="flex items-center space-x-3 rtl:space-x-reverse z-50"
       >
         <img
-          src="/FLVR_Logo.svg"
+          src="/flvr.svg"
           alt="FLVR Logo"
-          className="h-8 shadow-2xl scale-250"
+          className="h-8 shadow-2xl scale-150"
         />
       </Link>
 
