@@ -59,22 +59,22 @@ const principles = [
 const portfolio = [
   {
     id: "01",
-    slug: "lune-cafe",
-    name: "LUNE CAFÉ",
-    nameAr: "لون كافيه",
-    category: { en: "Specialty Coffee", ar: "قهوة مختصة" },
+    slug: "amm-abdo",
+    name: "AMM ABDO",
+    nameAr: "عم عبده",
+    category: { en: "Saudi Comfort Food", ar: "أكل شعبي سعودي" },
     stage: "Growth",
     stageAr: "نمو",
-    locations: 8,
-    growth: "8×",
+    locations: 6,
+    growth: "12×",
     growthLabel: {
-      en: "Revenue growth in 18 months",
-      ar: "نمو الإيرادات في 18 شهرًا",
+      en: "Unit Expansion in 12 months",
+      ar: "توسع الفروع في ١٢ شهرًا",
     },
-    target: { en: "National expansion", ar: "التوسع الوطني" },
-    image: images.brand1,
+    target: { en: "National scale-out", ar: "التوسع الوطني" },
+    image: "https://images.unsplash.com/photo-1541518763669-27fef04b14ea?q=80&w=1200&auto=format&fit=crop",
     status: "Active",
-    year: "2022",
+    year: "2023",
     details: [
       {
         label: { en: "Stage", ar: "المرحلة" },
@@ -82,9 +82,9 @@ const portfolio = [
       },
       {
         label: { en: "Locations", ar: "المواقع" },
-        value: { en: "8 branches, Riyadh", ar: "٨ فروع، الرياض" },
+        value: { en: "6 branches, Riyadh", ar: "٦ فروع، الرياض" },
       },
-      { label: { en: "Revenue Growth", ar: "نمو الإيرادات" }, value: "8×" },
+      { label: { en: "Revenue Growth", ar: "نمو الإيرادات" }, value: "12×" },
       {
         label: { en: "Exit Strategy", ar: "استراتيجية الخروج" },
         value: { en: "Trade sale / IPO", ar: "بيع تجاري / طرح عام" },
@@ -93,22 +93,22 @@ const portfolio = [
   },
   {
     id: "02",
-    slug: "beyond-burger",
-    name: "BEYOND BURGER",
-    nameAr: "بيوند برغر",
-    category: { en: "Fast Casual", ar: "وجبات سريعة راقية" },
+    slug: "burger-abo-ashra",
+    name: "BURGER ABO ASHRA",
+    nameAr: "برجر أبو عشرة",
+    category: { en: "Fast Casual (Value)", ar: "وجبات سريعة (قيمة)" },
     stage: "Seed",
     stageAr: "بذرة",
-    locations: 3,
-    growth: "Market Entry",
+    locations: 4,
+    growth: "Market Disruptor",
     growthLabel: {
-      en: "First Saudi plant-based concept",
-      ar: "أول مفهوم نباتي سعودي",
+      en: "Category leader in value segment",
+      ar: "رائد فئة القيمة السعرية",
     },
-    target: { en: "Category creation", ar: "إنشاء فئة" },
-    image: images.brand2,
+    target: { en: "Regional dominance", ar: "الهيمنة الإقليمية" },
+    image: "https://images.unsplash.com/photo-1571091718767-18b5b1457add?q=80&w=1200&auto=format&fit=crop",
     status: "Active",
-    year: "2023",
+    year: "2024",
     details: [
       {
         label: { en: "Stage", ar: "المرحلة" },
@@ -116,51 +116,11 @@ const portfolio = [
       },
       {
         label: { en: "Locations", ar: "المواقع" },
-        value: { en: "3 pilots, Jeddah", ar: "٣ تجارب، جدة" },
+        value: { en: "4 pilots, Jeddah", ar: "٤ تجارب، جدة" },
       },
       {
         label: { en: "Positioning", ar: "التموضع" },
-        value: { en: "Category pioneer", ar: "رائد الفئة" },
-      },
-      {
-        label: { en: "Exit Strategy", ar: "استراتيجية الخروج" },
-        value: { en: "Franchise scale-out", ar: "توسع بالامتياز" },
-      },
-    ],
-  },
-  {
-    id: "03",
-    slug: "cloud-kitchen-x",
-    name: "CLOUD KITCHEN X",
-    nameAr: "كلاود كيتشن إكس",
-    category: { en: "Ghost Kitchen", ar: "مطبخ سحابي" },
-    stage: "Growth",
-    stageAr: "نمو",
-    locations: 12,
-    growth: "3.2×",
-    growthLabel: {
-      en: "EBITDA margin vs. category avg.",
-      ar: "هامش قبل الضرائب مقارنة بمتوسط الفئة",
-    },
-    target: { en: "Enterprise value creation", ar: "خلق قيمة المؤسسة" },
-    image: images.brand3,
-    status: "Active",
-    year: "2021",
-    details: [
-      {
-        label: { en: "Stage", ar: "المرحلة" },
-        value: { en: "Growth equity", ar: "أسهم النمو" },
-      },
-      {
-        label: { en: "Locations", ar: "المواقع" },
-        value: {
-          en: "12 dark kitchens, KSA",
-          ar: "١٢ مطبخًا سحابيًا، المملكة",
-        },
-      },
-      {
-        label: { en: "EBITDA margin", ar: "هامش الأرباح" },
-        value: "3.2x avg.",
+        value: { en: "Mass market appeal", ar: "جاذبية السوق الشامل" },
       },
       {
         label: { en: "Exit Strategy", ar: "استراتيجية الخروج" },
@@ -169,27 +129,67 @@ const portfolio = [
     ],
   },
   {
-    id: "04",
-    slug: "new-street",
-    name: "THE NEW STREET",
-    nameAr: "الشارع الجديد",
-    category: { en: "Saudi Casual Dining", ar: "المطاعم غير الرسمية" },
-    stage: "Pre-Seed",
-    stageAr: "ما قبل البذرة",
-    locations: 1,
-    growth: "Launch",
+    id: "03",
+    slug: "johnny-jamal",
+    name: "JOHNNY & JAMAL",
+    nameAr: "جوني وجمال",
+    category: { en: "Fusion Casual Dining", ar: "مطعم فيوجن كاجوال" },
+    stage: "Growth",
+    stageAr: "نمو",
+    locations: 2,
+    growth: "4.5×",
     growthLabel: {
-      en: "Modernizing Saudi classics",
-      ar: "تحديث الكلاسيكيات السعودية",
+      en: "Social sentiment score",
+      ar: "مؤشر الرضا الاجتماعي",
     },
-    target: { en: "Cultural positioning", ar: "التموضع الثقافي" },
-    image: images.brand4,
+    target: { en: "Brand licensing", ar: "ترخيص العلامة التجارية" },
+    image: "https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1200&auto=format&fit=crop",
+    status: "Active",
+    year: "2023",
+    details: [
+      {
+        label: { en: "Stage", ar: "المرحلة" },
+        value: { en: "Growth equity", ar: "أسهم النمو" },
+      },
+      {
+        label: { en: "Locations", ar: "المواقع" },
+        value: {
+          en: "2 flagships, Al Khobar",
+          ar: "فرعان رئيسيان، الخبر",
+        },
+      },
+      {
+        label: { en: "Retention Rate", ar: "معدل الاحتفاظ" },
+        value: "88%",
+      },
+      {
+        label: { en: "Exit Strategy", ar: "استراتيجية الخروج" },
+        value: { en: "National expansion", ar: "توسع وطني" },
+      },
+    ],
+  },
+  {
+    id: "04",
+    slug: "the-butchery-counter",
+    name: "THE BUTCHERY COUNTER",
+    nameAr: "ذا بوتشري كاونتر",
+    category: { en: "Premium Steakhouse", ar: "ستيك هاوس فاخر" },
+    stage: "Seed",
+    stageAr: "بذرة",
+    locations: 1,
+    growth: "Premium Entry",
+    growthLabel: {
+      en: "Farm-to-table supply chain",
+      ar: "سلسلة توريد من المزرعة للمائدة",
+    },
+    target: { en: "Luxury F&B positioning", ar: "التموضع في الأغذية الفاخرة" },
+    image: "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?q=80&w=1200&auto=format&fit=crop",
     status: "Active",
     year: "2024",
     details: [
       {
         label: { en: "Stage", ar: "المرحلة" },
-        value: { en: "Pre-Seed", ar: "ما قبل البذرة" },
+        value: { en: "Seed+", ar: "بذرة+" },
       },
       {
         label: { en: "Locations", ar: "المواقع" },
@@ -197,15 +197,90 @@ const portfolio = [
       },
       {
         label: { en: "Concept type", ar: "نوع المفهوم" },
-        value: { en: "Cultural dining", ar: "تجربة ثقافية" },
+        value: { en: "Craft Butchery", ar: "جزارة حرفية" },
       },
       {
         label: { en: "Exit Strategy", ar: "استراتيجية الخروج" },
-        value: { en: "Multi-city franchise", ar: "امتياز متعدد المدن" },
+        value: { en: "Boutique chain", ar: "سلسلة بوتيك" },
+      },
+    ],
+  },
+  {
+    id: "05",
+    slug: "happiness-lab",
+    name: "HAPPINESS LAB",
+    nameAr: "لاب السعادة",
+    category: { en: "Experimental Dessert", ar: "حلويات تجريبية" },
+    stage: "Seed",
+    stageAr: "بذرة",
+    locations: 3,
+    growth: "3.8×",
+    growthLabel: {
+      en: "Average ticket size vs avg",
+      ar: "متوسط حجم الفاتورة مقارنة بالمتوسط",
+    },
+    target: { en: "Retail experience focus", ar: "التركيز على تجربة التجزئة" },
+    image: "https://images.unsplash.com/photo-1551024601-bec78aea704b?q=80&w=1200&auto=format&fit=crop",
+    status: "Active",
+    year: "2024",
+    details: [
+      {
+        label: { en: "Stage", ar: "المرحلة" },
+        value: { en: "Seed", ar: "بذرة" },
+      },
+      {
+        label: { en: "Locations", ar: "المواقع" },
+        value: { en: "3 kiosks, Riyadh", ar: "٣ منصات، الرياض" },
+      },
+      {
+        label: { en: "Innovation", ar: "الابتكار" },
+        value: { en: "Sensory dining", ar: "تجربة حسية" },
+      },
+      {
+        label: { en: "Exit Strategy", ar: "استراتيجية الخروج" },
+        value: { en: "Franchise model", ar: "نموذج الامتياز" },
+      },
+    ],
+  },
+  {
+    id: "06",
+    slug: "dilli-biryani",
+    name: "DILLI BIRYANI",
+    nameAr: "ديلي برياني",
+    category: { en: "Authentic Indian", ar: "أكل هندي أصيل" },
+    stage: "Growth",
+    stageAr: "نمو",
+    locations: 5,
+    growth: "220%",
+    growthLabel: {
+      en: "Delivery volume growth",
+      ar: "نمو حجم طلبات التوصيل",
+    },
+    target: { en: "Cloud kitchen expansion", ar: "التوسع في المطابخ السحابية" },
+    image: "https://images.unsplash.com/photo-1589302168068-964664d93dc0?q=80&w=1200&auto=format&fit=crop",
+    status: "Active",
+    year: "2022",
+    details: [
+      {
+        label: { en: "Stage", ar: "المرحلة" },
+        value: { en: "Growth", ar: "نمو" },
+      },
+      {
+        label: { en: "Locations", ar: "المواقع" },
+        value: { en: "5 units, KSA", ar: "٥ وحدات، المملكة" },
+      },
+      {
+        label: { en: "Kitchen Type", ar: "نوع المطبخ" },
+        value: { en: "Hybrid model", ar: "نموذج هجين" },
+      },
+      {
+        label: { en: "Exit Strategy", ar: "استراتيجية الخروج" },
+        value: { en: "Regional acquisition", ar: "استحواذ إقليمي" },
       },
     ],
   },
 ];
+
 
 const metrics = [
   {

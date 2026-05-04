@@ -50,215 +50,318 @@ const AnimatedNumber = ({ value }) => {
 };
 
 const caseStudyData = {
-  "lune-cafe": {
-    name: "LUNE CAFÉ",
-    nameAr: "لون كافيه",
-    vertical: { en: "Specialty Coffee", ar: "قهوة مختصة" },
-    heroImage: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=2000&auto=format&fit=crop",
-    mainMetric: "8.4×",
-    metricLabel: { en: "Revenue Multiple", ar: "مضاعف الإيرادات" },
-    gradient: "from-amber-400 via-orange-500 to-rose-500",
+  "amm-abdo": {
+    name: "AMM ABDO",
+    nameAr: "عم عبده",
+    vertical: { en: "Saudi Comfort Food", ar: "أكل شعبي سعودي" },
+    heroImage: "https://images.unsplash.com/photo-1541518763669-27fef04b14ea?q=80&w=2000&auto=format&fit=crop",
+    mainMetric: "12×",
+    metricLabel: { en: "Unit Expansion", ar: "توسع الوحدات" },
+    gradient: "from-orange-400 via-amber-500 to-yellow-600",
     summary: {
-      en: "From a single neighborhood roastery to a city-wide benchmark for specialty coffee.",
-      ar: "من محمصة محلية في حي واحد إلى معيار مرجعي للقهوة المختصة على مستوى المدينة."
+      en: "Modernizing traditional Saudi street food with institutional-grade operations.",
+      ar: "تحديث الأكل الشعبي السعودي التقليدي بعمليات ذات معايير مؤسسية."
     },
     stats: [
-      { label: { en: "Growth", ar: "النمو" }, val: "840%", icon: TrendingUp },
-      { label: { en: "Branches", ar: "الفروع" }, val: "08", icon: MapPin },
-      { label: { en: "Loyalty", ar: "الولاء" }, val: "92%", icon: Users },
+      { label: { en: "Growth", ar: "النمو" }, val: "1200%", icon: TrendingUp },
+      { label: { en: "Branches", ar: "الفروع" }, val: "06", icon: MapPin },
+      { label: { en: "Throughput", ar: "الإنتاجية" }, val: "High", icon: Users },
     ],
     challenge: {
-      title: { en: "The Scale Ceiling", ar: "سقف التوسع" },
+      title: { en: "The Quality Dilemma", ar: "معضلة الجودة" },
       content: {
-        en: "Lune had the product-market fit but lacked the operational blueprint to scale without losing quality. The challenge was transitioning from founder-led operations to an institutional system while maintaining the 'soul' of the neighborhood café.",
-        ar: "كان لدى لون الملاءمة بين المنتج والسوق ولكنها افتقرت إلى المخطط التشغيلي للتوسع دون فقدان الجودة. كان التحدي يكمن في الانتقال من العمليات التي يقودها المؤسس إلى نظام مؤسسي مع الحفاظ على 'روح' المقهى المحلي."
+        en: "Traditional comfort food often relies on individual chef skills, making consistency difficult at scale. Amm Abdo needed to industrialize the 'grandmother's taste' without losing the soul of the recipe.",
+        ar: "غالباً ما يعتمد الأكل الشعبي التقليدي على مهارات الطهاة الفردية، مما يجعل الاتساق صعباً عند التوسع. احتاج عم عبده إلى تحويل 'نفس الجدة' إلى نظام صناعي دون فقدان روح الوصفة."
       }
     },
     intervention: [
       {
-        title: { en: "Operational Blueprint", ar: "المخطط التشغيلي" },
-        desc: { en: "We built a modular SOP system allowing for rapid branch rollouts in under 45 days.", ar: "قمنا ببناء نظام إجراءات تشغيلية قياسية يسمح بنشر الفروع السريعة في أقل من ٤٥ يومًا." }
-      },
-      {
-        title: { en: "Capital Structuring", ar: "هيكلة رأس المال" },
-        desc: { en: "Secured Series A funding to fuel multi-site expansion across Riyadh.", ar: "تأمين تمويل الجولة أ لدعم التوسع في مواقع متعددة في جميع أنحاء الرياض." }
+        title: { en: "SOP Engineering", ar: "هندسة الإجراءات" },
+        desc: { en: "Developed a proprietary spice-blend and pre-portioning system to ensure flavor parity across all 6 sites.", ar: "تطوير نظام خلط توابل وتقسيم مسبق لضمان تماثل النكهة في جميع المواقع الستة." }
       },
       {
         title: { en: "Supply Chain", ar: "سلسلة التوريد" },
-        desc: { en: "Direct-trade sourcing agreements reducing raw material costs by 18%.", ar: "اتفاقيات توريد التجارة المباشرة التي قللت تكاليف المواد الخام بنسبة ١٨٪." }
+        desc: { en: "Centralized sourcing for local ingredients, reducing food cost by 22% while increasing quality control.", ar: "توحيد مصادر المكونات المحلية، مما قلل تكلفة الغذاء بنسبة ٢٢٪ مع زيادة مراقبة الجودة." }
       },
       {
-        title: { en: "Digital Transformation", ar: "التحول الرقمي" },
-        desc: { en: "Integrated a unified POS and loyalty system that increased repeat visits by 22%.", ar: "دمج نظام نقاط بيع وولاء موحد أدى إلى زيادة الزيارات المتكررة بنسبة ٢٢٪." }
+        title: { en: "Brand Evolution", ar: "تطور العلامة" },
+        desc: { en: "Reimagined the visual identity to appeal to the modern Saudi youth while retaining nostalgia.", ar: "إعادة تصور الهوية البصرية لجذب الشباب السعودي الحديث مع الحفاظ على الحنين إلى الماضي." }
+      },
+      {
+        title: { en: "Operational Tech", ar: "تكنولوجيا العمليات" },
+        desc: { en: "Implemented a kitchen display system (KDS) that reduced average order prep time by 35%.", ar: "تنفيذ نظام عرض المطبخ (KDS) الذي قلل من متوسط وقت تحضير الطلبات بنسبة ٣٥٪." }
       }
     ],
     results: {
-      en: "Today, Lune is a household name in Riyadh's specialty coffee scene, with a clear path toward national expansion and a potential exit in 2027.",
-      ar: "اليوم، أصبح لون اسماً مألوفاً في مشهد القهوة المختصة في الرياض، مع مسار واضح نحو التوسع الوطني وخروج محتمل في عام ٢٠٢٧."
+      en: "Amm Abdo is now the fastest-growing Saudi comfort food brand in Riyadh, with a proven model ready for national franchise.",
+      ar: "عم عبده هو الآن أسرع علامة تجارية للأكل الشعبي السعودي نمواً في الرياض، مع نموذج مثبت جاهز للامتياز الوطني."
     },
     gallery: [
-      "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=800&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1541518763669-27fef04b14ea?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=800&auto=format&fit=crop"
     ]
   },
-  "beyond-burger": {
-    name: "BEYOND BURGER",
-    nameAr: "بيوند برغر",
-    vertical: { en: "Plant-Based Casual", ar: "نباتي كاجوال" },
-    heroImage: "https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=2000&auto=format&fit=crop",
-    mainMetric: "Category Leader",
-    metricLabel: { en: "Market Position", ar: "مكانة السوق" },
-    gradient: "from-emerald-400 via-teal-500 to-cyan-600",
+  "burger-abo-ashra": {
+    name: "BURGER ABO ASHRA",
+    nameAr: "برجر أبو عشرة",
+    vertical: { en: "Fast Casual (Value)", ar: "وجبات سريعة (قيمة)" },
+    heroImage: "https://images.unsplash.com/photo-1571091718767-18b5b1457add?q=80&w=2000&auto=format&fit=crop",
+    mainMetric: "Market Leader",
+    metricLabel: { en: "Value Segment", ar: "فئة القيمة" },
+    gradient: "from-red-400 via-rose-500 to-crimson-600",
     summary: {
-      en: "Redefining the burger experience for the health-conscious Saudi youth.",
-      ar: "إعادة تعريف تجربة البرجر للشباب السعودي المهتم بالصحة."
+      en: "Disrupting the budget burger market with high-quality ingredients and lean operations.",
+      ar: "تعطيل سوق البرجر الموفر بمكونات عالية الجودة وعمليات رشيقة."
     },
     stats: [
-      { label: { en: "Market Share", ar: "حصة السوق" }, val: "34%", icon: TrendingUp },
-      { label: { en: "Outlets", ar: "المنافذ" }, val: "03", icon: MapPin },
-      { label: { en: "Retention", ar: "الاحتفاظ" }, val: "78%", icon: Users },
+      { label: { en: "Efficiency", ar: "الكفاءة" }, val: "94%", icon: TrendingUp },
+      { label: { en: "Outlets", ar: "المنافذ" }, val: "04", icon: MapPin },
+      { label: { en: "Repeat", ar: "التكرار" }, val: "82%", icon: Users },
     ],
     challenge: {
-      title: { en: "The Stigma", ar: "الوصمة" },
+      title: { en: "The Price Trap", ar: "فخ السعر" },
       content: {
-        en: "Plant-based food was seen as 'boring' or 'tasteless' in the local market. FLVR had to create a brand that led with flavor and 'cool-factor' rather than just health benefits.",
-        ar: "كان يُنظر إلى الطعام النباتي على أنه 'ممل' أو 'عديم الطعم' في السوق المحلي. كان على فليفر إنشاء علامة تجارية تقود بالنكهة و 'عامل الجذب' بدلاً من مجرد الفوائد الصحية."
+        en: "In the value segment, margins are razor-thin. The challenge was to maintain a competitive price point while ensuring a product quality that outperforms international competitors.",
+        ar: "في فئة القيمة، تكون الهوامش ضئيلة للغاية. كان التحدي هو الحفاظ على نقطة سعر تنافسية مع ضمان جودة منتج تتفوق على المنافسين الدوليين."
       }
     },
     intervention: [
       {
-        title: { en: "Brand Identity", ar: "هوية العلامة" },
-        desc: { en: "Developed a high-energy, brutalist aesthetic that resonated with Gen-Z.", ar: "تطوير جمالية بروتالية مفعمة بالطاقة لاقت صدى لدى الجيل زد." }
+        title: { en: "Lean Logistics", ar: "الخدمات اللوجستية الرشيقة" },
+        desc: { en: "Optimized the entire supply chain to eliminate middlemen, securing a 15% lower procurement cost.", ar: "تحسين سلسلة التوريد بالكامل للتخلص من الوسطاء، وتأمين تكلفة شراء أقل بنسبة ١٥٪." }
       },
       {
-        title: { en: "Flavor R&D", ar: "البحث والتطوير" },
-        desc: { en: "Custom patty recipes specifically tuned to the Arabian palate's preference for spices.", ar: "وصفات برجر مخصصة تم ضبطها خصيصاً لتناسب تفضيلات الذوق العربي للتوابل." }
+        title: { en: "Menu Simplicity", ar: "بساطة القائمة" },
+        desc: { en: "Focused on a high-velocity, 4-item core menu to minimize waste and maximize speed.", ar: "التركيز على قائمة أساسية سريعة الحركة مكونة من ٤ عناصر لتقليل الهدر وزيادة السرعة." }
       },
       {
-        title: { en: "Influencer Network", ar: "شبكة المؤثرين" },
-        desc: { en: "Strategically partnered with lifestyle icons to normalize plant-based dining in Saudi.", ar: "الشراكة الاستراتيجية مع أيقونات أسلوب الحياة لتطبيع تناول الطعام النباتي في السعودية." }
+        title: { en: "Volume Strategy", ar: "استراتيجية الحجم" },
+        desc: { en: "Leveraged delivery-first sites to drive high volume with minimal front-of-house overhead.", ar: "الاستفادة من المواقع التي تركز على التوصيل أولاً لتحقيق حجم مبيعات كبير مع الحد الأدنى من التكاليف العامة." }
       },
       {
-        title: { en: "Menu Engineering", ar: "هندسة القائمة" },
-        desc: { en: "Optimized ingredient cross-utilization to reduce food waste by 14%.", ar: "تحسين الاستخدام المتبادل للمكونات لتقليل نفايات الطعام بنسبة ١٤٪." }
+        title: { en: "Viral Marketing", ar: "التسويق الفيروسي" },
+        desc: { en: "Executed a 'brutalist' digital campaign that turned the brand's simplicity into its greatest strength.", ar: "تنفيذ حملة رقمية 'بروتالية' حولت بساطة العلامة التجارية إلى أكبر نقطة قوة لها." }
       }
     ],
     results: {
-      en: "Beyond Burger is now the most recognized Saudi-born plant-based brand, proving that sustainability and scale can coexist in F&B.",
-      ar: "بيوند برجر هي الآن العلامة التجارية النباتية السعودية الأكثر شهرة، مما يثبت أن الاستدامة والتوسع يمكن أن يتعايشا في قطاع الأغذية والمشروبات."
+      en: "Burger Abo Ashra has redefined value for Saudi youth, achieving profitability within the first 6 months of operation.",
+      ar: "أعاد برجر أبو عشرة تعريف القيمة للشباب السعودي، محققاً الربحية خلال الأشهر الستة الأولى من التشغيل."
     },
     gallery: [
-      "https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1571091718767-18b5b1457add?q=80&w=800&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?q=80&w=800&auto=format&fit=crop"
     ]
   },
-  "cloud-kitchen-x": {
-    name: "CLOUD KITCHEN X",
-    nameAr: "كلاود كيتشن إكس",
-    vertical: { en: "Ghost Kitchen", ar: "مطبخ سحابي" },
-    heroImage: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2000&auto=format&fit=crop",
-    mainMetric: "3.2×",
-    metricLabel: { en: "EBITDA Efficiency", ar: "كفاءة الأرباح" },
-    gradient: "from-blue-400 via-indigo-500 to-violet-600",
+  "johnny-jamal": {
+    name: "JOHNNY & JAMAL",
+    nameAr: "جوني وجمال",
+    vertical: { en: "Fusion Casual Dining", ar: "فيوجن كاجوال" },
+    heroImage: "https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=2000&auto=format&fit=crop",
+    mainMetric: "4.5×",
+    metricLabel: { en: "Sentiment Score", ar: "مؤشر الرضا" },
+    gradient: "from-blue-400 via-indigo-500 to-purple-600",
     summary: {
-      en: "Operational excellence in the invisible engine of food delivery.",
-      ar: "التميز التشغيلي في المحرك الخفي لتوصيل الطعام."
+      en: "Blending international aesthetics with local flavors for a next-gen dining experience.",
+      ar: "مزج الجماليات الدولية مع النكهات المحلية لتجربة طعام من الجيل القادم."
     },
     stats: [
-      { label: { en: "Efficiency", ar: "الكفاءة" }, val: "3.2x", icon: TrendingUp },
-      { label: { en: "Units", ar: "الوحدات" }, val: "12", icon: MapPin },
-      { label: { en: "Uptime", ar: "وقت التشغيل" }, val: "99.9%", icon: Users },
+      { label: { en: "Love Index", ar: "مؤشر الحب" }, val: "88%", icon: TrendingUp },
+      { label: { en: "Flagships", ar: "الفروع" }, val: "02", icon: MapPin },
+      { label: { en: "Social", ar: "التواصل" }, val: "High", icon: Users },
     ],
     challenge: {
-      title: { en: "Unit Economics", ar: "اقتصاديات الوحدة" },
+      title: { en: "Cultural Fusion", ar: "الاندماج الثقافي" },
       content: {
-        en: "High commission rates from aggregators were killing margins. Cloud Kitchen X needed a volume-led strategy combined with aggressive cost-of-labor optimization.",
-        ar: "كانت معدلات العمولات المرتفعة من منصات التوصيل تقتل الهوامش. احتاجت كلاود كيتشن إكس إلى استراتيجية تقودها الأحجام مدمجة مع تحسين قوي لتكلفة العمالة."
+        en: "Fusion concepts often fail by trying to please everyone. Johnny & Jamal needed a sharp, niche identity that resonated with the 'East meets West' lifestyle of modern Al Khobar.",
+        ar: "غالباً ما تفشل مفاهيم الفيوجن بمحاولة إرضاء الجميع. احتاج جوني وجمال إلى هوية حادة ومحددة تتماشى مع أسلوب حياة 'الشرق يلتقي الغرب' في الخبر الحديثة."
       }
     },
     intervention: [
       {
-        title: { en: "Proprietary ERP", ar: "نظام ERP خاص" },
-        desc: { en: "A custom operating system to manage 14 brands from a single kitchen line.", ar: "نظام تشغيل مخصص لإدارة ١٤ علامة تجارية من خط مطبخ واحد." }
+        title: { en: "Experience Design", ar: "تصميم التجربة" },
+        desc: { en: "Created an immersive interior concept that changes its mood from daytime cafe to evening dining.", ar: "إنشاء مفهوم داخلي غامر يغير مزاجه من مقهى نهاري إلى مطعم مسائي." }
       },
       {
-        title: { en: "Labor Engineering", ar: "هندسة العمالة" },
-        desc: { en: "Cross-training staff to handle diverse cuisines, maximizing labor utility by 40%.", ar: "تدريب الموظفين على التعامل مع مطابخ متنوعة، مما رفع فائدة العمالة بنسبة ٤٠٪." }
+        title: { en: "Flavor R&D", ar: "البحث والتطوير" },
+        desc: { en: "Custom menu development blending Californian techniques with GCC spices.", ar: "تطوير قائمة مخصصة تمزج التقنيات الكاليفورنية مع توابل دول مجلس التعاون الخليجي." }
       },
       {
-        title: { en: "Demand Forecasting", ar: "التنبؤ بالطلب" },
-        desc: { en: "Implemented AI models to predict peak hours, reducing ingredient spoilage by 25%.", ar: "تنفيذ نماذج الذكاء الاصطناعي للتنبؤ بساعات الذروة، مما قلل من تلف المكونات بنسبة ٢٥٪." }
+        title: { en: "Community Play", ar: "بناء المجتمع" },
+        desc: { en: "Host regular 'founder nights' to build a loyal community of early adopters and tastemakers.", ar: "استضافة 'ليالي المؤسسين' بانتظام لبناء مجتمع مخلص من المتبنين الأوائل وصناع الذوق." }
       },
       {
-        title: { en: "Dark Brand Incubation", ar: "حضانة العلامات التجارية" },
-        desc: { en: "Developed 6 in-house 'dark brands' to fill market gaps identified through data.", ar: "تطوير ٦ 'علامات تجارية سحابية' داخلية لسد فجوات السوق المحددة من خلال البيانات." }
+        title: { en: "Digital Ecosystem", ar: "النظام الرقمي" },
+        desc: { en: "Built a custom reservation and loyalty app that captures deep customer preferences.", ar: "بناء تطبيق حجز وولاء مخصص يلتقط تفضيلات العملاء العميقة." }
       }
     ],
     results: {
-      en: "Cloud Kitchen X has achieved the highest EBITDA margin in its category across the GCC.",
-      ar: "حققت كلاود كيتشن إكس أعلى هامش ربح في فئتها في جميع أنحاء دول مجلس التعاون الخليجي."
+      en: "Johnny & Jamal has become the top-rated casual dining spot in Al Khobar, with plans to launch in Riyadh by 2026.",
+      ar: "أصبح جوني وجمال المكان الأكثر تقييماً لتناول الطعام غير الرسمي في الخبر، مع خطط للإطلاق في الرياض بحلول عام ٢٠٢٦."
     },
     gallery: [
-      "https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1516738901171-8eb4fc13bd20?q=80&w=800&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=800&auto=format&fit=crop"
     ]
   },
-  "new-street": {
-    name: "THE NEW STREET",
-    nameAr: "الشارع الجديد",
-    vertical: { en: "Saudi Casual Dining", ar: "مطعم سعودي" },
-    heroImage: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=2000&auto=format&fit=crop",
-    mainMetric: "Launch Success",
-    metricLabel: { en: "Market Entry", ar: "دخول السوق" },
-    gradient: "from-rose-400 via-pink-500 to-purple-600",
+  "the-butchery-counter": {
+    name: "THE BUTCHERY COUNTER",
+    nameAr: "ذا بوتشري كاونتر",
+    vertical: { en: "Premium Steakhouse", ar: "ستيك هاوس فاخر" },
+    heroImage: "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?q=80&w=2000&auto=format&fit=crop",
+    mainMetric: "Farm-to-Table",
+    metricLabel: { en: "Supply Integrity", ar: "سلامة التوريد" },
+    gradient: "from-zinc-700 via-stone-800 to-black",
     summary: {
-      en: "Modernizing Saudi culinary classics for a new generation of diners.",
-      ar: "تحديث كلاسيكيات الطهي السعودي لجيل جديد من رواد المطاعم."
+      en: "Elevating the meat experience through transparency, craft, and premium sourcing.",
+      ar: "الارتقاء بتجربة اللحوم من خلال الشفافية والحرفية والتوريد المتميز."
     },
     stats: [
-      { label: { en: "Capacity", ar: "السعة" }, val: "100%", icon: TrendingUp },
-      { label: { en: "Outlets", ar: "المنافذ" }, val: "01", icon: MapPin },
-      { label: { en: "Footfall", ar: "الإقبال" }, val: "High", icon: Users },
+      { label: { en: "Quality", ar: "الجودة" }, val: "A+", icon: TrendingUp },
+      { label: { en: "Flagship", ar: "الرئيسي" }, val: "01", icon: MapPin },
+      { label: { en: "Authority", ar: "السلطة" }, val: "High", icon: Users },
     ],
     challenge: {
-      title: { en: "Tradition vs Scale", ar: "التقليد مقابل التوسع" },
+      title: { en: "The Trust Gap", ar: "فجوة الثقة" },
       content: {
-        en: "Traditional Saudi dining often relies on boutique, slow-moving operations. The New Street needed a system that could deliver authenticity at the speed and scale of a modern commercial brand.",
-        ar: "غالباً ما تعتمد المطاعم السعودية التقليدية على عمليات صغيرة وبطيئة. احتاج الشارع الجديد إلى نظام يمكنه تقديم الأصالة بسرعة وحجم العلامة التجارية التجارية الحديثة."
+        en: "The premium meat market was flooded with imported claims but lacked local transparency. The Butchery Counter had to prove its 'farm-to-table' credentials in a market skeptical of organic claims.",
+        ar: "كان سوق اللحوم الفاخرة غارقاً في الادعاءات المستوردة ولكنه افتقر إلى الشفافية المحلية. كان على ذا بوتشري كاونتر إثبات مصداقية 'من المزرعة إلى المائدة' في سوق يشكك في الادعاءات العضوية."
       }
     },
     intervention: [
       {
-        title: { en: "Cultural Branding", ar: "العلامة التجارية الثقافية" },
-        desc: { en: "Reimagined traditional elements into a sharp, brutalist brand identity.", ar: "إعادة تصور العناصر التقليدية في هوية علامة تجارية حادة وبروتالية." }
+        title: { en: "Direct Sourcing", ar: "التوريد المباشر" },
+        desc: { en: "Eliminated wholesale brokers by establishing exclusive contracts with local organic farms.", ar: "القضاء على وسطاء الجملة من خلال إبرام عقود حصرية مع مزارع عضوية محلية." }
       },
       {
-        title: { en: "Systematization", ar: "التحويل إلى نظام" },
-        desc: { en: "Developed a central prep-kitchen model to ensure consistency across future multi-city sites.", ar: "تطوير نموذج مطبخ تحضير مركزي لضمان الاتساق عبر المواقع المستقبلية في مدن متعددة." }
+        title: { en: "Craft Butchery", ar: "الجزارة الحرفية" },
+        desc: { en: "In-house aging rooms and master butchers performing tableside cuts.", ar: "غرف تعتيق داخلية وجزارين محترفين يقومون بتقطيع اللحم بجانب الطاولة." }
       },
       {
-        title: { en: "Real Estate Strategy", ar: "استراتيجية العقارات" },
-        desc: { en: "Secured a high-visibility flagship location in Riyadh's primary lifestyle district.", ar: "تأمين موقع رئيسي بارز في منطقة أسلوب الحياة الأساسية في الرياض." }
+        title: { en: "Education Hub", ar: "مركز تعليمي" },
+        desc: { en: "Integrated a workshop space to teach customers about meat grades and sustainable cooking.", ar: "دمج مساحة ورشة عمل لتعليم العملاء حول درجات اللحوم والطهي المستدام." }
       },
       {
-        title: { en: "Hospitality Academy", ar: "أكاديمية الضيافة" },
-        desc: { en: "Built an internal training program to standardize the 'modern Saudi' service experience.", ar: "بناء برنامج تدريبي داخلي لتوحيد تجربة الخدمة 'السعودية الحديثة'." }
+        title: { en: "Zero-Waste Ops", ar: "عمليات بلا هدر" },
+        desc: { en: "Developed a nose-to-tail menu that ensures 100% carcass utilization, increasing margin by 18%.", ar: "تطوير قائمة طعام تعتمد على استغلال الحيوان بالكامل لضمان الاستفادة بنسبة ١٠٠٪، مما رفع الهامش بنسبة ١٨٪." }
       }
     ],
     results: {
-      en: "The flagship location in Riyadh has become a cultural landmark, consistently operating at full capacity since its launch.",
-      ar: "أصبح الموقع الرئيسي في الرياض معلماً ثقافياً، حيث يعمل باستمرار بكامل طاقته منذ إطلاقه."
+      en: "The Butchery Counter has established itself as Riyadh's ultimate authority on premium meat, with a waitlist exceeding 2 weeks.",
+      ar: "أثبت ذا بوتشري كاونتر نفسه كمرجع نهائي للحوم الفاخرة في الرياض، مع قائمة انتظار تتجاوز الأسبوعين."
     },
     gallery: [
-      "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1551024601-bec78aea704b?q=80&w=800&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop"
+    ]
+  },
+  "happiness-lab": {
+    name: "HAPPINESS LAB",
+    nameAr: "لاب السعادة",
+    vertical: { en: "Experimental Dessert", ar: "حلويات تجريبية" },
+    heroImage: "https://images.unsplash.com/photo-1551024601-bec78aea704b?q=80&w=2000&auto=format&fit=crop",
+    mainMetric: "3.8×",
+    metricLabel: { en: "Ticket Size vs Avg", ar: "حجم الفاتورة" },
+    gradient: "from-pink-400 via-rose-500 to-fuchsia-600",
+    summary: {
+      en: "Engineering joy through innovative dessert chemistry and retail theater.",
+      ar: "هندسة الفرح من خلال كيمياء الحلويات المبتكرة والمسرح التجاري."
+    },
+    stats: [
+      { label: { en: "Conversion", ar: "التحويل" }, val: "92%", icon: TrendingUp },
+      { label: { en: "Kiosks", ar: "المنصات" }, val: "03", icon: MapPin },
+      { label: { en: "Engagement", ar: "التفاعل" }, val: "High", icon: Users },
+    ],
+    challenge: {
+      title: { en: "Experience Saturation", ar: "تشبع التجربة" },
+      content: {
+        en: "The dessert market in Saudi is hyper-competitive. Happiness Lab had to move beyond just 'tasting good' to creating an 'Instagrammable' ritual that drives organic growth.",
+        ar: "سوق الحلويات في السعودية تنافسي للغاية. كان على لاب السعادة أن يتخطى مجرد 'المذاق الجيد' إلى إنشاء طقوس 'قابلة للمشاركة' تدفع النمو العضوي."
+      }
+    },
+    intervention: [
+      {
+        title: { en: "Retail Theater", ar: "مسرح التجزئة" },
+        desc: { en: "Using liquid nitrogen and custom plating rituals to turn every order into a performance.", ar: "استخدام النيتروجين السائل وطقوس التقديم المخصصة لتحويل كل طلب إلى عرض أدائي." }
+      },
+      {
+        title: { en: "Mood-Based Menu", ar: "قائمة تعتمد على المزاج" },
+        desc: { en: "Developed desserts scientifically paired with ingredients that trigger dopamine release.", ar: "تطوير حلويات مقترنة علمياً بمكونات تحفز إفراز الدوبامين." }
+      },
+      {
+        title: { en: "Micro-Unit Model", ar: "نموذج الوحدات الصغيرة" },
+        desc: { en: "Focused on high-footfall kiosks to minimize rent while maximizing brand visibility.", ar: "التركيز على منصات عالية الإقبال لتقليل الإيجار مع زيادة رؤية العلامة التجارية." }
+      },
+      {
+        title: { en: "Influencer Loops", ar: "حلقات المؤثرين" },
+        desc: { en: "Built a referral system where social shares translate directly into exclusive 'secret menu' access.", ar: "بناء نظام إحالة حيث تترجم المشاركات الاجتماعية مباشرة إلى وصول حصري لـ 'القائمة السرية'." }
+      }
+    ],
+    results: {
+      en: "Happiness Lab has achieved viral status in Riyadh's retail hubs, proving that experiential retail is the future of F&B.",
+      ar: "حقق لاب السعادة مكانة فيروسية في مراكز التسوق بالرياض، مما يثبت أن تجارة التجزئة التجريبية هي مستقبل الأغذية والمشروبات."
+    },
+    gallery: [
+      "https://images.unsplash.com/photo-1551024601-bec78aea704b?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?q=80&w=800&auto=format&fit=crop"
+    ]
+  },
+  "dilli-biryani": {
+    name: "DILLI BIRYANI",
+    nameAr: "ديلي برياني",
+    vertical: { en: "Authentic Indian", ar: "أكل هندي أصيل" },
+    heroImage: "https://images.unsplash.com/photo-1589302168068-964664d93dc0?q=80&w=2000&auto=format&fit=crop",
+    mainMetric: "220%",
+    metricLabel: { en: "Delivery Volume", ar: "حجم التوصيل" },
+    gradient: "from-emerald-500 via-teal-600 to-cyan-700",
+    summary: {
+      en: "Standardizing the art of authentic Delhi biryani for rapid national scale.",
+      ar: "توحيد فن البرياني الدلهي الأصيل للتوسع الوطني السريع."
+    },
+    stats: [
+      { label: { en: "Retention", ar: "الاحتفاظ" }, val: "76%", icon: TrendingUp },
+      { label: { en: "Units", ar: "الوحدات" }, val: "05", icon: MapPin },
+      { label: { en: "Standard", ar: "المعيار" }, val: "High", icon: Users },
+    ],
+    challenge: {
+      title: { en: "Consistency at Scale", ar: "الاتساق عند التوسع" },
+      content: {
+        en: "Biryani is notoriously difficult to standardize. Dilli Biryani needed to maintain the complexity of 32 spices while operating through delivery-optimized cloud kitchens.",
+        ar: "من المعروف أن البرياني يصعب توحيده. احتاج ديلي برياني إلى الحفاظ على تعقيد ٣٢ توابل أثناء العمل من خلال مطابخ سحابية محسنة للتوصيل."
+      }
+    },
+    intervention: [
+      {
+        title: { en: "Spice Tech", ar: "تكنولوجيا التوابل" },
+        desc: { en: "Developed a proprietary vacuum-sealed spice-infusion process that preserves aroma for up to 45 mins of transit.", ar: "تطوير عملية ضخ توابل مغلفة بالتفريغ تحافظ على الرائحة لمدة تصل إلى ٤٥ دقيقة من النقل." }
+      },
+      {
+        title: { en: "Hybrid Model", ar: "النموذج الهجين" },
+        desc: { en: "Operated both 'experience centers' for dine-in and 'dark nodes' for rapid delivery fulfillment.", ar: "تشغيل كل من 'مراكز التجربة' لتناول الطعام في الداخل و 'العقد السحابية' لتنفيذ التوصيل السريع." }
+      },
+      {
+        title: { en: "Labor Training", ar: "تدريب العمالة" },
+        desc: { en: "Built a centralized training academy to certify 'Biryani Masters' in under 30 days.", ar: "بناء أكاديمية تدريب مركزية لاعتماد 'خبراء البرياني' في أقل من ٣٠ يوماً." }
+      },
+      {
+        title: { en: "Packaging Innovation", ar: "ابتكار التغليف" },
+        desc: { en: "Custom clay-pot inspired sustainable packaging that maintains heat and moisture during delivery.", ar: "تغليف مستدام مخصص مستوحى من الأواني الفخارية يحافظ على الحرارة والرطوبة أثناء التوصيل." }
+      }
+    ],
+    results: {
+      en: "Dilli Biryani has dominated the Indian segment in Riyadh's delivery market, with a 2.5x higher LTV than category average.",
+      ar: "سيطر ديلي برياني على القطاع الهندي في سوق التوصيل بالرياض، مع قيمة حياة عميل أعلى بـ ٢.٥ مرة من متوسط الفئة."
+    },
+    gallery: [
+      "https://images.unsplash.com/photo-1589302168068-964664d93dc0?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1633945274405-b6c8069047b0?q=80&w=800&auto=format&fit=crop"
     ]
   }
 };
 
+
 export default function CaseStudies() {
   const { id } = useParams();
-  const study = caseStudyData[id] || caseStudyData["lune-cafe"];
+  const study = caseStudyData[id] || caseStudyData["amm-abdo"];
   
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
