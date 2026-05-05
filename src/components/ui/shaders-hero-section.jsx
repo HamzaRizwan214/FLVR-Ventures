@@ -203,8 +203,8 @@ export function HeroContent() {
         <div className="flex">
           <p className="text-lg md:text-xl font-[metropolis] text-[#FFFFFF] mb-10 max-w-2xl leading-relaxed">
             <BilingualText
-              en="Institutional Capital. Creative Edge. Relentless Execution. We identify, create, package, operate, and scale high-potential restaurant and café concepts."
-              ar="رأس مال مؤسسي. حافة إبداعية. تنفيذ لا هوادة فيه. نقوم بتحديد، إنشاء، تشغيل، وتوسيع مفاهيم المطاعم والمقاهي ذات الإمكانات العالية."
+              en="FLVR Ventures backs founder-led concepts with capital, playbook, and firepower to help promising brands scale with discipline."
+              ar="تدعم فلايفر فينتشرز المفاهيم التي يقودها المؤسسون برأس المال، والخبرة، والقوة لمساعدتهم على النمو بثبات."
             />
           </p>
         </div>
