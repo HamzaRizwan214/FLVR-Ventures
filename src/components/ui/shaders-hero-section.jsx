@@ -212,7 +212,7 @@ export function HeroContent() {
         {/* Buttons */}
         <div className="flex items-center gap-6 flex-wrap">
           <Link to="/portfolio" className="btn-ghost">
-            <BilingualText en="View Portfolio" ar="عرض المحفظة" />
+            <BilingualText en="Explore FLVR" ar="استكشف فلايفر" />
           </Link>
           <div
             id="gooey-btn"
@@ -241,7 +241,7 @@ export function HeroContent() {
               to="/contact"
               className="btn-primary h-12 flex items-center z-10"
             >
-              <BilingualText en="Start Building" ar="ابدأ البناء" />
+              <BilingualText en="Apply as a Founder" ar="تقدم كمؤسس" />
             </Link>
           </div>
         </div>
