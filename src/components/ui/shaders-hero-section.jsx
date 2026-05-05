@@ -171,11 +171,7 @@ export function HeroContent() {
         >
           <div className="absolute top-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-black/10 to-transparent rounded-full" />
           <span className="text-[var(--text-primary)] text-sm font-normal relative z-10 uppercase tracking-wider">
-            ✨{" "}
-            <BilingualText
-              en="Saudi F&B Platform"
-              ar="منصة الأغذية والمشروبات السعودية"
-            />
+            <BilingualText en="Pronounced: flavor" ar="النطق: فلايفر" />
           </span>
         </div>
 
@@ -215,10 +211,7 @@ export function HeroContent() {
 
         {/* Buttons */}
         <div className="flex items-center gap-6 flex-wrap">
-          <Link
-            to="/portfolio"
-            className="btn-ghost"
-          >
+          <Link to="/portfolio" className="btn-ghost">
             <BilingualText en="View Portfolio" ar="عرض المحفظة" />
           </Link>
           <div
