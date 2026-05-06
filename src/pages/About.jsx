@@ -9,6 +9,7 @@ import {
 } from "framer-motion";
 import PageWrapper from "../components/PageWrapper";
 import BilingualText from "../components/BilingualText";
+import HowFlvrWorks from "../components/HowFlvrWorks";
 
 // ─── Images ───────────────────────────────────────────────────────────────────
 const IMG = {
@@ -218,7 +219,7 @@ const OriginSection = () => {
                   <div className="bg-white/80 backdrop-blur-xl rounded-2xl px-7 py-6 border border-white/50 shadow-xl">
                     <div className="flex items-baseline gap-2 mb-1">
                       <span className="text-4xl font-bold text-[var(--brand-primary)] tracking-tighter font-[Metropolis]">
-                        2026
+                        2027
                       </span>
                       <span className="text-xs uppercase tracking-[0.2em] text-black/40 font-bold font-[Metropolis]">
                         Benchmark
@@ -244,16 +245,16 @@ const OriginSection = () => {
                 <BilingualText
                   en={
                     <>
-                      Bridging
+                      From Early Traction
                       <br />
-                      the gap.
+                      to Enduring Scale
                     </>
                   }
                   ar={
                     <>
-                      سد
+                      من الإثبات المبكر
                       <br />
-                      الفجوة.
+                      إلى النجاح الدائم
                     </>
                   }
                 />
@@ -262,8 +263,8 @@ const OriginSection = () => {
             <FadeUp delay={0.1}>
               <p className="text-xl text-black/55 font-medium leading-[1.7] mb-10 font-[Metropolis]">
                 <BilingualText
-                  en="FLVR Ventures was built to close the gap between early traction and enduring scale. We fuse institutional capital with brand thinking and operational excellence to turn high-potential concepts into iconic Saudi brands."
-                  ar="تم إنشاء فليفر لسد الفجوة بين الجاذبية المبكرة والتوسع المستدام. نجمع رأس المال المؤسسي بفكر العلامة التجارية والتميز التشغيلي."
+                  en="FLVR Ventures is a Saudi F&B venture platform built to turn promising concepts into scalable, enduring brands. We work at the point where founder instinct, product strength, and early traction need sharper structure, stronger economics, and disciplined growth support."
+                  ar="فلايفر فينتشرز منصة سعودية لريادة أعمال قطاع الأغذية والمشروبات، مصممة لتحويل المفاهيم الواعدة إلى علامات تجارية قوية ومستدامة. نعمل في النقطة التي تتلاقى فيها خبرة المؤسس، وقوة المنتج، والنمو الأولي مع الحاجة إلى هيكل أوضح واقتصاديات أقوى ودعم نمو منضبط."
                 />
               </p>
             </FadeUp>
@@ -803,6 +804,7 @@ export default function About() {
       <div className="bg-[#FAFAF8] selection:bg-[var(--brand-primary)] selection:text-white">
         <HeroSection />
         <OriginSection />
+        <HowFlvrWorks />
         <WhatWeDoSection />
         <VisionMissionSection />
         <DNASection />

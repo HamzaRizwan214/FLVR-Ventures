@@ -7,7 +7,7 @@ import Footer from "./Footer";
 export default function Layout() {
   return (
     <ScrollManager>
-      <div className="relative overflow-hidden w-full min-h-screen selection:bg-[var(--brand-primary)] selection:text-white">
+      <div className="relative overflow-x-hidden w-full min-h-screen selection:bg-[var(--brand-primary)] selection:text-white">
         {/* Subtle unified background base */}
         <FloatingNav />
         <main>
