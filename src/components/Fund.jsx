@@ -161,29 +161,29 @@ function getValidMoves(col, row, occupied) {
 const focusPoints = [
   {
     title: { en: "Founder-led", ar: "بقيادة المؤسس" },
-    color: "bg-[#0B7285]",
-    isDark: false,
+    color: "bg-[#ffd43b]/90",
+    isDark: true,
     icon: <IconUsers />,
     ghost: false,
   },
   {
     title: { en: "Clear pull", ar: "جذب واضح" },
-    color: "",
-    isDark: true,
+    color: "bg-[#ff6b6b]/90",
+    isDark: false,
     icon: <IconTrend />,
-    ghost: true, // no background fill — like "Private Markets" in reference
+    ghost: false, // no background fill — like "Private Markets" in reference
   },
   {
     title: { en: "Repeat demand", ar: "طلب متكرر" },
-    color: "bg-[#0B7285]/80",
+    color: "bg-[#ff6b6b]/80",
     isDark: false,
     icon: <IconRepeat />,
     ghost: false,
   },
   {
     title: { en: "Scalable model", ar: "نموذج قابل للتوسع" },
-    color: "bg-[#0B7285]/40",
-    isDark: false,
+    color: "bg-[#f8f9fa]",
+    isDark: true,
     icon: <IconScale />,
     ghost: false,
   },
@@ -225,7 +225,6 @@ const Fund = () => {
         const occupied = buildOccupied(prev, idx);
         const moves = getValidMoves(prev[idx].col, prev[idx].row, occupied);
         if (moves.length === 0) return prev;
-        // Prefer moves that change position meaningfully (avoid jitter)
         const next = [...prev];
         const pick = moves[Math.floor(Math.random() * moves.length)];
         next[idx] = pick;
@@ -239,7 +238,7 @@ const Fund = () => {
   const gridH = cellSize * ROWS;
 
   return (
-    <section className="bg-[#081012] py-32 lg:py-48 px-6 lg:px-16 relative overflow-hidden text-white font-sans">
+    <section className="bg-[#0b7285] py-32 lg:py-48 px-6 lg:px-16 relative overflow-hidden text-black font-sans">
       <div className="max-w-[1600px] mx-auto relative z-10">
         {/* Header */}
         <div className="max-w-4xl mb-24">
@@ -249,8 +248,8 @@ const Fund = () => {
             viewport={{ once: true }}
             className="flex items-center gap-2 mb-8"
           >
-            <div className="w-2 h-2 bg-[var(--brand-primary)]" />
-            <span className="text-sm font-bold tracking-widest uppercase text-white/50 font-[Metropolis]">
+            <div className="w-2 h-2 bg-white/20" />
+            <span className="text-sm font-bold tracking-widest uppercase text-white/70 font-[Metropolis]">
               <BilingualText en="The Platform" ar="المنصة" />
             </span>
           </motion.div>
@@ -259,15 +258,15 @@ const Fund = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-[clamp(2.5rem,5.5vw,5.5rem)] font-bold tracking-tighter leading-[0.95] mb-12"
+            className="text-[clamp(2.5rem,5.5vw,5.5rem)] font-bold tracking-tighter leading-[0.95] mb-12 text-black"
           >
             <BilingualText
               en={
                 <>
-                  FLVR Fund is building the
+                  <span className="text-white">FLVR Fund is building</span>
                   <br />
-                  <span className="text-white/40">
-                    infrastructure for Saudi F&B.
+                  <span className="text-white">
+                    the infrastructure for Saudi F&B.
                   </span>
                 </>
               }
@@ -275,7 +274,7 @@ const Fund = () => {
                 <>
                   صندوق فليفر يبني
                   <br />
-                  <span className="text-white/40">
+                  <span className="text-black/30">
                     البنية التحتية للمطاعم السعودية.
                   </span>
                 </>
@@ -288,8 +287,8 @@ const Fund = () => {
               className="relative group cursor-pointer"
               onClick={() => navigate("/contact")}
             >
-              <div className="absolute inset-0 bg-[#0B7285] translate-x-2 translate-y-2 group-hover:translate-x-1 group-hover:translate-y-1 transition-transform" />
-              <div className="relative bg-white text-black px-12 py-5 font-bold uppercase tracking-widest text-sm font-[Metropolis] border border-black/10">
+              <div className="absolute inset-0 bg-black/10 translate-x-2 translate-y-2 group-hover:translate-x-1 group-hover:translate-y-1 transition-transform" />
+              <div className="relative bg-[#f8f9fa] text-black px-12 py-5 font-bold uppercase tracking-widest text-sm font-[Metropolis] border border-black/5">
                 <BilingualText
                   en="Join the Waitlist"
                   ar="انضم إلى قائمة الانتظار"
@@ -297,7 +296,7 @@ const Fund = () => {
               </div>
             </div>
             <div className="max-w-xs">
-              <p className="text-white/40 text-xs leading-relaxed font-bold uppercase tracking-wider font-[Metropolis]">
+              <p className="text-white text-xs leading-relaxed font-bold uppercase tracking-wider font-[Metropolis]">
                 <BilingualText
                   en="SAR 100M focused on founder-led Saudi growth."
                   ar="١٠٠ مليون ريال موجهة لنمو الشركات السعودية بقيادة مؤسسيها."
@@ -308,10 +307,10 @@ const Fund = () => {
         </div>
 
         {/* SAR 100M Hero Line */}
-        <div className="mb-12 border-b border-white/5 pb-8">
-          <p className="text-[clamp(3.5rem,10vw,10rem)] font-bold tracking-tighter leading-none text-[var(--brand-primary)]">
+        <div className="mb-12 border-b border-black/5 pb-8">
+          <p className="text-[clamp(3.5rem,10vw,10rem)] font-bold tracking-tighter leading-none text-[#ff6b6b]">
             <BilingualText en="SAR 100M" ar="١٠٠ مليون ريال" />
-            <span className="text-sm text-white/20 tracking-[0.6em] uppercase font-bold ml-12 align-middle font-[Metropolis]">
+            <span className="text-sm text-white/40 tracking-[0.6em] uppercase font-bold ml-12 align-middle font-[Metropolis]">
               <BilingualText en="Launch 2027" ar="انطلاق ٢٠٢٧" />
             </span>
           </p>
@@ -320,27 +319,18 @@ const Fund = () => {
         {/* ── Grid Stage ── */}
         <div
           ref={containerRef}
-          className="relative border border-white/[0.09] overflow-hidden select-none"
+          className="relative border border-black/5 overflow-hidden select-none shadow-2xl"
           style={{
             height: gridH,
-            // Fine grid lines matching reference
+            // Grey grid lines
             backgroundImage: `
-              linear-gradient(to right, rgba(255, 255, 255, 0.14) 1px, transparent 1px),
-              linear-gradient(to bottom, rgba(255, 255, 255, 0.13) 1px, transparent 1px)
+              linear-gradient(to right, rgba(249, 249, 249, 0.1) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px)
             `,
             backgroundSize: `${cellSize}px ${cellSize}px`,
-            backgroundColor: "#081012",
+            backgroundColor: "#0b7285",
           }}
         >
-          {/* Subtle inner glow */}
-          <div
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              background:
-                "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(11,114,133,0.07) 0%, transparent 70%)",
-            }}
-          />
-
           {/* Moving Boxes */}
           {focusPoints.map((point, i) => {
             const pos = positions[i];
@@ -356,32 +346,30 @@ const Fund = () => {
                 animate={{ x, y }}
                 transition={{
                   duration: 1.6,
-                  ease: [0.16, 1, 0.3, 1], // expo-out — snappy start, smooth settle
+                  ease: [0.16, 1, 0.3, 1],
                 }}
                 style={{ width: w, height: h }}
               >
                 {point.ghost ? (
-                  /* Ghost box: no fill, just icon + label, like "Private Markets" in ref */
-                  <div className="w-full h-full flex flex-col items-center justify-center gap-3 border border-white/10">
-                    <div className="text-white/50">{point.icon}</div>
-                    <span className="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.25em] font-[Metropolis] text-white/50 text-center leading-tight">
+                  <div className="w-full h-full flex flex-col items-center justify-center gap-3 border border-black/10">
+                    <div className="text-black/40">{point.icon}</div>
+                    <span className="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.25em] font-[Metropolis] text-black/40 text-center leading-tight">
                       <BilingualText en={point.title.en} ar={point.title.ar} />
                     </span>
                   </div>
                 ) : (
-                  /* Filled box */
                   <div
-                    className={`w-full h-full ${point.color} flex flex-col items-center justify-center gap-3 shadow-[0_8px_40px_rgba(0,0,0,0.5)]`}
+                    className={`w-full h-full ${point.color} flex flex-col items-center justify-center gap-3 shadow-[0_8px_40px_rgba(0,0,0,0.15)]`}
                   >
                     <div
                       className={
-                        point.isDark ? "text-black/70" : "text-white/80"
+                        point.isDark ? "text-black/80" : "text-white/90"
                       }
                     >
                       {point.icon}
                     </div>
                     <span
-                      className={`text-[9px] md:text-[10px] font-bold uppercase tracking-[0.25em] font-[Metropolis] text-center leading-tight px-2 ${point.isDark ? "text-black/70" : "text-white/80"}`}
+                      className={`text-[9px] md:text-[10px] font-bold uppercase tracking-[0.25em] font-[Metropolis] text-center leading-tight px-2 ${point.isDark ? "text-black/80" : "text-white/90"}`}
                     >
                       <BilingualText en={point.title.en} ar={point.title.ar} />
                     </span>
@@ -391,7 +379,7 @@ const Fund = () => {
             );
           })}
 
-          {/* Photo Block — pinned bottom-right */}
+          {/* Photo Block */}
           <div
             className="absolute overflow-hidden"
             style={{
@@ -404,17 +392,16 @@ const Fund = () => {
             <img
               src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2670&auto=format&fit=crop"
               alt=""
-              className="w-full h-full object-cover grayscale opacity-40"
+              className="w-full h-full object-cover grayscale opacity-80"
             />
-            {/* subtle border overlay */}
-            <div className="absolute inset-0 border border-white/10 pointer-events-none" />
+            <div className="absolute inset-0 border border-black/10 pointer-events-none" />
           </div>
 
-          {/* Axis labels — subtle coordinate markers at corners */}
-          <span className="absolute bottom-2 left-3 text-[9px] font-mono text-white/10 tracking-widest select-none pointer-events-none">
+          {/* Axis labels */}
+          <span className="absolute bottom-2 left-3 text-[9px] font-mono text-black/10 tracking-widest select-none pointer-events-none">
             0,0
           </span>
-          <span className="absolute bottom-2 right-3 text-[9px] font-mono text-white/10 tracking-widest select-none pointer-events-none">
+          <span className="absolute bottom-2 right-3 text-[9px] font-mono text-black/10 tracking-widest select-none pointer-events-none">
             {COLS},{ROWS}
           </span>
         </div>
