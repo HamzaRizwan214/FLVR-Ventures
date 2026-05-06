@@ -519,6 +519,25 @@ const VisionMissionSection = () => (
           </FadeUp>
         ))}
       </div>
+
+      {/* Concept Words Footer */}
+      <FadeUp delay={0.3}>
+        <div className="mt-24 pt-24 border-t border-black/8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+          {[
+            { en: "Ambition with Discipline", ar: "طموح بانضباط" },
+            { en: "Built for Scale", ar: "صُمم للتوسع" },
+            { en: "Founder Partnership", ar: "شراكة مع المؤسسين" },
+            { en: "Value Creation", ar: "خلق القيمة" },
+          ].map((item, index) => (
+            <div key={index} className="group flex flex-col gap-4">
+              <span className="text-[clamp(1.5rem,2.5vw,2.5rem)] font-light tracking-tighter text-black/80 leading-[1.1] group-hover:text-[var(--brand-primary)] transition-colors duration-500">
+                <BilingualText en={item.en} ar={item.ar} />
+              </span>
+              <div className="h-1 w-8 bg-[var(--brand-primary)]/20 group-hover:w-16 transition-all duration-500 ease-out" />
+            </div>
+          ))}
+        </div>
+      </FadeUp>
     </div>
   </section>
 );
