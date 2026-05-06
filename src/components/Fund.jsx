@@ -320,13 +320,13 @@ const Fund = () => {
         {/* ── Grid Stage ── */}
         <div
           ref={containerRef}
-          className="relative border border-white/[0.06] overflow-hidden select-none"
+          className="relative border border-white/[0.09] overflow-hidden select-none"
           style={{
             height: gridH,
             // Fine grid lines matching reference
             backgroundImage: `
-              linear-gradient(to right, rgba(255,255,255,0.045) 1px, transparent 1px),
-              linear-gradient(to bottom, rgba(255,255,255,0.045) 1px, transparent 1px)
+              linear-gradient(to right, rgba(255, 255, 255, 0.14) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(255, 255, 255, 0.13) 1px, transparent 1px)
             `,
             backgroundSize: `${cellSize}px ${cellSize}px`,
             backgroundColor: "#081012",
