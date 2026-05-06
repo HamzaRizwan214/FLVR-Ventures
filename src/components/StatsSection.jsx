@@ -155,7 +155,7 @@ export default function StatsSection() {
           {/* Main Large Stat */}
           <div className="mb-16 lg:mb-24">
             <h3 className="text-[5rem] md:text-[10rem] lg:text-[15rem] leading-none font-[Metropolis] tracking-tighter mix-blend-difference">
-              <AnimatedCounter value="171" prefix="$" suffix="B" />
+              <AnimatedCounter value="100" prefix="$" suffix="M" />
             </h3>
             <p className="text-lg md:text-2xl mt-4 opacity-70">
               <BilingualText en="Assets on platform" ar="الأصول على المنصة" />
