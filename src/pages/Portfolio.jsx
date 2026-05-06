@@ -72,7 +72,8 @@ const portfolio = [
       ar: "توسع الفروع في ١٢ شهرًا",
     },
     target: { en: "National scale-out", ar: "التوسع الوطني" },
-    image: "https://images.unsplash.com/photo-1541518763669-27fef04b14ea?q=80&w=1200&auto=format&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1541518763669-27fef04b14ea?q=80&w=1200&auto=format&fit=crop",
     status: "Active",
     year: "2023",
     details: [
@@ -106,7 +107,8 @@ const portfolio = [
       ar: "رائد فئة القيمة السعرية",
     },
     target: { en: "Regional dominance", ar: "الهيمنة الإقليمية" },
-    image: "https://images.unsplash.com/photo-1571091718767-18b5b1457add?q=80&w=1200&auto=format&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1571091718767-18b5b1457add?q=80&w=1200&auto=format&fit=crop",
     status: "Active",
     year: "2024",
     details: [
@@ -143,7 +145,8 @@ const portfolio = [
       ar: "مؤشر الرضا الاجتماعي",
     },
     target: { en: "Brand licensing", ar: "ترخيص العلامة التجارية" },
-    image: "https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1200&auto=format&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1200&auto=format&fit=crop",
     status: "Active",
     year: "2023",
     details: [
@@ -183,7 +186,8 @@ const portfolio = [
       ar: "سلسلة توريد من المزرعة للمائدة",
     },
     target: { en: "Luxury F&B positioning", ar: "التموضع في الأغذية الفاخرة" },
-    image: "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?q=80&w=1200&auto=format&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?q=80&w=1200&auto=format&fit=crop",
     status: "Active",
     year: "2024",
     details: [
@@ -220,7 +224,8 @@ const portfolio = [
       ar: "متوسط حجم الفاتورة مقارنة بالمتوسط",
     },
     target: { en: "Retail experience focus", ar: "التركيز على تجربة التجزئة" },
-    image: "https://images.unsplash.com/photo-1551024601-bec78aea704b?q=80&w=1200&auto=format&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1551024601-bec78aea704b?q=80&w=1200&auto=format&fit=crop",
     status: "Active",
     year: "2024",
     details: [
@@ -257,7 +262,8 @@ const portfolio = [
       ar: "نمو حجم طلبات التوصيل",
     },
     target: { en: "Cloud kitchen expansion", ar: "التوسع في المطابخ السحابية" },
-    image: "https://images.unsplash.com/photo-1589302168068-964664d93dc0?q=80&w=1200&auto=format&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1589302168068-964664d93dc0?q=80&w=1200&auto=format&fit=crop",
     status: "Active",
     year: "2022",
     details: [
@@ -280,7 +286,6 @@ const portfolio = [
     ],
   },
 ];
-
 
 const metrics = [
   {
@@ -522,18 +527,36 @@ const PortfolioGridSection = () => {
             <div className="space-y-4">
               <div className="flex items-center gap-3">
                 <span className="w-8 h-[1px] bg-[var(--brand-primary)]" />
-                <SectionLabel en="Portfolio Index" ar="فهرس المحفظة" />
+                <SectionLabel
+                  en="FLVR Venture Studio"
+                  ar="استوديو فليفر فنتشرز"
+                />
               </div>
               <h2 className="text-5xl lg:text-7xl font-light tracking-tighter text-[var(--text-primary)]">
-                <BilingualText en="Selected Ventures" ar="مشاريع مختارة" />
+                <BilingualText
+                  en="From Idea to Brand"
+                  ar="من الفكرة إلى العلامة التجارية."
+                />
               </h2>
+              <h2 className="text-5xl lg:text-7xl font-light tracking-tighter text-[var(--text-primary)]">
+                <BilingualText
+                  en="From Traction to Scale."
+                  ar="من الجاذبية إلى التوسع."
+                />
+              </h2>
+              <p className="text-xl text-black/60 mt-8 max-w-xl font-medium leading-relaxed font-[Metropolis]">
+                <BilingualText
+                  en="The FLVR Venture Studio builds and launches new F&B concepts with the goal of turning early ideas into real, scalable businesses. We develop concepts, test them, structure them, and prepare them for growth."
+                  ar="يقوم استوديو FLVR Venture Studio بتطوير وإطلاق مفاهيم جديدة في قطاع الأغذية والمشروبات بهدف تحويل الأفكار الأولية إلى مشاريع تجارية حقيقية قابلة للتوسع. نقوم بتطوير المفاهيم، واختبارها، وهيكلتها، وإعدادها للنمو."
+                />
+              </p>
             </div>
             <div className="mt-6 md:mt-0 text-right">
               <span className="text-[4rem] lg:text-[6rem] font-light leading-none text-black/[0.03] absolute right-16 -top-10 select-none">
                 {portfolio.length.toString().padStart(2, "0")}
               </span>
               <p className="relative z-10 text-[10px] font-bold uppercase tracking-[0.3em] text-[var(--text-muted)] font-[Metropolis]">
-                <BilingualText en="Institutional Grade" ar="معايير مؤسسية" />
+                <BilingualText en="COHORT 1" ar="الفوج الأول" />
               </p>
             </div>
           </div>

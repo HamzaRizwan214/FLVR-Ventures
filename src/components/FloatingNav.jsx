@@ -27,7 +27,7 @@ export default function FloatingNav() {
   const menuItems = [
     { name: "Home", ar: "الرئيسية", href: "/" },
     { name: "About", ar: "من نحن", href: "/about" },
-    { name: "Portfolio", ar: "محفظتنا", href: "/portfolio" },
+    { name: "Studio", ar: "استوديو", href: "/portfolio" },
     { name: "How it Works", ar: "كيف نعمل", href: "/how-it-works" },
     { name: "Get in touch", ar: "تواصل معنا", href: "/contact" },
   ];
