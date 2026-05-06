@@ -10,6 +10,7 @@ import {
 import PageWrapper from "../components/PageWrapper";
 import BilingualText from "../components/BilingualText";
 import HowFlvrWorks from "../components/HowFlvrWorks";
+import Fund from "../components/Fund";
 
 // ─── Images ───────────────────────────────────────────────────────────────────
 const IMG = {
@@ -1022,6 +1023,7 @@ export default function About() {
         <DNASection />
         <WhatWeBackSection />
         <WhatWeBringSection />
+        <Fund />
         <CTASection />
       </div>
     </PageWrapper>
