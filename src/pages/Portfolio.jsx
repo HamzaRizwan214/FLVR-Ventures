@@ -62,7 +62,7 @@ const portfolio = [
     slug: "amm-abdo",
     name: "AMM ABDO",
     nameAr: "عم عبده",
-    category: { en: "Saudi Comfort Food", ar: "أكل شعبي سعودي" },
+    category: { en: "Modern Shawarma & Kabab", ar: "شاورما وكباب حديث" },
     stage: "Growth",
     stageAr: "نمو",
     locations: 6,
@@ -72,8 +72,7 @@ const portfolio = [
       ar: "توسع الفروع في ١٢ شهرًا",
     },
     target: { en: "National scale-out", ar: "التوسع الوطني" },
-    image:
-      "https://images.unsplash.com/photo-1541518763669-27fef04b14ea?q=80&w=1200&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1561651823-34feb02250e4?q=80&w=1200&auto=format&fit=crop",
     status: "Active",
     year: "2023",
     details: [
@@ -85,7 +84,7 @@ const portfolio = [
         label: { en: "Locations", ar: "المواقع" },
         value: { en: "6 branches, Riyadh", ar: "٦ فروع، الرياض" },
       },
-      { label: { en: "Revenue Growth", ar: "نمو الإيرادات" }, value: "12×" },
+      { label: { en: "Concept", ar: "المفهوم" }, value: { en: "Street Roots & Modern Attitude", ar: "جذور الشارع وأسلوب حديث" } },
       {
         label: { en: "Exit Strategy", ar: "استراتيجية الخروج" },
         value: { en: "Trade sale / IPO", ar: "بيع تجاري / طرح عام" },
@@ -97,7 +96,7 @@ const portfolio = [
     slug: "burger-abo-ashra",
     name: "BURGER ABO ASHRA",
     nameAr: "برجر أبو عشرة",
-    category: { en: "Fast Casual (Value)", ar: "وجبات سريعة (قيمة)" },
+    category: { en: "Value-Driven Burger", ar: "برجر القيمة" },
     stage: "Seed",
     stageAr: "بذرة",
     locations: 4,
@@ -108,7 +107,7 @@ const portfolio = [
     },
     target: { en: "Regional dominance", ar: "الهيمنة الإقليمية" },
     image:
-      "https://images.unsplash.com/photo-1571091718767-18b5b1457add?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=1200&auto=format&fit=crop",
     status: "Active",
     year: "2024",
     details: [
@@ -135,7 +134,7 @@ const portfolio = [
     slug: "johnny-jamal",
     name: "JOHNNY & JAMAL",
     nameAr: "جوني وجمال",
-    category: { en: "Fusion Casual Dining", ar: "مطعم فيوجن كاجوال" },
+    category: { en: "Culturally-Led Burger", ar: "برجر ثقافي" },
     stage: "Growth",
     stageAr: "نمو",
     locations: 2,
@@ -146,7 +145,7 @@ const portfolio = [
     },
     target: { en: "Brand licensing", ar: "ترخيص العلامة التجارية" },
     image:
-      "https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=1200&auto=format&fit=crop",
     status: "Active",
     year: "2023",
     details: [
@@ -174,9 +173,9 @@ const portfolio = [
   {
     id: "04",
     slug: "the-butchery-counter",
-    name: "THE BUTCHERY COUNTER",
-    nameAr: "ذا بوتشري كاونتر",
-    category: { en: "Premium Steakhouse", ar: "ستيك هاوس فاخر" },
+    name: "BUTCHER COUNTER",
+    nameAr: "بوتشر كاونتر",
+    category: { en: "Premium Fast-Casual Meat", ar: "لحوم كاجوال فاخرة" },
     stage: "Seed",
     stageAr: "بذرة",
     locations: 1,
@@ -187,7 +186,7 @@ const portfolio = [
     },
     target: { en: "Luxury F&B positioning", ar: "التموضع في الأغذية الفاخرة" },
     image:
-      "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop",
     status: "Active",
     year: "2024",
     details: [
@@ -214,7 +213,7 @@ const portfolio = [
     slug: "happiness-lab",
     name: "HAPPINESS LAB",
     nameAr: "لاب السعادة",
-    category: { en: "Experimental Dessert", ar: "حلويات تجريبية" },
+    category: { en: "Experiential Dessert", ar: "حلويات تجريبية" },
     stage: "Seed",
     stageAr: "بذرة",
     locations: 3,
@@ -225,7 +224,7 @@ const portfolio = [
     },
     target: { en: "Retail experience focus", ar: "التركيز على تجربة التجزئة" },
     image:
-      "https://images.unsplash.com/photo-1551024601-bec78aea704b?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1488477181946-6428a0291777?q=80&w=1200&auto=format&fit=crop",
     status: "Active",
     year: "2024",
     details: [
@@ -252,7 +251,7 @@ const portfolio = [
     slug: "dilli-biryani",
     name: "DILLI BIRYANI",
     nameAr: "ديلي برياني",
-    category: { en: "Authentic Indian", ar: "أكل هندي أصيل" },
+    category: { en: "Flavor-Led Biryani", ar: "برياني نكهة" },
     stage: "Growth",
     stageAr: "نمو",
     locations: 5,
@@ -263,7 +262,7 @@ const portfolio = [
     },
     target: { en: "Cloud kitchen expansion", ar: "التوسع في المطابخ السحابية" },
     image:
-      "https://images.unsplash.com/photo-1589302168068-964664d93dc0?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?q=80&w=1200&auto=format&fit=crop",
     status: "Active",
     year: "2022",
     details: [

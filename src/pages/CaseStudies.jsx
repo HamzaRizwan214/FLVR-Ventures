@@ -53,14 +53,14 @@ const caseStudyData = {
   "amm-abdo": {
     name: "AMM ABDO",
     nameAr: "عم عبده",
-    vertical: { en: "Saudi Comfort Food", ar: "أكل شعبي سعودي" },
-    heroImage: "https://images.unsplash.com/photo-1541518763669-27fef04b14ea?q=80&w=2000&auto=format&fit=crop",
+    vertical: { en: "Modern Shawarma & Kabab", ar: "شاورما وكباب حديث" },
+    heroImage: "https://images.unsplash.com/photo-1561651823-34feb02250e4?q=80&w=2000&auto=format&fit=crop",
     mainMetric: "12×",
     metricLabel: { en: "Unit Expansion", ar: "توسع الوحدات" },
     gradient: "from-orange-400 via-amber-500 to-yellow-600",
     summary: {
-      en: "Modernizing traditional Saudi street food with institutional-grade operations.",
-      ar: "تحديث الأكل الشعبي السعودي التقليدي بعمليات ذات معايير مؤسسية."
+      en: "A bold shawarma and kabab brand built on street roots and modern attitude.",
+      ar: "علامة تجارية جريئة للشاورما والكباب مبنية على جذور الشارع وأسلوب حديث."
     },
     stats: [
       { label: { en: "Growth", ar: "النمو" }, val: "1200%", icon: TrendingUp },
@@ -97,21 +97,21 @@ const caseStudyData = {
       ar: "عم عبده هو الآن أسرع علامة تجارية للأكل الشعبي السعودي نمواً في الرياض، مع نموذج مثبت جاهز للامتياز الوطني."
     },
     gallery: [
-      "https://images.unsplash.com/photo-1541518763669-27fef04b14ea?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1561651823-34feb02250e4?q=80&w=800&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=800&auto=format&fit=crop"
     ]
   },
   "burger-abo-ashra": {
     name: "BURGER ABO ASHRA",
     nameAr: "برجر أبو عشرة",
-    vertical: { en: "Fast Casual (Value)", ar: "وجبات سريعة (قيمة)" },
-    heroImage: "https://images.unsplash.com/photo-1571091718767-18b5b1457add?q=80&w=2000&auto=format&fit=crop",
+    vertical: { en: "Value-Driven Burger", ar: "برجر القيمة" },
+    heroImage: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=2000&auto=format&fit=crop",
     mainMetric: "Market Leader",
     metricLabel: { en: "Value Segment", ar: "فئة القيمة" },
     gradient: "from-red-400 via-rose-500 to-crimson-600",
     summary: {
-      en: "Disrupting the budget burger market with high-quality ingredients and lean operations.",
-      ar: "تعطيل سوق البرجر الموفر بمكونات عالية الجودة وعمليات رشيقة."
+      en: "A value-driven burger concept with local relevance, sharp pricing, and everyday appeal.",
+      ar: "مفهوم برجر قائم على القيمة مع ملاءمة محلية وأسعار تنافسية وجاذبية يومية."
     },
     stats: [
       { label: { en: "Efficiency", ar: "الكفاءة" }, val: "94%", icon: TrendingUp },
@@ -148,21 +148,21 @@ const caseStudyData = {
       ar: "أعاد برجر أبو عشرة تعريف القيمة للشباب السعودي، محققاً الربحية خلال الأشهر الستة الأولى من التشغيل."
     },
     gallery: [
-      "https://images.unsplash.com/photo-1571091718767-18b5b1457add?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=800&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?q=80&w=800&auto=format&fit=crop"
     ]
   },
   "johnny-jamal": {
     name: "JOHNNY & JAMAL",
     nameAr: "جوني وجمال",
-    vertical: { en: "Fusion Casual Dining", ar: "فيوجن كاجوال" },
-    heroImage: "https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=2000&auto=format&fit=crop",
+    vertical: { en: "Culturally-Led Burger", ar: "برجر ثقافي" },
+    heroImage: "https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=2000&auto=format&fit=crop",
     mainMetric: "4.5×",
     metricLabel: { en: "Sentiment Score", ar: "مؤشر الرضا" },
     gradient: "from-blue-400 via-indigo-500 to-purple-600",
     summary: {
-      en: "Blending international aesthetics with local flavors for a next-gen dining experience.",
-      ar: "مزج الجماليات الدولية مع النكهات المحلية لتجربة طعام من الجيل القادم."
+      en: "A culturally-led burger concept built around contrast, character, and strong brand storytelling.",
+      ar: "مفهوم برجر ثقافي مبني على التباين والشخصية وسرد قوي لقصة العلامة التجارية."
     },
     stats: [
       { label: { en: "Love Index", ar: "مؤشر الحب" }, val: "88%", icon: TrendingUp },
@@ -199,21 +199,21 @@ const caseStudyData = {
       ar: "أصبح جوني وجمال المكان الأكثر تقييماً لتناول الطعام غير الرسمي في الخبر، مع خطط للإطلاق في الرياض بحلول عام ٢٠٢٦."
     },
     gallery: [
-      "https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=800&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=800&auto=format&fit=crop"
     ]
   },
   "the-butchery-counter": {
-    name: "THE BUTCHERY COUNTER",
-    nameAr: "ذا بوتشري كاونتر",
-    vertical: { en: "Premium Steakhouse", ar: "ستيك هاوس فاخر" },
-    heroImage: "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?q=80&w=2000&auto=format&fit=crop",
+    name: "BUTCHER COUNTER",
+    nameAr: "بوتشر كاونتر",
+    vertical: { en: "Premium Fast-Casual Meat", ar: "لحوم كاجوال فاخرة" },
+    heroImage: "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=2000&auto=format&fit=crop",
     mainMetric: "Farm-to-Table",
     metricLabel: { en: "Supply Integrity", ar: "سلامة التوريد" },
     gradient: "from-zinc-700 via-stone-800 to-black",
     summary: {
-      en: "Elevating the meat experience through transparency, craft, and premium sourcing.",
-      ar: "الارتقاء بتجربة اللحوم من خلال الشفافية والحرفية والتوريد المتميز."
+      en: "A focused meat-led concept with a cleaner, sharper, premium-fast-casual edge.",
+      ar: "مفهوم يركز على اللحوم مع طابع أنظف وأكثر حدة وكاجوال فاخر."
     },
     stats: [
       { label: { en: "Quality", ar: "الجودة" }, val: "A+", icon: TrendingUp },
@@ -250,21 +250,21 @@ const caseStudyData = {
       ar: "أثبت ذا بوتشري كاونتر نفسه كمرجع نهائي للحوم الفاخرة في الرياض، مع قائمة انتظار تتجاوز الأسبوعين."
     },
     gallery: [
-      "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop"
     ]
   },
   "happiness-lab": {
     name: "HAPPINESS LAB",
     nameAr: "لاب السعادة",
-    vertical: { en: "Experimental Dessert", ar: "حلويات تجريبية" },
-    heroImage: "https://images.unsplash.com/photo-1551024601-bec78aea704b?q=80&w=2000&auto=format&fit=crop",
+    vertical: { en: "Experiential Dessert", ar: "حلويات تجريبية" },
+    heroImage: "https://images.unsplash.com/photo-1488477181946-6428a0291777?q=80&w=2000&auto=format&fit=crop",
     mainMetric: "3.8×",
     metricLabel: { en: "Ticket Size vs Avg", ar: "حجم الفاتورة" },
     gradient: "from-pink-400 via-rose-500 to-fuchsia-600",
     summary: {
-      en: "Engineering joy through innovative dessert chemistry and retail theater.",
-      ar: "هندسة الفرح من خلال كيمياء الحلويات المبتكرة والمسرح التجاري."
+      en: "A feel-good concept designed around mood, experience, and strong emotional pull.",
+      ar: "مفهوم ممتع مصمم حول المزاج والتجربة والجاذبية العاطفية القوية."
     },
     stats: [
       { label: { en: "Conversion", ar: "التحويل" }, val: "92%", icon: TrendingUp },
@@ -301,21 +301,21 @@ const caseStudyData = {
       ar: "حقق لاب السعادة مكانة فيروسية في مراكز التسوق بالرياض، مما يثبت أن تجارة التجزئة التجريبية هي مستقبل الأغذية والمشروبات."
     },
     gallery: [
-      "https://images.unsplash.com/photo-1551024601-bec78aea704b?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1488477181946-6428a0291777?q=80&w=800&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?q=80&w=800&auto=format&fit=crop"
     ]
   },
   "dilli-biryani": {
     name: "DILLI BIRYANI",
     nameAr: "ديلي برياني",
-    vertical: { en: "Authentic Indian", ar: "أكل هندي أصيل" },
-    heroImage: "https://images.unsplash.com/photo-1589302168068-964664d93dc0?q=80&w=2000&auto=format&fit=crop",
+    vertical: { en: "Flavor-Led Biryani", ar: "برياني نكهة" },
+    heroImage: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?q=80&w=2000&auto=format&fit=crop",
     mainMetric: "220%",
     metricLabel: { en: "Delivery Volume", ar: "حجم التوصيل" },
     gradient: "from-emerald-500 via-teal-600 to-cyan-700",
     summary: {
-      en: "Standardizing the art of authentic Delhi biryani for rapid national scale.",
-      ar: "توحيد فن البرياني الدلهي الأصيل للتوسع الوطني السريع."
+      en: "A biryani-led concept built around comfort, flavor depth, and everyday repeat demand.",
+      ar: "مفهوم قائم على البرياني مبني على الراحة وعمق النكهة والطلب اليومي المتكرر."
     },
     stats: [
       { label: { en: "Retention", ar: "الاحتفاظ" }, val: "76%", icon: TrendingUp },
@@ -352,7 +352,7 @@ const caseStudyData = {
       ar: "سيطر ديلي برياني على القطاع الهندي في سوق التوصيل بالرياض، مع قيمة حياة عميل أعلى بـ ٢.٥ مرة من متوسط الفئة."
     },
     gallery: [
-      "https://images.unsplash.com/photo-1589302168068-964664d93dc0?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?q=80&w=800&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1633945274405-b6c8069047b0?q=80&w=800&auto=format&fit=crop"
     ]
   }
