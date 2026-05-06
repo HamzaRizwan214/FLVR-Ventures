@@ -1,21 +1,22 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
-import { AnimatePresence } from 'framer-motion';
-import { LanguageProvider } from './contexts/LanguageContext';
-import Layout from './components/Layout';
+import React from "react";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
+import { LanguageProvider } from "./contexts/LanguageContext";
+import Layout from "./components/Layout";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 // Pages
-import Home from './pages/Home';
-import About from './pages/About';
-import Portfolio from './pages/Portfolio';
-import HowItWorks from './pages/HowItWorks';
-import Contact from './pages/Contact';
-import CaseStudies from './pages/CaseStudies';
-import NextWave from './pages/NextWave';
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Portfolio from "./pages/Portfolio";
+import HowItWorks from "./pages/HowItWorks";
+import Contact from "./pages/Contact";
+import CaseStudies from "./pages/CaseStudies";
+import NextWave from "./pages/NextWave";
 
 function AnimatedRoutes() {
   const location = useLocation();
-  
+
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
@@ -36,11 +37,14 @@ function AnimatedRoutes() {
 
 function App() {
   return (
-    <LanguageProvider>
-      <BrowserRouter>
-        <AnimatedRoutes />
-      </BrowserRouter>
-    </LanguageProvider>
+    <>
+      <LanguageProvider>
+        <BrowserRouter>
+          <AnimatedRoutes />
+        </BrowserRouter>
+      </LanguageProvider>
+      <SpeedInsights />
+    </>
   );
 }
 
