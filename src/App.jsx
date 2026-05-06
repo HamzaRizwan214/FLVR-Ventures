@@ -4,6 +4,7 @@ import { AnimatePresence } from "framer-motion";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import Layout from "./components/Layout";
 import { SpeedInsights } from "@vercel/speed-insights/react";
+import { Analytics } from "@vercel/analytics/react";
 
 // Pages
 import Home from "./pages/Home";
@@ -44,6 +45,7 @@ function App() {
         </BrowserRouter>
       </LanguageProvider>
       <SpeedInsights />
+      <Analytics />
     </>
   );
 }
