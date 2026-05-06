@@ -18,7 +18,7 @@ const menuItems = [
   { name: "About", ar: "من نحن", href: "/about" },
   { name: "Studio", ar: "استوديو", href: "/portfolio" },
   { name: "How it Works", ar: "كيف نعمل", href: "/how-it-works" },
-  { name: "Get in touch", ar: "تواصل معنا", href: "/contact" },
+  // { name: "Get in touch", ar: "تواصل معنا", href: "/contact" },
 ];
 
 export default function FloatingNav() {
