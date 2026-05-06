@@ -690,6 +690,199 @@ const DNASection = () => {
   );
 };
 
+// ─── Section 5.1 — What We Back ──────────────────────────────────────────────
+const WhatWeBackSection = () => {
+  const criteria = [
+    {
+      num: "01",
+      title: { en: "Founder-led brands", ar: "علامات بقيادة مؤسسيها" },
+      desc: {
+        en: "Concepts led by founders with instinct, ambition, and commitment.",
+        ar: "مفاهيم يقودها مؤسسون يمتلكون الحدس والطموح والالتزام.",
+      },
+    },
+    {
+      num: "02",
+      title: { en: "Early traction", ar: "جذب مبكر" },
+      desc: {
+        en: "Brands that already show relevance, momentum, and repeat demand.",
+        ar: "علامات تجارية تظهر بالفعل صلة وزخماً وطلباً متكرراً.",
+      },
+    },
+    {
+      num: "03",
+      title: { en: "Everyday relevance", ar: "صلة يومية" },
+      desc: {
+        en: "Concepts that fit naturally into real life, not short-lived hype.",
+        ar: "مفاهيم تتناسب بشكل طبيعي مع الحياة الواقعية، وليست مجرد ضجيج مؤقت.",
+      },
+    },
+    {
+      num: "04",
+      title: { en: "Scalable models", ar: "نماذج قابلة للتوسع" },
+      desc: {
+        en: "Businesses with the potential to grow into repeatable, durable brands.",
+        ar: "شركات لديها القدرة على النمو لتصبح علامات تجارية مستدامة وقابلة للتكرار.",
+      },
+    },
+  ];
+
+  return (
+    <section className="bg-[#FAFAF8] py-32 lg:py-48 px-6 lg:px-16 overflow-hidden border-t border-black/5">
+      <div className="max-w-[1600px] mx-auto">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-20 border-b border-black/6 pb-10">
+          <FadeUp>
+            <Eyebrow en="What We Back" ar="ما ندعمه" />
+            <h2 className="text-[clamp(2.5rem,5vw,5.5rem)] font-light tracking-tighter leading-[0.92] text-black">
+              <BilingualText
+                en={
+                  <>
+                    Founder-Led
+                    <br />
+                    <span className="italic font-thin text-[var(--brand-primary)]">
+                      Saudi F&B.
+                    </span>
+                  </>
+                }
+                ar={
+                  <>
+                    مطاعم سعودية
+                    <br />
+                    <span className="italic font-thin text-[var(--brand-primary)]">
+                      بقيادة مؤسسيها.
+                    </span>
+                  </>
+                }
+              />
+            </h2>
+          </FadeUp>
+          <FadeUp delay={0.1}>
+            <p className="text-black/35 text-sm max-w-xs md:text-right leading-relaxed font-medium font-[Metropolis]">
+              <BilingualText
+                en="We back concepts with strong product, real customer pull, and room to scale."
+                ar="ندعم المفاهيم ذات المنتج القوي، والجذب الحقيقي للعملاء، والقدرة على التوسع."
+              />
+            </p>
+          </FadeUp>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0 border-l border-black/6">
+          {criteria.map((item, i) => (
+            <FadeUp key={i} delay={i * 0.08}>
+              <motion.div
+                whileHover={{ backgroundColor: "white" }}
+                className="border-r border-b border-black/6 p-10 group cursor-default transition-colors duration-300 min-h-[320px] flex flex-col justify-between"
+              >
+                <div className="flex items-center justify-between mb-8">
+                  <span className="text-[10px] font-bold text-[var(--brand-primary)] tracking-[0.2em] font-[Metropolis]">
+                    {item.num}
+                  </span>
+                  <div className="h-px w-6 bg-[var(--brand-primary)]/20 group-hover:w-12 group-hover:bg-[var(--brand-primary)] transition-all duration-500" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-black mb-4 group-hover:text-[var(--brand-primary)] transition-colors duration-300 font-[Metropolis]">
+                    <BilingualText en={item.title.en} ar={item.title.ar} />
+                  </h3>
+                  <p className="text-sm text-black/45 leading-relaxed font-medium font-[Metropolis]">
+                    <BilingualText en={item.desc.en} ar={item.desc.ar} />
+                  </p>
+                </div>
+              </motion.div>
+            </FadeUp>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// ─── Section 5.2 — What We Bring ─────────────────────────────────────────────
+const WhatWeBringSection = () => {
+  const points = [
+    {
+      num: "01",
+      title: { en: "Capital", ar: "رأس المال" },
+      desc: {
+        en: "We inject capital with the right structure to fuel accelerated growth.",
+        ar: "نضخ رأس المال بالهيكل المناسب لتحفيز النمو المتسارع.",
+      },
+    },
+    {
+      num: "02",
+      title: { en: "Playbook", ar: "دليل النجاح" },
+      desc: {
+        en: "We sharpen what makes brands scale.",
+        ar: "نصقل العوامل التي تجعل العلامات التجارية تتوسع.",
+      },
+    },
+    {
+      num: "03",
+      title: { en: "Firepower", ar: "القوة التشغيلية" },
+      desc: {
+        en: "We bring the operational muscle behind scale.",
+        ar: "نوفر القوة التشغيلية التي تدعم التوسع.",
+      },
+    },
+  ];
+
+  return (
+    <section className="bg-white py-32 lg:py-48 px-6 lg:px-16 border-t border-black/5 overflow-hidden">
+      <div className="max-w-[1600px] mx-auto">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-20 border-b border-black/6 pb-10">
+          <FadeUp>
+            <Eyebrow en="What We Bring" ar="ما نقدمه" />
+            <h2 className="text-[clamp(2.5rem,5vw,5.5rem)] font-light tracking-tighter leading-[0.92] text-black">
+              <BilingualText
+                en="More Than Capital Alone."
+                ar="أكثر من مجرد رأس مال."
+              />
+            </h2>
+          </FadeUp>
+          <FadeUp delay={0.1}>
+            <div className="max-w-xs md:text-right">
+              <p className="text-black/35 text-sm leading-relaxed font-medium font-[Metropolis] mb-2">
+                <BilingualText
+                  en="Founders bring the vision."
+                  ar="المؤسسون يقدمون الرؤية."
+                />
+              </p>
+              <p className="text-black text-sm font-bold italic font-[Metropolis]">
+                <BilingualText en="We bring the FLVR." ar="ونحن نقدم الخبرة." />
+              </p>
+            </div>
+          </FadeUp>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-0 border-l border-black/6">
+          {points.map((p, i) => (
+            <FadeUp key={i} delay={i * 0.1}>
+              <motion.div
+                whileHover={{ backgroundColor: "#fafaf8" }}
+                className="border-r border-b border-black/6 p-10 lg:p-14 group cursor-default transition-colors duration-300 min-h-[350px] flex flex-col justify-between"
+              >
+                <div className="flex items-center justify-between mb-12">
+                  <span className="text-[10px] font-bold text-[var(--brand-primary)] tracking-[0.2em] font-[Metropolis]">
+                    {p.num}
+                  </span>
+                  <div className="h-1 w-8 bg-black/5 group-hover:w-16 group-hover:bg-[var(--brand-primary)] transition-all duration-500" />
+                </div>
+                <div>
+                  <h3 className="text-sm uppercase tracking-[0.3em] font-bold text-[var(--brand-primary)] mb-6 font-[Metropolis]">
+                    <BilingualText en={p.title.en} ar={p.title.ar} />
+                  </h3>
+                  <p className="text-2xl lg:text-3xl font-light text-black/80 leading-tight tracking-tight">
+                    <BilingualText en={p.desc.en} ar={p.desc.ar} />
+                  </p>
+                </div>
+              </motion.div>
+            </FadeUp>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
 // ─── Section 6 — CTA ──────────────────────────────────────────────────────────
 const CTASection = () => {
   const ref = useRef(null);
@@ -827,6 +1020,8 @@ export default function About() {
         <WhatWeDoSection />
         <VisionMissionSection />
         <DNASection />
+        <WhatWeBackSection />
+        <WhatWeBringSection />
         <CTASection />
       </div>
     </PageWrapper>
