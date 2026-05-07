@@ -1,5 +1,5 @@
-import React, { useRef, useState } from "react";
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import React, { useRef, useState, useEffect } from "react";
+import { motion, AnimatePresence, useScroll, useTransform, useSpring } from "framer-motion";
 import PageWrapper from "../components/PageWrapper";
 import BilingualText from "../components/BilingualText";
 import { 
@@ -17,7 +17,8 @@ import {
   Plus,
   Minus,
   CheckCircle2,
-  XCircle
+  XCircle,
+  Activity
 } from "lucide-react";
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
@@ -202,6 +203,72 @@ const AccordionItem = ({ item, isOpen, onClick }) => (
   </div>
 );
 
+/**
+ * Enhanced Hero Background with Animated Grid and Ambient Glows
+ */
+const HeroVisuals = () => {
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {/* Dynamic Grid */}
+      <div 
+        className="absolute inset-0 opacity-[0.03]" 
+        style={{ 
+          backgroundImage: "linear-gradient(to right, black 1px, transparent 1px), linear-gradient(to bottom, black 1px, transparent 1px)", 
+          backgroundSize: "60px 60px" 
+        }} 
+      />
+      
+      {/* Ambient Glows */}
+      <motion.div 
+        animate={{ 
+          x: [0, 100, 0], 
+          y: [0, 50, 0],
+          scale: [1, 1.2, 1]
+        }}
+        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+        className="absolute -top-1/4 -right-1/4 w-[800px] h-[800px] bg-[var(--brand-primary)]/10 blur-[120px] rounded-full"
+      />
+      <motion.div 
+        animate={{ 
+          x: [0, -80, 0], 
+          y: [0, 100, 0],
+          scale: [1, 1.1, 1]
+        }}
+        transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+        className="absolute -bottom-1/4 -left-1/4 w-[600px] h-[600px] bg-[#ffd43b]/10 blur-[100px] rounded-full"
+      />
+
+      {/* Floating Geometric Elements (Abstract Capital Icons) */}
+      <div className="absolute inset-0 z-0">
+        {[...Array(6)].map((_, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0 }}
+            animate={{ 
+              opacity: [0.1, 0.3, 0.1],
+              y: [0, -40, 0],
+              rotate: [0, 45, 0]
+            }}
+            transition={{ 
+              duration: 8 + i * 2, 
+              repeat: Infinity, 
+              delay: i * 1,
+              ease: "easeInOut" 
+            }}
+            className="absolute text-black/5"
+            style={{ 
+              top: `${20 + i * 12}%`, 
+              left: `${10 + i * 15}%`,
+            }}
+          >
+            {i % 2 === 0 ? <Activity size={80 + i * 20} /> : <BarChart3 size={60 + i * 25} />}
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 const Funds = () => {
   const [openFaq, setOpenFaq] = useState(0);
   const containerRef = useRef(null);
@@ -210,47 +277,115 @@ const Funds = () => {
     offset: ["start start", "end end"]
   });
 
+  // Hero Parallax Transforms
+  const heroY = useTransform(scrollYProgress, [0, 0.2], [0, -100]);
+  const heroScale = useTransform(scrollYProgress, [0, 0.2], [1, 0.95]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
+
   return (
     <PageWrapper noPadding>
       <div ref={containerRef} className="bg-[#f8f9fa] min-h-screen font-sans text-black overflow-hidden">
         
-        {/* ── Section 1: Hero ── */}
-        <section className="relative pt-64 pb-32 px-6 lg:px-16 border-b border-black/5">
-          <div className="max-w-[1600px] mx-auto">
+        {/* ── Section 1: Enhanced Hero ── */}
+        <section className="relative min-h-[90vh] flex flex-col justify-center pt-32 pb-24 px-6 lg:px-16 border-b border-black/5 bg-white">
+          <HeroVisuals />
+          
+          <div className="max-w-[1600px] mx-auto w-full relative z-10">
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              style={{ y: heroY, scale: heroScale, opacity: heroOpacity }}
+              className="relative"
             >
-              <SectionLabel en="FLVR Fund I" ar="صندوق فليفر الأول" />
-              <h1 className="text-[clamp(3.5rem,12vw,12rem)] font-bold tracking-tighter leading-[0.85] mb-12">
-                <BilingualText 
-                  en={<>SAR 100M<br/><span className="text-black/20">Growth Mandate.</span></>}
-                  ar={<>١٠٠ مليون ريال<br/><span className="text-black/20">تكليف النمو.</span></>}
-                />
-              </h1>
-              <div className="flex flex-col md:flex-row gap-12 items-start md:items-center justify-between border-t border-black/5 pt-12">
-                <p className="max-w-2xl text-xl lg:text-2xl font-light leading-relaxed text-black/60">
-                  <BilingualText 
-                    en="A dedicated capital vehicle designed to transform six breakout concepts into national F&B icons. We invest in relevance, repeat demand, and disciplined scale."
-                    ar="وعاء استثماري مخصص مصمم لتحويل ستة مفاهيم واعدة إلى أيقونات وطنية في قطاع الأغذية والمشروبات. نستثمر في الملاءمة، والطلب المتكرر، والتوسع المنضبط."
-                  />
-                </p>
-                <div className="flex items-center gap-6">
-                   <div className="text-right">
-                      <p className="text-[10px] uppercase tracking-widest font-bold text-black/30 mb-1 font-[Metropolis]">Status</p>
-                      <p className="text-sm font-bold uppercase tracking-widest text-[var(--brand-primary)] font-[Metropolis]">Active Deployment</p>
-                   </div>
-                   <div className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center animate-pulse">
-                      <div className="w-2 h-2 rounded-full bg-[var(--brand-primary)]" />
-                   </div>
-                </div>
+              <div className="overflow-hidden mb-6">
+                <motion.div
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <SectionLabel en="FLVR Fund I" ar="صندوق فليفر الأول" />
+                </motion.div>
               </div>
+
+              <h1 className="text-[clamp(3.5rem,12vw,13rem)] font-bold tracking-tighter leading-[0.8] mb-12 lg:mb-16">
+                <motion.span
+                  initial={{ y: "100%" }}
+                  animate={{ y: 0 }}
+                  transition={{ duration: 1.2, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                  className="block overflow-hidden"
+                >
+                  <BilingualText 
+                    en={<>SAR 100M</>}
+                    ar={<>١٠٠ مليون ريال</>}
+                  />
+                </motion.span>
+                <motion.span
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 1.5, delay: 0.4 }}
+                  className="block text-black/10 mt-2"
+                >
+                  <BilingualText 
+                    en="Growth Mandate."
+                    ar="تكليف النمو."
+                  />
+                </motion.span>
+              </h1>
+
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end border-t border-black/5 pt-16">
+                <motion.div 
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 1, delay: 0.6 }}
+                  className="lg:col-span-7"
+                >
+                  <p className="max-w-2xl text-2xl lg:text-3xl font-light leading-[1.2] text-black/80 tracking-tight">
+                    <BilingualText 
+                      en="A precision capital vehicle transforming breakout concepts into national icons. We invest in relevance, repeat demand, and disciplined scale."
+                      ar="وعاء استثماري دقيق يحول المفاهيم الواعدة إلى أيقونات وطنية. نستثمر في الملاءمة، والطلب المتكرر، والتوسع المنضبط."
+                    />
+                  </p>
+                </motion.div>
+
+                <motion.div 
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 1, delay: 0.7 }}
+                  className="lg:col-span-5 flex flex-col sm:flex-row items-start sm:items-center justify-end gap-10"
+                >
+                   <div className="text-left sm:text-right">
+                      <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-black/30 mb-2 font-[Metropolis]">Deployment Status</p>
+                      <div className="flex items-center gap-3 justify-start sm:justify-end">
+                        <p className="text-lg font-bold uppercase tracking-widest text-[var(--brand-primary)] font-[Metropolis]">Active Stage</p>
+                        <div className="w-2.5 h-2.5 rounded-full bg-[var(--brand-primary)] animate-ping" />
+                      </div>
+                   </div>
+                   
+                   <button className="group relative px-8 py-5 bg-black text-white rounded-full overflow-hidden transition-transform hover:scale-105 active:scale-95 shadow-2xl">
+                     <motion.div 
+                       className="absolute inset-0 bg-gradient-to-r from-[var(--brand-primary)] to-[#ffd43b] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                     />
+                     <span className="relative z-10 flex items-center gap-3 font-bold text-xs uppercase tracking-widest font-[Metropolis]">
+                       <BilingualText en="Investor Portal" ar="بوابة المستثمر" />
+                       <ArrowUpRight size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                     </span>
+                   </button>
+                </motion.div>
+              </div>
+            </motion.div>
+            
+            {/* Scroll Indicator Icon */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.5, duration: 1 }}
+              className="absolute bottom-[-100px] left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-4"
+            >
+              <div className="w-[1px] h-20 bg-gradient-to-b from-black/20 to-transparent" />
+              <span className="text-[10px] uppercase tracking-[0.4em] font-bold text-black/20 vertical-text">Scroll</span>
             </motion.div>
           </div>
         </section>
 
-        {/* ── Section 2: Founder Manifesto (NEW) ── */}
+        {/* ── Section 2: Founder Manifesto ── */}
         <section className="py-32 px-6 lg:px-16 bg-white relative overflow-hidden">
            <div className="absolute top-0 left-0 w-full h-full opacity-[0.02] pointer-events-none" style={{ backgroundImage: "radial-gradient(circle at 2px 2px, black 1px, transparent 0)", backgroundSize: "40px 40px" }} />
            <div className="max-w-[1600px] mx-auto relative z-10">
@@ -306,7 +441,7 @@ const Funds = () => {
            </div>
         </section>
 
-        {/* ── Section 3: Core Metrics (Keep) ── */}
+        {/* ── Section 3: Core Metrics ── */}
         <section className="py-24 px-6 lg:px-16 bg-white">
           <div className="max-w-[1600px] mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -335,7 +470,7 @@ const Funds = () => {
           </div>
         </section>
 
-        {/* ── Section 4: Operating OS (NEW) ── */}
+        {/* ── Section 4: Operating OS ── */}
         <section className="py-40 px-6 lg:px-16">
           <div className="max-w-[1600px] mx-auto text-center mb-24">
              <SectionLabel en="The Operating OS" ar="نظام التشغيل" />
@@ -374,7 +509,7 @@ const Funds = () => {
           </div>
         </section>
 
-        {/* ── Section 5: The Cohort Grid (Keep) ── */}
+        {/* ── Section 5: The Cohort Grid ── */}
         <section className="py-32 lg:py-48 px-6 lg:px-16 bg-[#0b7285] text-white rounded-[4rem] mx-4 my-12 overflow-hidden relative">
           <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-white/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2" />
           <div className="max-w-[1600px] mx-auto relative z-10">
@@ -421,7 +556,7 @@ const Funds = () => {
           </div>
         </section>
 
-        {/* ── Section 6: The Scaling Blueprint (NEW) ── */}
+        {/* ── Section 6: The Scaling Blueprint ── */}
         <section className="py-40 px-6 lg:px-16 bg-black text-white rounded-[4rem] mx-4 my-12 relative overflow-hidden">
            <div className="max-w-[1600px] mx-auto">
               <div className="mb-32">
@@ -457,7 +592,7 @@ const Funds = () => {
            </div>
         </section>
 
-        {/* ── Section 7: Strategic Strategy Pillars (Keep) ── */}
+        {/* ── Section 7: Strategic Strategy Pillars ── */}
         <section className="py-32 lg:py-48 px-6 lg:px-16">
           <div className="max-w-[1600px] mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 items-start">
@@ -511,7 +646,7 @@ const Funds = () => {
           </div>
         </section>
 
-        {/* ── Section 8: Why Us? (NEW Comparison) ── */}
+        {/* ── Section 8: Why Us? ── */}
         <section className="py-40 px-6 lg:px-16 bg-white">
            <div className="max-w-[1600px] mx-auto">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
@@ -561,7 +696,7 @@ const Funds = () => {
            </div>
         </section>
 
-        {/* ── Section 9: FAQ (NEW) ── */}
+        {/* ── Section 9: FAQ ── */}
         <section className="py-40 px-6 lg:px-16 bg-[#f8f9fa]">
            <div className="max-w-[1600px] mx-auto">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-24">
@@ -586,7 +721,7 @@ const Funds = () => {
            </div>
         </section>
 
-        {/* ── Section 10: The Launch Timeline (Keep) ── */}
+        {/* ── Section 10: The Launch Timeline ── */}
         <section className="py-32 bg-black text-white rounded-[4rem] mx-4 mb-12 text-center relative overflow-hidden">
            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(11,114,133,0.15)_0%,transparent_70%)]" />
            <div className="max-w-4xl mx-auto relative z-10 px-6">
@@ -618,7 +753,7 @@ const Funds = () => {
            </div>
         </section>
 
-        {/* ── Section 11: Final CTA (NEW) ── */}
+        {/* ── Section 11: Final CTA ── */}
         <section className="py-60 bg-black text-white text-center relative overflow-hidden">
            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(11,114,133,0.15)_0%,transparent_70%)]" />
            <motion.div 
