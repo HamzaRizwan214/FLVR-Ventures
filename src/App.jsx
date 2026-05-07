@@ -11,6 +11,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Portfolio from "./pages/Portfolio";
 import HowItWorks from "./pages/HowItWorks";
+import Funds from "./pages/Funds";
 import Contact from "./pages/Contact";
 import CaseStudies from "./pages/CaseStudies";
 import NextWave from "./pages/NextWave";
@@ -26,6 +27,7 @@ function AnimatedRoutes() {
           <Route path="about" element={<About />} />
           <Route path="portfolio" element={<Portfolio />} />
           <Route path="how-it-works" element={<HowItWorks />} />
+          <Route path="funds" element={<Funds />} />
           <Route path="contact" element={<Contact />} />
           <Route path="case-studies" element={<CaseStudies />} />
           <Route path="case-studies/:id" element={<CaseStudies />} />

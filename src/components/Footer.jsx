@@ -13,7 +13,7 @@ export default function Footer() {
     ecosystem: [
       {
         name: { en: "FLVR Fund I", ar: "صندوق فليفر 1" },
-        href: "/how-it-works",
+        href: "/funds",
       },
       {
         name: { en: "Venture Studio", ar: "استوديو المشاريع" },
