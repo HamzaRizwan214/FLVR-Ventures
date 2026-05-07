@@ -38,7 +38,7 @@ export default function PartnersSection() {
                   transition={{ delay: index * 0.1 }}
                   className="flex-1 min-w-[150px] flex items-center justify-center px-8 group"
                 >
-                  <span className="text-xl md:text-2xl font-normal tracking-tighter text-zinc-400 group-hover:text-[var(--text-primary)] transition-colors duration-300 select-none uppercase font-mono italic">
+                  <span className="text-xl md:text-2xl font-normal tracking-tighter text-zinc-400 group-hover:text-[var(--text-primary)] transition-colors duration-300 select-none uppercase font-mono text-center">
                     {partner.name}
                   </span>
                 </motion.div>
