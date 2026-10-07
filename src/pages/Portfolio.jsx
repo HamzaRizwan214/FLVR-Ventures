@@ -19,17 +19,14 @@ export default function Portfolio() {
   return (
     <PageWrapper noPadding>
       <PageHeader
-        eyebrow={<BilingualText en="The Studio" ar="الاستوديو" />}
+        eyebrow={<BilingualText en="Portfolio" ar="المحفظة" />}
         title={
-          <BilingualText
-            en="Four brands. Four opportunities. One growth platform."
-            ar="أربع علامات. أربع فرص. منصة نمو واحدة."
-          />
+          <BilingualText en="Portfolio concepts." ar="مفاهيم المحفظة." />
         }
         lead={
           <BilingualText
-            en="Restaurant concepts built and validated by the FLVR Studio, each led by its founder. Investors buy a percentage of a concept's equity."
-            ar="مفاهيم مطاعم يبنيها استوديو فلايفر ويختبرها، ويقود كلاً منها مؤسسه. يشتري المستثمرون نسبة من ملكية المفهوم."
+            en="Restaurant concepts built and validated by the FLVR Studio, each led by its founder. Partners can acquire a percentage of a concept's equity."
+            ar="مفاهيم مطاعم يبنيها استوديو فلايفر ويختبرها، ويقود كلاً منها مؤسسه. يمكن للشركاء الاستحواذ على نسبة من ملكية المفهوم."
           />
         }
       />
@@ -50,17 +47,17 @@ export default function Portfolio() {
           <div className="mt-20 flex flex-col gap-8 border-t border-[var(--border-default)] pt-12 md:flex-row md:items-center md:justify-between">
             <div className="flex flex-wrap items-center gap-6">
               <Link to="/contact?interest=invest" className="btn-primary">
-                <BilingualText en="Discuss an investment" ar="ناقش فرصة استثمارية" />
+                <BilingualText en="Speak with the team" ar="تحدث مع الفريق" />
               </Link>
               <Link to="/how-it-works" className="btn-secondary">
-                <BilingualText en="How a concept is validated" ar="كيف يُختبر المفهوم" />
+                <BilingualText en="How we build concepts" ar="كيف نبني المفاهيم" />
               </Link>
             </div>
             <Link
               to="/contact?interest=own"
               className="text-sm font-medium uppercase tracking-[0.2em] text-[var(--text-secondary)] hover:text-[var(--brand-primary)] font-[Metropolis]"
             >
-              <BilingualText en="Have your own concept? Talk to us" ar="لديك مفهوم خاص؟ تحدث معنا" />
+              <BilingualText en="Have a concept of your own? Contact us" ar="لديك مفهوم خاص؟ تواصل معنا" />
             </Link>
           </div>
         </div>

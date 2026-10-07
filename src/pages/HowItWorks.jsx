@@ -6,19 +6,24 @@ import PageHeader from "@/components/PageHeader";
 import SectionHeading from "@/components/SectionHeading";
 import BilingualText from "@/components/BilingualText";
 import T from "@/components/T";
-import { steps, popup, investorPath } from "@/data/content";
+import { steps, popup, participation } from "@/data/content";
 
 const intro = {
-  en: "We work alongside founders to strengthen the concept, test its commercial assumptions and support launch and growth.",
-  ar: "نعمل إلى جانب المؤسسين لتعزيز المفهوم واختبار افتراضاته التجارية ودعم الإطلاق والنمو.",
+  en: "We work alongside founders to strengthen each concept, test its commercial assumptions and support launch and growth.",
+  ar: "نعمل إلى جانب المؤسسين لتعزيز كل مفهوم واختبار افتراضاته التجارية ودعم الإطلاق والنمو.",
 };
 
 export default function HowItWorks() {
   return (
     <PageWrapper noPadding>
       <PageHeader
-        eyebrow={<BilingualText en="How it works" ar="كيف نعمل" />}
-        title={<T t={popup.tagline} />}
+        eyebrow={<BilingualText en="Method" ar="المنهجية" />}
+        title={
+          <BilingualText
+            en="How we build concepts."
+            ar="كيف نبني المفاهيم."
+          />
+        }
         lead={<T t={intro} />}
       />
 
@@ -26,7 +31,7 @@ export default function HowItWorks() {
       <section className="px-6 lg:px-12 py-24 lg:py-32">
         <div className="mx-auto max-w-[1600px]">
           <SectionHeading
-            eyebrow={<BilingualText en="The Studio playbook" ar="منهجية الاستوديو" />}
+            eyebrow={<BilingualText en="The Studio method" ar="منهجية الاستوديو" />}
             title={
               <BilingualText
                 en="Filter. Lift. Validate. Run."
@@ -45,10 +50,13 @@ export default function HowItWorks() {
                   transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
                   className="grid grid-cols-1 gap-6 border-b border-[var(--border-default)] py-10 md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] md:gap-12 md:py-14"
                 >
-                  <div className="flex items-baseline gap-6">
-                    <span className="text-sm font-medium text-[var(--text-muted)] font-[Metropolis]">
-                      0{i + 1}
-                    </span>
+                  <div>
+                    <p className="mb-3 flex items-center gap-4 text-xs font-medium uppercase tracking-[0.25em] font-[Metropolis]">
+                      <span className="text-[var(--text-muted)]">0{i + 1}</span>
+                      <span className="text-[var(--brand-primary)]">
+                        <T t={step.descriptor} />
+                      </span>
+                    </p>
                     <h3 className="text-4xl md:text-6xl font-normal tracking-tighter text-[var(--text-primary)]">
                       <T t={step.title} />
                     </h3>
@@ -85,14 +93,12 @@ export default function HowItWorks() {
       <section className="px-6 lg:px-12 py-24 lg:py-32 bg-[var(--bg-secondary)] border-t border-[var(--border-default)]">
         <div className="mx-auto max-w-[1600px]">
           <SectionHeading
-            eyebrow={<BilingualText en="The investor path" ar="مسار المستثمر" />}
-            title={
-              <BilingualText en="Enter. Grow. Exit." ar="الدخول. النمو. الخروج." />
-            }
+            eyebrow={<T t={participation.eyebrow} />}
+            title={<T t={participation.title} />}
           />
 
           <div className="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-12">
-            {investorPath.map((item, i) => (
+            {participation.items.map((item, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 24 }}
@@ -116,10 +122,10 @@ export default function HowItWorks() {
 
           <div className="mt-20 flex flex-wrap items-center gap-6">
             <Link to="/portfolio" className="btn-primary">
-              <BilingualText en="See the concepts" ar="شاهد المفاهيم" />
+              <BilingualText en="View the portfolio" ar="استعرض المحفظة" />
             </Link>
             <Link to="/funds" className="btn-secondary">
-              <BilingualText en="About the Fund" ar="عن الصندوق" />
+              <BilingualText en="Fund overview" ar="نظرة عامة على الصندوق" />
             </Link>
           </div>
         </div>

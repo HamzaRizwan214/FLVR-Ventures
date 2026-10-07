@@ -10,12 +10,9 @@ export default function HomeConcepts() {
     <section className="bg-[var(--bg-primary)] py-24 sm:py-32 border-t border-[var(--border-default)]">
       <div className="mx-auto max-w-[1800px] px-6 lg:px-12">
         <SectionHeading
-          eyebrow={<BilingualText en="The Studio" ar="الاستوديو" />}
+          eyebrow={<BilingualText en="Portfolio" ar="المحفظة" />}
           title={
-            <BilingualText
-              en="Four brands. Four opportunities. One growth platform."
-              ar="أربع علامات. أربع فرص. منصة نمو واحدة."
-            />
+            <BilingualText en="Current concepts." ar="المفاهيم الحالية." />
           }
         />
 
@@ -35,7 +32,7 @@ export default function HomeConcepts() {
             to="/portfolio"
             className="text-sm font-medium uppercase tracking-[0.2em] text-[var(--brand-primary)] hover:underline font-[Metropolis]"
           >
-            <BilingualText en="View all concepts" ar="عرض جميع المفاهيم" />
+            <BilingualText en="View the portfolio" ar="استعرض المحفظة" />
           </Link>
         </div>
       </div>

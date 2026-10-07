@@ -6,7 +6,7 @@ import { useLanguage } from "../contexts/LanguageContext";
 
 const links = [
   { name: { en: "How it Works", ar: "كيف نعمل" }, href: "/how-it-works" },
-  { name: { en: "Studio", ar: "الاستوديو" }, href: "/portfolio" },
+  { name: { en: "Portfolio", ar: "المحفظة" }, href: "/portfolio" },
   { name: { en: "Funds", ar: "الصندوق" }, href: "/funds" },
   { name: { en: "About", ar: "من نحن" }, href: "/about" },
   { name: { en: "Contact", ar: "تواصل" }, href: "/contact" },
@@ -42,8 +42,8 @@ export default function Footer() {
             </Link>
             <p className="max-w-sm text-lg leading-relaxed text-[var(--text-secondary)] font-[Metropolis]">
               <BilingualText
-                en="Backing the next generation of Saudi F&B brands."
-                ar="ندعم الجيل القادم من علامات الأغذية والمشروبات السعودية."
+                en="A venture studio for Saudi food and beverage."
+                ar="استوديو مشاريع لقطاع الأغذية والمشروبات السعودي."
               />
             </p>
           </div>

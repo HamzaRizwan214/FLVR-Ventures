@@ -1,52 +1,59 @@
 // Site-wide copy. Every string is { en, ar } and every fact here traces back to
 // /understandings (owner statements and flvr.pdf). Do not add numbers, names or
 // claims that are not in those files.
+//
+// Voice: plain, declarative, venture-style. Describe what FLVR does and what the
+// evidence is. No slogans, no promises about outcomes, no exit or return language.
 
 export const hero = {
   badge: { en: "Pronounced: flavor", ar: "النطق: فلايفر" },
   lead: {
-    en: "FLVR's Studio builds and validates restaurant concepts. Investors own a share of the equity. The FLVR Fund is the intended route to exit.",
-    ar: "يبني استوديو فلايفر المفاهيم ويختبرها. يمتلك المستثمرون حصة من ملكيتها، ويمثل صندوق فلايفر مسار الخروج المتوقع.",
+    en: "We build restaurant concepts with founders, test them in live trials, and invest alongside partners. FLVR also plans a fund for food and beverage at Seed and Growth stage.",
+    ar: "نبني مفاهيم المطاعم مع المؤسسين، ونختبرها في تجارب حية، ونستثمر إلى جانب الشركاء. وتخطط فلايفر كذلك لإطلاق صندوق للأغذية والمشروبات في مرحلتي التأسيس والنمو.",
   },
-  ctaPrimary: { en: "Discuss an investment", ar: "ناقش فرصة استثمارية" },
-  ctaSecondary: { en: "Explore the concepts", ar: "استكشف المفاهيم" },
+  ctaPrimary: { en: "Speak with the team", ar: "تحدث مع الفريق" },
+  ctaSecondary: { en: "View the portfolio", ar: "استعرض المحفظة" },
 };
 
-// The playbook: Filter → Lift → Validate → Run
+// The Studio method: Filter → Lift → Validate → Run
 export const steps = [
   {
     key: "filter",
     title: { en: "Filter", ar: "تصفية" },
+    descriptor: { en: "Selection", ar: "الاختيار" },
     desc: {
-      en: "Select founder-led concepts through market research and commercial assessment.",
-      ar: "اختيار المفاهيم التي يقودها مؤسسوها عبر أبحاث السوق والتقييم التجاري.",
+      en: "We assess founder-led concepts through market research and commercial review.",
+      ar: "نقيّم المفاهيم التي يقودها مؤسسوها عبر أبحاث السوق والمراجعة التجارية.",
     },
     image: "/concept.jpg",
   },
   {
     key: "lift",
     title: { en: "Lift", ar: "رفع" },
+    descriptor: { en: "Build", ar: "البناء" },
     desc: {
-      en: "Strengthen the brand, menu, pricing and operating model with the founder.",
-      ar: "تعزيز العلامة والقائمة والتسعير ونموذج التشغيل بالشراكة مع المؤسس.",
+      en: "We develop the brand, menu, pricing and operating model with the founder.",
+      ar: "نطوّر العلامة والقائمة والتسعير ونموذج التشغيل بالشراكة مع المؤسس.",
     },
     image: "/busy.jpg",
   },
   {
     key: "validate",
     title: { en: "Validate", ar: "تحقق" },
+    descriptor: { en: "Evidence", ar: "الإثبات" },
     desc: {
-      en: "Use POP-UP to test customer response and operating economics, and guide the next decision.",
-      ar: "استخدام POP-UP لاختبار استجابة العملاء والاقتصاديات التشغيلية وتوجيه القرار التالي.",
+      en: "We run a live POP-UP trial to measure customer response and operating economics. The results inform the next decision.",
+      ar: "نشغّل تجربة POP-UP حية لقياس استجابة العملاء والاقتصاديات التشغيلية، وتُبنى عليها القرارات التالية.",
     },
     image: "/prove.jpg",
   },
   {
     key: "run",
     title: { en: "Run", ar: "تشغيل" },
+    descriptor: { en: "Scale", ar: "التوسع" },
     desc: {
-      en: "Support launch and growth through operating systems, people and disciplined capital allocation.",
-      ar: "دعم الإطلاق والنمو عبر الأنظمة التشغيلية والكوادر وتخصيص رأس المال بانضباط.",
+      en: "We support launch and growth through operating systems, people and disciplined capital allocation.",
+      ar: "ندعم الإطلاق والنمو عبر الأنظمة التشغيلية والكوادر وتخصيص رأس المال بانضباط.",
     },
     image: "/grow.jpg",
   },
@@ -54,76 +61,77 @@ export const steps = [
 
 export const popup = {
   name: { en: "POP-UP by FLVR", ar: "POP-UP من فلايفر" },
-  tagline: {
-    en: "Concept validation in the real world.",
-    ar: "التحقق من المفهوم في الواقع.",
-  },
   body: {
-    en: "Our operating studio for concept validation. Designed for live trials, it lets FLVR run founder-led concepts and test the offer, pricing, customer response and operating performance.",
-    ar: "استوديو التشغيل لدينا للتحقق من المفاهيم. صُمم للتجارب الحية، ويتيح لفلايفر تشغيل المفاهيم التي يقودها مؤسسوها واختبار العرض والتسعير واستجابة العملاء والأداء التشغيلي.",
+    en: "POP-UP is FLVR's operating studio for concept validation. Concepts are run in live trials so the offer, pricing, customer response and operating performance can be measured.",
+    ar: "POP-UP هو استوديو التشغيل لدى فلايفر للتحقق من المفاهيم. تُدار المفاهيم في تجارب حية لقياس العرض والتسعير واستجابة العملاء والأداء التشغيلي.",
   },
 };
 
-// Studio → Investor → Fund
-export const loop = [
-  {
-    label: { en: "Build", ar: "البناء" },
-    title: { en: "The Studio", ar: "الاستوديو" },
-    text: {
-      en: "Builds and validates the concept.",
-      ar: "يبني المفهوم ويختبره.",
+// How FLVR is organised: three parts, not a sequence.
+export const model = {
+  eyebrow: { en: "Structure", ar: "الهيكل" },
+  title: { en: "How FLVR is organised.", ar: "كيف تنتظم فلايفر." },
+  parts: [
+    {
+      title: { en: "Studio", ar: "الاستوديو" },
+      text: {
+        en: "Builds and validates restaurant concepts with founders.",
+        ar: "يبني مفاهيم المطاعم ويختبرها بالشراكة مع المؤسسين.",
+      },
     },
-  },
-  {
-    label: { en: "Own", ar: "الملكية" },
-    title: { en: "The Investor", ar: "المستثمر" },
-    text: {
-      en: "Buys a percentage of the concept's equity.",
-      ar: "يشتري نسبة من ملكية المفهوم.",
+    {
+      title: { en: "Co-investment", ar: "الاستثمار المشترك" },
+      text: {
+        en: "Partners hold a percentage of a concept's equity alongside the Studio.",
+        ar: "يمتلك الشركاء نسبة من ملكية المفهوم إلى جانب الاستوديو.",
+      },
     },
-  },
-  {
-    label: { en: "Exit", ar: "الخروج" },
-    title: { en: "The Fund", ar: "الصندوق" },
-    text: {
-      en: "The intended route to exit, subject to evaluation.",
-      ar: "مسار الخروج المتوقع، وفق التقييم.",
+    {
+      title: { en: "Fund", ar: "الصندوق" },
+      text: {
+        en: "A planned vehicle for food and beverage businesses and technology at Seed and Growth stage.",
+        ar: "أداة استثمارية مخطط لها لأعمال الأغذية والمشروبات والتقنية في مرحلتي التأسيس والنمو.",
+      },
     },
-  },
-];
+  ],
+};
 
-// How an investor moves through a concept (How It Works page)
-export const investorPath = [
-  {
-    label: { en: "Enter", ar: "الدخول" },
-    text: {
-      en: "Investors can engage before, during or after a concept's POP-UP trial, depending on the opportunity, by buying a percentage of its equity.",
-      ar: "يمكن للمستثمرين الانضمام قبل تجربة POP-UP أو أثناءها أو بعدها، بحسب الفرصة، عبر شراء نسبة من ملكية المفهوم.",
+// How an investor works with FLVR (How It Works page)
+export const participation = {
+  eyebrow: { en: "Investors", ar: "المستثمرون" },
+  title: { en: "Working with investors.", ar: "العمل مع المستثمرين." },
+  items: [
+    {
+      label: { en: "Review", ar: "الاطلاع" },
+      text: {
+        en: "Investors can review relevant research, concept plans and operating results, where available.",
+        ar: "يمكن للمستثمرين الاطلاع على الأبحاث وخطط المفاهيم والنتائج التشغيلية ذات الصلة، حيثما توفرت.",
+      },
     },
-  },
-  {
-    label: { en: "Grow", ar: "النمو" },
-    text: {
-      en: "FLVR keeps working alongside the founder to support launch and growth.",
-      ar: "يواصل فلايفر العمل إلى جانب المؤسس لدعم الإطلاق والنمو.",
+    {
+      label: { en: "Engage", ar: "التعاون" },
+      text: {
+        en: "Engagement can begin before, during or after a concept's POP-UP trial, depending on the opportunity.",
+        ar: "يمكن أن يبدأ التعاون قبل تجربة POP-UP للمفهوم أو أثناءها أو بعدها، بحسب الفرصة.",
+      },
     },
-  },
-  {
-    label: { en: "Exit", ar: "الخروج" },
-    text: {
-      en: "The FLVR Fund is the intended route to exit. Whether and how it buys a stake is subject to evaluation of the concept.",
-      ar: "صندوق فلايفر هو مسار الخروج المتوقع. وتخضع إمكانية استحواذه على الحصة وآلية ذلك لتقييم المفهوم.",
+    {
+      label: { en: "Co-invest", ar: "الاستثمار المشترك" },
+      text: {
+        en: "Investors acquire a percentage of equity in a concept, alongside the Studio.",
+        ar: "يستحوذ المستثمرون على نسبة من ملكية المفهوم إلى جانب الاستوديو.",
+      },
     },
-  },
-];
+  ],
+};
 
 export const fund = {
   intro: {
-    en: "A planned investment vehicle targeting SAR 100M, focused on F&B businesses and technology serving the sector.",
+    en: "A planned investment vehicle targeting SAR 100M, focused on food and beverage businesses and technology serving the sector.",
     ar: "أداة استثمارية مخطط لها تستهدف ١٠٠ مليون ريال، وتركّز على أعمال الأغذية والمشروبات والتقنية الخادمة للقطاع.",
   },
   approach: {
-    en: "Its investment approach combines capital with hands-on operating capability.",
+    en: "Its approach combines capital with hands-on operating capability.",
     ar: "ويجمع نهجها الاستثماري بين رأس المال والقدرة التشغيلية المباشرة.",
   },
   terms: [
@@ -146,8 +154,8 @@ export const fund = {
     {
       label: { en: "Ownership", ar: "الملكية" },
       value: {
-        en: "Minority or majority, set by evaluating the concept",
-        ar: "أقلية أو أغلبية، بحسب تقييم المفهوم",
+        en: "Minority or majority, set by evaluating each opportunity",
+        ar: "أقلية أو أغلبية، بحسب تقييم كل فرصة",
       },
     },
     {
@@ -159,11 +167,11 @@ export const fund = {
     en: "The Fund is a planned investment vehicle. Contact the team for available information.",
     ar: "الصندوق أداة استثمارية مخطط لها. تواصل مع الفريق للحصول على المعلومات المتاحة.",
   },
-  role: {
-    title: { en: "The route to exit", ar: "مسار الخروج" },
+  focus: {
+    title: { en: "Investment focus", ar: "التركيز الاستثماري" },
     text: {
-      en: "When a Studio concept grows, the Fund can acquire an investor's stake, as a minority or majority holder, subject to evaluation of the concept.",
-      ar: "عندما ينمو أحد مفاهيم الاستوديو، يمكن للصندوق الاستحواذ على حصة المستثمر، كأقلية أو أغلبية، وفق تقييم المفهوم.",
+      en: "The Fund targets food and beverage businesses and sector technology at Seed and Growth stage, with ticket sizes of SAR 1–5M. Ownership is set by evaluating each opportunity.",
+      ar: "يستهدف الصندوق أعمال الأغذية والمشروبات وتقنيات القطاع في مرحلتي التأسيس والنمو، بحجم استثمار يتراوح بين ١ و٥ ملايين ريال، وتُحدَّد الملكية بتقييم كل فرصة.",
     },
   },
   faqs: [
@@ -192,51 +200,39 @@ export const fund = {
 };
 
 export const about = {
-  tagline: { en: "Operator thinking. Investor clarity.", ar: "فكر المشغّل. وضوح المستثمر." },
-  lead: {
-    en: "FLVR Ventures is KSA's first F&B-exclusive venture builder and investment platform, backing founder-led concepts with capital, brand development and operating expertise.",
-    ar: "فلايفر فينتشرز هي أول منصة سعودية لبناء المشاريع والاستثمار متخصصة حصراً في الأغذية والمشروبات، وتدعم المفاهيم التي يقودها مؤسسوها برأس المال وتطوير العلامة والخبرة التشغيلية.",
+  title: {
+    en: "A venture studio and planned fund for Saudi food and beverage.",
+    ar: "استوديو مشاريع وصندوق مخطط له لقطاع الأغذية والمشروبات السعودي.",
   },
-  arms: [
-    {
-      title: { en: "The Studio", ar: "الاستوديو" },
-      text: {
-        en: "Builds restaurant concepts and runs them through the playbook: Filter, Lift, Validate, Run. Each concept is founder-led, with FLVR working alongside.",
-        ar: "يبني مفاهيم المطاعم ويمررها عبر المنهجية: تصفية، رفع، تحقق، تشغيل. كل مفهوم يقوده مؤسسه بينما يعمل فلايفر إلى جانبه.",
-      },
-    },
-    {
-      title: { en: "The Fund", ar: "الصندوق" },
-      text: {
-        en: "A planned investment vehicle for F&B businesses and technology serving the sector, and the intended route to exit for investors in Studio concepts.",
-        ar: "أداة استثمارية مخطط لها لأعمال الأغذية والمشروبات والتقنية الخادمة للقطاع، وهي مسار الخروج المتوقع للمستثمرين في مفاهيم الاستوديو.",
-      },
-    },
-  ],
+  lead: {
+    en: "FLVR Ventures is Saudi Arabia's first venture builder and investment platform focused exclusively on food and beverage. We back founder-led concepts with capital, brand development and operating expertise.",
+    ar: "فلايفر فينتشرز هي أول منصة سعودية لبناء المشاريع والاستثمار متخصصة حصراً في الأغذية والمشروبات. ندعم المفاهيم التي يقودها مؤسسوها برأس المال وتطوير العلامة والخبرة التشغيلية.",
+  },
   vision: {
     label: { en: "Vision", ar: "الرؤية" },
     text: {
-      en: "To build, nurture, and scale the next generation of iconic Saudi F&B brands.",
-      ar: "بناء ورعاية وتوسيع الجيل القادم من العلامات السعودية الأيقونية في قطاع الأغذية والمشروبات.",
+      en: "To build, nurture and scale Saudi food and beverage brands.",
+      ar: "بناء ورعاية وتوسيع علامات الأغذية والمشروبات السعودية.",
     },
   },
   mission: {
     label: { en: "Mission", ar: "المهمة" },
     text: {
-      en: "To turn promising F&B concepts into scalable, enduring brands through brand optimization, financial discipline, operational excellence, brand outreach, and strategic growth levers.",
-      ar: "تحويل مفاهيم الأغذية والمشروبات الواعدة إلى علامات قابلة للتوسع ومستدامة عبر تحسين العلامة والانضباط المالي والتميز التشغيلي والانتشار والرافعات الاستراتيجية للنمو.",
+      en: "To develop promising food and beverage concepts into scalable, durable businesses through brand development, financial discipline, operational excellence and disciplined growth.",
+      ar: "تطوير مفاهيم الأغذية والمشروبات الواعدة إلى أعمال قابلة للتوسع ومستدامة عبر تطوير العلامة والانضباط المالي والتميز التشغيلي والنمو المنضبط.",
     },
   },
 };
 
 export const contact = {
-  title: { en: "Discuss an investment", ar: "ناقش فرصة استثمارية" },
+  eyebrow: { en: "Contact", ar: "التواصل" },
+  title: { en: "Speak with the team", ar: "تحدث مع الفريق" },
   lead: {
-    en: "Tell us what you would like to discuss: a concept, the Fund, or a partnership with FLVR.",
-    ar: "أخبرنا بما تود مناقشته: مفهوم، أو الصندوق، أو شراكة مع فلايفر.",
+    en: "Tell us what you would like to discuss: a concept, the Fund, or a partnership.",
+    ar: "أخبرنا بما تود مناقشته: مفهوم، أو الصندوق، أو شراكة.",
   },
   interests: [
-    { value: "invest", label: { en: "Invest in a concept", ar: "الاستثمار في مفهوم" } },
+    { value: "invest", label: { en: "Co-invest in a concept", ar: "الاستثمار المشترك في مفهوم" } },
     { value: "fund", label: { en: "Fund overview", ar: "نظرة عامة على الصندوق" } },
     { value: "partner", label: { en: "Partnership", ar: "شراكة" } },
     { value: "own", label: { en: "Bring a concept", ar: "لدي مفهوم خاص" } },

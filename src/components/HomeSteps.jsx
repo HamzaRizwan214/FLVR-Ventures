@@ -1,21 +1,21 @@
 import { motion } from "framer-motion";
 import SectionHeading from "./SectionHeading";
-import LoopDiagram from "./LoopDiagram";
+import ModelDiagram from "./ModelDiagram";
 import BilingualText from "./BilingualText";
 import T from "./T";
-import { steps } from "@/data/content";
+import { steps, model } from "@/data/content";
 
-// Home: the four playbook steps, then the one-line Studio → Investor → Fund loop.
+// Home: the four-stage method, then how FLVR is organised.
 export default function HomeSteps() {
   return (
     <section className="bg-[var(--bg-primary)] py-24 sm:py-32">
       <div className="mx-auto max-w-[1800px] px-6 lg:px-12">
         <SectionHeading
-          eyebrow={<BilingualText en="How it works" ar="كيف نعمل" />}
+          eyebrow={<BilingualText en="How we build" ar="كيف نبني" />}
           title={
             <BilingualText
-              en="Concepts are tested before capital is committed."
-              ar="نختبر المفاهيم قبل الالتزام برأس المال."
+              en="A four-stage method."
+              ar="منهجية من أربع مراحل."
             />
           }
         />
@@ -44,6 +44,9 @@ export default function HomeSteps() {
               </div>
 
               <div className="mt-8 pe-4">
+                <p className="mb-2 text-xs font-medium uppercase tracking-[0.25em] text-[var(--brand-primary)] font-[Metropolis]">
+                  <T t={step.descriptor} />
+                </p>
                 <h3 className="mb-3 text-2xl font-normal tracking-tight text-[var(--text-primary)]">
                   <T t={step.title} />
                 </h3>
@@ -55,8 +58,12 @@ export default function HomeSteps() {
           ))}
         </div>
 
-        <div className="mt-24 lg:mt-32">
-          <LoopDiagram />
+        <div className="mt-28 lg:mt-36">
+          <SectionHeading
+            eyebrow={<T t={model.eyebrow} />}
+            title={<T t={model.title} />}
+          />
+          <ModelDiagram />
         </div>
       </div>
     </section>

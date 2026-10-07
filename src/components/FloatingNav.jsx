@@ -15,7 +15,7 @@ import { cn } from "@/lib/utils";
 const menuItems = [
   { name: "Home", ar: "الرئيسية", href: "/" },
   { name: "How it Works", ar: "كيف نعمل", href: "/how-it-works" },
-  { name: "Studio", ar: "الاستوديو", href: "/portfolio" },
+  { name: "Portfolio", ar: "المحفظة", href: "/portfolio" },
   { name: "Funds", ar: "الصندوق", href: "/funds" },
   { name: "About", ar: "من نحن", href: "/about" },
 ];

@@ -85,20 +85,18 @@ export function HeroContent() {
           <BilingualText
             en={
               <>
-                Backing the{" "}
+                A venture studio for{" "}
                 <span className="font-light text-[var(--brand-reward)]">
-                  Next Generation
+                  Saudi food and beverage
                 </span>
-                <br /> of Saudi F&B Brands
               </>
             }
             ar={
               <>
-                ندعم{" "}
+                استوديو مشاريع لقطاع{" "}
                 <span className="font-light text-[var(--brand-reward)]">
-                  الجيل القادم
+                  الأغذية والمشروبات السعودي
                 </span>
-                <br /> من علامات الأغذية والمشروبات السعودية
               </>
             }
           />

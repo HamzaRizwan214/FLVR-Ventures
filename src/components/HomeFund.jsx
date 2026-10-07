@@ -18,12 +18,7 @@ export default function HomeFund() {
         <SectionHeading
           light
           eyebrow={<BilingualText en="The Fund" ar="الصندوق" />}
-          title={
-            <BilingualText
-              en="The route to exit."
-              ar="مسار الخروج."
-            />
-          }
+          title={<BilingualText en="The FLVR Fund." ar="صندوق فلايفر." />}
           lead={<T t={fund.intro} />}
         />
 
@@ -49,10 +44,10 @@ export default function HomeFund() {
 
         <div className="mt-12 flex flex-wrap items-center gap-6">
           <Link to="/funds" className="btn-white">
-            <BilingualText en="Explore the Fund" ar="استكشف الصندوق" />
+            <BilingualText en="Fund overview" ar="نظرة عامة على الصندوق" />
           </Link>
           <Link to="/contact?interest=invest" className="btn-ghost">
-            <BilingualText en="Discuss an investment" ar="ناقش فرصة استثمارية" />
+            <BilingualText en="Speak with the team" ar="تحدث مع الفريق" />
           </Link>
         </div>
 

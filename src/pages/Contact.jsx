@@ -21,7 +21,7 @@ export default function Contact() {
             animate={{ opacity: 1, y: 0 }}
             className="mb-6 text-xs font-medium uppercase tracking-[0.25em] text-[var(--brand-primary)] font-[Metropolis]"
           >
-            <BilingualText en="Let's talk" ar="تواصل معنا" />
+            <T t={contact.eyebrow} />
           </motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
