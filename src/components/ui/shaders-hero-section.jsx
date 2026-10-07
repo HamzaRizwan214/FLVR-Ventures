@@ -180,7 +180,7 @@ export function HeroContent() {
           <BilingualText
             en={
               <>
-                Building the{" "}
+                Backing the{" "}
                 <span className="font-light text-[var(--brand-reward)]">
                   Next Generation
                 </span>

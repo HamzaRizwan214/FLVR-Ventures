@@ -58,7 +58,7 @@ export default function Footer() {
             </Link>
             <p className="text-lg text-[var(--text-secondary)] font-[Metropolis] leading-relaxed max-w-xs">
               <BilingualText
-                en="Building the next generation of iconic Saudi F&B brands through strategic capital and operational discipline."
+                en="Backing the next generation of iconic Saudi F&B brands through strategic capital and operational discipline."
                 ar="بناء الجيل القادم من العلامات التجارية السعودية الأيقونية من خلال رأس المال الاستراتيجي والانضباط التشغيلي."
               />
             </p>
