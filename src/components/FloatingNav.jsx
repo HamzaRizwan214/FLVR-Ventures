@@ -8,17 +8,22 @@ import {
   useScroll,
   useMotionValueEvent,
   useSpring,
-  useTransform,
 } from "framer-motion";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const menuItems = [
   { name: "Home", ar: "الرئيسية", href: "/" },
-  { name: "About", ar: "من نحن", href: "/about" },
-  { name: "Studio", ar: "استوديو", href: "/portfolio" },
-  { name: "Funds", ar: "الصناديق", href: "/funds" },
   { name: "How it Works", ar: "كيف نعمل", href: "/how-it-works" },
+  { name: "Studio", ar: "الاستوديو", href: "/portfolio" },
+  { name: "Funds", ar: "الصندوق", href: "/funds" },
+  { name: "About", ar: "من نحن", href: "/about" },
+];
+
+// The mobile menu has no "Let's Talk" button, so it gets a Contact link.
+const mobileMenuItems = [
+  ...menuItems,
+  { name: "Contact", ar: "تواصل", href: "/contact" },
 ];
 
 export default function FloatingNav() {
@@ -254,7 +259,7 @@ export default function FloatingNav() {
 
               {/* Links */}
               <div className="px-4 py-4 flex flex-col gap-1">
-                {menuItems.map((item, i) => {
+                {mobileMenuItems.map((item, i) => {
                   const isActive = pathname === item.href;
                   return (
                     <motion.div

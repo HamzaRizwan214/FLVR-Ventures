@@ -1,178 +1,100 @@
-import React from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import { Mail, ArrowRight } from "lucide-react";
+import { Mail } from "lucide-react";
 import BilingualText from "./BilingualText";
+import Disclaimer from "./Disclaimer";
 import { useLanguage } from "../contexts/LanguageContext";
+
+const links = [
+  { name: { en: "How it Works", ar: "كيف نعمل" }, href: "/how-it-works" },
+  { name: { en: "Studio", ar: "الاستوديو" }, href: "/portfolio" },
+  { name: { en: "Funds", ar: "الصندوق" }, href: "/funds" },
+  { name: { en: "About", ar: "من نحن" }, href: "/about" },
+  { name: { en: "Contact", ar: "تواصل" }, href: "/contact" },
+];
+
+const email = import.meta.env.VITE_EMAIL_ADDRESS || "hello@flvrventures.com";
 
 export default function Footer() {
   const { language, toggleLanguage } = useLanguage();
   const currentYear = new Date().getFullYear();
 
-  const footerLinks = {
-    ecosystem: [
-      {
-        name: { en: "FLVR Fund I", ar: "صندوق فليفر 1" },
-        href: "/funds",
-      },
-      {
-        name: { en: "Venture Studio", ar: "استوديو المشاريع" },
-        href: "/how-it-works",
-      },
-      {
-        name: { en: "Off-Shelf Concepts", ar: "مفاهيم جاهزة" },
-        href: "/how-it-works",
-      },
-      {
-        name: { en: "Operational Expansion", ar: "التوسع التشغيلي" },
-        href: "/how-it-works",
-      },
-    ],
-    company: [
-      { name: { en: "About", ar: "من نحن" }, href: "/about" },
-      { name: { en: "Portfolio", ar: "محفظتنا" }, href: "/portfolio" },
-      { name: { en: "Our Values", ar: "قيمنا" }, href: "/about" },
-      { name: { en: "Contact", ar: "تواصل معنا" }, href: "/contact" },
-    ],
-  };
-
   return (
-    <footer className="relative bg-[var(--bg-primary)] border-t border-[var(--border-default)] pt-24 pb-12 overflow-hidden">
-      {/* Massive Brand Watermark */}
-      <div className="absolute top-20 left-1/2 -translate-x-1/2 pointer-events-none select-none z-0">
+    <footer className="relative bg-[var(--bg-primary)] border-t border-[var(--border-default)] pt-20 pb-10 overflow-hidden">
+      {/* Brand watermark */}
+      <div
+        aria-hidden="true"
+        className="absolute top-12 left-1/2 -translate-x-1/2 pointer-events-none select-none z-0"
+      >
         <span className="text-[25vw] font-bold text-[var(--text-primary)] opacity-[0.02] tracking-tighter leading-none">
           FLVR
         </span>
       </div>
 
-      <div className="container mx-auto px-6 lg:px-12 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-8 mb-24">
-          {/* Brand Column */}
+      <div className="mx-auto max-w-[1600px] px-6 lg:px-12 relative z-10">
+        <div className="grid grid-cols-1 gap-14 md:grid-cols-[minmax(0,2fr)_minmax(0,1fr)_minmax(0,1fr)] mb-20">
           <div className="space-y-8">
             <Link to="/" className="inline-block">
               <img
                 src="/flvr-logo.png"
-                alt="FLVR Logo"
-                className="h-10 transition-opacity hover:opacity-80 scale-250"
+                alt="FLVR Ventures"
+                className="h-10 w-auto transition-opacity hover:opacity-80"
               />
             </Link>
-            <p className="text-lg text-[var(--text-secondary)] font-[Metropolis] leading-relaxed max-w-xs">
+            <p className="max-w-sm text-lg leading-relaxed text-[var(--text-secondary)] font-[Metropolis]">
               <BilingualText
-                en="Backing the next generation of iconic Saudi F&B brands through strategic capital and operational discipline."
-                ar="بناء الجيل القادم من العلامات التجارية السعودية الأيقونية من خلال رأس المال الاستراتيجي والانضباط التشغيلي."
+                en="Backing the next generation of Saudi F&B brands."
+                ar="ندعم الجيل القادم من علامات الأغذية والمشروبات السعودية."
               />
             </p>
-            <div className="flex gap-4">
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 bg-white rounded-full border border-black/5 hover:bg-[var(--brand-primary)] hover:text-white transition-all"
-              >
-                {/* <LinkedIn size={20} /> */}
-              </a>
-              <a
-                href="mailto:hello@flvrventures.com"
-                className="p-3 bg-white rounded-full border border-black/5 hover:bg-[var(--brand-primary)] hover:text-white transition-all"
-              >
-                <Mail size={20} />
-              </a>
-            </div>
           </div>
 
-          {/* Ecosystem Links */}
-          <div>
-            <h4 className="text-xs uppercase tracking-[0.3em] font-medium text-[var(--text-primary)] mb-8">
-              <BilingualText en="Ecosystem" ar="النظام البيئي" />
+          <nav aria-label="Footer">
+            <h4 className="mb-6 text-xs font-medium uppercase tracking-[0.3em] text-[var(--text-primary)]">
+              <BilingualText en="Explore" ar="استكشف" />
             </h4>
             <ul className="space-y-4">
-              {footerLinks.ecosystem.map((link, i) => (
-                <li key={i}>
+              {links.map((link) => (
+                <li key={link.href}>
                   <Link
                     to={link.href}
-                    className="text-base font-[Metropolis] text-[var(--text-secondary)] hover:text-[var(--brand-primary)] transition-colors"
+                    className="text-base text-[var(--text-secondary)] transition-colors hover:text-[var(--brand-primary)] font-[Metropolis]"
                   >
                     <BilingualText en={link.name.en} ar={link.name.ar} />
                   </Link>
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
-          {/* Company Links */}
           <div>
-            <h4 className="text-xs uppercase tracking-[0.3em] font-medium text-[var(--text-primary)] mb-8">
-              <BilingualText en="Company" ar="الشركة" />
+            <h4 className="mb-6 text-xs font-medium uppercase tracking-[0.3em] text-[var(--text-primary)]">
+              <BilingualText en="Contact" ar="تواصل" />
             </h4>
-            <ul className="space-y-4">
-              {footerLinks.company.map((link, i) => (
-                <li key={i}>
-                  <Link
-                    to={link.href}
-                    className="text-base font-[Metropolis] text-[var(--text-secondary)] hover:text-[var(--brand-primary)] transition-colors"
-                  >
-                    <BilingualText en={link.name.en} ar={link.name.ar} />
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Newsletter Column */}
-          <div className="space-y-8">
-            <h4 className="text-xs uppercase tracking-[0.3em] font-medium text-[var(--text-primary)] mb-8">
-              <BilingualText en="Subscribe" ar="اشترك" />
-            </h4>
-            <p className="text-sm font-[Metropolis] text-[var(--text-muted)] leading-relaxed">
-              <BilingualText
-                en="Join our community of visionaries and receive quarterly updates on the Saudi F&B ecosystem."
-                ar="انضم إلى مجتمعنا من الرؤيويين واحصل على تحديثات ربع سنوية حول قطاع الأغذية والمشروبات السعودي."
-              />
-            </p>
-            <div className="relative group">
-              <input
-                type="email"
-                placeholder={
-                  language === "en" ? "Email address" : "البريد الإلكتروني"
-                }
-                className="w-full font-[Metropolis] bg-white border border-[var(--border-default)] rounded-none py-4 px-6 text-sm focus:outline-none focus:ring-1 focus:ring-[var(--brand-primary)] transition-all"
-              />
-              <button className="absolute right-2 top-2 bottom-2 bg-[var(--brand-primary)] text-white px-4 rounded-none flex items-center justify-center hover:opacity-90 transition-opacity rtl:left-2 rtl:right-auto rtl:rotate-180">
-                <ArrowRight size={18} />
-              </button>
-            </div>
+            <a
+              href={`mailto:${email}`}
+              dir="ltr"
+              className="inline-flex items-center gap-3 text-base text-[var(--text-secondary)] transition-colors hover:text-[var(--brand-primary)] font-[Metropolis]"
+            >
+              <Mail size={18} aria-hidden="true" />
+              {email}
+            </a>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-12 border-t border-[var(--border-default)] flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="text-sm text-[var(--text-muted)]">
-            © {currentYear} FLVR Ventures.{" "}
-            <BilingualText en="All rights reserved." ar="جميع الحقوق محفوظة." />
+        <div className="flex flex-col gap-8 border-t border-[var(--border-default)] pt-10 md:flex-row md:items-end md:justify-between">
+          <div className="space-y-4">
+            <Disclaimer />
+            <p className="text-sm text-[var(--text-muted)]">
+              © {currentYear} FLVR Ventures.{" "}
+              <BilingualText en="All rights reserved." ar="جميع الحقوق محفوظة." />
+            </p>
           </div>
-
-          <div className="flex items-center gap-8 text-sm">
-            <button
-              onClick={toggleLanguage}
-              className="text-[var(--text-secondary)] hover:text-[var(--brand-primary)] transition-colors uppercase font-medium tracking-widest"
-            >
-              {language === "en" ? "العربية" : "ENGLISH"}
-            </button>
-            <div className="flex gap-6">
-              <Link
-                to="/"
-                className="text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
-              >
-                <BilingualText en="Legal" ar="قانوني" />
-              </Link>
-              <Link
-                to="/"
-                className="text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
-              >
-                <BilingualText en="Privacy" ar="الخصوصية" />
-              </Link>
-            </div>
-          </div>
+          <button
+            onClick={toggleLanguage}
+            className="self-start text-sm font-medium uppercase tracking-widest text-[var(--text-secondary)] transition-colors hover:text-[var(--brand-primary)] md:self-auto"
+          >
+            {language === "en" ? "العربية" : "ENGLISH"}
+          </button>
         </div>
       </div>
     </footer>
