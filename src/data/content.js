@@ -6,13 +6,11 @@
 // evidence is. No slogans, no promises about outcomes, no exit or return language.
 
 export const hero = {
-  badge: { en: "Pronounced: flavor", ar: "النطق: فلايفر" },
   lead: {
     en: "We build restaurant concepts with founders, test them in live trials, and invest alongside partners. FLVR also plans a fund for food and beverage at Seed and Growth stage.",
     ar: "نبني مفاهيم المطاعم مع المؤسسين، ونختبرها في تجارب حية، ونستثمر إلى جانب الشركاء. وتخطط فلايفر كذلك لإطلاق صندوق للأغذية والمشروبات في مرحلتي التأسيس والنمو.",
   },
   ctaPrimary: { en: "Speak with the team", ar: "تحدث مع الفريق" },
-  ctaSecondary: { en: "View the Studio", ar: "استعرض الاستوديو" },
 };
 
 // The Studio method: Filter → Lift → Validate → Run

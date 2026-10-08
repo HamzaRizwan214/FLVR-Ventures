@@ -1,21 +1,26 @@
-import { useCallback } from "react";
+import { useEffect } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import { AnimatePresence } from "framer-motion";
 import PageWrapper from "@/components/PageWrapper";
 import PageHeader from "@/components/PageHeader";
 import ConceptCard from "@/components/ConceptCard";
-import ConceptDrawer from "@/components/ConceptDrawer";
 import CtaLink from "@/components/CtaLink";
 import BilingualText from "@/components/BilingualText";
 import { concepts, getConcept } from "@/data/concepts";
+import { useConceptModal } from "@/contexts/ConceptModalContext";
 
 // The Studio: the four concepts partners can acquire equity in.
 export default function Studio() {
   const [params, setParams] = useSearchParams();
-  const active = getConcept(params.get("concept"));
+  const { open } = useConceptModal();
 
-  const open = (slug) => setParams({ concept: slug });
-  const close = useCallback(() => setParams({}, { replace: true }), [setParams]);
+  // Old links such as /studio?concept=nagu still open that concept, now in the modal.
+  useEffect(() => {
+    const slug = params.get("concept");
+    if (slug && getConcept(slug)) {
+      open(slug);
+      setParams({}, { replace: true });
+    }
+  }, [params, open, setParams]);
 
   return (
     <PageWrapper>
@@ -33,12 +38,7 @@ export default function Studio() {
       <section className="panel px-6 py-16 lg:px-12 lg:py-20">
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
           {concepts.map((concept, i) => (
-            <ConceptCard
-              key={concept.slug}
-              concept={concept}
-              index={i}
-              onOpen={() => open(concept.slug)}
-            />
+            <ConceptCard key={concept.slug} concept={concept} index={i} />
           ))}
         </div>
 
@@ -59,10 +59,6 @@ export default function Studio() {
           </Link>
         </div>
       </section>
-
-      <AnimatePresence>
-        {active && <ConceptDrawer key={active.slug} concept={active} onClose={close} />}
-      </AnimatePresence>
     </PageWrapper>
   );
 }

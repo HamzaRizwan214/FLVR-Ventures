@@ -38,8 +38,8 @@
 }
 @font-face {
   font-family: "Gumela Arabic";
-  src: url("/gumela-arabic-font/gumela-arabic-bold.otf") format("opentype");
-  font-weight: 600 1000;
+  src: url("/gumela-arabic-font/gumela-arabic-r     egular.otf") format("opentype");
+  font-weight: 400 1000;
   font-style: normal;
   font-display: swap;
 }
@@ -71,12 +71,20 @@
   --border-strong: rgba(236, 232, 225, 0.22);
 
   --radius-panel: 28px;
+  --r: 24px; /* carve radius */
+  --card: var(--bg-primary); /* colour a carve cuts through to */
 
   /* Buttons: the FLVR wordmark gradient (crimson to orange), slightly deepened for legibility */
   --gradient-brand: linear-gradient(100deg, #ac1e40 0%, #e3790f 100%);
   --button-glow: rgba(227, 121, 15, 0.5);
   --surface-button: rgba(236, 232, 225, 0.07);
   --surface-button-hover: rgba(236, 232, 225, 0.13);
+
+  /* Hero heading box: warm off-white block with near-black type */
+  --hero-block: #ece8e1;
+  --hero-ink: #131415;
+  --hero-accent: #a35f2e; /* copper, deepened for contrast on the light block */
+  --block-dark: #25272a; /* charcoal heading block (Studio section) */
 }
 
 html,
@@ -154,6 +162,46 @@ button {
   background: var(--border-default);
 }
 
+/* ── Carved notches ──
+   A notch is a block in the card colour cut out of an image corner. Its inner corner is
+   rounded with a border-radius; the two places where it meets the image edge get these
+   small connectors, which round the image's corner with a quarter-circle mask. */
+.carve {
+  --r: 24px;
+  --card: var(--bg-primary);
+}
+.carve-fill {
+  background: var(--card);
+}
+.carve-c {
+  position: absolute;
+  width: var(--r);
+  height: var(--r);
+  pointer-events: none;
+}
+/* image corner sits at the connector's top-inline-end */
+.carve-c--te {
+  background: radial-gradient(circle at 0 100%, transparent var(--r), var(--card) calc(var(--r) + 0.5px));
+}
+[dir="rtl"] .carve-c--te {
+  background: radial-gradient(circle at 100% 100%, transparent var(--r), var(--card) calc(var(--r) + 0.5px));
+}
+/* image corner sits at the connector's bottom-inline-start */
+.carve-c--bs {
+  background: radial-gradient(circle at 100% 0, transparent var(--r), var(--card) calc(var(--r) + 0.5px));
+}
+[dir="rtl"] .carve-c--bs {
+  background: radial-gradient(circle at 0 0, transparent var(--r), var(--card) calc(var(--r) + 0.5px));
+}
+
+/* block corner sits at the connector's bottom-inline-end (used on the L-shaped heading block) */
+.carve-c--be {
+  background: radial-gradient(circle at 0 0, transparent var(--r), var(--card) calc(var(--r) + 0.5px));
+}
+[dir="rtl"] .carve-c--be {
+  background: radial-gradient(circle at 100% 0, transparent var(--r), var(--card) calc(var(--r) + 0.5px));
+}
+
 /* ── Buttons ──
    Primary = brand gradient. Secondary = the same pill, filled with a soft neutral.
    Both exist as a plain pill (.btn-*) and as pill + circular arrow (.cta, see CtaLink). */
@@ -225,6 +273,13 @@ button {
 .cta--outline:hover .cta-circle {
   background-color: var(--surface-button-hover);
   border-color: var(--border-strong);
+}
+
+.btn-secondary:disabled,
+.btn-ghost:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
 /* Pill + circular arrow pair (see CtaLink) */

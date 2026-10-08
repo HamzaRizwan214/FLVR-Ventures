@@ -3,11 +3,19 @@
 // Rules (see /understandings/04-concepts-cohort.md):
 //  - `stage` and `founder` stay null until the owner provides real values.
 //    The UI hides them when null, so nothing like "to be confirmed" is shown.
-//  - `visualisation: true` on an image labels it "Brand visualisation"
-//    (generated or mockup imagery) so it is never mistaken for a built site.
+//  - `visualisation: true` on an image shows a small "Brand visualisation" caption in the
+//    modal (generated or mockup imagery), so it is never mistaken for a built site.
+//  - `website` is the concept's own site. Only NAGU has one live; the others are in
+//    development, so their button is shown disabled.
 //
 // founder shape: { name: {en, ar}, role: {en, ar}, photo: "/concepts/<slug>/founder.webp" }
 // stage shape:   { en, ar }
+
+const img = (slug, file, alt) => ({
+  src: `/concepts/${slug}/${file}.webp`,
+  alt,
+  visualisation: true,
+});
 
 export const concepts = [
   {
@@ -21,14 +29,19 @@ export const concepts = [
     },
     stage: null,
     founder: null,
+    website: { url: "https://naguburgers.com/", domain: "naguburgers.com" },
     theme: { bg: "#0e0e0e", fg: "#f4efe9", accent: "#a22d2b" },
     logo: "/concepts/nagu/logo.webp",
     card: { src: "/concepts/nagu/card.webp", visualisation: true },
     gallery: [
-      { src: "/concepts/nagu/g1.webp", alt: "NAGU double smash burger", visualisation: true },
-      { src: "/concepts/nagu/g2.webp", alt: "NAGU menu spread", visualisation: true },
-      { src: "/concepts/nagu/g3.webp", alt: "NAGU collectible character card", visualisation: true },
-      { src: "/concepts/nagu/g4.webp", alt: "NAGU city skyline artwork", visualisation: true },
+      img("nagu", "card", "NAGU storefront"),
+      img("nagu", "g1", "NAGU double smash burger"),
+      img("nagu", "full-menu", "NAGU menu spread"),
+      img("nagu", "kendo-chicken-bites", "NAGU kendo chicken bites"),
+      img("nagu", "loaded-kimchi-fries", "NAGU loaded kimchi fries"),
+      img("nagu", "g3", "NAGU collectible character card"),
+      img("nagu", "nagu-sticker", "NAGU sticker sheet"),
+      img("nagu", "g4", "NAGU city skyline artwork"),
     ],
   },
   {
@@ -42,13 +55,21 @@ export const concepts = [
     },
     stage: null,
     founder: null,
+    website: null,
     theme: { bg: "#0b0b0c", fg: "#f0ece6", accent: "#a8f03c" },
     logo: "/concepts/cosmic/logo.webp",
     card: { src: "/concepts/cosmic/card.webp", visualisation: true },
     gallery: [
-      { src: "/concepts/cosmic/g1.webp", alt: "COSMIC pizza box", visualisation: true },
-      { src: "/concepts/cosmic/g2.webp", alt: "COSMIC interior", visualisation: true },
-      { src: "/concepts/cosmic/g3.webp", alt: "COSMIC key visual", visualisation: true },
+      img("cosmic", "card", "COSMIC storefront"),
+      img("cosmic", "g2", "COSMIC interior"),
+      img("cosmic", "g1", "COSMIC pizza box"),
+      img("cosmic", "m01-box-pesto-plain", "COSMIC box open"),
+      img("cosmic", "m04-bag-cup-textured", "COSMIC bag and cup"),
+      img("cosmic", "m12-tray-liner", "COSMIC tray liner"),
+      img("cosmic", "m10-delivery-rider", "COSMIC delivery rider"),
+      img("cosmic", "m14-billboard", "COSMIC billboard"),
+      img("cosmic", "g3", "COSMIC key visual"),
+      img("cosmic", "m21-delivery-app-real", "COSMIC delivery app"),
     ],
   },
   {
@@ -62,11 +83,23 @@ export const concepts = [
     },
     stage: null,
     founder: null,
+    website: null,
     theme: { bg: "#0f1812", fg: "#f4f1ea", accent: "#3cb068" },
     logo: "/concepts/amm-abdo/logo.webp",
     card: { src: "/concepts/amm-abdo/card.webp", visualisation: true },
     gallery: [
-      { src: "/concepts/amm-abdo/g1.webp", alt: "AMM ABDO wordmark", visualisation: false },
+      img("amm-abdo", "card", "AMM ABDO restaurant exterior"),
+      img("amm-abdo", "hold", "AMM ABDO shawarma"),
+      img("amm-abdo", "server", "AMM ABDO counter service"),
+      img("amm-abdo", "int-neon", "AMM ABDO neon sign wall"),
+      img("amm-abdo", "atm-street", "AMM ABDO street frontage"),
+      img("amm-abdo", "kit-spit", "AMM ABDO shawarma spit"),
+      img("amm-abdo", "kit-wrap", "AMM ABDO wrap assembly"),
+      img("amm-abdo", "atm-eating", "AMM ABDO guests"),
+      img("amm-abdo", "int-dining", "AMM ABDO dining room"),
+      img("amm-abdo", "kit-skewers", "AMM ABDO charcoal skewers"),
+      img("amm-abdo", "kit-grilled", "AMM ABDO grilled wrap"),
+      img("amm-abdo", "chef", "AMM ABDO chef at the spit"),
     ],
   },
   {
@@ -80,11 +113,18 @@ export const concepts = [
     },
     stage: null,
     founder: null,
+    website: null,
     theme: { bg: "#292929", fg: "#f0d2b5", accent: "#f1873b" },
-    logo: "/concepts/burger-abo-ashra/logo.webp",
-    card: { src: "/concepts/burger-abo-ashra/card.webp", visualisation: false },
+    logo: "/concepts/burger-abo-ashra/logo-main.webp",
+    card: { src: "/concepts/burger-abo-ashra/group.webp", visualisation: true },
     gallery: [
-      { src: "/concepts/burger-abo-ashra/logo-10.webp", alt: "Burger 10 logo", visualisation: false },
+      img("burger-abo-ashra", "burger", "Burger Abo Ashra double cheeseburger"),
+      img("burger-abo-ashra", "hands", "Burger Abo Ashra burger in hand"),
+      img("burger-abo-ashra", "meal", "Burger Abo Ashra burger and fries"),
+      img("burger-abo-ashra", "couple", "Burger Abo Ashra guests"),
+      img("burger-abo-ashra", "group", "Burger Abo Ashra friends at the table"),
+      img("burger-abo-ashra", "wrapped", "Burger Abo Ashra wrapped burger"),
+      img("burger-abo-ashra", "handoff", "Burger Abo Ashra takeaway bag"),
     ],
   },
 ];

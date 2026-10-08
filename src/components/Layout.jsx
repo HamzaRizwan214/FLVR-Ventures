@@ -3,10 +3,12 @@ import { Outlet } from "react-router-dom";
 import FloatingNav from "./FloatingNav";
 import ScrollManager from "./ScrollManager";
 import Footer from "./Footer";
+import { ConceptModalProvider } from "@/contexts/ConceptModalContext";
 
 export default function Layout() {
   return (
     <ScrollManager>
+      <ConceptModalProvider>
       <div className="relative min-h-screen w-full overflow-x-clip bg-[var(--bg-page)]">
         <FloatingNav />
         {/* Spacer for the fixed nav: bar height + its top offset */}
@@ -19,6 +21,7 @@ export default function Layout() {
         </main>
         <Footer />
       </div>
+      </ConceptModalProvider>
     </ScrollManager>
   );
 }
