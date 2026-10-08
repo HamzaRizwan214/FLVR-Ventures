@@ -65,7 +65,6 @@ export default function ConceptModal({ concept, onClose, startIndex = 0 }) {
 
   const PrevIcon = rtl ? ArrowRight : ArrowLeft;
   const NextIcon = rtl ? ArrowLeft : ArrowRight;
-  const pad = (n) => String(n).padStart(2, "0");
 
   return createPortal(
     <>
@@ -147,14 +146,6 @@ export default function ConceptModal({ concept, onClose, startIndex = 0 }) {
                 </>
               )}
 
-              <span className="pill absolute bottom-3 start-3 bg-black/45 text-white/85 backdrop-blur-md">
-                {pad(index + 1)} / {pad(images.length)}
-              </span>
-              {current.visualisation && (
-                <span className="pill absolute bottom-3 end-3 bg-black/45 text-white/75 backdrop-blur-md">
-                  <BilingualText en="Brand visualisation" ar="تصور للعلامة" />
-                </span>
-              )}
             </div>
 
             {/* Thumbnails */}

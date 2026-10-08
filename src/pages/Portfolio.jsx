@@ -51,7 +51,7 @@ export default function Portfolio() {
       />
 
       {/* 2 · The same method for every concept */}
-      <section className="panel px-6 py-20 lg:px-12 lg:py-28">
+      {/* <section className="panel px-6 py-20 lg:px-12 lg:py-28">
         <SectionHeading
           eyebrow={<BilingualText en="Method" ar="المنهجية" />}
           title={
@@ -86,7 +86,7 @@ export default function Portfolio() {
             </motion.div>
           ))}
         </div>
-      </section>
+      </section> */}
 
       {/* 3 · Closing call to action: warm light box, same family as the hero banner */}
       {/* <motion.section

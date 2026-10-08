@@ -3,9 +3,6 @@ import { Link, useLocation } from "react-router-dom";
 import {
   AnimatePresence,
   motion,
-  useReducedMotion,
-  useScroll,
-  useMotionValueEvent,
 } from "framer-motion";
 import { Plus, X, ArrowUpRight } from "lucide-react";
 import { useLanguage } from "../contexts/LanguageContext";
@@ -65,18 +62,6 @@ export default function FloatingNav() {
   const { pathname } = useLocation();
   const [isOpen, setIsOpen] = useState(false);
   const [hovered, setHovered] = useState(null);
-  const [compact, setCompact] = useState(false);
-  const reduceMotion = useReducedMotion();
-  const { scrollY } = useScroll();
-
-  // Collapse after 80px of scroll, expand again only once back near the top.
-  useMotionValueEvent(scrollY, "change", (y) =>
-    setCompact((prev) => (prev ? y > 24 : y > 80)),
-  );
-
-  const morph = reduceMotion
-    ? { duration: 0 }
-    : { type: "spring", stiffness: 260, damping: 32, mass: 0.9 };
 
   const isActive = (href) => pathname === href || (href !== "/" && pathname.startsWith(`${href}/`));
   const activeHref = menuItems.find((m) => isActive(m.href))?.href ?? null;
@@ -93,31 +78,18 @@ export default function FloatingNav() {
 
   return (
     <>
-      {/* Fixed bar. At the top it spans the page; once you scroll it collapses into a
-          compact pill at the end (right) edge: logo + pills + language + button, freeing the view.
-          Layout spacer in <Layout> keeps content below the full-size bar. */}
+      {/* Fixed bar, full width, the same at every scroll position. The spacer in <Layout> keeps
+          content below it. */}
       <header className="pointer-events-none fixed inset-x-2 top-2 z-50 sm:inset-x-3 sm:top-3">
-        <motion.div
-          layout
-          transition={morph}
-          style={{ borderRadius: compact ? 18 : 22 }}
-          className={cn(
-            "pointer-events-auto flex items-center border border-[var(--border-default)] bg-[var(--bg-primary)]/80 px-4 backdrop-blur-xl md:px-5",
-            compact
-              ? "ms-auto h-[52px] w-fit gap-5 px-5 md:h-[56px] md:gap-9 md:px-6"
-              : "h-[60px] w-full justify-between md:h-[68px] md:grid md:grid-cols-[1fr_auto_1fr] lg:px-7",
-          )}
-        >
-          <motion.div layout="position" transition={morph} className="justify-self-start">
+        <div className="pointer-events-auto flex h-[60px] w-full items-center justify-between rounded-[20px] border border-[var(--border-default)] bg-[var(--bg-primary)]/80 px-4 backdrop-blur-xl md:h-[68px] md:grid md:grid-cols-[1fr_auto_1fr] md:rounded-[22px] md:px-5 lg:px-7">
+          <div className="justify-self-start">
             <Link to="/" aria-label="FLVR Ventures" className="flex items-center">
               <img src="/flvr.svg" alt="FLVR Ventures" className="h-10 w-auto md:h-11" />
             </Link>
-          </motion.div>
+          </div>
 
           {/* Desktop: segmented pill group with a sliding highlight */}
-          <motion.nav
-            layout="position"
-            transition={morph}
+          <nav
             aria-label="Primary"
             onMouseLeave={() => setHovered(null)}
             className="hidden items-center rounded-full border border-[var(--border-default)] bg-white/[0.03] p-1 md:flex"
@@ -152,20 +124,10 @@ export default function FloatingNav() {
                 </Link>
               );
             })}
-          </motion.nav>
+          </nav>
 
-          <motion.div
-            layout="position"
-            transition={morph}
-            className={cn("flex items-center justify-self-end", compact ? "gap-4" : "gap-3")}
-          >
+          <div className="flex items-center gap-3 justify-self-end">
             <LanguageSwitch className="hidden md:flex" />
-            <div className="hidden lg:block">
-              <Link to="/contact" className="btn-primary !gap-2 !py-2.5 !pe-4 !ps-5 !text-[11px]">
-                <BilingualText en="Let's talk" ar="تواصل" />
-                <ArrowUpRight size={14} strokeWidth={1.75} className="rtl:-scale-x-100" />
-              </Link>
-            </div>
 
             <button
               type="button"
@@ -176,8 +138,8 @@ export default function FloatingNav() {
               <BilingualText en="Menu" ar="القائمة" />
               <Plus size={14} strokeWidth={1.5} />
             </button>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </header>
 
       {/* Mobile menu: a full panel in the same visual language */}

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Filter, FlaskConical, Layers, Play } from "lucide-react";
 import SectionHeading from "./SectionHeading";
@@ -18,13 +19,88 @@ const tones = {
   run: "radial-gradient(90% 55% at 100% 0%, rgba(236,232,225,0.05), transparent 70%), var(--bg-secondary)",
 };
 
+// One stage in the expanding row. Hover or focus opens it. The open face has a fixed minimum
+// width so its text never reflows while the card animates.
+function ExpandingStage({ step, active, onActivate }) {
+  const Icon = icons[step.key];
+  const hot = step.key === "validate";
+  const tone = hot ? "text-white" : "text-[var(--text-primary)]";
+
+  return (
+    <article
+      tabIndex={0}
+      onMouseEnter={onActivate}
+      onFocus={onActivate}
+      aria-expanded={active}
+      style={{ background: tones[step.key], flexGrow: active ? 1.8 : 1, flexBasis: 0 }}
+      className={cn(
+        "relative min-w-0 cursor-default overflow-hidden rounded-[26px] border outline-none transition-[flex-grow] duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] focus-visible:ring-1 focus-visible:ring-[var(--accent)]",
+        hot ? "border-white/10" : "border-[var(--border-default)]",
+      )}
+    >
+      {/* Closed face: icon and title */}
+      <div
+        className={cn(
+          "absolute inset-0 flex flex-col justify-between p-5 transition-opacity duration-500",
+          active ? "pointer-events-none opacity-0" : "opacity-100 delay-300",
+        )}
+      >
+        <div className="flex items-start justify-between gap-2">
+          {hot ? <span className="pill !bg-white !px-2.5 !py-0.5 !text-[10px] !text-[#8f1735]">POP-UP</span> : <span />}
+          <span
+            aria-hidden="true"
+            className={cn(
+              "flex h-8 w-8 shrink-0 items-center justify-center rounded-full border",
+              hot ? "border-white/40 text-white" : "border-[var(--border-strong)] text-[var(--text-secondary)]",
+            )}
+          >
+            <Icon size={14} strokeWidth={1.5} />
+          </span>
+        </div>
+        <h3 className={cn("text-[1.35rem] font-light leading-none tracking-[-0.02em]", tone)}>
+          <T t={step.title} />
+        </h3>
+      </div>
+
+      {/* Open face: title and description */}
+      <div
+        className={cn(
+          "absolute inset-y-0 start-0 flex w-full min-w-[15rem] flex-col p-5 transition-opacity duration-500",
+          active ? "opacity-100 delay-300" : "pointer-events-none opacity-0",
+        )}
+      >
+        <div className="flex items-start justify-between gap-3">
+          {hot ? <span className="pill !bg-white !text-[#8f1735]">POP-UP</span> : <span />}
+          <span
+            aria-hidden="true"
+            className={cn(
+              "flex h-9 w-9 shrink-0 items-center justify-center rounded-full border",
+              hot ? "border-white/40 text-white" : "border-[var(--border-strong)] text-[var(--text-secondary)]",
+            )}
+          >
+            <Icon size={15} strokeWidth={1.5} />
+          </span>
+        </div>
+        <h3 className={cn("mt-auto text-[1.9rem] font-light leading-none tracking-[-0.025em]", tone)}>
+          <T t={step.title} />
+        </h3>
+        <p className={cn("mt-3 text-[13.5px] leading-[1.6]", hot ? "text-white/85" : "text-[var(--text-secondary)]")}>
+          <T t={step.desc} />
+        </p>
+      </div>
+    </article>
+  );
+}
+
 // Home: the four-stage method. All four cards are always visible, nothing to drag or swipe:
 // one column on phones, 2 x 2 on tablets and small laptops, one row of four from 1280px.
 // Only on very wide screens (1700px+) does the heading move beside the cards.
 export default function HomeSteps() {
+  const [open, setOpen] = useState(steps[0].key);
+
   return (
     <section className="panel overflow-hidden px-6 py-16 lg:px-12 lg:py-20 2xl:py-28">
-      <div className="grid grid-cols-1 gap-10 min-[1700px]:grid-cols-[minmax(0,340px)_minmax(0,1fr)] min-[1700px]:gap-14">
+      <div className="grid grid-cols-1 gap-10 xl:grid-cols-[minmax(0,clamp(380px,30vw,520px))_minmax(0,1fr)] xl:gap-10">
         <SectionHeading
           className="!mb-0"
           titleClassName="text-[clamp(1.75rem,2.6vw,2.6rem)]"
@@ -37,7 +113,20 @@ export default function HomeSteps() {
           }
         />
 
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-4 xl:gap-4">
+        {/* xl and up: heading left, expanding row right */}
+        <div className="hidden h-[15rem] gap-3 xl:flex">
+          {steps.map((step) => (
+            <ExpandingStage
+              key={step.key}
+              step={step}
+              active={open === step.key}
+              onActivate={() => setOpen(step.key)}
+            />
+          ))}
+        </div>
+
+        {/* Below xl: all four cards always visible, nothing to hover */}
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:hidden">
           {steps.map((step, i) => {
             const Icon = icons[step.key];
             const hot = step.key === "validate";
@@ -57,10 +146,6 @@ export default function HomeSteps() {
                 <div className="relative flex flex-1 flex-col p-6">
                   <div className="flex items-start justify-between gap-3">
                     <div className="flex flex-wrap gap-2">
-                      <span className={cn("pill", hot && "!bg-white/15 !text-white")}>0{i + 1}</span>
-                      <span className={cn("pill", hot && "!bg-white/15 !text-white")}>
-                        <T t={step.descriptor} />
-                      </span>
                       {hot && <span className="pill !bg-white !text-[#8f1735]">POP-UP</span>}
                     </div>
                     <span
@@ -78,7 +163,7 @@ export default function HomeSteps() {
 
                   <h3
                     className={cn(
-                      "mt-10 text-[2.1rem] font-light leading-none tracking-[-0.025em] 2xl:text-[2.5rem]",
+                      "mt-6 text-[2.1rem] font-light leading-none tracking-[-0.025em] 2xl:text-[2.5rem]",
                       hot ? "text-white" : "text-[var(--text-primary)]",
                     )}
                   >
