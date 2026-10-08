@@ -13,14 +13,14 @@ const FOCUSABLE = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1
 
 // A concept shown in place, over whatever page you are on: image gallery on one side,
 // the concept's details and its website link on the other. A bottom sheet on phones.
-export default function ConceptModal({ concept, onClose }) {
+export default function ConceptModal({ concept, onClose, startIndex = 0 }) {
   const { language } = useLanguage();
   const reduce = useReducedMotion();
   const rtl = language === "ar";
 
   const dialogRef = useRef(null);
   const closeRef = useRef(null);
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(startIndex);
 
   const images = concept.gallery;
   const current = images[index];

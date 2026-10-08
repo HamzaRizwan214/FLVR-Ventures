@@ -13,7 +13,7 @@ const fieldClass =
 const labelClass = "eyebrow mb-2.5 block";
 
 // Reads ?interest= and ?concept= so CTAs elsewhere can pre-fill the form.
-export default function InvestorForm() {
+export default function InvestorForm({ interest: controlledInterest, onInterestChange }) {
   const { language } = useLanguage();
   const [params] = useSearchParams();
   const concept = params.get("concept");
@@ -29,6 +29,7 @@ export default function InvestorForm() {
     interest,
     message: concept ? `I'm interested in ${concept}.` : "",
   });
+  const interestValue = controlledInterest ?? values.interest;
   const [status, setStatus] = useState("idle"); // idle | sending | sent | error
   const [honeypot, setHoneypot] = useState(false);
 
@@ -39,15 +40,15 @@ export default function InvestorForm() {
     e.preventDefault();
     setStatus("sending");
 
-    const selected = contact.interests.find((i) => i.value === values.interest);
+    const selected = contact.interests.find((i) => i.value === interestValue);
     const payload = {
       access_key: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY,
-      subject: `FLVR website enquiry: ${selected?.label.en ?? values.interest}`,
+      subject: `FLVR website enquiry: ${selected?.label.en ?? interestValue}`,
       from_name: "FLVR Website",
       name: values.name,
       email: values.email,
       organisation: values.organisation,
-      interest: selected?.label.en ?? values.interest,
+      interest: selected?.label.en ?? interestValue,
       message: values.message,
       botcheck: honeypot,
     };
@@ -142,8 +143,11 @@ export default function InvestorForm() {
           <div className="relative">
             <select
               id="interest"
-              value={values.interest}
-              onChange={set("interest")}
+              value={interestValue}
+              onChange={(e) => {
+                set("interest")(e);
+                onInterestChange?.(e.target.value);
+              }}
               className={`${fieldClass} appearance-none pe-12`}
             >
               {contact.interests.map((i) => (

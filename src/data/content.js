@@ -13,6 +13,23 @@ export const hero = {
   ctaPrimary: { en: "Speak with the team", ar: "تحدث مع الفريق" },
 };
 
+// POP-UP by FLVR: the Studio's operating studio for concept validation (Home, below the method cards)
+export const popup = {
+  name: { en: "POP-UP by FLVR", ar: "POP-UP من فلايفر" },
+  tagline: {
+    en: "Concept validation in the real world",
+    ar: "التحقق من المفهوم في الواقع",
+  },
+  body: {
+    en: "POP-UP by FLVR is our operating studio for concept validation. Designed for live trials, it allows FLVR to run founder-led concepts and test the offer, pricing, customer response and operating performance.",
+    ar: "POP-UP من فلايفر هو استوديو التشغيل لدينا للتحقق من المفاهيم. صُمم للتجارب الحية، ويتيح لفلايفر تشغيل المفاهيم التي يقودها مؤسسوها واختبار العرض والتسعير واستجابة العملاء والأداء التشغيلي.",
+  },
+  investors: {
+    en: "Investors can engage before, during or after a concept's trial, depending on the opportunity.",
+    ar: "يمكن للمستثمرين الانضمام قبل تجربة المفهوم أو أثناءها أو بعدها، بحسب الفرصة.",
+  },
+};
+
 // The Studio method: Filter → Lift → Validate → Run
 export const steps = [
   {
@@ -56,6 +73,35 @@ export const steps = [
     image: "/grow.jpg",
   },
 ];
+
+// How an investor works with FLVR (Funds page)
+export const participation = {
+  eyebrow: { en: "Investors", ar: "المستثمرون" },
+  title: { en: "Working with investors.", ar: "العمل مع المستثمرين." },
+  items: [
+    {
+      label: { en: "Review", ar: "الاطلاع" },
+      text: {
+        en: "Investors can review relevant research, concept plans and operating results, where available.",
+        ar: "يمكن للمستثمرين الاطلاع على الأبحاث وخطط المفاهيم والنتائج التشغيلية ذات الصلة، حيثما توفرت.",
+      },
+    },
+    {
+      label: { en: "Engage", ar: "التعاون" },
+      text: {
+        en: "Engagement can begin before, during or after a concept's POP-UP trial, depending on the opportunity.",
+        ar: "يمكن أن يبدأ التعاون قبل تجربة POP-UP للمفهوم أو أثناءها أو بعدها، بحسب الفرصة.",
+      },
+    },
+    {
+      label: { en: "Co-invest", ar: "الاستثمار المشترك" },
+      text: {
+        en: "Investors acquire a percentage of equity in a concept, alongside the Studio.",
+        ar: "يستحوذ المستثمرون على نسبة من ملكية المفهوم إلى جانب الاستوديو.",
+      },
+    },
+  ],
+};
 
 export const fund = {
   intro: {

@@ -14,8 +14,9 @@ import { cn } from "@/lib/utils";
 
 const menuItems = [
   { name: "Home", ar: "الرئيسية", href: "/" },
-  { name: "Studio", ar: "الاستوديو", href: "/studio" },
+  { name: "Portfolio", ar: "المحفظة", href: "/portfolio" },
   { name: "Funds", ar: "الصندوق", href: "/funds" },
+  { name: "Insights", ar: "رؤى", href: "/insights" },
 ];
 
 // The desktop bar has a "Let's talk" button; the mobile menu lists Contact.
@@ -77,7 +78,8 @@ export default function FloatingNav() {
     ? { duration: 0 }
     : { type: "spring", stiffness: 260, damping: 32, mass: 0.9 };
 
-  const activeHref = menuItems.find((m) => m.href === pathname)?.href ?? null;
+  const isActive = (href) => pathname === href || (href !== "/" && pathname.startsWith(`${href}/`));
+  const activeHref = menuItems.find((m) => isActive(m.href))?.href ?? null;
   const litHref = hovered ?? activeHref;
 
   useEffect(() => {
@@ -211,7 +213,7 @@ export default function FloatingNav() {
 
               <nav className="mt-8 flex flex-1 flex-col justify-center" aria-label="Mobile">
                 {mobileMenuItems.map((item, i) => {
-                  const active = pathname === item.href;
+                  const active = isActive(item.href);
                   return (
                     <motion.div
                       key={item.href}

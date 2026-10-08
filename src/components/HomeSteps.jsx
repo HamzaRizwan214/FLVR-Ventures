@@ -4,7 +4,7 @@ import { ArrowLeft, ArrowRight, Filter, FlaskConical, Layers, Play } from "lucid
 import SectionHeading from "./SectionHeading";
 import BilingualText from "./BilingualText";
 import T from "./T";
-import { steps } from "@/data/content";
+import { steps, popup } from "@/data/content";
 import { cn } from "@/lib/utils";
 
 const ease = [0.22, 1, 0.36, 1];
@@ -220,6 +220,45 @@ export default function HomeSteps() {
           })}
         </div>
       </div>
+
+      {/* POP-UP by FLVR: light box with the same warm gradients as the hero heading banner */}
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-60px" }}
+        transition={{ duration: 0.9, ease }}
+        className="relative mt-10 overflow-hidden rounded-[22px] bg-[var(--hero-block)] lg:mt-14"
+      >
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background: [
+              "linear-gradient(to right, rgba(227,121,15,0.42) 0%, rgba(227,121,15,0.16) 15%, transparent 38%)",
+              "linear-gradient(to left, rgba(172,30,64,0.46) 0%, rgba(214,92,40,0.22) 17%, transparent 42%)",
+              "radial-gradient(60% 100% at 100% 0%, rgba(214,173,132,0.40) 0%, transparent 70%)",
+            ].join(", "),
+          }}
+        />
+        <div className="relative grid grid-cols-1 gap-8 p-7 sm:p-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.7fr)] lg:gap-16 lg:p-12">
+          <div className="flex flex-col justify-between gap-8">
+            <h3 className="text-[clamp(1.6rem,2.5vw,2.3rem)] font-light leading-[1.1] tracking-[-0.02em] text-[var(--hero-ink)]">
+              <T t={popup.name} />
+            </h3>
+            <p className="text-[15px] font-medium text-[var(--hero-accent)]">
+              <T t={popup.tagline} />
+            </p>
+          </div>
+          <div className="space-y-5 text-[15px] leading-[1.8] text-[var(--hero-ink)]/75">
+            <p>
+              <T t={popup.body} />
+            </p>
+            <p>
+              <T t={popup.investors} />
+            </p>
+          </div>
+        </div>
+      </motion.div>
     </section>
   );
 }

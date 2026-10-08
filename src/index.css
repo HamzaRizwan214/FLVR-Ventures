@@ -309,6 +309,16 @@ button {
   transform: rotate(45deg);
 }
 
+/* Image with a semicircle scooped from its start edge (article cards) */
+.scoop {
+  -webkit-mask: radial-gradient(circle 26px at 0 50%, transparent 25px, #000 26px);
+  mask: radial-gradient(circle 26px at 0 50%, transparent 25px, #000 26px);
+}
+[dir="rtl"] .scoop {
+  -webkit-mask: radial-gradient(circle 26px at 100% 50%, transparent 25px, #000 26px);
+  mask: radial-gradient(circle 26px at 100% 50%, transparent 25px, #000 26px);
+}
+
 /* Focus */
 a:focus-visible,
 button:focus-visible,
