@@ -27,7 +27,7 @@ Imagery is softened with `brightness(.78-.85)` and `saturate(.75-.85)` so it nev
 ## Typography
 
 - **Latin:** Inter (variable, self-hosted via @fontsource-variable/inter). Headings 300 (light), key figures 200, body 400, small controls 500.
-- **Arabic:** Etlalah regular. No forced bold.
+- **Arabic:** Gumela Arabic (light 300, regular 400-500, bold 600+). Etlalah is a one-glyph fallback for the Arabic comma, which Gumela lacks. No forced bold.
 - **Display:** uppercase, light, `clamp(2.2rem, 5.4-5.8vw, 4.8-5.2rem)`, leading ~1.04.
 - **Statements:** sentence case, light, `clamp(1.9rem, 3.6vw, 3.3rem)`, leading ~1.14.
 - **Body:** 15px, line-height 1.75-1.8, secondary colour.

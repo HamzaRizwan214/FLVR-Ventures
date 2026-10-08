@@ -18,23 +18,39 @@
   --color-border-strong: var(--border-strong);
 
   --font-sans: "Inter Variable", "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-arabic: "Etlalah", "Inter Variable", ui-sans-serif, sans-serif;
+  --font-arabic: "Gumela Arabic", "Etlalah", "Inter Variable", ui-sans-serif, sans-serif;
 }
 
-/* ── Fonts ── Inter (Latin, self-hosted) and Etlalah (Arabic) */
+/* ── Fonts ── Inter (Latin, self-hosted) and Gumela Arabic */
+@font-face {
+  font-family: "Gumela Arabic";
+  src: url("/gumela-arabic-font/gumela-arabic-light.otf") format("opentype");
+  font-weight: 100 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gumela Arabic";
+  src: url("/gumela-arabic-font/gumela-arabic-regular.otf") format("opentype");
+  font-weight: 400 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gumela Arabic";
+  src: url("/gumela-arabic-font/gumela-arabic-bold.otf") format("opentype");
+  font-weight: 600 1000;
+  font-style: normal;
+  font-display: swap;
+}
+/* Fallback only: Gumela has no Arabic comma (U+060C), Etlalah does. */
 @font-face {
   font-family: "Etlalah";
   src: url("/etlalah-arabic-typeface/etlalah-regular.otf") format("opentype");
-  font-weight: 100 400;
+  font-weight: 100 1000;
   font-style: normal;
   font-display: swap;
-}
-@font-face {
-  font-family: "Etlalah";
-  src: url("/etlalah-arabic-typeface/etlalah-bold.otf") format("opentype");
-  font-weight: 500 1000;
-  font-style: normal;
-  font-display: swap;
+  unicode-range: U+060C;
 }
 
 /* ── Tokens ── */
@@ -94,7 +110,7 @@ button {
   color: var(--text-primary);
 }
 
-/* Arabic: Etlalah regular for a soft, even colour. No forced bold. */
+/* Arabic: Gumela, light for headings and regular for text. No forced bold. */
 [dir="rtl"],
 [dir="rtl"] body {
   font-family: var(--font-arabic);
