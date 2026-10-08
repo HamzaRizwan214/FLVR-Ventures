@@ -61,12 +61,14 @@ export const steps = [
 
 export const fund = {
   intro: {
-    en: "A planned investment vehicle targeting SAR 100M, focused on food and beverage businesses and technology serving the sector.",
-    ar: "أداة استثمارية مخطط لها تستهدف ١٠٠ مليون ريال، وتركّز على أعمال الأغذية والمشروبات والتقنية الخادمة للقطاع.",
+    en: "A planned fund targeting SAR 100M for investment in F&B businesses and food technology in Saudi Arabia.",
+    ar: "صندوق مخطط له يستهدف ١٠٠ مليون ريال للاستثمار في أعمال الأغذية والمشروبات وتقنيات الأغذية في المملكة العربية السعودية.",
   },
-  approach: {
-    en: "Its approach combines capital with hands-on operating capability.",
-    ar: "ويجمع نهجها الاستثماري بين رأس المال والقدرة التشغيلية المباشرة.",
+
+  // Part 1: the Mandate
+  mandate: {
+    label: { en: "Mandate", ar: "التفويض الاستثماري" },
+    title: { en: "Where the Fund invests.", ar: "أين يستثمر الصندوق." },
   },
   terms: [
     {
@@ -87,10 +89,7 @@ export const fund = {
     },
     {
       label: { en: "Ownership", ar: "الملكية" },
-      value: {
-        en: "Minority or majority, set by evaluating each opportunity",
-        ar: "أقلية أو أغلبية، بحسب تقييم كل فرصة",
-      },
+      value: { en: "Minority", ar: "أقلية" },
     },
     {
       label: { en: "Target fund size", ar: "حجم الصندوق المستهدف" },
@@ -101,13 +100,53 @@ export const fund = {
     en: "The Fund is a planned investment vehicle. Contact the team for available information.",
     ar: "الصندوق أداة استثمارية مخطط لها. تواصل مع الفريق للحصول على المعلومات المتاحة.",
   },
-  focus: {
-    title: { en: "Investment focus", ar: "التركيز الاستثماري" },
-    text: {
-      en: "The Fund targets food and beverage businesses and sector technology at Seed and Growth stage, with ticket sizes of SAR 1–5M. Ownership is set by evaluating each opportunity.",
-      ar: "يستهدف الصندوق أعمال الأغذية والمشروبات وتقنيات القطاع في مرحلتي التأسيس والنمو، بحجم استثمار يتراوح بين ١ و٥ ملايين ريال، وتُحدَّد الملكية بتقييم كل فرصة.",
+
+  // Part 2: the Investment thesis
+  thesis: {
+    label: { en: "Investment thesis", ar: "الفرضية الاستثمارية" },
+    title: { en: "How the Fund decides.", ar: "كيف يتخذ الصندوق قراراته." },
+    statement: {
+      en: "Our thesis centres on familiar, high-frequency food categories, differentiated through brand identity, cultural relevance and customer experience.",
+      ar: "تقوم فرضيتنا الاستثمارية على فئات الأغذية المألوفة والمتكررة الاستهلاك، التي تتميز بهوية العلامة والملاءمة الثقافية وتجربة العملاء.",
     },
+    // Short summary used on the Home page
+    summary: {
+      en: "Familiar, high-frequency food categories, differentiated through brand identity, cultural relevance and customer experience.",
+      ar: "فئات أغذية مألوفة ومتكررة الاستهلاك، تتميز بهوية العلامة والملاءمة الثقافية وتجربة العملاء.",
+    },
+    tags: [
+      { en: "Familiar categories", ar: "فئات مألوفة" },
+      { en: "High-frequency", ar: "استهلاك متكرر" },
+      { en: "Brand identity", ar: "هوية العلامة" },
+      { en: "Cultural relevance", ar: "الملاءمة الثقافية" },
+      { en: "Customer experience", ar: "تجربة العملاء" },
+    ],
+    stepsTitle: { en: "How evidence informs decisions", ar: "كيف تُبنى القرارات على الأدلة" },
+    steps: [
+      {
+        title: { en: "Selection", ar: "الاختيار" },
+        text: {
+          en: "Market research informs concept selection.",
+          ar: "تُسهم أبحاث السوق في اختيار المفاهيم.",
+        },
+      },
+      {
+        title: { en: "Validation", ar: "التحقق" },
+        text: {
+          en: "POP-UP tests customer demand and operating economics.",
+          ar: "تختبر POP-UP طلب العملاء والاقتصاديات التشغيلية.",
+        },
+      },
+      {
+        title: { en: "Decision", ar: "القرار" },
+        text: {
+          en: "Together, they inform investment and growth decisions.",
+          ar: "وتُسهم معاً في قرارات الاستثمار والنمو.",
+        },
+      },
+    ],
   },
+
   faqs: [
     {
       q: { en: "When can investors engage?", ar: "متى يمكن للمستثمرين الانضمام؟" },

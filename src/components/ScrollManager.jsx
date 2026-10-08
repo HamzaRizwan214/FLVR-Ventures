@@ -3,7 +3,7 @@ import Lenis from '@studio-freight/lenis';
 import { useLocation } from 'react-router-dom';
 
 export default function ScrollManager({ children }) {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -18,8 +18,20 @@ export default function ScrollManager({ children }) {
       infinite: false,
     });
 
-    // Reset scroll on path change
-    lenis.scrollTo(0, { immediate: true });
+    let timer;
+    if (hash) {
+      // The new page mounts after the exit animation, so wait for the target to exist.
+      let tries = 0;
+      const goToHash = () => {
+        const el = document.querySelector(hash);
+        if (el) lenis.scrollTo(el, { offset: -96 });
+        else if (tries++ < 30) timer = setTimeout(goToHash, 100);
+      };
+      goToHash();
+    } else {
+      // Reset scroll on path change
+      lenis.scrollTo(0, { immediate: true });
+    }
 
     let requestID;
     function raf(time) {
@@ -29,10 +41,11 @@ export default function ScrollManager({ children }) {
     requestID = requestAnimationFrame(raf);
 
     return () => {
+      clearTimeout(timer);
       lenis.destroy();
       cancelAnimationFrame(requestID);
     };
-  }, [pathname]);
+  }, [pathname, hash]);
 
   return <>{children}</>;
 }

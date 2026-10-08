@@ -158,13 +158,12 @@ export default function FloatingNav() {
             className={cn("flex items-center justify-self-end", compact ? "gap-4" : "gap-3")}
           >
             <LanguageSwitch className="hidden md:flex" />
-            <Link
-              to="/contact"
-              className="hidden items-center gap-2 rounded-full bg-[var(--text-primary)] py-2.5 pe-4 ps-5 text-[11px] font-medium uppercase tracking-[0.18em] text-[var(--bg-primary)] transition-colors hover:bg-white md:inline-flex"
-            >
-              <BilingualText en="Let's talk" ar="تواصل" />
-              <ArrowUpRight size={14} strokeWidth={1.75} className="rtl:-scale-x-100" />
-            </Link>
+            <div className="hidden md:block">
+              <Link to="/contact" className="btn-primary !gap-2 !py-2.5 !pe-4 !ps-5 !text-[11px]">
+                <BilingualText en="Let's talk" ar="تواصل" />
+                <ArrowUpRight size={14} strokeWidth={1.75} className="rtl:-scale-x-100" />
+              </Link>
+            </div>
 
             <button
               type="button"

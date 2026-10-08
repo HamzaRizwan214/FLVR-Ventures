@@ -71,6 +71,12 @@
   --border-strong: rgba(236, 232, 225, 0.22);
 
   --radius-panel: 28px;
+
+  /* Buttons: the FLVR wordmark gradient (crimson to orange), slightly deepened for legibility */
+  --gradient-brand: linear-gradient(100deg, #ac1e40 0%, #e3790f 100%);
+  --button-glow: rgba(227, 121, 15, 0.5);
+  --surface-button: rgba(236, 232, 225, 0.07);
+  --surface-button-hover: rgba(236, 232, 225, 0.13);
 }
 
 html,
@@ -148,52 +154,77 @@ button {
   background: var(--border-default);
 }
 
-/* ── Buttons ── */
+/* ── Buttons ──
+   Primary = brand gradient. Secondary = the same pill, filled with a soft neutral.
+   Both exist as a plain pill (.btn-*) and as pill + circular arrow (.cta, see CtaLink). */
 .btn-primary,
 .btn-white,
 .btn-secondary,
-.btn-ghost {
+.btn-ghost,
+.cta-pill {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.6rem;
   padding: 0.95rem 1.9rem;
+  border: 1px solid transparent;
   border-radius: 9999px;
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.16em;
   text-transform: uppercase;
+  white-space: nowrap;
   transition:
+    background-position 0.7s cubic-bezier(0.22, 1, 0.36, 1),
     background-color 0.3s ease,
+    border-color 0.3s ease,
     color 0.3s ease,
-    border-color 0.3s ease;
+    box-shadow 0.4s ease;
 }
 
+/* Primary */
 .btn-primary,
-.btn-white {
-  background: var(--text-primary);
-  color: var(--bg-primary);
-  border: 1px solid var(--text-primary);
+.btn-white,
+.cta--primary .cta-pill,
+.cta--primary .cta-circle {
+  background-image: var(--gradient-brand);
+  background-size: 170% 100%;
+  background-position: 0% 50%;
+  border-color: transparent;
+  color: #fff;
 }
 .btn-primary:hover,
-.btn-white:hover {
-  background: #fff;
-  border-color: #fff;
+.btn-white:hover,
+.cta--primary:hover .cta-pill,
+.cta--primary:hover .cta-circle {
+  background-position: 100% 50%;
+}
+.btn-primary:hover,
+.btn-white:hover,
+.cta--primary:hover .cta-pill {
+  box-shadow: 0 10px 30px -12px var(--button-glow);
 }
 .btn-primary:disabled {
   opacity: 0.55;
   cursor: not-allowed;
+  box-shadow: none;
 }
 
+/* Secondary: same shape, size and motion as the primary */
 .btn-secondary,
-.btn-ghost {
-  background: transparent;
+.btn-ghost,
+.cta--outline .cta-pill,
+.cta--outline .cta-circle {
+  background-color: var(--surface-button);
+  border-color: var(--border-default);
   color: var(--text-primary);
-  border: 1px solid var(--border-strong);
 }
 .btn-secondary:hover,
-.btn-ghost:hover {
-  background: rgba(236, 232, 225, 0.08);
+.btn-ghost:hover,
+.cta--outline:hover .cta-pill,
+.cta--outline:hover .cta-circle {
+  background-color: var(--surface-button-hover);
+  border-color: var(--border-strong);
 }
 
 /* Pill + circular arrow pair (see CtaLink) */
@@ -202,20 +233,6 @@ button {
   align-items: center;
   gap: 6px;
 }
-.cta-pill {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.95rem 1.9rem;
-  border-radius: 9999px;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  white-space: nowrap;
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease;
-}
 .cta-circle {
   display: flex;
   align-items: center;
@@ -223,39 +240,18 @@ button {
   width: 46px;
   height: 46px;
   flex-shrink: 0;
+  border: 1px solid transparent;
   border-radius: 9999px;
-  border: 1px solid var(--border-strong);
-  color: var(--text-primary);
   transition:
+    background-position 0.7s cubic-bezier(0.22, 1, 0.36, 1),
     background-color 0.3s ease,
-    color 0.3s ease;
+    border-color 0.3s ease;
 }
 .cta-circle svg {
-  transition: transform 0.3s ease;
+  transition: transform 0.35s ease;
 }
 .cta:hover .cta-circle svg {
   transform: rotate(45deg);
-}
-.cta--primary .cta-pill {
-  background: var(--text-primary);
-  color: var(--bg-primary);
-}
-.cta--primary:hover .cta-pill {
-  background: #fff;
-}
-.cta--primary:hover .cta-circle {
-  background: var(--text-primary);
-  color: var(--bg-primary);
-}
-.cta--outline .cta-pill {
-  border: 1px solid var(--border-strong);
-  color: var(--text-primary);
-}
-.cta--outline:hover .cta-pill {
-  background: rgba(236, 232, 225, 0.08);
-}
-.cta--outline:hover .cta-circle {
-  background: rgba(236, 232, 225, 0.08);
 }
 
 /* Focus */

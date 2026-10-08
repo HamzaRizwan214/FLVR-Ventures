@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 // Eyebrow + statement title + optional lead. All props are ReactNodes.
-export default function SectionHeading({ eyebrow, title, lead, center = false, className }) {
+export default function SectionHeading({ eyebrow, title, lead, center = false, className, titleClassName }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 16 }}
@@ -16,6 +16,7 @@ export default function SectionHeading({ eyebrow, title, lead, center = false, c
         className={cn(
           "max-w-3xl text-[clamp(1.9rem,3.6vw,3.3rem)] font-light leading-[1.14] tracking-[-0.01em] text-[var(--text-primary)]",
           center && "mx-auto",
+          titleClassName,
         )}
       >
         {title}
