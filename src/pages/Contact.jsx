@@ -18,7 +18,7 @@ export default function Contact() {
     <PageWrapper>
       <div className="grid flex-1 grid-cols-1 gap-2 sm:gap-3 lg:grid-cols-2">
         {/* Left: message and direct contact */}
-        <section className="panel flex flex-col px-6 pb-12 pt-32 lg:px-12 lg:pb-16 lg:pt-44">
+        <section className="panel flex flex-col px-6 pb-12 pt-14 lg:px-12 lg:pb-16 lg:pt-24">
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -92,7 +92,7 @@ export default function Contact() {
         </section>
 
         {/* Right: the form */}
-        <section className="panel flex items-center px-6 py-14 lg:px-12 lg:pt-32">
+        <section className="panel flex items-center px-6 py-14 lg:px-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

@@ -1,7 +1,13 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { AnimatePresence, motion, useScroll, useMotionValueEvent } from "framer-motion";
-import { Plus, X } from "lucide-react";
+import {
+  AnimatePresence,
+  motion,
+  useReducedMotion,
+  useScroll,
+  useMotionValueEvent,
+} from "framer-motion";
+import { Plus, X, ArrowUpRight } from "lucide-react";
 import { useLanguage } from "../contexts/LanguageContext";
 import BilingualText from "./BilingualText";
 import { cn } from "@/lib/utils";
@@ -15,20 +21,39 @@ const menuItems = [
 // The desktop bar has a "Let's talk" button; the mobile menu lists Contact.
 const mobileMenuItems = [...menuItems, { name: "Contact", ar: "تواصل", href: "/contact" }];
 
+const arabicFont = { fontFamily: "var(--font-arabic)" };
+const ease = [0.22, 1, 0.36, 1];
+
+// EN | عربي segmented toggle
 function LanguageSwitch({ className }) {
   const { language, toggleLanguage } = useLanguage();
+  const seg = "rounded-full px-3 py-1.5 transition-colors duration-300";
   return (
     <button
       type="button"
       onClick={toggleLanguage}
       aria-label={language === "en" ? "Switch to Arabic" : "Switch to English"}
-      className={cn("text-xs tracking-[0.16em] transition-colors", className)}
+      className={cn(
+        "flex items-center rounded-full border border-[var(--border-default)] bg-white/[0.03] p-1 text-[11px] tracking-[0.14em]",
+        className,
+      )}
     >
-      <span className={language === "en" ? "text-[var(--text-primary)]" : "text-[var(--text-muted)]"}>
+      <span
+        className={cn(
+          seg,
+          language === "en" ? "bg-white/10 text-[var(--text-primary)]" : "text-[var(--text-muted)]",
+        )}
+      >
         EN
       </span>
-      <span className="mx-2 text-[var(--text-muted)]">/</span>
-      <span className={language === "ar" ? "text-[var(--text-primary)]" : "text-[var(--text-muted)]"}>
+      <span
+        style={arabicFont}
+        className={cn(
+          seg,
+          "text-[13px] tracking-normal",
+          language === "ar" ? "bg-white/10 text-[var(--text-primary)]" : "text-[var(--text-muted)]",
+        )}
+      >
         عربي
       </span>
     </button>
@@ -37,11 +62,23 @@ function LanguageSwitch({ className }) {
 
 export default function FloatingNav() {
   const { pathname } = useLocation();
-  const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [hovered, setHovered] = useState(null);
+  const [compact, setCompact] = useState(false);
+  const reduceMotion = useReducedMotion();
   const { scrollY } = useScroll();
 
-  useMotionValueEvent(scrollY, "change", (v) => setScrolled(v > 24));
+  // Collapse after 80px of scroll, expand again only once back near the top.
+  useMotionValueEvent(scrollY, "change", (y) =>
+    setCompact((prev) => (prev ? y > 24 : y > 80)),
+  );
+
+  const morph = reduceMotion
+    ? { duration: 0 }
+    : { type: "spring", stiffness: 260, damping: 32, mass: 0.9 };
+
+  const activeHref = menuItems.find((m) => m.href === pathname)?.href ?? null;
+  const litHref = hovered ?? activeHref;
 
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "";
@@ -54,68 +91,95 @@ export default function FloatingNav() {
 
   return (
     <>
-      <header
-        className={cn(
-          "fixed inset-x-0 top-0 z-50 transition-all duration-500",
-          scrolled &&
-            "border-b border-[var(--border-default)] bg-[var(--bg-page)]/75 backdrop-blur-xl",
-        )}
-      >
-        <div className="mx-auto flex items-center justify-between px-6 py-4 lg:px-12">
-          <Link to="/" aria-label="FLVR Ventures" className="flex items-center">
-            <img src="/flvr.svg" alt="FLVR Ventures" className="h-9 w-auto lg:h-10" />
-          </Link>
+      {/* Fixed bar. At the top it spans the page; once you scroll it collapses into a
+          compact pill at the end (right) edge: logo + pills + language + button, freeing the view.
+          Layout spacer in <Layout> keeps content below the full-size bar. */}
+      <header className="pointer-events-none fixed inset-x-2 top-2 z-50 sm:inset-x-3 sm:top-3">
+        <motion.div
+          layout
+          transition={morph}
+          style={{ borderRadius: compact ? 18 : 22 }}
+          className={cn(
+            "pointer-events-auto flex items-center border border-[var(--border-default)] bg-[var(--bg-primary)]/80 px-4 backdrop-blur-xl md:px-5",
+            compact
+              ? "ms-auto h-[52px] w-fit gap-5 px-5 md:h-[56px] md:gap-9 md:px-6"
+              : "h-[60px] w-full justify-between md:h-[68px] md:grid md:grid-cols-[1fr_auto_1fr] lg:px-7",
+          )}
+        >
+          <motion.div layout="position" transition={morph} className="justify-self-start">
+            <Link to="/" aria-label="FLVR Ventures" className="flex items-center">
+              <img src="/flvr.svg" alt="FLVR Ventures" className="h-10 w-auto md:h-11" />
+            </Link>
+          </motion.div>
 
-          {/* Desktop */}
-          <nav className="hidden items-center gap-10 md:flex" aria-label="Primary">
+          {/* Desktop: segmented pill group with a sliding highlight */}
+          <motion.nav
+            layout="position"
+            transition={morph}
+            aria-label="Primary"
+            onMouseLeave={() => setHovered(null)}
+            className="hidden items-center rounded-full border border-[var(--border-default)] bg-white/[0.03] p-1 md:flex"
+          >
             {menuItems.map((item) => {
-              const active = pathname === item.href;
+              const active = item.href === activeHref;
+              const lit = item.href === litHref;
               return (
                 <Link
                   key={item.href}
                   to={item.href}
+                  onMouseEnter={() => setHovered(item.href)}
+                  onFocus={() => setHovered(item.href)}
+                  onBlur={() => setHovered(null)}
+                  aria-current={active ? "page" : undefined}
                   className={cn(
-                    "relative text-xs uppercase tracking-[0.18em] transition-colors",
-                    active
-                      ? "text-[var(--text-primary)]"
-                      : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]",
+                    "relative rounded-full px-5 py-2 text-[11px] uppercase tracking-[0.18em] transition-colors duration-300",
+                    lit || active ? "text-[var(--text-primary)]" : "text-[var(--text-secondary)]",
                   )}
                 >
-                  <BilingualText en={item.name} ar={item.ar} />
-                  {active && (
+                  {lit && (
                     <motion.span
-                      layoutId="navDot"
-                      className="absolute -bottom-2 start-0 h-px w-full bg-[var(--accent)]"
+                      layoutId="navPill"
+                      className="absolute inset-0 rounded-full bg-white/[0.09]"
+                      transition={{ type: "spring", stiffness: 380, damping: 34 }}
                     />
                   )}
+                  <span className="relative z-10 flex items-center gap-2">
+                    {active && <span className="h-1 w-1 rounded-full bg-[var(--accent)]" />}
+                    <BilingualText en={item.name} ar={item.ar} />
+                  </span>
                 </Link>
               );
             })}
-          </nav>
+          </motion.nav>
 
-          <div className="flex items-center gap-6">
-            <LanguageSwitch className="hidden md:block" />
+          <motion.div
+            layout="position"
+            transition={morph}
+            className={cn("flex items-center justify-self-end", compact ? "gap-4" : "gap-3")}
+          >
+            <LanguageSwitch className="hidden md:flex" />
             <Link
               to="/contact"
-              className="hidden rounded-full border border-[var(--border-strong)] px-5 py-2.5 text-[11px] uppercase tracking-[0.18em] text-[var(--text-primary)] transition-colors hover:bg-white/[0.08] md:inline-flex"
+              className="hidden items-center gap-2 rounded-full bg-[var(--text-primary)] py-2.5 pe-4 ps-5 text-[11px] font-medium uppercase tracking-[0.18em] text-[var(--bg-primary)] transition-colors hover:bg-white md:inline-flex"
             >
               <BilingualText en="Let's talk" ar="تواصل" />
+              <ArrowUpRight size={14} strokeWidth={1.75} className="rtl:-scale-x-100" />
             </Link>
 
             <button
               type="button"
               onClick={() => setIsOpen(true)}
-              className="flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-[var(--text-primary)] md:hidden"
               aria-label="Open menu"
+              className="flex items-center gap-2 rounded-full border border-[var(--border-strong)] py-2 pe-3.5 ps-4 text-[11px] uppercase tracking-[0.18em] text-[var(--text-primary)] md:hidden"
             >
               <BilingualText en="Menu" ar="القائمة" />
-              <Plus size={16} strokeWidth={1.25} />
+              <Plus size={14} strokeWidth={1.5} />
             </button>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </header>
 
-      {/* Mobile menu */}
+      {/* Mobile menu: a full panel in the same visual language */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -123,52 +187,82 @@ export default function FloatingNav() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.35 }}
-            className="fixed inset-0 z-[60] flex flex-col bg-[var(--bg-page)]/95 px-6 py-4 backdrop-blur-2xl md:hidden"
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-[60] bg-[var(--bg-page)]/80 p-2 backdrop-blur-xl sm:p-3 md:hidden"
           >
-            <div className="flex items-center justify-between">
-              <img src="/flvr.svg" alt="FLVR Ventures" className="h-9 w-auto" />
-              <button
-                type="button"
-                onClick={() => setIsOpen(false)}
-                className="flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-[var(--text-primary)]"
-                aria-label="Close menu"
-              >
-                <BilingualText en="Close" ar="إغلاق" />
-                <X size={16} strokeWidth={1.25} />
-              </button>
-            </div>
-
-            <nav className="mt-16 flex flex-1 flex-col" aria-label="Mobile">
-              {mobileMenuItems.map((item, i) => (
-                <motion.div
-                  key={item.href}
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.08 + i * 0.06, duration: 0.5 }}
-                  className="border-b border-[var(--border-default)]"
+            <motion.div
+              initial={{ y: -16, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -16, opacity: 0 }}
+              transition={{ duration: 0.5, ease }}
+              className="panel flex h-full flex-col px-5 pb-5 pt-3"
+            >
+              <div className="flex h-[52px] items-center justify-between">
+                <img src="/flvr.svg" alt="FLVR Ventures" className="h-11 w-auto" />
+                <button
+                  type="button"
+                  onClick={() => setIsOpen(false)}
+                  aria-label="Close menu"
+                  className="flex items-center gap-2 rounded-full border border-[var(--border-strong)] py-2.5 pe-3.5 ps-4 text-[11px] uppercase tracking-[0.18em] text-[var(--text-primary)]"
                 >
-                  <Link
-                    to={item.href}
-                    className={cn(
-                      "block py-6 text-4xl font-light tracking-[-0.01em]",
-                      pathname === item.href
-                        ? "text-[var(--text-primary)]"
-                        : "text-[var(--text-secondary)]",
-                    )}
-                  >
-                    <BilingualText en={item.name} ar={item.ar} />
-                  </Link>
-                </motion.div>
-              ))}
-            </nav>
+                  <BilingualText en="Close" ar="إغلاق" />
+                  <X size={14} strokeWidth={1.5} />
+                </button>
+              </div>
 
-            <div className="flex items-center justify-between border-t border-[var(--border-default)] py-6">
-              <span className="eyebrow">
-                <BilingualText en="Language" ar="اللغة" />
-              </span>
-              <LanguageSwitch />
-            </div>
+              <nav className="mt-8 flex flex-1 flex-col justify-center" aria-label="Mobile">
+                {mobileMenuItems.map((item, i) => {
+                  const active = pathname === item.href;
+                  return (
+                    <motion.div
+                      key={item.href}
+                      initial={{ opacity: 0, y: 14 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.1 + i * 0.07, duration: 0.6, ease }}
+                      className="border-t border-[var(--border-default)] last:border-b"
+                    >
+                      <Link
+                        to={item.href}
+                        className="flex items-center justify-between gap-4 py-6"
+                      >
+                        <span className="flex items-baseline gap-5">
+                          <span className="eyebrow !text-[10px]">0{i + 1}</span>
+                          <span
+                            className={cn(
+                              "text-[2.4rem] font-light leading-none tracking-[-0.02em]",
+                              active ? "text-[var(--text-primary)]" : "text-[var(--text-secondary)]",
+                            )}
+                          >
+                            <BilingualText en={item.name} ar={item.ar} />
+                          </span>
+                        </span>
+                        {active ? (
+                          <span className="h-1.5 w-1.5 rounded-full bg-[var(--accent)]" />
+                        ) : (
+                          <ArrowUpRight
+                            size={18}
+                            strokeWidth={1.25}
+                            className="text-[var(--text-muted)] rtl:-scale-x-100"
+                          />
+                        )}
+                      </Link>
+                    </motion.div>
+                  );
+                })}
+              </nav>
+
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <span className="eyebrow">
+                    <BilingualText en="Language" ar="اللغة" />
+                  </span>
+                  <LanguageSwitch />
+                </div>
+                <Link to="/contact?interest=invest" className="btn-primary w-full">
+                  <BilingualText en="Speak with the team" ar="تحدث مع الفريق" />
+                </Link>
+              </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

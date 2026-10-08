@@ -9,7 +9,7 @@ import { hero } from "@/data/content";
 // then the FLVR film in a softly graded rounded frame.
 export default function Hero() {
   return (
-    <section className="panel overflow-hidden px-4 pb-4 pt-28 sm:px-6 sm:pb-6 lg:px-10 lg:pb-10 lg:pt-40">
+    <section className="panel overflow-hidden px-4 pb-4 pt-14 sm:px-6 sm:pb-6 lg:px-10 lg:pb-10 lg:pt-24">
       <div className="grid grid-cols-1 gap-12 px-2 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] lg:gap-20 lg:px-2">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}

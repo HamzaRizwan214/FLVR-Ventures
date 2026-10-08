@@ -75,7 +75,11 @@ export default function Footer() {
           onClick={toggleLanguage}
           className="self-start text-xs uppercase tracking-[0.18em] text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)] md:self-auto"
         >
-          {language === "en" ? "العربية" : "English"}
+          {language === "en" ? (
+            <span style={{ fontFamily: "var(--font-arabic)", letterSpacing: 0, fontSize: 14 }}>العربية</span>
+          ) : (
+            "English"
+          )}
         </button>
       </div>
     </footer>

@@ -4,7 +4,7 @@ import Crosshair from "./Crosshair";
 // Opening panel for inner pages: uppercase title left, hairline + lead right.
 export default function PageHeader({ eyebrow, title, lead, children }) {
   return (
-    <header className="panel px-6 pb-12 pt-32 lg:px-12 lg:pb-16 lg:pt-44">
+    <header className="panel px-6 pb-12 pt-14 lg:px-12 lg:pb-16 lg:pt-24">
       <div className="grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] lg:gap-20">
         <div>
           {eyebrow && (
