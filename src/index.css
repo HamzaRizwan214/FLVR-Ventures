@@ -1,109 +1,68 @@
 @import "tailwindcss";
+@import "@fontsource-variable/inter";
+
+/* ──────────────────────────────────────────────────────────
+   FLVR design system: quiet, dark, editorial.
+   Framed rounded panels, hairlines, light-weight sans type,
+   one soft copper accent taken from the FLVR wordmark.
+   ────────────────────────────────────────────────────────── */
 
 @theme {
-  --color-brand-primary: var(--brand-primary);
-  --color-brand-accent: var(--brand-accent);
-  --color-brand-reward: var(--brand-reward);
-  
+  --color-brand-primary: var(--accent);
   --color-bg-primary: var(--bg-primary);
   --color-bg-secondary: var(--bg-secondary);
-  --color-bg-brand-tint: var(--bg-brand-tint);
-  --color-bg-coral-tint: var(--bg-coral-tint);
-  --color-bg-gold-tint: var(--bg-gold-tint);
-  
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
-  --color-text-link: var(--text-link);
   --color-text-muted: var(--text-muted);
-  
   --color-border-default: var(--border-default);
   --color-border-strong: var(--border-strong);
 
-  --font-sans: "retro-floral", sans-serif;
-  --font-arabic: "Etlalah", sans-serif;
+  --font-sans: "Inter Variable", "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-arabic: "Etlalah", "Inter Variable", ui-sans-serif, sans-serif;
 }
 
+/* ── Fonts ── Inter (Latin, self-hosted) and Etlalah (Arabic) */
 @font-face {
-  font-family: 'Metropolis';
-  src: url('/metropolis/Metropolis-Regular.otf') format('opentype');
-  font-weight: 400;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Metropolis';
-  src: url('/metropolis/Metropolis-Medium.otf') format('opentype');
-  font-weight: 500;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Metropolis';
-  src: url('/metropolis/Metropolis-SemiBold.otf') format('opentype');
-  font-weight: 600;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Metropolis';
-  src: url('/metropolis/Metropolis-Bold.otf') format('opentype');
-  font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Etlalah';
-  src: url('/etlalah-arabic-typeface/etlalah-regular.otf') format('opentype');
+  font-family: "Etlalah";
+  src: url("/etlalah-arabic-typeface/etlalah-regular.otf") format("opentype");
   font-weight: 100 400;
   font-style: normal;
+  font-display: swap;
 }
 @font-face {
-  font-family: 'Etlalah';
-  src: url('/etlalah-arabic-typeface/etlalah-bold.otf') format('opentype');
+  font-family: "Etlalah";
+  src: url("/etlalah-arabic-typeface/etlalah-bold.otf") format("opentype");
   font-weight: 500 1000;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "gondens-demo";
-  src: url("/gondens-demo/Gondens DEMO.otf") format("opentype");
-  font-weight: 400 900;
   font-style: normal;
   font-display: swap;
 }
 
-@font-face {
-  font-family: "retro-floral";
-  src: url("/retro-floral/Retro Floral.otf") format("opentype");
-  font-weight: 400 900;
-  font-style: normal;
-}
-
-
-
-
+/* ── Tokens ── */
 :root {
-  /* Permanent Light Theme Palette */
-  --bg-primary: #f8f9fa;
-  --bg-secondary: #ffffff;
-  --bg-brand-tint: rgba(11, 114, 133, 0.05);
-  --bg-coral-tint: rgba(255, 107, 107, 0.05);
-  --bg-gold-tint: rgba(255, 212, 59, 0.05);
+  color-scheme: dark;
 
-  --text-primary: #000000;
-  --text-secondary: #495057;
-  --text-link: #0b7285;
-  --text-muted: #868e96;
+  --bg-page: #080909; /* behind the panels */
+  --bg-primary: #0f1011; /* panel */
+  --bg-secondary: #151617; /* raised surface */
 
-  --brand-primary: #0b7285;
-  --brand-accent: #ff6b6b;
-  --brand-reward: #ffd43b;
+  --text-primary: #ece8e1;
+  --text-secondary: rgba(236, 232, 225, 0.66);
+  --text-muted: rgba(236, 232, 225, 0.4);
 
-  --border-default: rgba(0, 0, 0, 0.08);
-  --border-strong: rgba(11, 114, 133, 0.3);
+  --accent: #d6ad84; /* soft copper, from the FLVR wordmark */
+
+  --border-default: rgba(236, 232, 225, 0.1);
+  --border-strong: rgba(236, 232, 225, 0.22);
+
+  --radius-panel: 28px;
 }
 
-html, body {
-  background-color: var(--bg-primary);
+html,
+body {
+  background-color: var(--bg-page);
   color: var(--text-primary);
   font-family: var(--font-sans);
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
@@ -114,41 +73,15 @@ html, body {
   -webkit-text-size-adjust: 100%;
 }
 
-/* Handle RTL (Arabic) Font Override */
-[dir="rtl"], [dir="rtl"] body {
-  font-family: var(--font-arabic) !important;
-  /* Set base weight to 500, which now uses the Bold font file */
-  font-weight: 500; 
-}
-
-/* Force all text elements in Arabic to be at least Medium weight */
-[dir="rtl"] p, 
-[dir="rtl"] span, 
-[dir="rtl"] div, 
-[dir="rtl"] a, 
-[dir="rtl"] li {
-  font-weight: 500;
-}
-
-/* Ensure common font-weight classes respond correctly in RTL */
-[dir="rtl"] .font-normal {
-  font-weight: 500 !important;
-}
-
-[dir="rtl"] .font-medium {
-  font-weight: 600 !important;
-}
-
-[dir="rtl"] .font-semibold, 
-[dir="rtl"] .font-bold, 
-[dir="rtl"] strong, 
-[dir="rtl"] b {
-  font-weight: 1000 !important;
-}
-
-/* Base resets */
 * {
   box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 300;
 }
 
 button {
@@ -156,46 +89,170 @@ button {
   font-family: inherit;
 }
 
-/* Custom Utilities */
-.glass-panel {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+::selection {
+  background: rgba(214, 173, 132, 0.3);
+  color: var(--text-primary);
+}
+
+/* Arabic: Etlalah regular for a soft, even colour. No forced bold. */
+[dir="rtl"],
+[dir="rtl"] body {
+  font-family: var(--font-arabic);
+}
+
+/* ── Layout primitives ── */
+.panel {
+  position: relative;
+  background: var(--bg-primary);
   border: 1px solid var(--border-default);
+  border-radius: var(--radius-panel);
 }
 
-/* ─── Button System (Professional & Fun) ─── */
-.btn-primary {
-  @apply relative inline-flex items-center justify-center px-8 py-4 
-         bg-[var(--brand-primary)] text-white text-xs font-bold uppercase tracking-[0.2em] 
-         rounded-none transition-all duration-300 overflow-hidden font-[Metropolis]
-         shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px];
+.eyebrow {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
 }
 
-.btn-secondary {
-  @apply relative inline-flex items-center justify-center px-8 py-4 
-         bg-transparent text-[var(--text-primary)] text-xs font-bold uppercase tracking-[0.2em] 
-         rounded-none border-2 border-black transition-all duration-300 font-[Metropolis]
-         hover:bg-black hover:text-white;
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  background: rgba(236, 232, 225, 0.07);
+  color: var(--text-secondary);
+  font-size: 11px;
+  letter-spacing: 0.06em;
 }
 
-.btn-white {
-  @apply relative inline-flex items-center justify-center px-8 py-4 
-         bg-white text-black text-xs font-bold uppercase tracking-[0.2em] 
-         rounded-none transition-all duration-300 font-[Metropolis]
-         shadow-[4px_4px_0px_0px_rgba(11,114,133,1)] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px];
+.hairline {
+  height: 1px;
+  background: var(--border-default);
 }
 
+/* ── Buttons ── */
+.btn-primary,
+.btn-white,
+.btn-secondary,
 .btn-ghost {
-  @apply relative inline-flex items-center justify-center px-8 py-4 
-         bg-transparent text-white text-xs font-bold uppercase tracking-[0.2em] 
-         rounded-none border border-white/20 transition-all duration-300 font-[Metropolis]
-         hover:bg-white hover:text-black;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.95rem 1.9rem;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
 }
 
-/* global.css or equivalent */
-@keyframes fluidGradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+.btn-primary,
+.btn-white {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  border: 1px solid var(--text-primary);
+}
+.btn-primary:hover,
+.btn-white:hover {
+  background: #fff;
+  border-color: #fff;
+}
+.btn-primary:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.btn-secondary,
+.btn-ghost {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-strong);
+}
+.btn-secondary:hover,
+.btn-ghost:hover {
+  background: rgba(236, 232, 225, 0.08);
+}
+
+/* Pill + circular arrow pair (see CtaLink) */
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.cta-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.95rem 1.9rem;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+.cta-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+  border-radius: 9999px;
+  border: 1px solid var(--border-strong);
+  color: var(--text-primary);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+.cta-circle svg {
+  transition: transform 0.3s ease;
+}
+.cta:hover .cta-circle svg {
+  transform: rotate(45deg);
+}
+.cta--primary .cta-pill {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+}
+.cta--primary:hover .cta-pill {
+  background: #fff;
+}
+.cta--primary:hover .cta-circle {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+}
+.cta--outline .cta-pill {
+  border: 1px solid var(--border-strong);
+  color: var(--text-primary);
+}
+.cta--outline:hover .cta-pill {
+  background: rgba(236, 232, 225, 0.08);
+}
+.cta--outline:hover .cta-circle {
+  background: rgba(236, 232, 225, 0.08);
+}
+
+/* Focus */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }

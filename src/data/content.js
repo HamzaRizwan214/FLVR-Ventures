@@ -12,7 +12,7 @@ export const hero = {
     ar: "نبني مفاهيم المطاعم مع المؤسسين، ونختبرها في تجارب حية، ونستثمر إلى جانب الشركاء. وتخطط فلايفر كذلك لإطلاق صندوق للأغذية والمشروبات في مرحلتي التأسيس والنمو.",
   },
   ctaPrimary: { en: "Speak with the team", ar: "تحدث مع الفريق" },
-  ctaSecondary: { en: "View the portfolio", ar: "استعرض المحفظة" },
+  ctaSecondary: { en: "View the Studio", ar: "استعرض الاستوديو" },
 };
 
 // The Studio method: Filter → Lift → Validate → Run
@@ -58,72 +58,6 @@ export const steps = [
     image: "/grow.jpg",
   },
 ];
-
-export const popup = {
-  name: { en: "POP-UP by FLVR", ar: "POP-UP من فلايفر" },
-  body: {
-    en: "POP-UP is FLVR's operating studio for concept validation. Concepts are run in live trials so the offer, pricing, customer response and operating performance can be measured.",
-    ar: "POP-UP هو استوديو التشغيل لدى فلايفر للتحقق من المفاهيم. تُدار المفاهيم في تجارب حية لقياس العرض والتسعير واستجابة العملاء والأداء التشغيلي.",
-  },
-};
-
-// How FLVR is organised: three parts, not a sequence.
-export const model = {
-  eyebrow: { en: "Structure", ar: "الهيكل" },
-  title: { en: "How FLVR is organised.", ar: "كيف تنتظم فلايفر." },
-  parts: [
-    {
-      title: { en: "Studio", ar: "الاستوديو" },
-      text: {
-        en: "Builds and validates restaurant concepts with founders.",
-        ar: "يبني مفاهيم المطاعم ويختبرها بالشراكة مع المؤسسين.",
-      },
-    },
-    {
-      title: { en: "Co-investment", ar: "الاستثمار المشترك" },
-      text: {
-        en: "Partners hold a percentage of a concept's equity alongside the Studio.",
-        ar: "يمتلك الشركاء نسبة من ملكية المفهوم إلى جانب الاستوديو.",
-      },
-    },
-    {
-      title: { en: "Fund", ar: "الصندوق" },
-      text: {
-        en: "A planned vehicle for food and beverage businesses and technology at Seed and Growth stage.",
-        ar: "أداة استثمارية مخطط لها لأعمال الأغذية والمشروبات والتقنية في مرحلتي التأسيس والنمو.",
-      },
-    },
-  ],
-};
-
-// How an investor works with FLVR (How It Works page)
-export const participation = {
-  eyebrow: { en: "Investors", ar: "المستثمرون" },
-  title: { en: "Working with investors.", ar: "العمل مع المستثمرين." },
-  items: [
-    {
-      label: { en: "Review", ar: "الاطلاع" },
-      text: {
-        en: "Investors can review relevant research, concept plans and operating results, where available.",
-        ar: "يمكن للمستثمرين الاطلاع على الأبحاث وخطط المفاهيم والنتائج التشغيلية ذات الصلة، حيثما توفرت.",
-      },
-    },
-    {
-      label: { en: "Engage", ar: "التعاون" },
-      text: {
-        en: "Engagement can begin before, during or after a concept's POP-UP trial, depending on the opportunity.",
-        ar: "يمكن أن يبدأ التعاون قبل تجربة POP-UP للمفهوم أو أثناءها أو بعدها، بحسب الفرصة.",
-      },
-    },
-    {
-      label: { en: "Co-invest", ar: "الاستثمار المشترك" },
-      text: {
-        en: "Investors acquire a percentage of equity in a concept, alongside the Studio.",
-        ar: "يستحوذ المستثمرون على نسبة من ملكية المفهوم إلى جانب الاستوديو.",
-      },
-    },
-  ],
-};
 
 export const fund = {
   intro: {
@@ -197,31 +131,6 @@ export const fund = {
       },
     },
   ],
-};
-
-export const about = {
-  title: {
-    en: "A venture studio and planned fund for Saudi food and beverage.",
-    ar: "استوديو مشاريع وصندوق مخطط له لقطاع الأغذية والمشروبات السعودي.",
-  },
-  lead: {
-    en: "FLVR Ventures is Saudi Arabia's first venture builder and investment platform focused exclusively on food and beverage. We back founder-led concepts with capital, brand development and operating expertise.",
-    ar: "فلايفر فينتشرز هي أول منصة سعودية لبناء المشاريع والاستثمار متخصصة حصراً في الأغذية والمشروبات. ندعم المفاهيم التي يقودها مؤسسوها برأس المال وتطوير العلامة والخبرة التشغيلية.",
-  },
-  vision: {
-    label: { en: "Vision", ar: "الرؤية" },
-    text: {
-      en: "To build, nurture and scale Saudi food and beverage brands.",
-      ar: "بناء ورعاية وتوسيع علامات الأغذية والمشروبات السعودية.",
-    },
-  },
-  mission: {
-    label: { en: "Mission", ar: "المهمة" },
-    text: {
-      en: "To develop promising food and beverage concepts into scalable, durable businesses through brand development, financial discipline, operational excellence and disciplined growth.",
-      ar: "تطوير مفاهيم الأغذية والمشروبات الواعدة إلى أعمال قابلة للتوسع ومستدامة عبر تطوير العلامة والانضباط المالي والتميز التشغيلي والنمو المنضبط.",
-    },
-  },
 };
 
 export const contact = {

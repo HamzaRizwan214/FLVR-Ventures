@@ -8,10 +8,9 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { contact } from "@/data/content";
 
 const fieldClass =
-  "block w-full rounded-none border border-[var(--border-default)] bg-white px-4 py-4 text-base text-[var(--text-primary)] font-[Metropolis] placeholder:text-[var(--text-muted)] focus:border-[var(--brand-primary)] focus:outline-none focus:ring-1 focus:ring-[var(--brand-primary)]";
+  "block w-full rounded-xl border border-[var(--border-default)] bg-white/[0.03] px-4 py-3.5 text-[15px] text-[var(--text-primary)] placeholder:text-[var(--text-muted)] transition-colors focus:border-[var(--border-strong)] focus:bg-white/[0.06] focus:outline-none";
 
-const labelClass =
-  "mb-2 block text-xs font-medium uppercase tracking-[0.2em] text-[var(--text-secondary)] font-[Metropolis]";
+const labelClass = "eyebrow mb-2.5 block";
 
 // Reads ?interest= and ?concept= so CTAs elsewhere can pre-fill the form.
 export default function InvestorForm() {
@@ -73,11 +72,11 @@ export default function InvestorForm() {
         className="flex min-h-[420px] flex-col items-center justify-center text-center"
         role="status"
       >
-        <CheckCircle2 className="mb-6 h-14 w-14 text-emerald-500" />
-        <h2 className="mb-3 text-3xl font-normal tracking-tight text-[var(--text-primary)]">
+        <CheckCircle2 className="mb-6 h-12 w-12 text-[var(--accent)]" strokeWidth={1.25} />
+        <h2 className="mb-3 text-3xl font-light tracking-tight text-[var(--text-primary)]">
           <BilingualText en="Message sent" ar="تم إرسال رسالتك" />
         </h2>
-        <p className="max-w-sm text-lg text-[var(--text-secondary)] font-[Metropolis]">
+        <p className="max-w-sm text-[15px] leading-[1.8] text-[var(--text-secondary)]">
           <BilingualText
             en="Thank you. The FLVR team will be in touch."
             ar="شكراً لك. سيتواصل معك فريق فلايفر."
@@ -191,7 +190,7 @@ export default function InvestorForm() {
       />
 
       {status === "error" && (
-        <p role="alert" className="text-sm text-red-600 font-[Metropolis]">
+        <p role="alert" className="text-sm text-[#e0a08a]">
           <BilingualText
             en="Something went wrong. Please try again, or email us directly."
             ar="حدث خطأ ما. يرجى المحاولة مرة أخرى أو مراسلتنا مباشرة عبر البريد."
@@ -202,7 +201,7 @@ export default function InvestorForm() {
       <button
         type="submit"
         disabled={status === "sending"}
-        className="btn-primary w-full disabled:opacity-60"
+        className="btn-primary w-full"
       >
         <T
           t={

@@ -6,7 +6,7 @@ export default function Disclaimer({ className }) {
   return (
     <p
       className={cn(
-        "text-xs leading-relaxed text-[var(--text-muted)] max-w-2xl font-[Metropolis]",
+        "max-w-2xl text-xs leading-relaxed text-[var(--text-muted)]",
         className,
       )}
     >

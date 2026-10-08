@@ -1,70 +1,65 @@
 import { motion } from "framer-motion";
 import SectionHeading from "./SectionHeading";
-import ModelDiagram from "./ModelDiagram";
+import Crosshair from "./Crosshair";
 import BilingualText from "./BilingualText";
 import T from "./T";
-import { steps, model } from "@/data/content";
+import { steps } from "@/data/content";
 
-// Home: the four-stage method, then how FLVR is organised.
+// Home: the four-stage method.
 export default function HomeSteps() {
   return (
-    <section className="bg-[var(--bg-primary)] py-24 sm:py-32">
-      <div className="mx-auto max-w-[1800px] px-6 lg:px-12">
-        <SectionHeading
-          eyebrow={<BilingualText en="How we build" ar="كيف نبني" />}
-          title={
-            <BilingualText
-              en="A four-stage method."
-              ar="منهجية من أربع مراحل."
-            />
-          }
-        />
+    <section className="panel px-6 py-20 lg:px-12 lg:py-28">
+      <Crosshair className="absolute start-6 top-6 hidden lg:block" />
+      <Crosshair className="absolute end-6 top-6 hidden lg:block" />
 
-        <div className="grid grid-cols-1 gap-x-6 gap-y-16 sm:grid-cols-2 lg:grid-cols-4 lg:gap-x-8">
-          {steps.map((step, index) => (
-            <motion.div
-              key={step.key}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              className="group flex flex-col items-start"
-            >
-              <div className="relative aspect-[3/4] w-full overflow-hidden rounded-[16px] bg-zinc-100 border border-black/5">
-                <img
-                  src={step.image}
-                  alt=""
-                  loading="lazy"
-                  decoding="async"
-                  className="h-full w-full object-cover transition-all duration-500 group-hover:scale-110"
-                />
-                <span className="absolute top-5 start-5 flex h-11 w-11 items-center justify-center rounded-full bg-white/70 text-sm font-medium text-[var(--text-primary)] backdrop-blur-md border border-black/5 font-[Metropolis]">
-                  0{index + 1}
-                </span>
-              </div>
+      <SectionHeading
+        eyebrow={<BilingualText en="How we build" ar="كيف نبني" />}
+        title={
+          <BilingualText
+            en="A four-stage method, from selection to scale."
+            ar="منهجية من أربع مراحل، من الاختيار إلى التوسع."
+          />
+        }
+      />
 
-              <div className="mt-8 pe-4">
-                <p className="mb-2 text-xs font-medium uppercase tracking-[0.25em] text-[var(--brand-primary)] font-[Metropolis]">
-                  <T t={step.descriptor} />
-                </p>
-                <h3 className="mb-3 text-2xl font-normal tracking-tight text-[var(--text-primary)]">
+      <div className="grid grid-cols-1 gap-x-5 gap-y-14 sm:grid-cols-2 lg:grid-cols-4">
+        {steps.map((step, index) => (
+          <motion.article
+            key={step.key}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ delay: index * 0.08, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="group"
+          >
+            <div className="relative aspect-[4/5] overflow-hidden rounded-[20px] bg-[var(--bg-secondary)]">
+              <img
+                src={step.image}
+                alt=""
+                loading="lazy"
+                decoding="async"
+                className="h-full w-full object-cover brightness-[0.78] saturate-[0.75] transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
+              />
+              <span className="pill absolute start-4 top-4 bg-black/35 backdrop-blur-md">
+                0{index + 1}
+              </span>
+            </div>
+
+            <div className="mt-6">
+              <div className="mb-3 flex items-center justify-between gap-3">
+                <h3 className="text-[13px] font-normal uppercase tracking-[0.14em] text-[var(--text-primary)]">
                   <T t={step.title} />
                 </h3>
-                <p className="text-base leading-relaxed text-[var(--text-secondary)] font-[Metropolis]">
-                  <T t={step.desc} />
-                </p>
+                <span className="eyebrow">
+                  <T t={step.descriptor} />
+                </span>
               </div>
-            </motion.div>
-          ))}
-        </div>
-
-        <div className="mt-28 lg:mt-36">
-          <SectionHeading
-            eyebrow={<T t={model.eyebrow} />}
-            title={<T t={model.title} />}
-          />
-          <ModelDiagram />
-        </div>
+              <p className="text-[15px] leading-[1.75] text-[var(--text-secondary)]">
+                <T t={step.desc} />
+              </p>
+            </div>
+          </motion.article>
+        ))}
       </div>
     </section>
   );

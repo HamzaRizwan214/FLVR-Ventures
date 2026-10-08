@@ -7,8 +7,8 @@ import T from "./T";
 import BilingualText from "./BilingualText";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-// Side drawer with the detail for one concept. Rendered in a portal because
-// PageWrapper applies a CSS filter, which would otherwise trap `position: fixed`.
+// Side drawer with the detail for one concept. Rendered in a portal so it is
+// never clipped or offset by a transformed ancestor.
 export default function ConceptDrawer({ concept, onClose }) {
   const { language } = useLanguage();
   const closeRef = useRef(null);
@@ -34,9 +34,9 @@ export default function ConceptDrawer({ concept, onClose }) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 0.3 }}
+        transition={{ duration: 0.35 }}
         onClick={onClose}
-        className="fixed inset-0 z-[90] bg-black/55 backdrop-blur-sm"
+        className="fixed inset-0 z-[90] bg-black/60 backdrop-blur-sm"
       />
       <motion.aside
         key="panel"
@@ -47,12 +47,12 @@ export default function ConceptDrawer({ concept, onClose }) {
         initial={{ x: offscreen }}
         animate={{ x: 0 }}
         exit={{ x: offscreen }}
-        transition={{ type: "spring", damping: 32, stiffness: 280 }}
-        className="fixed inset-y-0 end-0 z-[100] flex w-full max-w-[600px] flex-col overflow-y-auto bg-[var(--bg-primary)] shadow-2xl"
+        transition={{ type: "spring", damping: 34, stiffness: 260 }}
+        className="fixed inset-y-2 end-2 z-[100] flex w-[calc(100%-1rem)] max-w-[560px] flex-col overflow-y-auto rounded-[26px] border border-[var(--border-default)] bg-[var(--bg-primary)] shadow-2xl"
       >
         {/* Brand header */}
         <div
-          className="relative px-8 pt-8 pb-12 lg:px-12"
+          className="relative px-8 pb-10 pt-8 lg:px-10"
           style={{ background: theme.bg, color: theme.fg }}
         >
           <button
@@ -60,69 +60,59 @@ export default function ConceptDrawer({ concept, onClose }) {
             type="button"
             onClick={onClose}
             aria-label="Close"
-            className="absolute top-6 end-6 flex h-10 w-10 items-center justify-center rounded-full border border-white/20 transition-colors hover:bg-white/10"
+            className="absolute end-6 top-6 flex h-10 w-10 items-center justify-center rounded-full border border-white/20 transition-colors hover:bg-white/10"
           >
-            <X size={18} />
+            <X size={16} strokeWidth={1.5} />
           </button>
-          <p
-            className="mb-10 text-[10px] font-medium uppercase tracking-[0.25em] font-[Metropolis]"
-            style={{ color: theme.accent }}
-          >
-            <BilingualText
-              en="A FLVR Ventures concept"
-              ar="مفهوم من فلايفر فينتشرز"
-            />
+          <p className="eyebrow mb-10 !text-[10px]" style={{ color: theme.accent }}>
+            <BilingualText en="A FLVR Ventures concept" ar="مفهوم من فلايفر فينتشرز" />
           </p>
           <img
             src={concept.logo}
             alt={concept.name}
-            className="mb-6 h-16 w-auto max-w-[70%] object-contain object-left rtl:object-right"
+            className="mb-6 h-14 w-auto max-w-[70%] object-contain object-left rtl:object-right"
           />
-          <p className="text-xl font-[Metropolis] opacity-85">
+          <p className="text-base font-light opacity-80">
             <T t={concept.tagline} />
           </p>
         </div>
 
         {/* Body */}
-        <div className="flex-1 px-8 py-10 lg:px-12">
-          <p className="text-lg leading-relaxed text-[var(--text-secondary)] font-[Metropolis]">
+        <div className="flex-1 px-8 py-9 lg:px-10">
+          <p className="text-[15px] leading-[1.8] text-[var(--text-secondary)]">
             <T t={concept.description} />
           </p>
 
           {(stage || founder) && (
-            <dl className="mt-10 border-t border-[var(--border-default)]">
+            <dl className="mt-9 border-t border-[var(--border-default)]">
               {stage && (
                 <div className="flex items-baseline justify-between gap-6 border-b border-[var(--border-default)] py-5">
-                  <dt className="text-xs font-medium uppercase tracking-[0.25em] text-[var(--text-muted)] font-[Metropolis]">
+                  <dt className="eyebrow">
                     <BilingualText en="Stage" ar="المرحلة" />
                   </dt>
-                  <dd className="text-lg text-[var(--text-primary)]">
+                  <dd className="text-base text-[var(--text-primary)]">
                     <T t={stage} />
                   </dd>
                 </div>
               )}
               {founder && (
                 <div className="flex items-center justify-between gap-6 border-b border-[var(--border-default)] py-5">
-                  <dt className="text-xs font-medium uppercase tracking-[0.25em] text-[var(--text-muted)] font-[Metropolis]">
+                  <dt className="eyebrow">
                     <BilingualText en="Founder" ar="المؤسس" />
                   </dt>
                   <dd className="flex items-center gap-4 text-end">
                     <span>
-                      <span className="block text-lg text-[var(--text-primary)]">
+                      <span className="block text-base text-[var(--text-primary)]">
                         <T t={founder.name} />
                       </span>
                       {founder.role && (
-                        <span className="block text-sm text-[var(--text-muted)] font-[Metropolis]">
+                        <span className="block text-sm text-[var(--text-muted)]">
                           <T t={founder.role} />
                         </span>
                       )}
                     </span>
                     {founder.photo && (
-                      <img
-                        src={founder.photo}
-                        alt=""
-                        className="h-14 w-14 rounded-full object-cover"
-                      />
+                      <img src={founder.photo} alt="" className="h-14 w-14 rounded-full object-cover" />
                     )}
                   </dd>
                 </div>
@@ -130,11 +120,11 @@ export default function ConceptDrawer({ concept, onClose }) {
             </dl>
           )}
 
-          <div className="mt-10 grid gap-4">
+          <div className="mt-9 grid gap-3">
             {concept.gallery.map((img, i) => (
               <figure
                 key={i}
-                className="relative overflow-hidden rounded-[14px] border border-black/10"
+                className="relative overflow-hidden rounded-[18px] border border-[var(--border-default)]"
                 style={{ background: theme.bg }}
               >
                 <img
@@ -142,10 +132,10 @@ export default function ConceptDrawer({ concept, onClose }) {
                   alt={img.alt}
                   loading="lazy"
                   decoding="async"
-                  className="block h-auto w-full"
+                  className="block h-auto w-full brightness-[0.92]"
                 />
                 {img.visualisation && (
-                  <figcaption className="absolute bottom-3 start-3 rounded-full bg-black/55 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-white/85 backdrop-blur-md font-[Metropolis]">
+                  <figcaption className="pill absolute bottom-3 start-3 bg-black/40 text-white/75 backdrop-blur-md">
                     <BilingualText en="Brand visualisation" ar="تصور للعلامة" />
                   </figcaption>
                 )}
@@ -155,7 +145,7 @@ export default function ConceptDrawer({ concept, onClose }) {
         </div>
 
         {/* CTA */}
-        <div className="sticky bottom-0 border-t border-[var(--border-default)] bg-[var(--bg-primary)]/95 px-8 py-5 backdrop-blur-md lg:px-12">
+        <div className="sticky bottom-0 border-t border-[var(--border-default)] bg-[var(--bg-primary)]/90 px-8 py-5 backdrop-blur-md lg:px-10">
           <Link
             to={`/contact?interest=invest&concept=${encodeURIComponent(concept.name)}`}
             onClick={onClose}
