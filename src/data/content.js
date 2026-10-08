@@ -40,7 +40,6 @@ export const steps = [
       en: "We assess founder-led concepts through market research and commercial review.",
       ar: "نقيّم المفاهيم التي يقودها مؤسسوها عبر أبحاث السوق والمراجعة التجارية.",
     },
-    image: "/concept.jpg",
   },
   {
     key: "lift",
@@ -50,7 +49,6 @@ export const steps = [
       en: "We develop the brand, menu, pricing and operating model with the founder.",
       ar: "نطوّر العلامة والقائمة والتسعير ونموذج التشغيل بالشراكة مع المؤسس.",
     },
-    image: "/busy.jpg",
   },
   {
     key: "validate",
@@ -60,7 +58,6 @@ export const steps = [
       en: "We run a live POP-UP trial to measure customer response and operating economics. The results inform the next decision.",
       ar: "نشغّل تجربة POP-UP حية لقياس استجابة العملاء والاقتصاديات التشغيلية، وتُبنى عليها القرارات التالية.",
     },
-    image: "/prove.jpg",
   },
   {
     key: "run",
@@ -70,7 +67,6 @@ export const steps = [
       en: "We support launch and growth through operating systems, people and disciplined capital allocation.",
       ar: "ندعم الإطلاق والنمو عبر الأنظمة التشغيلية والكوادر وتخصيص رأس المال بانضباط.",
     },
-    image: "/grow.jpg",
   },
 ];
 

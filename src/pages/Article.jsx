@@ -60,9 +60,6 @@ export default function Article() {
   if (!article) return <Navigate to="/insights" replace />;
 
   const category = getCategory(article.category);
-  const headings = article.body
-    .map((b, i) => ({ b, id: `s${i}` }))
-    .filter(({ b }) => b.type === "h2");
   const related = articles.filter((a) => a.slug !== article.slug).slice(0, 3);
 
   return (
@@ -139,26 +136,6 @@ export default function Article() {
 
         {/* Text */}
         <section className="panel px-6 py-12 sm:px-10 lg:px-14 lg:py-16">
-          {headings.length > 1 && (
-            <nav aria-label="In this article" className="mb-12 border-b border-[var(--border-default)] pb-8">
-              <p className="eyebrow mb-4 !text-[10px]">
-                <BilingualText en="In this article" ar="في هذا المقال" />
-              </p>
-              <ul className="flex flex-wrap gap-2">
-                {headings.map(({ b, id }) => (
-                  <li key={id}>
-                    <a
-                      href={`#${id}`}
-                      className="inline-block rounded-full border border-[var(--border-default)] px-4 py-2 text-[12px] text-[var(--text-secondary)] transition-colors hover:border-[var(--border-strong)] hover:text-[var(--text-primary)]"
-                    >
-                      <T t={b.text} />
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          )}
-
           <article className="max-w-[40rem]">
             {article.body.map((block, i) => (
               <Block key={i} block={block} id={`s${i}`} />

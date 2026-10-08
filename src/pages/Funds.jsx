@@ -25,7 +25,10 @@ const term = (label) => fund.terms.find((t) => t.label.en === label);
 
 // Headline figures shown inside the hero
 const keyFacts = [
-  { term: term("Target fund size"), label: { en: "Planned fund", ar: "الصندوق المخطط" } },
+  {
+    term: term("Target fund size"),
+    label: { en: "Planned fund", ar: "الصندوق المخطط" },
+  },
   { term: term("Ticket size") },
   { term: term("Stage") },
   { term: term("Geography") },
@@ -37,22 +40,26 @@ export default function Funds() {
       {/* 1 · Hero: carved container, the headline figures inside */}
       <CarvedHero
         as="h1"
+        compact
         eyebrow={<BilingualText en="The Fund" ar="الصندوق" />}
         title={<BilingualText en="The FLVR Fund" ar="صندوق فلايفر" />}
         notch={
           <>
-            <p className="max-w-[28rem] text-[15px] leading-[1.75] text-[var(--text-secondary)]">
+            <p className="max-w-[26rem] text-[13px] leading-[1.6] text-[var(--text-secondary)]">
               <T t={fund.intro} />
             </p>
-            <div className="mt-6">
+            <div className="mt-4">
               <CtaLink to="/contact?interest=fund" variant="primary">
-                <BilingualText en="Request fund overview" ar="اطلب نظرة عامة على الصندوق" />
+                <BilingualText
+                  en="Request fund overview"
+                  ar="اطلب نظرة عامة على الصندوق"
+                />
               </CtaLink>
             </div>
           </>
         }
       >
-        <dl className="grid grid-cols-2 gap-2 xl:grid-cols-4 xl:gap-3">
+        <dl className="grid grid-cols-2 gap-2 xl:grid-cols-4">
           {keyFacts.map((fact, i) => (
             <motion.div
               key={i}
@@ -60,24 +67,27 @@ export default function Funds() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ delay: i * 0.08, duration: 0.8, ease }}
-              className="flex min-h-[10rem] flex-col justify-between rounded-[20px] border border-[var(--border-default)] bg-[var(--bg-secondary)]/70 p-6 lg:min-h-[12rem] lg:p-8"
+              className="flex min-h-[5.5rem] flex-col justify-between gap-3 rounded-[16px] border border-[var(--border-default)] bg-[var(--bg-secondary)]/70 p-4"
             >
-              <dt className="eyebrow !text-[10px]">
+              <dt className="eyebrow !text-[9px]">
                 <T t={fact.label ?? fact.term.label} />
               </dt>
-              <dd className="text-[clamp(1.6rem,2.8vw,2.7rem)] font-extralight leading-[1.05] tracking-[-0.03em] text-[var(--text-primary)]">
+              <dd className="text-[clamp(1.15rem,1.7vw,1.55rem)] font-extralight leading-[1.1] tracking-[-0.02em] text-[var(--text-primary)]">
                 <T t={fact.term.value} />
               </dd>
             </motion.div>
           ))}
         </dl>
-        <p className="mt-6 max-w-xl text-[13px] leading-[1.7] text-[var(--text-muted)]">
+        <p className="mt-3 max-w-xl text-[11px] leading-[1.6] text-[var(--text-muted)]">
           <T t={fund.status} />
         </p>
       </CarvedHero>
 
       {/* 2 · Mandate */}
-      <section id="mandate" className="panel scroll-mt-24 px-6 py-20 lg:px-12 lg:py-28">
+      <section
+        id="mandate"
+        className="panel scroll-mt-24 px-6 py-20 lg:px-12 lg:py-28"
+      >
         <div className="grid grid-cols-1 gap-12 xl:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] xl:gap-20">
           <SectionHeading
             className="!mb-0"
@@ -134,14 +144,16 @@ export default function Funds() {
             className="!mb-0"
             eyebrow={<BilingualText en="For investors" ar="للمستثمرين" />}
             titleClassName="text-[clamp(1.75rem,2.8vw,2.6rem)]"
-            title={<BilingualText en="Investor questions." ar="أسئلة المستثمرين." />}
+            title={
+              <BilingualText en="Investor questions." ar="أسئلة المستثمرين." />
+            }
           />
           <Faq items={fund.faqs} />
         </div>
       </section>
 
       {/* 5 · Closing: the brand gradient, full card */}
-      <motion.section
+      {/* <motion.section
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-60px" }}
@@ -175,7 +187,7 @@ export default function Funds() {
             <Disclaimer className="mt-10 !text-white/65" />
           </div>
         </div>
-      </motion.section>
+      </motion.section> */}
     </PageWrapper>
   );
 }

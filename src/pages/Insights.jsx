@@ -21,6 +21,7 @@ export default function Insights() {
     <PageWrapper>
       <CarvedHero
         as="h1"
+        flat
         eyebrow={<BilingualText en="Insights" ar="رؤى" />}
         title={
           <BilingualText
@@ -28,7 +29,6 @@ export default function Insights() {
             ar="أبحاث وتقارير ومقالات من فلايفر."
           />
         }
-        notchHeight="h-[14rem]"
         notch={
           <>
             <p className="max-w-[28rem] text-[15px] leading-[1.75] text-[var(--text-secondary)]">

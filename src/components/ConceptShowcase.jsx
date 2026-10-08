@@ -27,10 +27,10 @@ export default function ConceptShowcase({ eyebrow, title, description, cta, as =
       }
     >
       {/* Square cards: swipe row on phones, grid from sm up */}
-      <div className="-mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-1 [scrollbar-width:none] sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 sm:pb-0 xl:grid-cols-4 xl:gap-5 [&::-webkit-scrollbar]:hidden">
+      <div className="-mx-4 flex snap-x snap-mandatory scroll-ps-4 gap-3 overflow-x-auto px-4 pb-2 [scrollbar-width:none] sm:mx-0 sm:grid sm:scroll-ps-0 sm:grid-cols-2 sm:overflow-visible sm:px-0 sm:pb-0 xl:grid-cols-4 xl:gap-5 [&::-webkit-scrollbar]:hidden">
         {concepts.map((concept, i) => (
-          <div key={concept.slug} className="w-[78%] shrink-0 snap-start sm:w-auto">
-            <ConceptCard concept={concept} index={i} aspect="aspect-[1/1.06]" />
+          <div key={concept.slug} className="w-[74%] shrink-0 snap-start sm:w-auto">
+            <ConceptCard concept={concept} index={i} aspect="aspect-[1/0.84]" />
           </div>
         ))}
       </div>

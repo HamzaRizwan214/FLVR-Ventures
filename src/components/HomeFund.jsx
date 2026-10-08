@@ -28,7 +28,7 @@ function Cell({ index, className, style, children }) {
   );
 }
 
-// Home: the Fund. A small label, two short paragraphs and the title, then a dark tray
+// Home: the Fund. Two short paragraphs and the title, then a dark tray
 // holding three cells: Mandate, Investment thesis (brand gradient) and the target size.
 export default function HomeFund() {
   const rows = mandateRows.map((l) => fund.terms.find((t) => t.label.en === l));
@@ -37,13 +37,8 @@ export default function HomeFund() {
   return (
     <section className="panel px-6 py-20 lg:px-12 lg:py-28">
       {/* Top row */}
-      <div className="flex flex-col gap-8 lg:grid lg:grid-cols-[auto_minmax(0,21rem)_minmax(0,1fr)] lg:items-start lg:gap-x-10">
-        <span className="inline-flex w-fit items-center gap-2.5 rounded-full border border-[var(--border-strong)] bg-white/[0.04] px-4 py-2 text-[12px] text-[var(--text-primary)] lg:order-1">
-          <span className="h-1.5 w-1.5 rounded-full bg-[var(--accent)]" />
-          <BilingualText en="The Fund" ar="الصندوق" />
-        </span>
-
-        <div className="order-3 space-y-4 text-[14px] leading-[1.75] text-[var(--text-secondary)] lg:order-2">
+      <div className="flex flex-col gap-8 xl:grid xl:grid-cols-[minmax(0,21rem)_minmax(0,1fr)] xl:items-start xl:gap-x-10">
+        <div className="order-2 space-y-4 text-[14px] leading-[1.75] text-[var(--text-secondary)] xl:order-1">
           <p>
             <T t={fund.intro} />
           </p>
@@ -52,14 +47,14 @@ export default function HomeFund() {
           </p>
         </div>
 
-        <h2 className="order-2 text-[clamp(2.4rem,5vw,4.6rem)] font-light leading-[1.04] tracking-[-0.025em] text-[var(--text-primary)] lg:order-3 lg:justify-self-end">
+        <h2 className="order-1 text-[clamp(2.4rem,5vw,4.6rem)] font-light leading-[1.04] tracking-[-0.025em] text-[var(--text-primary)] xl:order-2 xl:justify-self-end">
           <BilingualText en="The FLVR Fund." ar="صندوق فلايفر." />
         </h2>
       </div>
 
       {/* Tray */}
       <div className="mt-12 rounded-[26px] border border-[var(--border-default)] bg-[var(--bg-page)] p-2 lg:mt-16">
-        <div className="grid grid-cols-1 gap-2 lg:grid-cols-[1fr_1fr_1.1fr]">
+        <div className="grid grid-cols-1 gap-2 md:grid-cols-2 xl:grid-cols-[1fr_1fr_1.1fr]">
           {/* 01 Mandate */}
           <Cell index={0} className="bg-[var(--bg-secondary)]">
             <p className="eyebrow !text-[10px]">01</p>
@@ -87,20 +82,28 @@ export default function HomeFund() {
           <Cell
             index={1}
             className="text-white"
-            style={{ background: "linear-gradient(160deg, #ac1e40 0%, #c24a22 52%, #e3790f 100%)" }}
+            style={{
+              background:
+                "linear-gradient(160deg, #ac1e40 0%, #c24a22 52%, #e3790f 100%)",
+            }}
           >
-            <p className="text-[10px] uppercase tracking-[0.2em] text-white/70">02</p>
+            <p className="text-[10px] uppercase tracking-[0.2em] text-white/70">
+              02
+            </p>
             <h3 className="mt-3 text-[1.6rem] font-light leading-tight tracking-[-0.015em]">
               <T t={fund.thesis.label} />
             </h3>
-            <p className="mt-auto text-[clamp(1.15rem,1.55vw,1.4rem)] font-light leading-[1.4] tracking-[-0.01em] text-white/95">
+            <p className="mt-auto text-[15px] font-light leading-[1.7] text-white/95">
               <T t={fund.thesis.summary} />
             </p>
             <Link
               to="/funds#thesis"
               className="group mt-8 inline-flex w-fit items-center gap-2 text-[12px] uppercase tracking-[0.16em] text-white"
             >
-              <BilingualText en="Read the full thesis" ar="اقرأ الفرضية كاملة" />
+              <BilingualText
+                en="Read the full thesis"
+                ar="اقرأ الفرضية كاملة"
+              />
               <ArrowUpRight
                 size={15}
                 strokeWidth={1.5}
@@ -112,7 +115,7 @@ export default function HomeFund() {
           {/* Target size + actions */}
           <Cell
             index={2}
-            className="relative overflow-hidden bg-[var(--bg-secondary)]"
+            className="relative overflow-hidden bg-[var(--bg-secondary)] md:col-span-2 xl:col-span-1"
           >
             <div
               aria-hidden="true"

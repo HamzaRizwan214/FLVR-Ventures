@@ -90,7 +90,7 @@ export default function ConceptModal({ concept, onClose, startIndex = 0 }) {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: reduce ? 0 : 32 }}
           transition={{ duration: reduce ? 0 : 0.55, ease }}
-          className="pointer-events-auto relative flex max-h-[92dvh] w-full flex-col overflow-y-auto rounded-t-[28px] border border-[var(--border-default)] bg-[var(--bg-primary)] shadow-2xl lg:h-[min(680px,calc(100dvh-3rem))] lg:max-h-none lg:max-w-[1140px] lg:flex-row lg:overflow-hidden lg:rounded-[28px]"
+          className="pointer-events-auto relative flex max-h-[88dvh] w-full flex-col overflow-y-auto rounded-t-[28px] border border-[var(--border-default)] bg-[var(--bg-primary)] shadow-2xl lg:h-[min(500px,calc(100dvh-3rem))] lg:max-h-none lg:max-w-[860px] lg:flex-row lg:overflow-hidden lg:rounded-[28px]"
         >
           {/* Close */}
           <button
@@ -104,8 +104,8 @@ export default function ConceptModal({ concept, onClose, startIndex = 0 }) {
           </button>
 
           {/* Gallery */}
-          <div className="flex shrink-0 flex-col bg-[var(--bg-page)] lg:w-[58%] lg:min-h-0">
-            <div className="relative aspect-[4/3] overflow-hidden lg:aspect-auto lg:min-h-0 lg:flex-1">
+          <div className="flex shrink-0 flex-col bg-[var(--bg-page)] lg:w-[56%] lg:min-h-0">
+            <div className="relative aspect-[16/10] overflow-hidden lg:aspect-auto lg:min-h-0 lg:flex-1">
               {/* blurred copy fills the frame so any aspect ratio looks intentional */}
               <img
                 src={current.src}
@@ -132,17 +132,17 @@ export default function ConceptModal({ concept, onClose, startIndex = 0 }) {
                     type="button"
                     onClick={() => go(-1)}
                     aria-label="Previous image"
-                    className="absolute start-3 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-black/45 text-white backdrop-blur-md transition-colors hover:bg-black/70"
+                    className="absolute start-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-black/45 text-white backdrop-blur-md transition-colors hover:bg-black/70"
                   >
-                    <PrevIcon size={17} strokeWidth={1.5} />
+                    <PrevIcon size={15} strokeWidth={1.5} />
                   </button>
                   <button
                     type="button"
                     onClick={() => go(1)}
                     aria-label="Next image"
-                    className="absolute end-3 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-black/45 text-white backdrop-blur-md transition-colors hover:bg-black/70"
+                    className="absolute end-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-black/45 text-white backdrop-blur-md transition-colors hover:bg-black/70"
                   >
-                    <NextIcon size={17} strokeWidth={1.5} />
+                    <NextIcon size={15} strokeWidth={1.5} />
                   </button>
                 </>
               )}
@@ -158,7 +158,7 @@ export default function ConceptModal({ concept, onClose, startIndex = 0 }) {
             </div>
 
             {/* Thumbnails */}
-            <div className="flex gap-2 overflow-x-auto p-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            <div className="flex gap-2 overflow-x-auto p-2.5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
               {images.map((image, i) => (
                 <button
                   key={image.src}
@@ -167,7 +167,7 @@ export default function ConceptModal({ concept, onClose, startIndex = 0 }) {
                   aria-label={`Image ${i + 1}`}
                   aria-current={i === index}
                   className={cn(
-                    "h-14 w-[4.5rem] shrink-0 overflow-hidden rounded-xl border transition-all duration-300",
+                    "h-11 w-14 shrink-0 overflow-hidden rounded-lg border transition-all duration-300",
                     i === index ? "opacity-100" : "border-transparent opacity-55 hover:opacity-100",
                   )}
                   style={i === index ? { borderColor: theme.accent } : undefined}
@@ -187,7 +187,7 @@ export default function ConceptModal({ concept, onClose, startIndex = 0 }) {
           {/* Details */}
           <div
             data-lenis-prevent
-            className="flex flex-1 flex-col p-6 sm:p-8 lg:min-h-0 lg:overflow-y-auto lg:p-10"
+            className="flex flex-1 flex-col p-6 sm:p-7 lg:min-h-0 lg:overflow-y-auto lg:p-8"
           >
             <p className="eyebrow !text-[10px]" style={{ color: theme.accent }}>
               <BilingualText en="A FLVR Ventures concept" ar="مفهوم من فلايفر فينتشرز" />
@@ -196,17 +196,17 @@ export default function ConceptModal({ concept, onClose, startIndex = 0 }) {
             <img
               src={concept.logo}
               alt=""
-              className="mt-7 h-14 w-auto max-w-[75%] self-start rounded-lg object-contain object-left rtl:object-right"
+              className="mt-6 h-11 w-auto max-w-[70%] self-start rounded-lg object-contain object-left rtl:object-right"
             />
 
-            <h2 className="mt-7 text-[clamp(1.6rem,2.3vw,2.1rem)] font-light uppercase leading-[1.1] tracking-[-0.015em] text-[var(--text-primary)]">
+            <h2 className="mt-5 text-[clamp(1.35rem,1.8vw,1.6rem)] font-light uppercase leading-[1.1] tracking-[-0.015em] text-[var(--text-primary)]">
               <BilingualText en={concept.name} ar={concept.nameAr} />
             </h2>
-            <p className="mt-2 text-[15px] text-[var(--text-secondary)]">
+            <p className="mt-1.5 text-[14px] text-[var(--text-secondary)]">
               <T t={concept.tagline} />
             </p>
 
-            <p className="mt-6 text-[15px] leading-[1.8] text-[var(--text-secondary)]">
+            <p className="mt-4 text-[14px] leading-[1.7] text-[var(--text-secondary)]">
               <T t={concept.description} />
             </p>
 
@@ -248,7 +248,7 @@ export default function ConceptModal({ concept, onClose, startIndex = 0 }) {
             )}
 
             {/* Actions */}
-            <div className="mt-auto space-y-3 pt-10">
+            <div className="mt-auto space-y-2.5 pt-7">
               {website ? (
                 <a
                   href={website.url}

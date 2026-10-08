@@ -1,4 +1,4 @@
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { UtensilsCrossed } from "lucide-react";
 import BilingualText from "./BilingualText";
 import CtaLink from "./CtaLink";
@@ -19,14 +19,10 @@ function RingIcon() {
   );
 }
 
-// Home hero: a carved card.
-//  - The heading block is L-shaped: its lower end-corner is carved away and the
-//    description sits in that space (wide screens).
-//  - The image below carries the button in a carved tab.
-// On smaller screens the description and button simply stack under the image.
+// Home hero: a carved card. The heading block is L-shaped: its lower end-corner is carved away
+// and the description and button sit in that space (wide screens). On smaller screens they
+// simply stack under the heading.
 export default function Hero() {
-  const reduce = useReducedMotion();
-
   return (
     <section className="panel carve p-2.5 sm:p-3">
       {/* Heading block, L-shaped on desktop */}
@@ -35,8 +31,7 @@ export default function Hero() {
           aria-hidden="true"
           className="pointer-events-none absolute inset-0"
           style={{
-            background:
-              [
+            background: [
               // warm orange from the left edge
               "linear-gradient(to right, rgba(227,121,15,0.42) 0%, rgba(227,121,15,0.16) 15%, transparent 38%)",
               // crimson into orange from the right edge
@@ -59,7 +54,7 @@ export default function Hero() {
                 <>
                   Backing the next generation of
                   <span className="block">
-                    <RingIcon />
+                    {/* <RingIcon /> */}
                     Saudi F&B brands.
                   </span>
                 </>
@@ -68,7 +63,7 @@ export default function Hero() {
                 <>
                   ندعم الجيل القادم من
                   <span className="block">
-                    <RingIcon />
+                    {/* <RingIcon /> */}
                     علامات الأغذية والمشروبات السعودية.
                   </span>
                 </>
@@ -77,59 +72,31 @@ export default function Hero() {
           </motion.h1>
         </div>
 
-        {/* Carved space: description, centred in the carve. The extra top padding (12px more
-            than the bottom) accounts for the gap between this block and the image below. */}
+        {/* Carved space: description and button, centred in the carve. Wide screens only. */}
         <div className="absolute bottom-0 end-0 hidden xl:block">
-          <div className="carve-fill relative flex min-h-[11rem] w-[min(38vw,30rem)] items-center pb-7 pe-9 ps-9 pt-10 [border-start-start-radius:var(--r)]">
+          <div className="carve-fill relative flex min-h-[14rem] w-[min(38vw,30rem)] flex-col justify-center py-9 pe-9 ps-9 [border-start-start-radius:var(--r)]">
             <p className="max-w-[26rem] text-[15px] leading-[1.8] text-[var(--text-secondary)]">
               <T t={hero.lead} />
             </p>
+            <div className="mt-6">
+              <CtaLink to="/contact?interest=invest" variant="primary">
+                <T t={hero.ctaPrimary} />
+              </CtaLink>
+            </div>
             {/* connectors: round the block's corners where the notch meets its edges */}
-            <span aria-hidden="true" className="carve-c carve-c--be bottom-0 -start-6" />
-            <span aria-hidden="true" className="carve-c carve-c--be bottom-full end-0" />
+            <span
+              aria-hidden="true"
+              className="carve-c carve-c--be bottom-0 -start-6"
+            />
+            <span
+              aria-hidden="true"
+              className="carve-c carve-c--be bottom-full end-0"
+            />
           </div>
         </div>
       </div>
 
-      {/* Image, button in a carved tab */}
-      <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.1, delay: 0.15, ease }}
-        className="relative mt-2.5 sm:mt-3"
-      >
-        <div className="relative h-[clamp(300px,54vh,600px)] overflow-hidden rounded-[22px] bg-[var(--bg-secondary)]">
-          <motion.img
-            src="/hero/hero.webp"
-            alt="AMM ABDO restaurant concept at golden hour"
-            fetchPriority="high"
-            decoding="async"
-            initial={{ scale: reduce ? 1 : 1.07 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: reduce ? 0 : 2.6, ease }}
-            className="h-full w-full object-cover object-[50%_62%] brightness-[0.92] saturate-[0.9]"
-          />
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-black/10"
-          />
-          <span className="pill absolute bottom-4 end-4 bg-black/40 text-white/75 backdrop-blur-md">
-            <BilingualText en="Brand visualisation" ar="تصور للعلامة" />
-          </span>
-        </div>
-
-        <div className="absolute bottom-0 start-0 hidden xl:block">
-          <div className="carve-fill relative pe-4 pt-4 [border-start-end-radius:var(--r)]">
-            <CtaLink to="/contact?interest=invest" variant="primary">
-              <T t={hero.ctaPrimary} />
-            </CtaLink>
-            <span aria-hidden="true" className="carve-c carve-c--bs bottom-full start-0" />
-            <span aria-hidden="true" className="carve-c carve-c--bs bottom-0 -end-6" />
-          </div>
-        </div>
-      </motion.div>
-
-      {/* Mobile and tablet: description and button stacked under the image */}
+      {/* Below xl: description and button stacked under the heading block */}
       <div className="px-3 pb-3 pt-7 sm:px-5 xl:hidden">
         <p className="max-w-xl text-[15px] leading-[1.8] text-[var(--text-secondary)]">
           <T t={hero.lead} />

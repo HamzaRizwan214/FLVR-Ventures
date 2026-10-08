@@ -19,8 +19,8 @@ const menuItems = [
   { name: "Insights", ar: "رؤى", href: "/insights" },
 ];
 
-// The desktop bar has a "Let's talk" button; the mobile menu lists Contact.
-const mobileMenuItems = [...menuItems, { name: "Contact", ar: "تواصل", href: "/contact" }];
+// Contact is reached through the "Speak with the team" button, on desktop and in the mobile menu.
+const mobileMenuItems = menuItems;
 
 const arabicFont = { fontFamily: "var(--font-arabic)" };
 const ease = [0.22, 1, 0.36, 1];
@@ -160,7 +160,7 @@ export default function FloatingNav() {
             className={cn("flex items-center justify-self-end", compact ? "gap-4" : "gap-3")}
           >
             <LanguageSwitch className="hidden md:flex" />
-            <div className="hidden md:block">
+            <div className="hidden lg:block">
               <Link to="/contact" className="btn-primary !gap-2 !py-2.5 !pe-4 !ps-5 !text-[11px]">
                 <BilingualText en="Let's talk" ar="تواصل" />
                 <ArrowUpRight size={14} strokeWidth={1.75} className="rtl:-scale-x-100" />
@@ -259,7 +259,11 @@ export default function FloatingNav() {
                   </span>
                   <LanguageSwitch />
                 </div>
-                <Link to="/contact?interest=invest" className="btn-primary w-full">
+                <Link
+                  to="/contact?interest=invest"
+                  onClick={() => setIsOpen(false)}
+                  className="btn-primary w-full"
+                >
                   <BilingualText en="Speak with the team" ar="تحدث مع الفريق" />
                 </Link>
               </div>

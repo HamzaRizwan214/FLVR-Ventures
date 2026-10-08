@@ -89,7 +89,7 @@ export default function Portfolio() {
       </section>
 
       {/* 3 · Closing call to action: warm light box, same family as the hero banner */}
-      <motion.section
+      {/* <motion.section
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-60px" }}
@@ -128,7 +128,7 @@ export default function Portfolio() {
             </div>
           </div>
         </div>
-      </motion.section>
+      </motion.section> */}
     </PageWrapper>
   );
 }

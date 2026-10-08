@@ -77,7 +77,7 @@ function AccordionCard({ article, active, onActivate, language }) {
       {/* Collapsed face: soft decorative circles, title, arrow */}
       <div
         className={cn(
-          "absolute inset-0 flex flex-col justify-between p-6 transition-opacity duration-500",
+          "absolute inset-0 flex flex-col justify-between p-5 transition-opacity duration-500 2xl:p-6",
           active ? "pointer-events-none opacity-0" : "opacity-100 delay-300",
         )}
       >
@@ -88,7 +88,7 @@ function AccordionCard({ article, active, onActivate, language }) {
           <span className="rounded-full bg-white/[0.08] px-3 py-1 text-[11px] text-[var(--text-secondary)]">
             <T t={getCategory(article.category).single} />
           </span>
-          <h3 className="mt-5 line-clamp-6 text-[1.15rem] font-light leading-[1.2] tracking-[-0.015em] text-[var(--text-primary)]">
+          <h3 className="mt-5 line-clamp-6 text-[1rem] font-light leading-[1.2] tracking-[-0.015em] text-[var(--text-primary)] 2xl:text-[1.15rem]">
             <T t={article.title} />
           </h3>
         </div>
@@ -105,7 +105,7 @@ function AccordionCard({ article, active, onActivate, language }) {
       {/* Open face: fixed width so the text never reflows while the card animates */}
       <div
         className={cn(
-          "absolute inset-y-0 start-0 grid w-full min-w-[28rem] grid-cols-[minmax(0,1fr)_12.5rem] gap-7 p-8 transition-opacity duration-500",
+          "absolute inset-y-0 start-0 grid w-full min-w-[28rem] grid-cols-[minmax(0,1fr)_11rem] gap-6 p-6 2xl:grid-cols-[minmax(0,1fr)_12.5rem] 2xl:gap-7 2xl:p-8 transition-opacity duration-500",
           active ? "opacity-100 delay-300" : "pointer-events-none opacity-0",
         )}
       >
