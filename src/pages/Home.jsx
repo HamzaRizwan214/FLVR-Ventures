@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import HomeSteps from "@/components/HomeSteps";
 import HomeConcepts from "@/components/HomeConcepts";
 import HomeFund from "@/components/HomeFund";
+import HomeFaq from "@/components/HomeFaq";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       <HomeSteps />
       <HomeConcepts />
       <HomeFund />
+      <HomeFaq />
     </PageWrapper>
   );
 }

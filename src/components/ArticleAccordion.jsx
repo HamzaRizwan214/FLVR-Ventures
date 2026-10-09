@@ -61,6 +61,7 @@ function AccordionCard({ article, active, onActivate, language }) {
       onMouseEnter={onActivate}
       onFocus={onActivate}
       aria-current={active}
+      data-nav-light={active ? "" : undefined}
       style={{ flexGrow: active ? 3.1 : 1, flexBasis: 0 }}
       className={cn(
         "group relative min-w-0 overflow-hidden rounded-[26px] border transition-[flex-grow,border-color,background-color] duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)]",

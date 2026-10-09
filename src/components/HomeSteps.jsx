@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { Filter, FlaskConical, Layers, Play } from "lucide-react";
 import SectionHeading from "./SectionHeading";
@@ -19,85 +18,45 @@ const tones = {
   run: "radial-gradient(90% 55% at 100% 0%, rgba(236,232,225,0.05), transparent 70%), var(--bg-secondary)",
 };
 
-// One stage in the expanding row. Hover or focus opens it. The open face has a fixed minimum
-// width so its text never reflows while the card animates.
-function ExpandingStage({ step, active, onActivate }) {
+// One stage in the row at xl and up. A fixed, closed card: icon, title and the full description.
+function Stage({ step }) {
   const Icon = icons[step.key];
   const hot = step.key === "validate";
   const tone = hot ? "text-white" : "text-[var(--text-primary)]";
 
   return (
     <article
-      tabIndex={0}
-      onMouseEnter={onActivate}
-      onFocus={onActivate}
-      aria-expanded={active}
-      style={{ background: tones[step.key], flexGrow: active ? 1.8 : 1, flexBasis: 0 }}
+      style={{ background: tones[step.key] }}
       className={cn(
-        "relative min-w-0 cursor-default overflow-hidden rounded-[26px] border outline-none transition-[flex-grow] duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] focus-visible:ring-1 focus-visible:ring-[var(--accent)]",
+        "flex min-w-0 flex-1 flex-col overflow-hidden rounded-[26px] border p-4",
         hot ? "border-white/10" : "border-[var(--border-default)]",
       )}
     >
-      {/* Closed face: icon and title */}
-      <div
-        className={cn(
-          "absolute inset-0 flex flex-col justify-between p-5 transition-opacity duration-500",
-          active ? "pointer-events-none opacity-0" : "opacity-100 delay-300",
-        )}
-      >
-        <div className="flex items-start justify-between gap-2">
-          {hot ? <span className="pill !bg-white !px-2.5 !py-0.5 !text-[10px] !text-[#8f1735]">POP-UP</span> : <span />}
-          <span
-            aria-hidden="true"
-            className={cn(
-              "flex h-8 w-8 shrink-0 items-center justify-center rounded-full border",
-              hot ? "border-white/40 text-white" : "border-[var(--border-strong)] text-[var(--text-secondary)]",
-            )}
-          >
-            <Icon size={14} strokeWidth={1.5} />
-          </span>
-        </div>
-        <h3 className={cn("text-[1.35rem] font-light leading-none tracking-[-0.02em]", tone)}>
-          <T t={step.title} />
-        </h3>
+      <div className="flex items-center justify-between gap-2">
+        <span
+          aria-hidden="true"
+          className={cn(
+            "flex h-8 w-8 shrink-0 items-center justify-center rounded-full border",
+            hot ? "border-white/40 text-white" : "border-[var(--border-strong)] text-[var(--text-secondary)]",
+          )}
+        >
+          <Icon size={14} strokeWidth={1.5} />
+        </span>
       </div>
-
-      {/* Open face: title and description */}
-      <div
-        className={cn(
-          "absolute inset-y-0 start-0 flex w-full min-w-[15rem] flex-col p-5 transition-opacity duration-500",
-          active ? "opacity-100 delay-300" : "pointer-events-none opacity-0",
-        )}
-      >
-        <div className="flex items-start justify-between gap-3">
-          {hot ? <span className="pill !bg-white !text-[#8f1735]">POP-UP</span> : <span />}
-          <span
-            aria-hidden="true"
-            className={cn(
-              "flex h-9 w-9 shrink-0 items-center justify-center rounded-full border",
-              hot ? "border-white/40 text-white" : "border-[var(--border-strong)] text-[var(--text-secondary)]",
-            )}
-          >
-            <Icon size={15} strokeWidth={1.5} />
-          </span>
-        </div>
-        <h3 className={cn("mt-auto text-[1.9rem] font-light leading-none tracking-[-0.025em]", tone)}>
-          <T t={step.title} />
-        </h3>
-        <p className={cn("mt-3 text-[13.5px] leading-[1.6]", hot ? "text-white/85" : "text-[var(--text-secondary)]")}>
-          <T t={step.desc} />
-        </p>
-      </div>
+      <h3 className={cn("mt-3 text-[1.3rem] font-light leading-none tracking-[-0.02em]", tone)}>
+        <T t={step.title} />
+      </h3>
+      <p className={cn("mt-2 text-[12px] leading-[1.55]", hot ? "text-white/80" : "text-[var(--text-secondary)]")}>
+        <T t={step.desc} />
+      </p>
     </article>
   );
 }
 
-// Home: the four-stage method. All four cards are always visible, nothing to drag or swipe:
+// Home: the four-stage method. All four cards are always visible and static, nothing to drag, swipe or hover:
 // one column on phones, 2 x 2 on tablets and small laptops, one row of four from 1280px.
 // Only on very wide screens (1700px+) does the heading move beside the cards.
 export default function HomeSteps() {
-  const [open, setOpen] = useState(steps[0].key);
-
   return (
     <section className="panel overflow-hidden px-6 py-16 lg:px-12 lg:py-20 2xl:py-28">
       <div className="grid grid-cols-1 gap-10 xl:grid-cols-[minmax(0,clamp(380px,30vw,520px))_minmax(0,1fr)] xl:gap-10">
@@ -113,15 +72,10 @@ export default function HomeSteps() {
           }
         />
 
-        {/* xl and up: heading left, expanding row right */}
-        <div className="hidden h-[15rem] gap-3 xl:flex">
+        {/* xl and up: heading left, row of four right */}
+        <div className="hidden h-[13.5rem] gap-3 xl:flex">
           {steps.map((step) => (
-            <ExpandingStage
-              key={step.key}
-              step={step}
-              active={open === step.key}
-              onActivate={() => setOpen(step.key)}
-            />
+            <Stage key={step.key} step={step} />
           ))}
         </div>
 
@@ -146,7 +100,6 @@ export default function HomeSteps() {
                 <div className="relative flex flex-1 flex-col p-6">
                   <div className="flex items-start justify-between gap-3">
                     <div className="flex flex-wrap gap-2">
-                      {hot && <span className="pill !bg-white !text-[#8f1735]">POP-UP</span>}
                     </div>
                     <span
                       aria-hidden="true"
@@ -190,6 +143,7 @@ export default function HomeSteps() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: 0.9, ease }}
+        data-nav-light
         className="relative mt-10 overflow-hidden rounded-[22px] bg-[var(--hero-block)] lg:mt-10 2xl:mt-14"
       >
         <div

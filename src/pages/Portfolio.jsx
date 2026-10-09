@@ -94,6 +94,7 @@ export default function Portfolio() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: 0.9, ease }}
+        data-nav-light
         className="relative overflow-hidden rounded-[28px] bg-[var(--hero-block)]"
       >
         <div

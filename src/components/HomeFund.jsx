@@ -29,7 +29,7 @@ function Cell({ index, className, style, children }) {
 }
 
 // Home: the Fund. Left column: title, the two short paragraphs, then the headline figure and one
-// button directly under them. Right: a dark tray with two cells, Mandate and Investment thesis (brand gradient).
+// button directly under them. Right: two separate cards, Mandate and Investment thesis (brand gradient).
 export default function HomeFund() {
   const rows = mandateRows.map((l) => fund.terms.find((t) => t.label.en === l));
   const target = fund.terms.find((t) => t.label.en === "Target fund size");
@@ -64,9 +64,9 @@ export default function HomeFund() {
           </div>
         </div>
 
-        {/* Tray: two cells */}
-        <div className="rounded-[26px] border border-[var(--border-default)] bg-[var(--bg-page)] p-2">
-          <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
+        {/* Two separate cards, no shared tray */}
+        <div>
+          <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
             {/* 01 Mandate */}
             <Cell index={0} className="bg-[var(--bg-secondary)]">
               <p className="eyebrow !text-[10px]">01</p>

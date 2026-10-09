@@ -11,6 +11,7 @@ export default function ConceptShowcase({ eyebrow, title, description, cta, as =
   return (
     <CarvedHero
       as={as}
+      flat
       eyebrow={eyebrow}
       title={title}
       notch={

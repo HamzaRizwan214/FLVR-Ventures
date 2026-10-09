@@ -1,18 +1,23 @@
-import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { Banknote, Layers, MapPin, PieChart, Target, UtensilsCrossed } from "lucide-react";
 import PageWrapper from "@/components/PageWrapper";
 import CarvedHero from "@/components/CarvedHero";
-import SectionHeading from "@/components/SectionHeading";
-import TermsTable from "@/components/TermsTable";
-import Faq from "@/components/Faq";
 import CtaLink from "@/components/CtaLink";
-import Disclaimer from "@/components/Disclaimer";
 import BilingualText from "@/components/BilingualText";
 import T from "@/components/T";
 import { fund } from "@/data/content";
 
 const ease = [0.22, 1, 0.36, 1];
+
+// One icon per mandate term, keyed by its English label
+const termIcons = {
+  Sector: UtensilsCrossed,
+  Geography: MapPin,
+  Stage: Layers,
+  "Ticket size": Banknote,
+  Ownership: PieChart,
+  "Target fund size": Target,
+};
 
 // Warm off-white gradients shared with the hero banner and the POP-UP box
 const warmGradients = [
@@ -41,22 +46,15 @@ export default function Funds() {
       <CarvedHero
         as="h1"
         compact
+        flat
         eyebrow={<BilingualText en="The Fund" ar="الصندوق" />}
         title={<BilingualText en="The FLVR Fund" ar="صندوق فلايفر" />}
         notch={
-          <>
-            <p className="max-w-[26rem] text-[13px] leading-[1.6] text-[var(--text-secondary)]">
-              <T t={fund.intro} />
-            </p>
-            <div className="mt-4">
-              <CtaLink to="/contact?interest=fund" variant="primary">
-                <BilingualText
-                  en="Request fund overview"
-                  ar="اطلب نظرة عامة على الصندوق"
-                />
-              </CtaLink>
-            </div>
-          </>
+          <div className="xl:flex xl:justify-end">
+            <CtaLink to="/contact?interest=fund" variant="primary">
+              <BilingualText en="Request fund overview" ar="اطلب نظرة عامة على الصندوق" />
+            </CtaLink>
+          </div>
         }
       >
         <dl className="grid grid-cols-2 gap-2 xl:grid-cols-4">
@@ -83,21 +81,61 @@ export default function Funds() {
         </p>
       </CarvedHero>
 
-      {/* 2 · Mandate */}
-      <section
-        id="mandate"
-        className="panel scroll-mt-24 px-6 py-20 lg:px-12 lg:py-28"
-      >
-        <div className="grid grid-cols-1 gap-12 xl:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] xl:gap-20">
-          <SectionHeading
-            className="!mb-0"
-            eyebrow="01"
-            titleClassName="text-[clamp(1.75rem,2.8vw,2.6rem)]"
-            title={<T t={fund.mandate.label} />}
-            lead={<T t={fund.mandate.title} />}
-          />
-          <TermsTable rows={fund.terms} />
+      {/* 2 · Mandate: six small cards, one per term */}
+      <section id="mandate" className="panel scroll-mt-24 px-5 py-8 sm:px-8 lg:px-10 lg:py-10">
+        <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
+          <h2 className="text-[1.5rem] font-light tracking-[-0.02em] text-[var(--text-primary)]">
+            <T t={fund.mandate.label} />
+          </h2>
+          <p className="text-[13px] text-[var(--text-muted)]">
+            <T t={fund.mandate.title} />
+          </p>
         </div>
+
+        <dl className="mt-5 grid grid-cols-2 gap-2.5 sm:grid-cols-3 xl:grid-cols-6">
+          {fund.terms.map((term, i) => {
+            const Icon = termIcons[term.label.en] ?? Layers;
+            return (
+              <motion.div
+                key={i}
+                tabIndex={0}
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-30px" }}
+                transition={{ delay: i * 0.06, duration: 0.7, ease }}
+                className="group relative flex cursor-default flex-col gap-4 overflow-hidden rounded-[18px] border border-[var(--border-default)] bg-[var(--bg-secondary)] p-4 outline-none transition-[transform,border-color] duration-500 hover:-translate-y-1 hover:border-[var(--border-strong)] focus-visible:-translate-y-1 focus-visible:border-[var(--accent)]"
+              >
+                {/* Warm glow that fades in on hover or focus */}
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus-visible:opacity-100"
+                  style={{
+                    background:
+                      "radial-gradient(90% 90% at 100% 0%, rgba(172,30,64,0.22), rgba(227,121,15,0.10) 45%, transparent 75%)",
+                  }}
+                />
+                <span
+                  aria-hidden="true"
+                  className="relative flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border-strong)] bg-white/[0.05] text-[var(--text-primary)] transition-all duration-500 group-hover:border-transparent group-hover:bg-[linear-gradient(135deg,#ac1e40,#e3790f)] group-hover:text-white group-focus-visible:border-transparent group-focus-visible:bg-[linear-gradient(135deg,#ac1e40,#e3790f)] group-focus-visible:text-white"
+                >
+                  <Icon size={17} strokeWidth={1.5} />
+                </span>
+                <div className="relative">
+                  <dt className="text-[10px] uppercase tracking-[0.14em] text-[var(--text-secondary)]">
+                    <T t={term.label} />
+                  </dt>
+                  <dd className="mt-1.5 text-[1.05rem] font-normal leading-[1.25] tracking-[-0.01em] text-[var(--text-primary)]">
+                    <T t={term.value} />
+                  </dd>
+                </div>
+              </motion.div>
+            );
+          })}
+        </dl>
+
+        <p className="mt-4 text-[12px] leading-[1.6] text-[var(--text-muted)]">
+          <T t={fund.status} />
+        </p>
       </section>
 
       {/* 3 · Investment thesis: warm statement box */}
@@ -107,6 +145,7 @@ export default function Funds() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.9, ease }}
+          data-nav-light
           className="relative overflow-hidden rounded-[28px] bg-[var(--hero-block)]"
         >
           <div
@@ -137,22 +176,7 @@ export default function Funds() {
         </motion.div>
       </section>
 
-      {/* 4 · Investor questions */}
-      <section className="panel px-6 py-20 lg:px-12 lg:py-28">
-        <div className="grid grid-cols-1 gap-12 xl:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] xl:gap-20">
-          <SectionHeading
-            className="!mb-0"
-            eyebrow={<BilingualText en="For investors" ar="للمستثمرين" />}
-            titleClassName="text-[clamp(1.75rem,2.8vw,2.6rem)]"
-            title={
-              <BilingualText en="Investor questions." ar="أسئلة المستثمرين." />
-            }
-          />
-          <Faq items={fund.faqs} />
-        </div>
-      </section>
-
-      {/* 5 · Closing: the brand gradient, full card */}
+      {/* 4 · Closing: the brand gradient, full card */}
       {/* <motion.section
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}

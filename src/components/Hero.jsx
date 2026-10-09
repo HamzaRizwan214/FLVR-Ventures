@@ -19,14 +19,13 @@ function RingIcon() {
   );
 }
 
-// Home hero: a carved card. The heading block is L-shaped: its lower end-corner is carved away
-// and the description and button sit in that space (wide screens). On smaller screens they
-// simply stack under the heading.
+// Home hero: one warm box, no cut-out. On wide screens: the description and button on the left
+// (right-aligned), a hairline, then the heading, the group centred. On smaller screens the same
+// three stack top to bottom: heading, description, button.
 export default function Hero() {
   return (
-    <section className="panel carve p-2.5 sm:p-3">
-      {/* Heading block, L-shaped on desktop */}
-      <div className="relative overflow-hidden rounded-[22px] bg-[var(--hero-block)]">
+    <section className="panel p-2.5 sm:p-3">
+      <div data-nav-light className="relative overflow-hidden rounded-[22px] bg-[var(--hero-block)]">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0"
@@ -42,12 +41,35 @@ export default function Hero() {
           }}
         />
 
-        <div className="relative px-6 pb-14 pt-14 sm:px-10 lg:px-14 lg:pb-20 lg:pt-20">
+        {/* Wide screens: description and button (right-aligned) | hairline | heading, the group
+            centred in the box. Smaller screens stack: heading, description, button. */}
+        <div className="relative flex flex-col gap-8 px-6 py-12 sm:px-10 lg:py-14 xl:flex-row xl:items-stretch xl:justify-center xl:gap-10 xl:px-14 xl:py-16">
+          {/* Description and button */}
+          <motion.div
+            initial={{ opacity: 0, y: 22 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.12, ease }}
+            className="order-2 flex flex-col xl:order-1 xl:max-w-[24rem] xl:items-end xl:justify-between xl:text-end"
+          >
+            <p className="max-w-[28rem] text-[15px] leading-[1.75] text-[var(--hero-ink)]/75">
+              <T t={hero.lead} />
+            </p>
+            <div className="mt-6 xl:mt-8">
+              <CtaLink to="/contact?interest=invest" variant="primary">
+                <T t={hero.ctaPrimary} />
+              </CtaLink>
+            </div>
+          </motion.div>
+
+          {/* Hairline between the two */}
+          <span aria-hidden="true" className="order-2 hidden w-px self-stretch bg-[var(--hero-ink)]/20 xl:block" />
+
+          {/* Heading */}
           <motion.h1
             initial={{ opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease }}
-            className="max-w-[16ch] text-balance text-[clamp(2.3rem,4.9vw,4.5rem)] font-light leading-[1.08] tracking-[-0.025em] text-[var(--hero-ink)] sm:max-w-[19ch] xl:max-w-[20ch]"
+            className="order-1 text-balance text-[clamp(2.2rem,4.3vw,4.1rem)] font-normal leading-[1.08] tracking-[-0.025em] text-[var(--hero-ink)] xl:order-3 xl:max-w-[17ch]"
           >
             <BilingualText
               en={
@@ -70,41 +92,6 @@ export default function Hero() {
               }
             />
           </motion.h1>
-        </div>
-
-        {/* Carved space: description and button, centred in the carve. Wide screens only. */}
-        <div className="absolute bottom-0 end-0 hidden xl:block">
-          <div className="carve-fill relative flex min-h-[14rem] w-[min(38vw,30rem)] flex-col justify-center py-9 pe-9 ps-9 [border-start-start-radius:var(--r)]">
-            <p className="max-w-[26rem] text-[15px] leading-[1.8] text-[var(--text-secondary)]">
-              <T t={hero.lead} />
-            </p>
-            <div className="mt-6">
-              <CtaLink to="/contact?interest=invest" variant="primary">
-                <T t={hero.ctaPrimary} />
-              </CtaLink>
-            </div>
-            {/* connectors: round the block's corners where the notch meets its edges */}
-            <span
-              aria-hidden="true"
-              className="carve-c carve-c--be bottom-0 -start-6"
-            />
-            <span
-              aria-hidden="true"
-              className="carve-c carve-c--be bottom-full end-0"
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* Below xl: description and button stacked under the heading block */}
-      <div className="px-3 pb-3 pt-7 sm:px-5 xl:hidden">
-        <p className="max-w-xl text-[15px] leading-[1.8] text-[var(--text-secondary)]">
-          <T t={hero.lead} />
-        </p>
-        <div className="mt-7">
-          <CtaLink to="/contact?interest=invest" variant="primary">
-            <T t={hero.ctaPrimary} />
-          </CtaLink>
         </div>
       </div>
     </section>

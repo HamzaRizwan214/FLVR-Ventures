@@ -41,7 +41,9 @@ export default function CarvedHero({
       <div
         className={
           flat
-            ? "relative px-6 pt-14 sm:px-10 xl:grid xl:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] xl:items-end xl:gap-16 xl:px-14 xl:pt-16"
+            ? compact
+              ? "relative px-5 pt-8 sm:px-8 xl:grid xl:grid-cols-[minmax(0,1fr)_minmax(0,24rem)] xl:items-end xl:gap-12 xl:px-10 xl:pt-9"
+              : "relative px-6 pt-14 sm:px-10 xl:grid xl:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] xl:items-end xl:gap-16 xl:px-14 xl:pt-16"
             : compact
               ? "relative px-5 pt-8 sm:px-8 xl:min-h-[9.5rem] xl:px-10 xl:pt-9"
               : "relative px-6 pt-14 sm:px-10 xl:min-h-[15rem] xl:px-14 xl:pt-16"
