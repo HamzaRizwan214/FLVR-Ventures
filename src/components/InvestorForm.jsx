@@ -8,9 +8,9 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { contact } from "@/data/content";
 
 const fieldClass =
-  "block w-full rounded-xl border border-[var(--border-default)] bg-white/[0.03] px-4 py-3.5 text-[15px] text-[var(--text-primary)] placeholder:text-[var(--text-muted)] transition-colors focus:border-[var(--border-strong)] focus:bg-white/[0.06] focus:outline-none";
+  "block w-full rounded-xl border border-[var(--border-default)] bg-white/[0.03] px-4 py-3 text-[15px] text-[var(--text-primary)] placeholder:text-[var(--text-muted)] transition-colors focus:border-[var(--border-strong)] focus:bg-white/[0.06] focus:outline-none";
 
-const labelClass = "eyebrow mb-2.5 block";
+const labelClass = "eyebrow mb-2 block !text-[10px]";
 
 // Reads ?interest= and ?concept= so CTAs elsewhere can pre-fill the form.
 export default function InvestorForm({ interest: controlledInterest, onInterestChange }) {
@@ -70,7 +70,7 @@ export default function InvestorForm({ interest: controlledInterest, onInterestC
       <motion.div
         initial={{ opacity: 0, scale: 0.96 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="flex min-h-[420px] flex-col items-center justify-center text-center"
+        className="flex min-h-[320px] flex-col items-center justify-center text-center"
         role="status"
       >
         <CheckCircle2 className="mb-6 h-12 w-12 text-[var(--accent)]" strokeWidth={1.25} />
@@ -88,8 +88,8 @@ export default function InvestorForm({ interest: controlledInterest, onInterestC
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6" noValidate={false}>
-      <div className="grid gap-6 sm:grid-cols-2">
+    <form onSubmit={handleSubmit} className="space-y-4" noValidate={false}>
+      <div className="grid gap-4 sm:grid-cols-2">
         <div>
           <label htmlFor="name" className={labelClass}>
             <BilingualText en="Name" ar="الاسم" />
@@ -122,7 +122,7 @@ export default function InvestorForm({ interest: controlledInterest, onInterestC
         </div>
       </div>
 
-      <div className="grid gap-6 sm:grid-cols-2">
+      <div className="grid gap-4 sm:grid-cols-2">
         <div>
           <label htmlFor="organisation" className={labelClass}>
             <BilingualText en="Organisation (optional)" ar="الجهة (اختياري)" />
@@ -170,7 +170,7 @@ export default function InvestorForm({ interest: controlledInterest, onInterestC
         </label>
         <textarea
           id="message"
-          rows={5}
+          rows={3}
           value={values.message}
           onChange={set("message")}
           className={`${fieldClass} resize-none`}

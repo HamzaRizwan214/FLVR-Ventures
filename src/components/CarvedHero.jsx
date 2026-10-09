@@ -50,7 +50,7 @@ export default function CarvedHero({
         }
       >
         <div>
-        <p className={compact ? "mb-2 text-[13px] text-[var(--text-secondary)]" : "mb-5 text-[15px] text-[var(--text-secondary)]"}>{eyebrow}</p>
+        {eyebrow && <p className={compact ? "mb-2 text-[13px] text-[var(--text-secondary)]" : "mb-5 text-[15px] text-[var(--text-secondary)]"}>{eyebrow}</p>}
         <Title
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -67,7 +67,7 @@ export default function CarvedHero({
         </div>
 
         {/* Flat: content in its own column on xl, stacked below it on smaller screens */}
-        {flat && <div className="mt-8 xl:mt-0 xl:pb-1">{notch}</div>}
+        {flat && notch && <div className="mt-8 xl:mt-0 xl:pb-1">{notch}</div>}
 
         {/* Carved: below xl the notch content stacks under the title */}
         {!flat && <div className={compact ? "mt-5 xl:hidden" : "mt-8 xl:hidden"}>{notch}</div>}
