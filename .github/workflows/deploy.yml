@@ -24,6 +24,8 @@ jobs:
           VITE_EMAIL_ADDRESS: ${{ secrets.VITE_EMAIL_ADDRESS }}
           VITE_CONTACT: ${{ secrets.VITE_CONTACT }}
           VITE_WEB3FORMS_DECK_KEY: ${{ secrets.VITE_WEB3FORMS_DECK_KEY }}
+          SANITY_PROJECT_ID: ${{ secrets.SANITY_PROJECT_ID }}
+          SANITY_DATASET: ${{ secrets.SANITY_DATASET }}
 
       - name: Deploy to Deployment Branch 🚀
         uses: JamesIves/github-pages-deploy-action@v4

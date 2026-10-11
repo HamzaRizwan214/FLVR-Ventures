@@ -1,5 +1,6 @@
 import SectionHeading from "./SectionHeading";
 import Faq from "./Faq";
+import CtaLink from "./CtaLink";
 import BilingualText from "./BilingualText";
 import { fund } from "@/data/content";
 
@@ -14,7 +15,14 @@ export default function HomeFaq() {
           titleClassName="text-[clamp(1.75rem,2.8vw,2.6rem)]"
           title={<BilingualText en="Investor questions." ar="أسئلة المستثمرين." />}
         />
-        <Faq items={fund.faqs} />
+        <div>
+          <Faq items={fund.faqs} />
+          <div className="mt-10">
+            <CtaLink to="/contact?interest=invest" variant="primary">
+              <BilingualText en="Speak with the team" ar="تحدث مع الفريق" />
+            </CtaLink>
+          </div>
+        </div>
       </div>
     </section>
   );

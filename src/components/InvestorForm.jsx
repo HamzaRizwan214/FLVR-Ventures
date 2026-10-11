@@ -13,7 +13,10 @@ const fieldClass =
 const labelClass = "eyebrow mb-2 block !text-[10px]";
 
 // Reads ?interest= and ?concept= so CTAs elsewhere can pre-fill the form.
-export default function InvestorForm({ interest: controlledInterest, onInterestChange }) {
+export default function InvestorForm({
+  interest: controlledInterest,
+  onInterestChange,
+}) {
   const { language } = useLanguage();
   const [params] = useSearchParams();
   const concept = params.get("concept");
@@ -56,7 +59,10 @@ export default function InvestorForm({ interest: controlledInterest, onInterestC
     try {
       const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
         body: JSON.stringify(payload),
       }).then((r) => r.json());
       setStatus(res.success ? "sent" : "error");
@@ -73,7 +79,10 @@ export default function InvestorForm({ interest: controlledInterest, onInterestC
         className="flex min-h-[320px] flex-col items-center justify-center text-center"
         role="status"
       >
-        <CheckCircle2 className="mb-6 h-12 w-12 text-[var(--accent)]" strokeWidth={1.25} />
+        <CheckCircle2
+          className="mb-6 h-12 w-12 text-[var(--accent)]"
+          strokeWidth={1.25}
+        />
         <h2 className="mb-3 text-3xl font-light tracking-tight text-[var(--text-primary)]">
           <BilingualText en="Message sent" ar="تم إرسال رسالتك" />
         </h2>
@@ -133,7 +142,9 @@ export default function InvestorForm({ interest: controlledInterest, onInterestC
             value={values.organisation}
             onChange={set("organisation")}
             className={fieldClass}
-            placeholder={language === "ar" ? "الشركة أو الصندوق" : "Company or fund"}
+            placeholder={
+              language === "ar" ? "الشركة أو الصندوق" : "Company or fund"
+            }
           />
         </div>
         <div>
