@@ -8,55 +8,38 @@ import SectionHeading from "@/components/SectionHeading";
 import BilingualText from "@/components/BilingualText";
 import T from "@/components/T";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { articles, getArticle, getCategory, formatDate, formatReadTime } from "@/data/insights";
+import ArticleBody from "@/components/ArticleBody";
+import { useArticle, useArticles } from "@/hooks/useArticles";
+import { getCategory, formatDate, formatReadTime } from "@/data/insights";
 
 const ease = [0.22, 1, 0.36, 1];
-
-// One block of an article body
-function Block({ block, id }) {
-  switch (block.type) {
-    case "h2":
-      return (
-        <h2
-          id={id}
-          className="mb-5 mt-14 scroll-mt-28 text-[clamp(1.5rem,2.3vw,2.1rem)] font-light leading-[1.2] tracking-[-0.02em] text-[var(--text-primary)]"
-        >
-          <T t={block.text} />
-        </h2>
-      );
-    case "quote":
-      return (
-        <blockquote className="my-12 border-s-2 border-[var(--accent)] ps-7 text-[clamp(1.4rem,2.3vw,2rem)] font-light leading-[1.3] tracking-[-0.015em] text-[var(--text-primary)]">
-          <T t={block.text} />
-        </blockquote>
-      );
-    case "list":
-      return (
-        <ul className="my-7 space-y-3.5">
-          {block.items.map((item, i) => (
-            <li key={i} className="flex items-baseline gap-4 text-[17px] text-[var(--text-primary)]">
-              <span className="h-1.5 w-1.5 shrink-0 translate-y-[-2px] rounded-full bg-[var(--accent)]" />
-              <T t={item} />
-            </li>
-          ))}
-        </ul>
-      );
-    default:
-      return (
-        <p className="mb-6 text-[17px] leading-[1.9] text-[var(--text-secondary)]">
-          <T t={block.text} />
-        </p>
-      );
-  }
-}
 
 // Article page, split layout: on wide screens a sticky portrait card (title, meta and a
 // modest cover) stays in view on one side while the text scrolls on the other.
 export default function Article() {
   const { slug } = useParams();
   const { language } = useLanguage();
-  const article = getArticle(slug);
+  const { status, article } = useArticle(slug);
+  const { articles } = useArticles();
 
+  if (status === "loading") return <PageWrapper><div className="min-h-[60vh]" aria-busy="true" /></PageWrapper>;
+  if (status === "error") {
+    return (
+      <PageWrapper>
+        <section className="panel flex min-h-[40vh] flex-col items-start justify-center gap-6 px-6 py-16 sm:px-10">
+          <p className="text-[17px] text-[var(--text-secondary)]">
+            <BilingualText
+              en="This article could not be loaded. Please try again shortly."
+              ar="تعذّر تحميل المقال. يرجى المحاولة مرة أخرى بعد قليل."
+            />
+          </p>
+          <CtaLink to="/insights" variant="outline">
+            <BilingualText en="All insights" ar="كل الرؤى" />
+          </CtaLink>
+        </section>
+      </PageWrapper>
+    );
+  }
   if (!article) return <Navigate to="/insights" replace />;
 
   const category = getCategory(article.category);
@@ -122,13 +105,21 @@ export default function Article() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.12, ease }}
-              className="mt-8 overflow-hidden rounded-[20px] border border-[var(--border-default)] xl:mt-8 xl:min-h-[11rem] xl:flex-1"
+              className="relative mt-8 aspect-[16/10] overflow-hidden rounded-[20px] border border-[var(--border-default)] bg-[var(--bg-primary)] xl:mt-8 xl:aspect-auto xl:min-h-[11rem] xl:flex-1"
             >
+              {/* Any shape of image fits: the whole picture is shown, and a blurred copy of it
+                  fills the rest of the box. */}
+              <img
+                src={article.cover}
+                alt=""
+                aria-hidden="true"
+                className="absolute inset-0 h-full w-full scale-125 object-cover blur-2xl brightness-[0.55]"
+              />
               <img
                 src={article.cover}
                 alt=""
                 fetchPriority="high"
-                className="aspect-[16/10] w-full object-cover brightness-[0.92] xl:aspect-auto xl:h-full"
+                className="relative h-full w-full object-contain"
               />
             </motion.div>
           </div>
@@ -137,14 +128,13 @@ export default function Article() {
         {/* Text */}
         <section className="panel px-6 py-12 sm:px-10 lg:px-14 lg:py-16">
           <article className="max-w-[40rem]">
-            {article.body.map((block, i) => (
-              <Block key={i} block={block} id={`s${i}`} />
-            ))}
+            <ArticleBody article={article} language={language} />
           </article>
         </section>
       </div>
 
       {/* Related */}
+      {related.length > 0 && (
       <section className="panel px-6 py-20 lg:px-12 lg:py-24">
         <SectionHeading
           eyebrow={<BilingualText en="Keep reading" ar="تابع القراءة" />}
@@ -157,6 +147,7 @@ export default function Article() {
           </CtaLink>
         </div>
       </section>
+      )}
     </PageWrapper>
   );
 }

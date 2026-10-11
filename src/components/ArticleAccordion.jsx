@@ -185,7 +185,8 @@ export default function ArticleAccordion({ articles }) {
 
   return (
     <>
-      <div className="hidden h-[25rem] gap-3 xl:flex">
+      {/* The expanding row suits up to five cards; a longer list uses the grid at every width */}
+      <div className={cn("hidden h-[25rem] gap-3", articles.length <= 5 && "xl:flex")}>
         {articles.map((article) => (
           <AccordionCard
             key={article.slug}
@@ -197,7 +198,12 @@ export default function ArticleAccordion({ articles }) {
         ))}
       </div>
 
-      <div className="grid grid-cols-1 gap-3 md:grid-cols-2 xl:hidden">
+      <div
+        className={cn(
+          "grid grid-cols-1 gap-3 md:grid-cols-2",
+          articles.length <= 5 ? "xl:hidden" : "xl:grid-cols-3",
+        )}
+      >
         {articles.map((article) => (
           <StackCard key={article.slug} article={article} language={language} />
         ))}

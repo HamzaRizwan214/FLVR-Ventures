@@ -6,15 +6,17 @@ import CtaLink from "@/components/CtaLink";
 import ArticleAccordion from "@/components/ArticleAccordion";
 import BilingualText from "@/components/BilingualText";
 import T from "@/components/T";
-import { articles, categories } from "@/data/insights";
+import { categories } from "@/data/insights";
+import { useArticles } from "@/hooks/useArticles";
 import { cn } from "@/lib/utils";
 
 export default function Insights() {
   const [filter, setFilter] = useState("all");
+  const { status, articles } = useArticles();
 
   const visible = useMemo(
     () => (filter === "all" ? articles : articles.filter((a) => a.category === filter)),
-    [filter],
+    [articles, filter],
   );
 
   return (
@@ -83,7 +85,21 @@ export default function Insights() {
         </div>
 
         {/* Articles */}
-        <ArticleAccordion articles={visible} />
+        {status === "loading" && <div className="min-h-[25rem]" aria-busy="true" />}
+        {status === "error" && (
+          <p className="py-16 text-[15px] text-[var(--text-secondary)]">
+            <BilingualText
+              en="Articles could not be loaded. Please try again shortly."
+              ar="تعذّر تحميل المقالات. يرجى المحاولة مرة أخرى بعد قليل."
+            />
+          </p>
+        )}
+        {status === "ready" && visible.length === 0 && (
+          <p className="py-16 text-[15px] text-[var(--text-secondary)]">
+            <BilingualText en="Nothing published in this category yet." ar="لا يوجد محتوى منشور في هذا التصنيف بعد." />
+          </p>
+        )}
+        {visible.length > 0 && <ArticleAccordion articles={visible} />}
       </CarvedHero>
     </PageWrapper>
   );
