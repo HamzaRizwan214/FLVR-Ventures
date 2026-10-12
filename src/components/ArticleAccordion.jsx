@@ -40,13 +40,13 @@ function Meta({ article, language, ink }) {
 }
 
 // Read-more control drawn from spans, since the whole card is already a link
-function ReadMore({ ink }) {
+function ReadMore() {
   return (
-    <span className="cta cta--primary">
-      <span className="cta-pill !px-6 !py-3">
+    <span className="cta cta--primary cta--sm">
+      <span className="cta-pill">
         <BilingualText en="Read more" ar="اقرأ المزيد" />
       </span>
-      <span className={cn("cta-circle !h-[42px] !w-[42px]", ink && "")} aria-hidden="true">
+      <span className="cta-circle" aria-hidden="true">
         <ArrowUpRight size={16} strokeWidth={1.5} className="rtl:-scale-x-100" />
       </span>
     </span>

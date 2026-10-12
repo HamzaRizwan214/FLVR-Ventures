@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import PageWrapper from "@/components/PageWrapper";
-import ConceptShowcase from "@/components/ConceptShowcase";
+import ConceptPosters from "@/components/ConceptPosters";
 import SectionHeading from "@/components/SectionHeading";
 import CtaLink from "@/components/CtaLink";
 import BilingualText from "@/components/BilingualText";
@@ -33,22 +33,44 @@ export default function Portfolio() {
 
   return (
     <PageWrapper>
-      {/* 1 · The carved showcase, same as Home */}
-      <ConceptShowcase
-        as="h1"
-        eyebrow={<BilingualText en="Portfolio" ar="المحفظة" />}
-        title={
-          <BilingualText
-            en="Four concepts, each built with its founder."
-            ar="أربعة مفاهيم، يقود كلاً منها مؤسسه."
-          />
-        }
-        description={showcaseDescription}
-        cta={{
-          to: "/contact?interest=invest",
-          label: <BilingualText en="Speak with the team" ar="تحدث مع الفريق" />,
-        }}
-      />
+      {/* 1 · Heading, description and button, then the four concept posters */}
+      <section className="rounded-[28px] bg-[var(--bg-primary)] px-5 py-14 sm:px-8 lg:px-12 lg:py-20">
+        <div className="mx-auto max-w-[1480px]">
+          <motion.div
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, ease }}
+            className="mb-12 flex flex-col gap-8 lg:mb-16 lg:flex-row lg:items-end lg:justify-between lg:gap-20"
+          >
+            <div>
+              <p className="kicker">
+                <BilingualText en="Portfolio" ar="المحفظة" />
+              </p>
+              <h1
+                className="mt-5 max-w-[16ch] text-[clamp(2.3rem,4.8vw,4.7rem)] leading-[1.02] tracking-[-0.04em] text-[var(--text-primary)] rtl:leading-[1.2] rtl:tracking-normal"
+                style={{ fontWeight: 700 }}
+              >
+                <BilingualText
+                  en="Four concepts, each built with its founder."
+                  ar="أربعة مفاهيم، يقود كلاً منها مؤسسه."
+                />
+              </h1>
+            </div>
+            <div className="max-w-[26rem] lg:pb-2">
+              <p className="text-[15px] leading-[1.75] text-[var(--text-secondary)] sm:text-base">
+                <BilingualText en={showcaseDescription.en} ar={showcaseDescription.ar} />
+              </p>
+              <div className="mt-7">
+                <CtaLink to="/contact?interest=invest" variant="primary">
+                  <BilingualText en="Speak with the team" ar="تحدث مع الفريق" />
+                </CtaLink>
+              </div>
+            </div>
+          </motion.div>
+
+          <ConceptPosters />
+        </div>
+      </section>
 
       {/* 2 · The same method for every concept */}
       {/* <section className="panel px-6 py-20 lg:px-12 lg:py-28">

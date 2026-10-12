@@ -6,6 +6,13 @@ export default function ScrollManager({ children }) {
   const { pathname, hash } = useLocation();
 
   useEffect(() => {
+    // Home runs on native scroll: its opening scene is a pinned GSAP timeline with snap points,
+    // which a smooth-scroll layer would fight.
+    if (pathname === '/') {
+      window.scrollTo(0, 0);
+      return undefined;
+    }
+
     const lenis = new Lenis({
       duration: 1.4,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),

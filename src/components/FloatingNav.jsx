@@ -16,33 +16,46 @@ const menuItems = [
   { name: "Insights", ar: "رؤى", href: "/insights" },
 ];
 
-// Contact is reached through the "Speak with the team" button, on desktop and in the mobile menu.
 const mobileMenuItems = menuItems;
 
 const arabicFont = { fontFamily: "var(--font-arabic)" };
 const ease = [0.22, 1, 0.36, 1];
 
-// EN | عربي segmented toggle
+// EN | عربي toggle: a pill with a sliding thumb under the active language. The two labels keep
+// their places (EN left, عربي right) in both directions, so the thumb always travels the same way.
 function LanguageSwitch({ className, light = false }) {
   const { language, toggleLanguage } = useLanguage();
-  const seg = "rounded-full px-3 py-1.5 transition-colors duration-300";
-  const segOn = "bg-white/[0.16] text-white";
-  const segOff = "text-[var(--text-secondary)]";
+  const isAr = language === "ar";
+  const on = light ? "text-white" : "text-[#111]";
+  const off = light ? "text-[var(--hero-ink)]/60" : "text-white/75 group-hover:text-white";
   return (
     <button
       type="button"
+      role="switch"
+      aria-checked={isAr}
       onClick={toggleLanguage}
-      aria-label={language === "en" ? "Switch to Arabic" : "Switch to English"}
+      aria-label={isAr ? "Switch to English" : "Switch to Arabic"}
+      dir="ltr"
       className={cn(
-        "flex items-center rounded-full border p-1 text-[11px] tracking-[0.14em] transition-colors duration-300",
-        light ? "border-white/10 bg-[var(--hero-ink)]/90 backdrop-blur-md" : "border-[var(--border-strong)] bg-white/[0.08] backdrop-blur-md",
+        "group relative flex h-10 w-[7.25rem] shrink-0 items-center rounded-full border p-1 transition-colors duration-300",
+        light
+          ? "border-[var(--hero-ink)]/20 bg-black/[0.06] hover:bg-black/[0.1]"
+          : "border-white/20 bg-white/[0.08] backdrop-blur-md hover:bg-white/[0.14]",
         className,
       )}
     >
       <span
+        aria-hidden="true"
         className={cn(
-          seg,
-          language === "en" ? segOn : segOff,
+          "absolute inset-y-1 left-1 w-[calc(50%-0.25rem)] rounded-full shadow-[0_4px_14px_-4px_rgba(0,0,0,0.5)] transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
+          light ? "bg-[var(--hero-ink)]" : "bg-white",
+          isAr ? "translate-x-full" : "translate-x-0",
+        )}
+      />
+      <span
+        className={cn(
+          "relative z-10 flex-1 text-center text-[12px] font-bold tracking-[0.08em] transition-colors duration-300",
+          !isAr ? on : off,
         )}
       >
         EN
@@ -50,9 +63,8 @@ function LanguageSwitch({ className, light = false }) {
       <span
         style={arabicFont}
         className={cn(
-          seg,
-          "text-[13px] tracking-normal",
-          language === "ar" ? segOn : segOff,
+          "relative z-10 flex-1 text-center text-[14px] font-bold leading-none transition-colors duration-300",
+          isAr ? on : off,
         )}
       >
         عربي
@@ -122,11 +134,12 @@ export default function FloatingNav() {
 
   return (
     <>
-      {/* Fixed bar, full width, fully transparent (no fill, border or blur), the same at every scroll position. The spacer in <Layout> keeps
-          content below it. */}
-      <header className="pointer-events-none fixed inset-x-2 top-2 z-50 sm:inset-x-3 sm:top-3">
-        <div className="pointer-events-auto flex h-[60px] w-full items-center justify-between rounded-[20px] px-4 md:h-[68px] md:grid md:grid-cols-[1fr_auto_1fr] md:rounded-[22px] md:px-5 lg:px-7">
-          <div ref={logoRef} className="justify-self-start">
+      {/* Fixed bar, full width, no fill: logo at the start, then the links, the language switch and
+          the white button together at the end. The spacer in <Layout> keeps content below it
+          (Home has none: its hero runs under the bar). */}
+      <header id="site-nav" className="pointer-events-none fixed inset-x-0 top-0 z-50">
+        <div className="pointer-events-auto mx-auto flex h-[72px] w-full max-w-[1480px] items-center justify-between px-5 sm:px-8 md:h-[88px] lg:px-12">
+          <div ref={logoRef}>
             <Link to="/" aria-label="FLVR Ventures" className="flex items-center">
               <img
                 src={light.logo ? "/flvr-dark.svg" : "/flvr.svg"}
@@ -136,67 +149,66 @@ export default function FloatingNav() {
             </Link>
           </div>
 
-          {/* Desktop: segmented pill group with a sliding highlight */}
-          <nav
-            ref={linksRef}
-            aria-label="Primary"
-            onMouseLeave={() => setHovered(null)}
-            className={cn(
-              "hidden items-center rounded-full border p-1 transition-colors duration-300 md:flex",
-              light.links
-                ? "border-white/10 bg-[var(--hero-ink)]/90 backdrop-blur-md"
-                : "border-[var(--border-strong)] bg-white/[0.08] backdrop-blur-md",
-            )}
-          >
-            {menuItems.map((item) => {
-              const active = item.href === activeHref;
-              const lit = item.href === litHref;
-              return (
-                <Link
-                  key={item.href}
-                  to={item.href}
-                  onMouseEnter={() => setHovered(item.href)}
-                  onFocus={() => setHovered(item.href)}
-                  onBlur={() => setHovered(null)}
-                  aria-current={active ? "page" : undefined}
-                  className={cn(
-                    "relative rounded-full px-5 py-2.5 text-[12px] font-medium uppercase tracking-[0.16em] transition-colors duration-300",
-                    lit || active ? "text-white" : "text-[var(--text-primary)]",
-                  )}
-                >
-                  {lit && (
-                    <motion.span
-                      layoutId="navPill"
-                      className={cn("absolute inset-0 rounded-full", "bg-white/[0.16]")}
-                      transition={{ type: "spring", stiffness: 380, damping: 34 }}
-                    />
-                  )}
-                  <span className="relative z-10 flex items-center gap-2">
-                    {active && <span className="h-1 w-1 rounded-full bg-[var(--accent)]" />}
-                    <BilingualText en={item.name} ar={item.ar} />
-                  </span>
-                </Link>
-              );
-            })}
-          </nav>
-
-          <div ref={rightRef} className="flex items-center gap-3 justify-self-end">
-            <LanguageSwitch className="hidden md:flex" light={light.right} />
-
-            <button
-              type="button"
-              onClick={() => setIsOpen(true)}
-              aria-label="Open menu"
-              className={cn(
-                "flex items-center gap-2 rounded-full border py-2 pe-3.5 ps-4 text-[11px] uppercase tracking-[0.18em] transition-colors duration-300 md:hidden",
-                light.right
-                  ? "border-white/10 bg-[var(--hero-ink)]/90 text-[var(--text-primary)] backdrop-blur-md"
-                  : "border-[var(--border-strong)] text-[var(--text-primary)]",
-              )}
+          <div className="flex items-center gap-6 lg:gap-9">
+            {/* Plain text links; a gradient underline follows the hover and rests on the current page */}
+            <nav
+              ref={linksRef}
+              aria-label="Primary"
+              onMouseLeave={() => setHovered(null)}
+              className="hidden items-center gap-7 md:flex lg:gap-8"
             >
-              <BilingualText en="Menu" ar="القائمة" />
-              <Plus size={14} strokeWidth={1.5} />
-            </button>
+              {menuItems.map((item) => {
+                const active = item.href === activeHref;
+                const lit = item.href === litHref;
+                return (
+                  <Link
+                    key={item.href}
+                    to={item.href}
+                    onMouseEnter={() => setHovered(item.href)}
+                    onFocus={() => setHovered(item.href)}
+                    onBlur={() => setHovered(null)}
+                    aria-current={active ? "page" : undefined}
+                    className={cn(
+                      "relative py-2 text-[14px] font-medium transition-colors duration-300",
+                      light.links
+                        ? lit || active
+                          ? "text-[var(--hero-ink)]"
+                          : "text-[var(--hero-ink)]/65"
+                        : lit || active
+                          ? "text-white"
+                          : "text-white/70",
+                    )}
+                  >
+                    <BilingualText en={item.name} ar={item.ar} />
+                    {lit && (
+                      <motion.span
+                        layoutId="navUnderline"
+                        className="absolute inset-x-0 -bottom-0.5 h-[2px] rounded-full bg-[image:var(--gradient-brand)]"
+                        transition={{ type: "spring", stiffness: 420, damping: 34 }}
+                      />
+                    )}
+                  </Link>
+                );
+              })}
+            </nav>
+
+            <div ref={rightRef} className="flex items-center gap-3 lg:gap-4">
+              <LanguageSwitch className="hidden md:flex" light={light.right} />
+              <button
+                type="button"
+                onClick={() => setIsOpen(true)}
+                aria-label="Open menu"
+                className={cn(
+                  "flex items-center gap-2 rounded-full border py-2 pe-3.5 ps-4 text-[11px] uppercase tracking-[0.18em] transition-colors duration-300 md:hidden",
+                  light.right
+                    ? "border-white/10 bg-[var(--hero-ink)]/90 text-[var(--text-primary)] backdrop-blur-md"
+                    : "border-[var(--border-strong)] text-[var(--text-primary)]",
+                )}
+              >
+                <BilingualText en="Menu" ar="القائمة" />
+                <Plus size={14} strokeWidth={1.5} />
+              </button>
+            </div>
           </div>
         </div>
       </header>
@@ -280,13 +292,6 @@ export default function FloatingNav() {
                   </span>
                   <LanguageSwitch />
                 </div>
-                <Link
-                  to="/contact?interest=invest"
-                  onClick={() => setIsOpen(false)}
-                  className="btn-primary w-full"
-                >
-                  <BilingualText en="Speak with the team" ar="تحدث مع الفريق" />
-                </Link>
               </div>
             </motion.div>
           </motion.div>
