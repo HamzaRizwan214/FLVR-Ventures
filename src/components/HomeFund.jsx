@@ -5,42 +5,108 @@ import CtaLink from "./CtaLink";
 import BilingualText from "./BilingualText";
 import T from "./T";
 import Disclaimer from "./Disclaimer";
-import { fund } from "@/data/content";
+import { fund, fundPage } from "@/data/content";
 
 const ease = [0.22, 1, 0.36, 1];
 
-// Mandate rows shown on Home; the full six-term table is on the Funds page.
-const mandateRows = ["Sector", "Geography", "Stage", "Ticket size"];
+// Mandate rows shown on Home, in the same plain wording as the Funds page.
+const { figures, rows: wideRows } = fundPage.glance;
+const mandateRows = [wideRows[0], wideRows[1], figures[2], figures[1]];
 
-function Cell({ index, className, style, children }) {
+const line = { fill: "none", stroke: "currentColor", strokeWidth: 1.5 };
+// Quiet outline patterns for the top zones: rings for the mandate, nested arches for the thesis
+const motifs = {
+  rings: (
+    <svg viewBox="0 0 200 200" className="h-auto w-full" aria-hidden="true">
+      {[28, 52, 76, 100, 124, 148, 172].map((r) => (
+        <circle key={r} cx="200" cy="200" r={r} {...line} />
+      ))}
+    </svg>
+  ),
+  arches: (
+    <svg viewBox="0 0 240 120" className="h-auto w-full" aria-hidden="true">
+      {[20, 40, 60, 80, 100].map((r) => (
+        <path key={r} d={`M${120 - r} 120 A${r} ${r} 0 0 1 ${120 + r} 120`} {...line} />
+      ))}
+    </svg>
+  ),
+};
+
+// A card in the style of the concept posters, with colour in place of a photo: a top zone, a
+// lower panel whose top edge curves up over it, and a round arrow on the seam (ringed in the
+// panel colour) that links to the matching part of the Funds page. Sizes are in cqw.
+function FundPoster({ index, tone, motif, title, tag, to, label, children }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 32 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
       transition={{ delay: index * 0.12, duration: 0.9, ease }}
-      style={style}
-      className={`grain relative flex min-h-[22rem] flex-col overflow-hidden rounded-[1.75rem] p-7 sm:p-8 xl:min-h-[30rem] ${className}`}
+      className="relative min-h-[26rem] overflow-hidden rounded-[1.25rem] xl:min-h-[30rem]"
+      style={{ background: tone.panel, color: tone.ink, containerType: "inline-size" }}
     >
-      {children}
+      {/* Top zone: the content, over a quiet pattern */}
+      <div className="absolute inset-x-0 top-0 h-[60%] overflow-hidden" style={{ background: tone.top }}>
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute bottom-0 end-0 w-[80%] opacity-[0.12] rtl:-scale-x-100"
+          style={{
+            WebkitMaskImage: "radial-gradient(circle at 100% 100%, #000 18%, transparent 80%)",
+            maskImage: "radial-gradient(circle at 100% 100%, #000 18%, transparent 80%)",
+          }}
+        >
+          {motifs[motif]}
+        </div>
+        <div className="relative px-[7cqw] pt-[7cqw]">{children}</div>
+      </div>
+
+      {/* Panel: curved top edge, tag and title */}
+      <div
+        className="absolute inset-x-0 bottom-0 flex h-[44%] flex-col justify-center rounded-t-[9cqw] px-[7cqw] pb-[6cqw] pt-[8cqw]"
+        style={{ background: tone.panel }}
+      >
+        <span
+          className="w-fit rounded-[1.4cqw] border-[1.5px] px-[2.8cqw] py-[1.3cqw] leading-none"
+          style={{ borderColor: tone.ink, fontSize: "clamp(12px, 3.8cqw, 14.5px)", fontWeight: 500 }}
+        >
+          {tag}
+        </span>
+        <h3
+          className="mt-[4cqw] leading-[1.04] tracking-[-0.03em] rtl:leading-[1.25] rtl:tracking-normal"
+          style={{ fontSize: "clamp(1.8rem, 10.5cqw, 2.8rem)", fontWeight: 700 }}
+        >
+          {title}
+        </h3>
+      </div>
+
+      {/* Round arrow across the seam */}
+      <Link
+        to={to}
+        aria-label={label}
+        className="group absolute end-[7cqw] flex h-[15cqw] w-[15cqw] items-center justify-center rounded-full bg-[#f2eee8] text-[#131415] transition-colors duration-300 hover:bg-[image:var(--gradient-brand)] hover:text-white"
+        style={{ top: "calc(56% - 7.5cqw)", boxShadow: `0 0 0 2.4cqw ${tone.panel}` }}
+      >
+        <ArrowUpRight
+          className="h-[7cqw] w-[7cqw] transition-transform duration-300 group-hover:rotate-45 rtl:-scale-x-100 rtl:group-hover:-rotate-45"
+          strokeWidth={2.25}
+        />
+      </Link>
     </motion.div>
   );
 }
 
 // Home: the Fund. Left: heading, the two short paragraphs, the headline figure in brand gradient
-// and one button. Right: two cards, Mandate and Investment thesis (brand gradient).
+// and one button. Right: two poster cards, Mandate (wine) and Investment thesis (coral).
 export default function HomeFund() {
-  const rows = mandateRows.map((l) => fund.terms.find((t) => t.label.en === l));
+  const rows = mandateRows;
   const target = fund.terms.find((t) => t.label.en === "Target fund size");
 
   return (
     <section className="relative px-5 py-20 sm:px-8 lg:px-12 lg:py-32">
-      <div className="relative mx-auto max-w-[1480px] overflow-hidden rounded-[2rem] border border-white/[0.07] bg-[#0e0e0f] p-7 sm:p-12 lg:rounded-[2.5rem] lg:p-16">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -top-40 end-[-10%] h-[34rem] w-[34rem] rounded-full opacity-40 blur-[110px]"
-          style={{ background: "radial-gradient(circle, #ff9205 0%, #ac1e40 55%, transparent 72%)" }}
-        />
+      <div
+        data-nav-light
+        className="relative mx-auto max-w-[1480px] overflow-hidden rounded-[2rem] bg-[#f2eee8] p-7 text-[#131415] sm:p-12 lg:rounded-[2.5rem] lg:p-16"
+      >
 
         <div className="relative grid grid-cols-1 gap-14 xl:grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)] xl:gap-16">
           {/* Left column */}
@@ -50,12 +116,12 @@ export default function HomeFund() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.9, ease }}
-              className="text-[clamp(2.6rem,5.2vw,5rem)] font-extrabold leading-[1.0] tracking-[-0.04em] text-[var(--text-primary)] rtl:leading-[1.2] rtl:tracking-normal"
+              className="text-[clamp(2.6rem,5.2vw,5rem)] font-extrabold leading-[1.0] tracking-[-0.04em] text-[#131415] rtl:leading-[1.2] rtl:tracking-normal"
             >
               <BilingualText en="The FLVR Fund." ar="صندوق فلايفر." />
             </motion.h2>
 
-            <div className="mt-8 max-w-[26rem] space-y-4 text-[15px] leading-[1.75] text-[var(--text-secondary)]">
+            <div className="mt-8 max-w-[26rem] space-y-4 text-[15px] leading-[1.75] text-[#131415]/70">
               <p>
                 <T t={fund.intro} />
               </p>
@@ -65,7 +131,7 @@ export default function HomeFund() {
             </div>
 
             <div className="mt-auto pt-12">
-              <p className="text-[13px] font-semibold text-[var(--accent)]">
+              <p className="text-[13px] font-semibold text-[var(--hero-accent)]">
                 <T t={target.label} />
               </p>
               <p
@@ -76,68 +142,57 @@ export default function HomeFund() {
               </p>
               <div className="mt-9">
                 <CtaLink to="/funds" variant="primary">
-                  <BilingualText en="Fund overview" ar="نظرة عامة على الصندوق" />
+                  <BilingualText en="See the Fund" ar="اطّلع على الصندوق" />
                 </CtaLink>
               </div>
             </div>
           </div>
 
-          {/* Right: two cards */}
+          {/* Right: two poster cards */}
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            <Cell index={0} className="bg-[#161617] ring-1 ring-white/[0.06]">
-              <p className="text-[13px] font-semibold text-[var(--accent)]" dir="ltr">
-                #01
-              </p>
-              <h3 className="mt-3 text-[1.9rem] font-bold leading-tight tracking-[-0.025em] text-[var(--text-primary)] rtl:tracking-normal">
-                <T t={fund.mandate.label} />
-              </h3>
-              <dl className="mt-auto border-t border-white/10 pt-1">
+            <FundPoster
+              index={0}
+              tone={{ top: "#a42540", panel: "#8f1d3a", ink: "#ffffff" }}
+              motif="rings"
+              title={<T t={fund.mandate.label} />}
+              tag={<T t={fund.mandate.title} />}
+              to="/funds#mandate"
+              label="Mandate"
+            >
+              <dl className="border-t border-white/25">
                 {rows.map((row, i) => (
                   <div
                     key={i}
-                    className="flex items-baseline justify-between gap-6 border-b border-white/10 py-4 last:border-b-0"
+                    className="flex items-baseline justify-between gap-6 border-b border-white/25 py-3 last:border-b-0"
                   >
-                    <dt className="text-[13px] text-[var(--text-muted)]">
+                    <dt className="text-[13px] text-white/70">
                       <T t={row.label} />
                     </dt>
-                    <dd className="text-end text-[15px] font-semibold text-[var(--text-primary)]">
+                    <dd className="text-end text-[15px] font-semibold">
                       <T t={row.value} />
                     </dd>
                   </div>
                 ))}
               </dl>
-            </Cell>
+            </FundPoster>
 
-            <Cell
+            <FundPoster
               index={1}
-              className="text-white"
-              style={{ background: "linear-gradient(155deg, #ac1e40 0%, #d2512a 52%, #ff9205 100%)" }}
+              tone={{ top: "#f3846c", panel: "#EC5D44", ink: "#131415" }}
+              motif="arches"
+              title={<T t={fund.thesis.label} />}
+              tag={<T t={fund.thesis.title} />}
+              to="/funds#thesis"
+              label="Investment thesis"
             >
-              <p className="text-[13px] font-semibold text-white/80" dir="ltr">
-                #02
+              <p className="text-[15px] font-medium leading-[1.65]">
+                <T t={fundPage.thesis.statement} />
               </p>
-              <h3 className="mt-3 text-[1.9rem] font-bold leading-tight tracking-[-0.025em] rtl:tracking-normal">
-                <T t={fund.thesis.label} />
-              </h3>
-              <p className="mt-auto text-[15px] leading-[1.7] text-white/95">
-                <T t={fund.thesis.summary} />
-              </p>
-              <Link
-                to="/funds#thesis"
-                className="group mt-8 inline-flex w-fit items-center gap-2 text-[12px] font-semibold uppercase tracking-[0.14em] text-white"
-              >
-                <BilingualText en="Read the full thesis" ar="اقرأ الفرضية كاملة" />
-                <ArrowUpRight
-                  size={16}
-                  strokeWidth={1.75}
-                  className="transition-transform duration-300 group-hover:rotate-45 rtl:-scale-x-100"
-                />
-              </Link>
-            </Cell>
+            </FundPoster>
           </div>
         </div>
 
-        <Disclaimer className="relative mt-12" />
+        <Disclaimer className="relative mt-12 !text-[#131415]/55" />
       </div>
     </section>
   );

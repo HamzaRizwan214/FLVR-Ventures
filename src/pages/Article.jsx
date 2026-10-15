@@ -1,28 +1,72 @@
+import { useState } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
-import { motion } from "framer-motion";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Check, Link2 } from "lucide-react";
 import PageWrapper from "@/components/PageWrapper";
-import ArticleAccordion from "@/components/ArticleAccordion";
-import CtaLink from "@/components/CtaLink";
-import SectionHeading from "@/components/SectionHeading";
+import ArticleBody from "@/components/ArticleBody";
 import BilingualText from "@/components/BilingualText";
 import T from "@/components/T";
 import { useLanguage } from "@/contexts/LanguageContext";
-import ArticleBody from "@/components/ArticleBody";
 import { useArticle, useArticles } from "@/hooks/useArticles";
-import { getCategory, formatDate, formatReadTime } from "@/data/insights";
+import { chipTone, getCategory, formatDate, formatReadTime } from "@/data/insights";
 
-const ease = [0.22, 1, 0.36, 1];
+const pill =
+  "inline-flex w-fit items-center gap-2 rounded-full border border-[var(--border-strong)] px-4 py-2 text-[14px] font-medium text-[var(--text-primary)] transition-colors hover:bg-white/10";
 
-// Article page, split layout: on wide screens a sticky portrait card (title, meta and a
-// modest cover) stays in view on one side while the text scrolls on the other.
+// One labelled detail of the article
+function Detail({ label, children }) {
+  return (
+    <div>
+      <dt className="text-[12px] text-[var(--text-muted)]">{label}</dt>
+      <dd className="mt-1.5 text-[15px] font-medium text-[var(--text-primary)]">{children}</dd>
+    </div>
+  );
+}
+
+// Copies the page address, and says so
+function CopyLink() {
+  const [copied, setCopied] = useState(false);
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      /* clipboard not available: nothing to do */
+    }
+  };
+  return (
+    <button
+      type="button"
+      onClick={copy}
+      className="inline-flex items-center gap-2 rounded-full border border-[var(--border-strong)] px-4 py-2 text-[13px] font-medium text-[var(--text-primary)] transition-colors hover:bg-white/10"
+    >
+      {copied ? <Check size={14} strokeWidth={2} /> : <Link2 size={14} strokeWidth={2} />}
+      <span role="status">
+        {copied ? <BilingualText en="Link copied" ar="تم نسخ الرابط" /> : <BilingualText en="Copy link" ar="نسخ الرابط" />}
+      </span>
+    </button>
+  );
+}
+
+// Article page, in the Insights style: one reading column (title, cover, text, then the article's
+// details at the foot) with more articles stacked beside it on wide screens.
 export default function Article() {
   const { slug } = useParams();
   const { language } = useLanguage();
   const { status, article } = useArticle(slug);
   const { articles } = useArticles();
 
-  if (status === "loading") return <PageWrapper><div className="min-h-[60vh]" aria-busy="true" /></PageWrapper>;
+  if (status === "loading") {
+    return (
+      <PageWrapper>
+        <section className="panel px-5 py-10 sm:px-8 lg:px-12 lg:py-14" aria-busy="true">
+          <div className="h-10 w-2/3 rounded-full bg-[var(--bg-secondary)]" />
+          <div className="mt-4 h-5 w-1/2 rounded-full bg-[var(--bg-secondary)]" />
+          <div className="mt-10 aspect-[16/8] rounded-[1.5rem] bg-[var(--bg-secondary)]" />
+        </section>
+      </PageWrapper>
+    );
+  }
   if (status === "error") {
     return (
       <PageWrapper>
@@ -33,9 +77,9 @@ export default function Article() {
               ar="تعذّر تحميل المقال. يرجى المحاولة مرة أخرى بعد قليل."
             />
           </p>
-          <CtaLink to="/insights" variant="outline">
+          <Link to="/insights" className={pill}>
             <BilingualText en="All insights" ar="كل الرؤى" />
-          </CtaLink>
+          </Link>
         </section>
       </PageWrapper>
     );
@@ -43,111 +87,133 @@ export default function Article() {
   if (!article) return <Navigate to="/insights" replace />;
 
   const category = getCategory(article.category);
+  const tone = chipTone[article.category] ?? chipTone.article;
   const related = articles.filter((a) => a.slug !== article.slug).slice(0, 3);
 
   return (
     <PageWrapper>
-      <div className="grid grid-cols-1 gap-2 sm:gap-3 xl:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] xl:items-start">
-        {/* Sticky header card */}
-        <header className="relative flex flex-col overflow-hidden rounded-[28px] bg-[var(--block-dark)] xl:sticky xl:top-[5.5rem] xl:h-[calc(100dvh-6.75rem)] xl:min-h-[38rem]">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0"
-            style={{
-              background: [
-                "linear-gradient(to right, rgba(214,173,132,0.16) 0%, rgba(214,173,132,0.05) 16%, transparent 36%)",
-                "linear-gradient(to left, rgba(172,30,64,0.34) 0%, rgba(214,92,40,0.12) 18%, transparent 46%)",
-              ].join(", "),
-            }}
-          />
-
-          <div className="relative flex flex-1 flex-col p-6 sm:p-10 xl:min-h-0 xl:p-10">
-            <Link
-              to="/insights"
-              className="group inline-flex w-fit items-center gap-2.5 text-[12px] uppercase tracking-[0.16em] text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)]"
-            >
-              <ArrowLeft
-                size={15}
-                strokeWidth={1.5}
-                className="transition-transform group-hover:-translate-x-1 rtl:-scale-x-100 rtl:group-hover:translate-x-1"
-              />
-              <BilingualText en="All insights" ar="كل الرؤى" />
-            </Link>
-
-            <div className="mt-10 flex flex-wrap items-center gap-3 xl:mt-12">
-              <span className="pill bg-white/10 text-[var(--text-primary)]">
-                <T t={category.single} />
-              </span>
-              <span className="eyebrow !text-[10px]">
-                {formatDate(article.date, language)}
-                <span className="mx-2.5 text-[var(--border-strong)]">/</span>
-                {formatReadTime(article.readTime, language)}
-              </span>
-            </div>
-
-            <motion.h1
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, ease }}
-              className="mt-6 text-balance text-[clamp(1.9rem,3.2vw,3.1rem)] font-light leading-[1.1] tracking-[-0.025em] text-[var(--text-primary)]"
+      <article className="panel px-5 py-10 sm:px-8 lg:px-12 lg:py-14">
+        <div
+          className={`grid grid-cols-1 gap-12 ${related.length > 0 ? "xl:grid-cols-[minmax(0,1fr)_20rem] xl:gap-14" : ""}`}
+        >
+          {/* Reading column */}
+          <div className="min-w-0">
+            <h1
+              className="max-w-[22ch] text-balance text-[clamp(2rem,4.2vw,3.8rem)] leading-[1.06] tracking-[-0.035em] text-[var(--text-primary)] rtl:leading-[1.25] rtl:tracking-normal"
+              style={{ fontWeight: 400 }}
             >
               <T t={article.title} />
-            </motion.h1>
-            <p className="mt-5 max-w-lg text-[15px] leading-[1.75] text-[var(--text-secondary)]">
+            </h1>
+            <p className="mt-5 max-w-[40rem] text-[clamp(1.05rem,1.4vw,1.25rem)] leading-[1.55] text-[var(--text-secondary)]">
               <T t={article.excerpt} />
             </p>
-            <p className="mt-6 text-[12px] text-[var(--text-muted)]">
-              <BilingualText en="By FLVR Ventures" ar="بقلم فلايفر فينتشرز" />
-            </p>
 
-            {/* Modest cover: fills the leftover height beside the text on wide screens */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.12, ease }}
-              className="relative mt-8 aspect-[16/10] overflow-hidden rounded-[20px] border border-[var(--border-default)] bg-[var(--bg-primary)] xl:mt-8 xl:aspect-auto xl:min-h-[11rem] xl:flex-1"
-            >
-              {/* Any shape of image fits: the whole picture is shown, and a blurred copy of it
-                  fills the rest of the box. */}
-              <img
-                src={article.cover}
-                alt=""
-                aria-hidden="true"
-                className="absolute inset-0 h-full w-full scale-125 object-cover blur-2xl brightness-[0.55]"
-              />
+            <div className="relative mt-8 aspect-[16/9] max-w-[42rem] overflow-hidden rounded-[1.5rem] bg-[var(--bg-secondary)]">
               <img
                 src={article.cover}
                 alt=""
                 fetchPriority="high"
-                className="relative h-full w-full object-contain"
+                className="absolute inset-0 h-full w-full object-cover"
               />
-            </motion.div>
+            </div>
+
+            <div className="mt-12 max-w-[42rem]">
+              <ArticleBody article={article} language={language} />
+            </div>
+
+            {/* The article's details, at the foot */}
+            <div className="mt-14 max-w-[42rem] border-t border-[var(--border-default)] pt-8">
+              <dl className="grid grid-cols-2 gap-x-6 gap-y-6 sm:grid-cols-4">
+                <Detail label={<BilingualText en="Category" ar="التصنيف" />}>
+                  <span
+                    className="inline-block rounded-full px-3 py-1.5 text-[12px] font-medium leading-none"
+                    style={{ background: tone.bg, color: tone.ink }}
+                  >
+                    <T t={category.single} />
+                  </span>
+                </Detail>
+                <Detail label={<BilingualText en="Published" ar="تاريخ النشر" />}>
+                  {formatDate(article.date, language)}
+                </Detail>
+                <Detail label={<BilingualText en="Reading time" ar="مدة القراءة" />}>
+                  {formatReadTime(article.readTime, language)}
+                </Detail>
+                <Detail label={<BilingualText en="Author" ar="الكاتب" />}>
+                  <BilingualText en="FLVR Ventures" ar="فلايفر فينتشرز" />
+                </Detail>
+              </dl>
+
+              <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
+                <Link
+                  to="/insights"
+                  className="group inline-flex items-center gap-3 text-[14px] font-medium text-[var(--text-primary)]"
+                >
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full border border-[var(--border-strong)] transition-colors group-hover:bg-white/10">
+                    <ArrowLeft size={16} strokeWidth={2} className="rtl:-scale-x-100" />
+                  </span>
+                  <BilingualText en="All insights" ar="كل الرؤى" />
+                </Link>
+                <CopyLink />
+                <Link
+                  to="/contact?interest=invest"
+                  className="text-[14px] font-semibold text-[var(--text-primary)] underline decoration-[var(--border-strong)] underline-offset-[6px] transition-colors hover:decoration-[var(--accent)]"
+                >
+                  <BilingualText en="Speak with the team" ar="تحدث مع الفريق" />
+                </Link>
+              </div>
+            </div>
           </div>
-        </header>
 
-        {/* Text */}
-        <section className="panel px-6 py-12 sm:px-10 lg:px-14 lg:py-16">
-          <article className="max-w-[40rem]">
-            <ArticleBody article={article} language={language} />
-          </article>
-        </section>
-      </div>
-
-      {/* Related */}
-      {related.length > 0 && (
-      <section className="panel px-6 py-20 lg:px-12 lg:py-24">
-        <SectionHeading
-          eyebrow={<BilingualText en="Keep reading" ar="تابع القراءة" />}
-          title={<BilingualText en="More from FLVR." ar="المزيد من فلايفر." />}
-        />
-        <ArticleAccordion articles={related} />
-        <div className="mt-12">
-          <CtaLink to="/insights" variant="outline">
-            <BilingualText en="All insights" ar="كل الرؤى" />
-          </CtaLink>
+          {/* More articles, beside the text on wide screens and below it otherwise */}
+          {related.length > 0 && (
+            <aside>
+              <h2
+                className="text-[clamp(1.4rem,2vw,1.8rem)] leading-[1.1] tracking-[-0.03em] text-[var(--text-primary)] rtl:leading-[1.3] rtl:tracking-normal"
+                style={{ fontWeight: 400 }}
+              >
+                <BilingualText en="More from FLVR." ar="المزيد من فلايفر." />
+              </h2>
+              <ul className="mt-5 border-t border-[var(--border-default)]">
+                {related.map((a) => (
+                  <li key={a.slug} className="border-b border-[var(--border-default)]">
+                    <Link to={`/insights/${a.slug}`} className="group block py-5">
+                      <span className="flex items-start justify-between gap-5">
+                        <span
+                          className="text-[1.15rem] leading-[1.25] tracking-[-0.02em] text-[var(--text-primary)] rtl:leading-[1.45] rtl:tracking-normal"
+                          style={{ fontWeight: 700 }}
+                        >
+                          <T t={a.title} />
+                        </span>
+                        <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[var(--border-strong)] text-[var(--text-primary)] transition-colors duration-300 group-hover:border-transparent group-hover:bg-[image:var(--gradient-brand)] group-hover:text-white group-focus-visible:border-transparent group-focus-visible:bg-[image:var(--gradient-brand)] group-focus-visible:text-white">
+                          <ArrowUpRight
+                            size={15}
+                            strokeWidth={2}
+                            className="transition-transform duration-300 group-hover:rotate-45 group-focus-visible:rotate-45 rtl:-scale-x-100 rtl:group-hover:-rotate-45"
+                          />
+                        </span>
+                      </span>
+                      {/* The article's cover opens under the title on hover or focus */}
+                      <span className="grid grid-rows-[0fr] transition-[grid-template-rows] duration-500 ease-out group-hover:grid-rows-[1fr] group-focus-visible:grid-rows-[1fr]">
+                        <span className="block overflow-hidden">
+                          <span className="mt-4 block aspect-[16/10] overflow-hidden rounded-[1.25rem] bg-[var(--bg-secondary)]">
+                            <img
+                              src={a.cover}
+                              alt=""
+                              loading="lazy"
+                              decoding="async"
+                              className="h-full w-full object-cover"
+                            />
+                          </span>
+                        </span>
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </aside>
+          )}
         </div>
-      </section>
-      )}
+      </article>
     </PageWrapper>
   );
 }

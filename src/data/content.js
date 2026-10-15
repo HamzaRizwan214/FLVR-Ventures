@@ -7,8 +7,8 @@
 
 export const hero = {
   lead: {
-    en: "We build restaurant concepts with founders, test them in live trials, and invest alongside partners. FLVR also plans a fund for food and beverage at Seed and Growth stage.",
-    ar: "نبني مفاهيم المطاعم مع المؤسسين، ونختبرها في تجارب حية، ونستثمر إلى جانب الشركاء. وتخطط فلايفر كذلك لإطلاق صندوق للأغذية والمشروبات في مرحلتي التأسيس والنمو.",
+    en: "We build restaurant concepts with founders, test them live, and invest alongside partners. The FLVR Fund targets food and beverage at Seed and Growth stage.",
+    ar: "نبني مفاهيم المطاعم مع المؤسسين، ونختبرها في تجارب حية، ونستثمر إلى جانب الشركاء. ويستهدف صندوق فلايفر قطاع الأغذية والمشروبات في مرحلتي التأسيس والنمو.",
   },
   ctaPrimary: { en: "Speak with the team", ar: "تحدث مع الفريق" },
 };
@@ -21,12 +21,12 @@ export const popup = {
     ar: "التحقق من المفهوم في الواقع",
   },
   body: {
-    en: "POP-UP by FLVR is our operating studio for concept validation. Designed for live trials, it allows FLVR to run founder-led concepts and test the offer, pricing, customer response and operating performance.",
-    ar: "POP-UP من فلايفر هو استوديو التشغيل لدينا للتحقق من المفاهيم. صُمم للتجارب الحية، ويتيح لفلايفر تشغيل المفاهيم التي يقودها مؤسسوها واختبار العرض والتسعير واستجابة العملاء والأداء التشغيلي.",
+    en: "Our live testing studio. We test the offer, pricing, customer response and operations.",
+    ar: "استوديو الاختبار الحي لدينا. نختبر العرض والتسعير واستجابة العملاء والتشغيل.",
   },
   investors: {
-    en: "Investors can engage before, during or after a concept's trial, depending on the opportunity.",
-    ar: "يمكن للمستثمرين الانضمام قبل تجربة المفهوم أو أثناءها أو بعدها، بحسب الفرصة.",
+    en: "Investors can join before, during or after a trial.",
+    ar: "يمكن للمستثمرين الانضمام قبل التجربة أو أثناءها أو بعدها.",
   },
 };
 
@@ -37,8 +37,8 @@ export const steps = [
     title: { en: "Filter", ar: "تصفية" },
     descriptor: { en: "Selection", ar: "الاختيار" },
     desc: {
-      en: "We assess founder-led concepts through market research and commercial review.",
-      ar: "نقيّم المفاهيم التي يقودها مؤسسوها عبر أبحاث السوق والمراجعة التجارية.",
+      en: "We choose founder-led concepts using market research.",
+      ar: "نختار المفاهيم التي يقودها مؤسسوها بالاعتماد على أبحاث السوق.",
     },
   },
   {
@@ -46,8 +46,8 @@ export const steps = [
     title: { en: "Lift", ar: "رفع" },
     descriptor: { en: "Build", ar: "البناء" },
     desc: {
-      en: "We develop the brand, menu, pricing and operating model with the founder.",
-      ar: "نطوّر العلامة والقائمة والتسعير ونموذج التشغيل بالشراكة مع المؤسس.",
+      en: "We build the brand, menu, pricing and operations with the founder.",
+      ar: "نبني العلامة والقائمة والتسعير والتشغيل مع المؤسس.",
     },
   },
   {
@@ -55,8 +55,8 @@ export const steps = [
     title: { en: "Validate", ar: "تحقق" },
     descriptor: { en: "Evidence", ar: "الإثبات" },
     desc: {
-      en: "We run a live POP-UP trial to measure customer response and operating economics. The results inform the next decision.",
-      ar: "نشغّل تجربة POP-UP حية لقياس استجابة العملاء والاقتصاديات التشغيلية، وتُبنى عليها القرارات التالية.",
+      en: "We run a live POP-UP to see how customers respond and what it costs to run.",
+      ar: "نشغّل تجربة POP-UP حية لنرى استجابة العملاء وتكلفة التشغيل.",
     },
   },
   {
@@ -64,8 +64,8 @@ export const steps = [
     title: { en: "Run", ar: "تشغيل" },
     descriptor: { en: "Scale", ar: "التوسع" },
     desc: {
-      en: "We support launch and growth through operating systems, people and disciplined capital allocation.",
-      ar: "ندعم الإطلاق والنمو عبر الأنظمة التشغيلية والكوادر وتخصيص رأس المال بانضباط.",
+      en: "We support launch and growth with systems, people and disciplined use of capital.",
+      ar: "ندعم الإطلاق والنمو بالأنظمة والكوادر والاستخدام المنضبط لرأس المال.",
     },
   },
 ];
@@ -101,8 +101,8 @@ export const participation = {
 
 export const fund = {
   intro: {
-    en: "A planned fund targeting SAR 100M for investment in F&B businesses and food technology in Saudi Arabia.",
-    ar: "صندوق مخطط له يستهدف ١٠٠ مليون ريال للاستثمار في أعمال الأغذية والمشروبات وتقنيات الأغذية في المملكة العربية السعودية.",
+    en: "A SAR 100M fund for food and beverage businesses and food tech in Saudi Arabia.",
+    ar: "صندوق بقيمة ١٠٠ مليون ريال لأعمال الأغذية والمشروبات وتقنيات الأغذية في المملكة العربية السعودية.",
   },
 
   // Part 1: the Mandate
@@ -113,7 +113,10 @@ export const fund = {
   terms: [
     {
       label: { en: "Sector", ar: "القطاع" },
-      value: { en: "F&B businesses and tech", ar: "أعمال الأغذية والمشروبات والتقنية" },
+      value: {
+        en: "F&B businesses and tech",
+        ar: "أعمال الأغذية والمشروبات والتقنية",
+      },
     },
     {
       label: { en: "Geography", ar: "الجغرافيا" },
@@ -137,8 +140,8 @@ export const fund = {
     },
   ],
   status: {
-    en: "The Fund is a planned investment vehicle. Contact the team for available information.",
-    ar: "الصندوق أداة استثمارية مخطط لها. تواصل مع الفريق للحصول على المعلومات المتاحة.",
+    en: "Talk to the team for what's available today.",
+    ar: "تواصل مع الفريق لمعرفة المتاح اليوم.",
   },
 
   // Part 2: the Investment thesis
@@ -161,7 +164,10 @@ export const fund = {
       { en: "Cultural relevance", ar: "الملاءمة الثقافية" },
       { en: "Customer experience", ar: "تجربة العملاء" },
     ],
-    stepsTitle: { en: "How evidence informs decisions", ar: "كيف تُبنى القرارات على الأدلة" },
+    stepsTitle: {
+      en: "How evidence informs decisions",
+      ar: "كيف تُبنى القرارات على الأدلة",
+    },
     steps: [
       {
         title: { en: "Selection", ar: "الاختيار" },
@@ -189,27 +195,191 @@ export const fund = {
 
   faqs: [
     {
-      q: { en: "When can investors engage?", ar: "متى يمكن للمستثمرين الانضمام؟" },
+      q: {
+        en: "When can investors engage?",
+        ar: "متى يمكن للمستثمرين الانضمام؟",
+      },
       a: {
         en: "Before, during or after a concept's POP-UP trial, depending on the opportunity.",
         ar: "قبل تجربة POP-UP للمفهوم أو أثناءها أو بعدها، بحسب الفرصة.",
       },
     },
     {
-      q: { en: "What is the current fund status?", ar: "ما هي الحالة الحالية للصندوق؟" },
+      q: {
+        en: "What is the current fund status?",
+        ar: "ما هي الحالة الحالية للصندوق؟",
+      },
       a: {
-        en: "The Fund is a planned investment vehicle targeting SAR 100M. Contact the team for available information.",
-        ar: "الصندوق أداة استثمارية مخطط لها تستهدف ١٠٠ مليون ريال. تواصل مع الفريق للحصول على المعلومات المتاحة.",
+        en: "The Fund targets SAR 100M. Contact the team for available information.",
+        ar: "يستهدف الصندوق ١٠٠ مليون ريال. تواصل مع الفريق للحصول على المعلومات المتاحة.",
       },
     },
     {
-      q: { en: "What can an investor review?", ar: "ماذا يمكن للمستثمر الاطلاع عليه؟" },
+      q: {
+        en: "What can an investor review?",
+        ar: "ماذا يمكن للمستثمر الاطلاع عليه؟",
+      },
       a: {
         en: "Relevant research, concept plans and operating results where available.",
         ar: "الأبحاث وخطط المفاهيم والنتائج التشغيلية ذات الصلة، حيثما توفرت.",
       },
     },
   ],
+};
+
+// The Funds page, in short plain language for investors. The wording here is only for that page;
+// the longer fund copy above is still used on Home.
+export const fundPage = {
+  kicker: { en: "The FLVR Fund", ar: "صندوق فلايفر" },
+  title: {
+    en: "A fund for Saudi food and beverage.",
+    ar: "صندوق للأغذية والمشروبات في السعودية.",
+  },
+  lead: {
+    en: "The Fund invests in food and beverage brands and food tech in Saudi Arabia.",
+    ar: "يستثمر الصندوق في علامات الأغذية والمشروبات وتقنيات الأغذية في السعودية.",
+  },
+  glance: {
+    title: { en: "The Fund at a glance", ar: "الصندوق باختصار" },
+    // the four figures, side by side
+    figures: [
+      {
+        label: { en: "Fund size", ar: "حجم الصندوق" },
+        value: { en: "SAR 100M", ar: "١٠٠ مليون ريال" },
+        meaning: {
+          en: "The amount we aim to raise.",
+          ar: "المبلغ الذي نستهدف جمعه.",
+        },
+      },
+      {
+        label: { en: "Per business", ar: "لكل شركة" },
+        value: { en: "SAR 1–5M", ar: "١–٥ مليون ريال" },
+        meaning: {
+          en: "How much we put into one business.",
+          ar: "المبلغ الذي نضخه في الشركة الواحدة.",
+        },
+        range: false,
+      },
+      {
+        label: { en: "How early", ar: "المرحلة" },
+        value: { en: "Seed and Growth", ar: "التأسيس والنمو" },
+        meaning: {
+          en: "Seed: just starting out. Growth: already trading and ready to scale.",
+          ar: "التأسيس: في بداية الطريق. النمو: يعمل بالفعل وجاهز للتوسع.",
+        },
+      },
+      {
+        label: { en: "Our share", ar: "حصتنا" },
+        value: { en: "Minority", ar: "أقلية" },
+        meaning: {
+          en: "We hold less than half of a business.",
+          ar: "نملك أقل من نصف الشركة.",
+        },
+      },
+    ],
+    // the two wider terms, as rows
+    rows: [
+      {
+        label: { en: "What we back", ar: "ما ندعمه" },
+        value: {
+          en: "Food & beverage brands and food tech",
+          ar: "علامات الأغذية والمشروبات وتقنيات الأغذية",
+        },
+        meaning: {
+          en: "Businesses that make, sell or serve food and drink, and the technology behind them.",
+          ar: "أعمال تصنع الأغذية والمشروبات أو تبيعها أو تقدمها، والتقنية التي تقف خلفها.",
+        },
+      },
+      {
+        label: { en: "Where", ar: "أين" },
+        value: { en: "Saudi Arabia", ar: "المملكة العربية السعودية" },
+        meaning: {
+          en: "All investments are made in Saudi Arabia.",
+          ar: "تتم جميع الاستثمارات داخل المملكة العربية السعودية.",
+        },
+      },
+    ],
+  },
+
+  ruler: {
+    from: { en: "SAR 1M", ar: "١ مليون ريال" },
+    to: { en: "SAR 5M", ar: "٥ ملايين ريال" },
+  },
+
+  thesis: {
+    kicker: { en: "Investment thesis", ar: "الفرضية الاستثمارية" },
+    statement: {
+      en: "We back food people already buy often, and brands that stand out.",
+      ar: "ندعم أغذية يشتريها الناس كثيراً، وعلامات تتميز عن غيرها.",
+    },
+    criteria: [
+      {
+        name: { en: "Familiar categories", ar: "فئات مألوفة" },
+        gloss: { en: "Food people already know.", ar: "أغذية يعرفها الناس." },
+      },
+      {
+        name: { en: "High-frequency", ar: "استهلاك متكرر" },
+        gloss: {
+          en: "Things people buy again and again.",
+          ar: "أشياء يشتريها الناس مراراً.",
+        },
+      },
+      {
+        name: { en: "Brand identity", ar: "هوية العلامة" },
+        gloss: {
+          en: "A look and voice that set a brand apart.",
+          ar: "مظهر وصوت يميّزان العلامة.",
+        },
+      },
+      {
+        name: { en: "Cultural relevance", ar: "الملاءمة الثقافية" },
+        gloss: {
+          en: "Fits local taste and culture.",
+          ar: "يناسب الذوق المحلي والثقافة.",
+        },
+      },
+      {
+        name: { en: "Customer experience", ar: "تجربة العملاء" },
+        gloss: {
+          en: "How it feels to buy and to visit.",
+          ar: "كيف تبدو تجربة الشراء والزيارة.",
+        },
+      },
+    ],
+    decide: { en: "How we decide", ar: "كيف نقرر" },
+    steps: [
+      {
+        title: { en: "Pick", ar: "نختار" },
+        text: {
+          en: "Market research chooses the concept.",
+          ar: "تساعدنا أبحاث السوق على اختيار المفهوم.",
+        },
+      },
+      {
+        title: { en: "Test", ar: "نختبر" },
+        text: {
+          en: "POP-UP checks demand and running costs with real customers.",
+          ar: "تختبر POP-UP الطلب وتكاليف التشغيل مع عملاء حقيقيين.",
+        },
+      },
+      {
+        title: { en: "Decide", ar: "نقرر" },
+        text: {
+          en: "The results guide investment and growth.",
+          ar: "تقود النتائج قرارات الاستثمار والنمو.",
+        },
+      },
+    ],
+  },
+
+  status: {
+    en: "Talk to the team for what's available today.",
+    ar: "تواصل مع الفريق لمعرفة المتاح اليوم.",
+  },
+  closing: {
+    en: "Request the fund overview.",
+    ar: "اطلب النظرة العامة على الصندوق.",
+  },
 };
 
 export const contact = {
@@ -220,14 +390,20 @@ export const contact = {
     ar: "أخبرنا بما تود مناقشته: مفهوم، أو الصندوق، أو شراكة.",
   },
   interests: [
-    { value: "invest", label: { en: "Co-invest in a concept", ar: "الاستثمار المشترك في مفهوم" } },
-    { value: "fund", label: { en: "Fund overview", ar: "نظرة عامة على الصندوق" } },
+    {
+      value: "invest",
+      label: { en: "Co-invest in a concept", ar: "الاستثمار المشترك في مفهوم" },
+    },
+    {
+      value: "fund",
+      label: { en: "Fund overview", ar: "نظرة عامة على الصندوق" },
+    },
     { value: "partner", label: { en: "Partnership", ar: "شراكة" } },
     { value: "own", label: { en: "Bring a concept", ar: "لدي مفهوم خاص" } },
   ],
 };
 
 export const disclaimer = {
-  en: "For information only. This is not an offer or solicitation. The FLVR Fund is a planned vehicle.",
-  ar: "للمعلومات فقط. هذا ليس عرضاً أو دعوة للاستثمار. صندوق فلايفر أداة مخطط لها.",
+  en: "For information only. This is not an offer or solicitation.",
+  ar: "للمعلومات فقط. هذا ليس عرضاً أو دعوة للاستثمار.",
 };

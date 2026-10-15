@@ -3,7 +3,7 @@ import T from "./T";
 
 function ListItem({ children }) {
   return (
-    <li className="flex items-baseline gap-4 text-[17px] text-[var(--text-primary)]">
+    <li className="flex items-baseline gap-4 text-[17px] text-[var(--text-primary)]/90">
       <span className="h-1.5 w-1.5 shrink-0 translate-y-[-2px] rounded-full bg-[var(--accent)]" />
       <span>{children}</span>
     </li>
@@ -14,15 +14,18 @@ function ListItem({ children }) {
 const components = {
   block: {
     normal: ({ children }) => (
-      <p className="mb-6 text-[17px] leading-[1.9] text-[var(--text-secondary)]">{children}</p>
+      <p className="mb-6 text-[17px] leading-[1.85] text-[var(--text-primary)]/80">{children}</p>
     ),
     h2: ({ children }) => (
-      <h2 className="mb-5 mt-14 scroll-mt-28 text-[clamp(1.5rem,2.3vw,2.1rem)] font-light leading-[1.2] tracking-[-0.02em] text-[var(--text-primary)]">
+      <h2
+        className="mb-5 mt-14 scroll-mt-28 text-[clamp(1.5rem,2.3vw,2.1rem)] leading-[1.15] tracking-[-0.03em] text-[var(--text-primary)] rtl:leading-[1.35] rtl:tracking-normal"
+        style={{ fontWeight: 700 }}
+      >
         {children}
       </h2>
     ),
     blockquote: ({ children }) => (
-      <blockquote className="my-12 border-s-2 border-[var(--accent)] ps-7 text-[clamp(1.4rem,2.3vw,2rem)] font-light leading-[1.3] tracking-[-0.015em] text-[var(--text-primary)]">
+      <blockquote className="my-12 border-s-[3px] border-[var(--accent)] ps-7 text-[clamp(1.4rem,2.3vw,2rem)] font-normal leading-[1.3] tracking-[-0.02em] text-[var(--text-primary)] rtl:leading-[1.5] rtl:tracking-normal">
         {children}
       </blockquote>
     ),
@@ -38,7 +41,7 @@ const components = {
             height={value.height}
             loading="lazy"
             decoding="async"
-            className="h-auto w-full rounded-[18px] border border-[var(--border-default)]"
+            className="h-auto w-full rounded-[1.5rem]"
           />
           {value.caption && (
             <figcaption className="mt-3 text-[13px] leading-[1.6] text-[var(--text-muted)]">{value.caption}</figcaption>
@@ -53,7 +56,7 @@ const components = {
     bullet: ({ children }) => <ListItem>{children}</ListItem>,
   },
   marks: {
-    strong: ({ children }) => <strong className="font-medium text-[var(--text-primary)]">{children}</strong>,
+    strong: ({ children }) => <strong className="font-semibold text-[var(--text-primary)]">{children}</strong>,
     em: ({ children }) => <em>{children}</em>,
     link: ({ value, children }) => (
       <a

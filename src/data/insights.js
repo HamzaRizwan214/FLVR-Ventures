@@ -16,6 +16,15 @@ export const categories = [
 
 export const getCategory = (key) => categories.find((c) => c.key === key);
 
+// Chip colour per category, from our flat tones
+export const chipTone = {
+  article: { bg: "#f58a2e", ink: "#131415" },
+  research: { bg: "#ec5d44", ink: "#131415" },
+  blog: { bg: "#c1304a", ink: "#ffffff" },
+  report: { bg: "#f2eee8", ink: "#131415" },
+};
+
+
 export const articles = [
   {
     slug: "how-a-concept-earns-its-place",

@@ -26,10 +26,10 @@ const headline = {
 };
 const label = { en: "FLVR Ventures", ar: "فلايفر فينتشرز" };
 const stageHead = {
-  kicker: { en: "How we build", ar: "كيف نبني" },
+  kicker: { en: "How it works", ar: "كيف نعمل" },
   title: {
-    en: "A four-stage method, from selection to scale.",
-    ar: "منهجية من أربع مراحل، من الاختيار إلى التوسع.",
+    en: "Every concept follows the same four steps.",
+    ar: "كل مفهوم يمر بالمراحل الأربع نفسها.",
   },
 };
 
@@ -355,6 +355,9 @@ export default function HomeScene() {
           tl.fromTo([...headWords, ...labelWords], { yPercent: 0 }, { yPercent: -115, duration: 0.4, ease: "power3.in", stagger: { amount: 0.25 }, immediateRender: false }, A);
           tl.fromTo(descWords, { yPercent: 0 }, { yPercent: -115, duration: 0.35, ease: "power3.in", stagger: { amount: 0.25 }, immediateRender: false }, A);
           tl.fromTo(ctaIn, { yPercent: 0 }, { yPercent: -130, duration: 0.35, ease: "power3.in", immediateRender: false }, A);
+          // Once its text has left, the description box is switched off so it can no longer sit
+          // invisibly over the cards below it (it covered the lower part of the third card).
+          tl.fromTo(descEl, { autoAlpha: 1 }, { autoAlpha: 0, duration: 0.01, immediateRender: false }, A + 0.7);
           tl.fromTo(
             wrap,
             { left: () => M().sLeft, top: () => M().sTop, width: () => M().S, height: () => M().S },
