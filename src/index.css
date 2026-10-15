@@ -1,154 +1,118 @@
 @import "tailwindcss";
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/plus-jakarta-sans";
+
+/* ──────────────────────────────────────────────────────────
+   FLVR design system: quiet, dark, editorial.
+   Framed rounded panels, hairlines, light-weight sans type,
+   one soft copper accent taken from the FLVR wordmark.
+   ────────────────────────────────────────────────────────── */
 
 @theme {
-  --color-brand-primary: var(--brand-primary);
-  --color-brand-accent: var(--brand-accent);
-  --color-brand-reward: var(--brand-reward);
-  
+  --color-brand-primary: var(--accent);
   --color-bg-primary: var(--bg-primary);
   --color-bg-secondary: var(--bg-secondary);
-  --color-bg-brand-tint: var(--bg-brand-tint);
-  --color-bg-coral-tint: var(--bg-coral-tint);
-  --color-bg-gold-tint: var(--bg-gold-tint);
-  
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
-  --color-text-link: var(--text-link);
   --color-text-muted: var(--text-muted);
-  
   --color-border-default: var(--border-default);
   --color-border-strong: var(--border-strong);
 
-  --font-sans: "retro-floral", sans-serif;
-  --font-arabic: "Etlalah", sans-serif;
+  --font-sans: "Plus Jakarta Sans Variable", "Plus Jakarta Sans", "Inter Variable", "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-arabic: "Gumela Arabic", "Etlalah", "Inter Variable", ui-sans-serif, sans-serif;
 }
 
+/* ── Fonts ── Inter (Latin, self-hosted) and Gumela Arabic */
 @font-face {
-  font-family: 'Metropolis';
-  src: url('/metropolis/Metropolis-Regular.otf') format('opentype');
-  font-weight: 400;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Metropolis';
-  src: url('/metropolis/Metropolis-Medium.otf') format('opentype');
-  font-weight: 500;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Metropolis';
-  src: url('/metropolis/Metropolis-SemiBold.otf') format('opentype');
-  font-weight: 600;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Metropolis';
-  src: url('/metropolis/Metropolis-Bold.otf') format('opentype');
-  font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Etlalah';
-  src: url('/etlalah-arabic-typeface/etlalah-regular.otf') format('opentype');
-  font-weight: 100 400;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Etlalah';
-  src: url('/etlalah-arabic-typeface/etlalah-bold.otf') format('opentype');
-  font-weight: 500 1000;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "gondens-demo";
-  src: url("/gondens-demo/Gondens DEMO.otf") format("opentype");
-  font-weight: 400 900;
+  font-family: "Gumela Arabic";
+  src: url("/gumela-arabic-font/gumela-arabic-light.otf") format("opentype");
+  font-weight: 100 300;
   font-style: normal;
   font-display: swap;
 }
-
 @font-face {
-  font-family: "retro-floral";
-  src: url("/retro-floral/Retro Floral.otf") format("opentype");
-  font-weight: 400 900;
+  font-family: "Gumela Arabic";
+  src: url("/gumela-arabic-font/gumela-arabic-regular.otf") format("opentype");
+  font-weight: 400 500;
   font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gumela Arabic";
+  src: url("/gumela-arabic-font/gumela-arabic-bold.otf") format("opentype");
+  font-weight: 600 1000;
+  font-style: normal;
+  font-display: swap;
+}
+/* Fallback only: Gumela has no Arabic comma (U+060C), Etlalah does. */
+@font-face {
+  font-family: "Etlalah";
+  src: url("/etlalah-arabic-typeface/etlalah-regular.otf") format("opentype");
+  font-weight: 100 1000;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+060C;
 }
 
-
-
-
+/* ── Tokens ── */
 :root {
-  /* Permanent Light Theme Palette */
-  --bg-primary: #f8f9fa;
-  --bg-secondary: #ffffff;
-  --bg-brand-tint: rgba(11, 114, 133, 0.05);
-  --bg-coral-tint: rgba(255, 107, 107, 0.05);
-  --bg-gold-tint: rgba(255, 212, 59, 0.05);
+  color-scheme: dark;
 
-  --text-primary: #000000;
-  --text-secondary: #495057;
-  --text-link: #0b7285;
-  --text-muted: #868e96;
+  --bg-page: #070707; /* page */
+  --bg-primary: #0d0d0e; /* panel */
+  --bg-secondary: #141415; /* raised surface */
 
-  --brand-primary: #0b7285;
-  --brand-accent: #ff6b6b;
-  --brand-reward: #ffd43b;
+  --text-primary: #f6f3ef;
+  --text-secondary: rgba(236, 232, 225, 0.66);
+  --text-muted: rgba(236, 232, 225, 0.4);
 
-  --border-default: rgba(0, 0, 0, 0.08);
-  --border-strong: rgba(11, 114, 133, 0.3);
+  --accent: #ff8a1f; /* FLVR orange, from the logo gradient */
+
+  --border-default: rgba(236, 232, 225, 0.1);
+  --border-strong: rgba(236, 232, 225, 0.22);
+
+  --radius-panel: 28px;
+  --r: 24px; /* carve radius */
+  --card: var(--bg-primary); /* colour a carve cuts through to */
+
+  /* Buttons: the FLVR wordmark gradient (crimson to orange), slightly deepened for legibility */
+  --gradient-brand: linear-gradient(100deg, #ac1e40 0%, #ff9205 100%); /* the logo's own crimson to orange */
+  --button-glow: rgba(255, 138, 31, 0.55);
+  --surface-button: rgba(236, 232, 225, 0.07);
+  --surface-button-hover: rgba(236, 232, 225, 0.13);
+
+  /* Hero heading box: warm off-white block with near-black type */
+  --hero-block: #ece8e1;
+  --hero-ink: #131415;
+  --hero-accent: #a35f2e; /* copper, deepened for contrast on the light block */
+  --block-dark: #25272a; /* charcoal heading block (Studio section) */
 }
 
-html, body {
-  background-color: var(--bg-primary);
+html,
+body {
+  background-color: var(--bg-page);
   color: var(--text-primary);
   font-family: var(--font-sans);
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
   padding: 0;
   min-height: 100vh;
   min-height: 100dvh;
-  overflow-x: hidden;
+  overflow-x: clip; /* not hidden: hidden makes body a scroll container */
   -webkit-text-size-adjust: 100%;
 }
 
-/* Handle RTL (Arabic) Font Override */
-[dir="rtl"], [dir="rtl"] body {
-  font-family: var(--font-arabic) !important;
-  /* Set base weight to 500, which now uses the Bold font file */
-  font-weight: 500; 
-}
-
-/* Force all text elements in Arabic to be at least Medium weight */
-[dir="rtl"] p, 
-[dir="rtl"] span, 
-[dir="rtl"] div, 
-[dir="rtl"] a, 
-[dir="rtl"] li {
-  font-weight: 500;
-}
-
-/* Ensure common font-weight classes respond correctly in RTL */
-[dir="rtl"] .font-normal {
-  font-weight: 500 !important;
-}
-
-[dir="rtl"] .font-medium {
-  font-weight: 600 !important;
-}
-
-[dir="rtl"] .font-semibold, 
-[dir="rtl"] .font-bold, 
-[dir="rtl"] strong, 
-[dir="rtl"] b {
-  font-weight: 1000 !important;
-}
-
-/* Base resets */
 * {
   box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 300;
 }
 
 button {
@@ -156,46 +120,379 @@ button {
   font-family: inherit;
 }
 
-/* Custom Utilities */
-.glass-panel {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+::selection {
+  background: rgba(214, 173, 132, 0.3);
+  color: var(--text-primary);
+}
+
+/* Arabic: Gumela, light for headings and regular for text. No forced bold. */
+[dir="rtl"],
+[dir="rtl"] body {
+  font-family: var(--font-arabic);
+}
+
+/* ── Layout primitives ── */
+.panel {
+  position: relative;
+  background: var(--bg-primary);
   border: 1px solid var(--border-default);
+  border-radius: var(--radius-panel);
 }
 
-/* ─── Button System (Professional & Fun) ─── */
-.btn-primary {
-  @apply relative inline-flex items-center justify-center px-8 py-4 
-         bg-[var(--brand-primary)] text-white text-xs font-bold uppercase tracking-[0.2em] 
-         rounded-none transition-all duration-300 overflow-hidden font-[Metropolis]
-         shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px];
+.eyebrow {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
 }
 
-.btn-secondary {
-  @apply relative inline-flex items-center justify-center px-8 py-4 
-         bg-transparent text-[var(--text-primary)] text-xs font-bold uppercase tracking-[0.2em] 
-         rounded-none border-2 border-black transition-all duration-300 font-[Metropolis]
-         hover:bg-black hover:text-white;
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  background: rgba(236, 232, 225, 0.07);
+  color: var(--text-secondary);
+  font-size: 11px;
+  letter-spacing: 0.06em;
 }
 
-.btn-white {
-  @apply relative inline-flex items-center justify-center px-8 py-4 
-         bg-white text-black text-xs font-bold uppercase tracking-[0.2em] 
-         rounded-none transition-all duration-300 font-[Metropolis]
-         shadow-[4px_4px_0px_0px_rgba(11,114,133,1)] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px];
+.hairline {
+  height: 1px;
+  background: var(--border-default);
 }
 
+/* ── Carved notches ──
+   A notch is a block in the card colour cut out of an image corner. Its inner corner is
+   rounded with a border-radius; the two places where it meets the image edge get these
+   small connectors, which round the image's corner with a quarter-circle mask. */
+.carve {
+  --r: 24px;
+  --card: var(--bg-primary);
+}
+.carve-fill {
+  background: var(--card);
+}
+.carve-c {
+  position: absolute;
+  width: var(--r);
+  height: var(--r);
+  pointer-events: none;
+}
+/* image corner sits at the connector's top-inline-end */
+.carve-c--te {
+  background: radial-gradient(circle at 0 100%, transparent var(--r), var(--card) calc(var(--r) + 0.5px));
+}
+[dir="rtl"] .carve-c--te {
+  background: radial-gradient(circle at 100% 100%, transparent var(--r), var(--card) calc(var(--r) + 0.5px));
+}
+/* image corner sits at the connector's bottom-inline-start */
+.carve-c--bs {
+  background: radial-gradient(circle at 100% 0, transparent var(--r), var(--card) calc(var(--r) + 0.5px));
+}
+[dir="rtl"] .carve-c--bs {
+  background: radial-gradient(circle at 0 0, transparent var(--r), var(--card) calc(var(--r) + 0.5px));
+}
+
+/* block corner sits at the connector's bottom-inline-end (used on the L-shaped heading block) */
+.carve-c--be {
+  background: radial-gradient(circle at 0 0, transparent var(--r), var(--card) calc(var(--r) + 0.5px));
+}
+[dir="rtl"] .carve-c--be {
+  background: radial-gradient(circle at 100% 0, transparent var(--r), var(--card) calc(var(--r) + 0.5px));
+}
+
+/* ── Buttons ──
+   One pill with a round arrow button set inside its end, as in the reference. Variants:
+   primary = brand gradient pill, white circle; light = white pill, gradient circle;
+   outline = soft glass pill. The plain .btn-* classes (form submit, modal) share the same
+   type and colours without the circle. */
+.btn-primary,
+.btn-white,
+.btn-secondary,
+.btn-ghost,
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  border: 1px solid transparent;
+  border-radius: 9999px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0;
+  white-space: nowrap;
+  transition:
+    background-position 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.4s ease,
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.btn-primary,
+.btn-white,
+.btn-secondary,
 .btn-ghost {
-  @apply relative inline-flex items-center justify-center px-8 py-4 
-         bg-transparent text-white text-xs font-bold uppercase tracking-[0.2em] 
-         rounded-none border border-white/20 transition-all duration-300 font-[Metropolis]
-         hover:bg-white hover:text-black;
+  padding: 0.95rem 1.8rem;
 }
 
-/* global.css or equivalent */
-@keyframes fluidGradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* Primary: brand gradient */
+.btn-primary,
+.btn-white,
+.cta--primary {
+  background-image: var(--gradient-brand);
+  background-size: 170% 100%;
+  background-position: 0% 50%;
+  color: #fff;
+}
+.btn-primary:hover,
+.btn-white:hover,
+.cta--primary:hover {
+  background-position: 100% 50%;
+  box-shadow: 0 14px 34px -14px var(--button-glow);
+}
+.btn-primary:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Secondary: soft glass */
+.btn-secondary,
+.btn-ghost,
+.cta--outline {
+  background-color: var(--surface-button);
+  border-color: var(--border-default);
+  color: var(--text-primary);
+}
+.btn-secondary:hover,
+.btn-ghost:hover,
+.cta--outline:hover {
+  background-color: var(--surface-button-hover);
+  border-color: var(--border-strong);
+}
+.btn-secondary:disabled,
+.btn-ghost:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Pill with the circle inside its end */
+.cta {
+  padding: 0.4rem 0.4rem 0.4rem 1.7rem;
+}
+[dir="rtl"] .cta {
+  padding: 0.4rem 1.7rem 0.4rem 0.4rem;
+}
+.cta-pill {
+  display: inline-flex;
+  align-items: center;
+}
+.cta-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 9999px;
+  transition:
+    background-color 0.3s ease,
+    background-position 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.cta-circle svg {
+  transition: transform 0.35s ease;
+}
+.cta:hover .cta-circle svg {
+  transform: rotate(45deg);
+}
+.cta:active {
+  transform: scale(0.98);
+}
+
+/* primary: white circle, orange arrow */
+.cta--primary .cta-circle {
+  background: #fff;
+  color: #e0561f;
+}
+/* light: white pill, gradient circle */
+.cta--light {
+  background: #fff;
+  color: #111;
+}
+.cta--light:hover {
+  background: #f1ede8;
+}
+.cta--light .cta-circle {
+  background-image: var(--gradient-brand);
+  background-size: 170% 100%;
+  background-position: 0% 50%;
+  color: #fff;
+}
+.cta--light:hover .cta-circle {
+  background-position: 100% 50%;
+}
+/* outline: glass circle */
+.cta--outline .cta-circle {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--text-primary);
+}
+.cta--outline:hover .cta-circle {
+  background-image: var(--gradient-brand);
+  color: #fff;
+}
+
+/* Compact (nav) */
+.cta--sm {
+  padding-left: 1.3rem;
+  font-size: 13px;
+}
+[dir="rtl"] .cta--sm {
+  padding-left: 0.4rem;
+  padding-right: 1.3rem;
+}
+.cta--sm .cta-circle {
+  width: 36px;
+  height: 36px;
+}
+
+/* Image with a semicircle scooped from its start edge (article cards) */
+.scoop {
+  -webkit-mask: radial-gradient(circle 26px at 0 50%, transparent 25px, #000 26px);
+  mask: radial-gradient(circle 26px at 0 50%, transparent 25px, #000 26px);
+}
+[dir="rtl"] .scoop {
+  -webkit-mask: radial-gradient(circle 26px at 100% 50%, transparent 25px, #000 26px);
+  mask: radial-gradient(circle 26px at 100% 50%, transparent 25px, #000 26px);
+}
+
+/* Focus */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+/* ──────────────────────────────────────────────────────────
+   Immersive layer (redesign): kickers, light button, hero wash,
+   film grain, gradient text, marquee.
+   ────────────────────────────────────────────────────────── */
+
+/* Small orange label above a heading */
+.kicker {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--accent);
+}
+
+/* Fine film grain, so large gradients never band */
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.16;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+.text-gradient {
+  background-image: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Endless strip of names */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 38s linear infinite;
+}
+[dir="rtl"] .marquee-track {
+  animation-direction: reverse;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+
+
+/* ── Opening scene (HomeScene) ── */
+/* Each word sits in its own clipping mask and slides up out of nothing */
+.sc-w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding: 0.07em 0 0.16em;
+  margin: -0.07em 0 -0.16em;
+}
+.sc-in {
+  display: inline-block;
+  will-change: transform;
+}
+
+/* The pinned four-panel stage is for wide screens; everything else gets a plain list.
+   (Reduced motion also gets the list.) The same conditions are used in HomeScene. */
+.sc-desktop-only {
+  display: none;
+}
+.sc-mobile-only {
+  display: block;
+}
+@media (min-width: 1024px) and (min-height: 680px) and (prefers-reduced-motion: no-preference) {
+  .sc-desktop-only {
+    display: var(--sc-d, block);
+  }
+  .sc-mobile-only {
+    display: none;
+  }
+  /* the band tucks under the scene's rounded bottom corners */
+  .sc-overlap {
+    margin-top: -3.75rem;
+    padding-top: 3.75rem;
+  }
+}
+
+/* Portfolio concept posters: the hovered poster lifts, the others step back */
+.cp-card {
+  transition: translate 0.5s cubic-bezier(0.22, 1, 0.36, 1), scale 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.4s ease, box-shadow 0.5s ease;
+}
+@media (hover: hover) {
+  .cp-card:hover,
+  .cp-card:focus-visible {
+    translate: 0 -8px;
+    box-shadow: 0 32px 60px -30px rgba(0, 0, 0, 0.75);
+  }
+  .cp-row:has(.cp-card:hover) .cp-card:not(:hover),
+  .cp-row:has(.cp-card:focus-visible) .cp-card:not(:focus-visible) {
+    opacity: 0.55;
+    scale: 0.97;
+  }
 }

@@ -1,5 +1,11 @@
 import React from "react";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate,
+  useLocation,
+} from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import Layout from "./components/Layout";
@@ -8,13 +14,17 @@ import { Analytics } from "@vercel/analytics/react";
 
 // Pages
 import Home from "./pages/Home";
-import About from "./pages/About";
 import Portfolio from "./pages/Portfolio";
-import HowItWorks from "./pages/HowItWorks";
 import Funds from "./pages/Funds";
 import Contact from "./pages/Contact";
-import CaseStudies from "./pages/CaseStudies";
-import NextWave from "./pages/NextWave";
+import Insights from "./pages/Insights";
+import Article from "./pages/Article";
+
+// Keeps old /studio links working, including ?concept=
+function LegacyStudioRedirect() {
+  const { search } = useLocation();
+  return <Navigate to={`/portfolio${search}`} replace />;
+}
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -24,14 +34,17 @@ function AnimatedRoutes() {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="about" element={<About />} />
           <Route path="portfolio" element={<Portfolio />} />
-          <Route path="how-it-works" element={<HowItWorks />} />
           <Route path="funds" element={<Funds />} />
+          <Route path="insights" element={<Insights />} />
+          <Route path="insights/:slug" element={<Article />} />
           <Route path="contact" element={<Contact />} />
-          <Route path="case-studies" element={<CaseStudies />} />
-          <Route path="case-studies/:id" element={<CaseStudies />} />
-          <Route path="next-wave/:id" element={<NextWave />} />
+
+          {/* Retired pages: send old links somewhere useful */}
+          <Route path="studio" element={<LegacyStudioRedirect />} />
+          <Route path="how-it-works" element={<Navigate to="/" replace />} />
+          <Route path="about" element={<Navigate to="/" replace />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>
     </AnimatePresence>
